@@ -1,0 +1,60 @@
+.usr-image2 {
+    border: 2px solid white;
+  }
+
+@media (max-width: 600px) {
+
+    body {
+    font-size: 14px;
+    }
+    .mainScreenButtons {
+      width: 2px;
+    }
+    .bg-light2 {
+    --bs-bg-opacity: 1;
+    background-color: #ffffff;
+    padding-bottom: 3em;
+    width: 100%;
+    }
+    .mobileButtonWrapper {
+      display: contents;
+      position: absolute;
+      bottom: 2vw;
+      right: 2vw;
+    }
+    .navLogoWrapper {
+      position: relative;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+
+    body {
+    font-size: 18px;
+       }
+    .nav-item {
+      gap: 1rem;
+    }
+    .bg-light2 {
+        --bs-bg-opacity: 1;
+        background-color: #ffffff;
+        max-height: 90px;
+        width: 100%;  
+    }
+
+}
+
+/* Bootstrap button styling override */
+.nav-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  color: black;
+  cursor: pointer;
+}
+
+.navBar .nav-toggle.toggle-active:after {
+  display: block;
+}

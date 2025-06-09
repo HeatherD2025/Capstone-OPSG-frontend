@@ -1,0 +1,106 @@
+.counterWrapper {
+  padding-left: 2vw;
+}
+.counterWrapperContainer {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+.centeredCounter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.info-card {
+  background-color: #79cbbb !important;
+  transition: transform 0.25s ease-in-out;
+  transform-origin: center center;
+  z-index: 1;
+}
+.info-card:hover {
+  transform: scale(1.25) !important;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  /* CSS styles for mobile devices (screens 768px and smaller) */
+  /* Example: Smaller font size, different layout, etc. */
+
+  /* .footerTextWrapper {
+  } */
+
+  .footerTextBoxes {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-card {
+    background-color: #79cbbb !important;
+    transition: transform 0.25s ease-in-out;
+    transform-origin: center center;
+    z-index: 1;
+    display: grid;
+    scale: 75%;
+    text-align: center;
+    width: 16em;
+    height: 22em;
+  }
+  .usMap {
+    transform: translate(14%, 0%);
+  }
+}
+
+@media (min-device-width: 768px) {
+  /* CSS styles for desktop devices (screens larger than 768px) */
+  /* Example: Larger font size, different layout, etc. */
+  .homeInfoCards {
+    gap: 3vw;
+  }
+  .info-card {
+    background-color: #79cbbb !important;
+    transition: transform 0.25s ease-in-out;
+    transform-origin: center center;
+    z-index: 1;
+    display: inline-flex;
+    scale: 95%;
+    text-align: center;
+  }
+  .usMap {
+    transform: translate(38%, 0%);
+    width: 55%;
+    margin-bottom: 100px;
+  }
+  .footer {
+    background-color: #558e89;
+    color: white;
+    padding: 40px 0;
+    width: 100%;
+  }
+
+  .footerTextBoxes {
+    margin-bottom: 20px;
+  }
+}
+.background {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.backgroundAccent {
+  flex: 1;
+}
+
+@media (max-width: 768) {
+  .footerTextWrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .btmFooterTextBox {
+    text-align: center;
+  }
+  .btmFooterTextBox img {
+    width: 24px !important;
+  }
+}

@@ -1,0 +1,107 @@
+.btn-custom3, .button3 {
+  border: none;
+  background-color: rgb(121, 203, 187);
+  font-size: "12px" ;
+  padding: 8px;
+  border-radius: 10%;
+  color: #000000;
+  font-weight: 200;
+}
+
+.formLabel {
+    font-size: 12px;
+    padding-left: 2px;
+}
+
+
+  @media (max-width: 600px) {
+       /* CSS styles for mobile devices (screens 768px and smaller) */
+       /* Example: Smaller font size, different layout, etc. */
+    body {
+      
+    }
+    .logoContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 200;
+        width: auto;
+        padding-top: 18vh;
+      }
+
+     .backgroundAccent {
+        background-color: #e5fffd;
+        height: 85vh;
+        width: 100%;
+      }
+     .secondaryHeaderBox {
+        padding-top: 2vh;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        font-size: 14px;
+        justify-content: center;
+      }
+
+      .secondaryHeaderBox > * {
+        border-radius: 1vw;
+      }
+
+      .mainImage {
+        display: flex;
+        height: 60vw;
+        /* width: auto;
+
+        border-color: solid black 10px;
+        display: contents; */
+      }
+    }
+
+@media (min-device-width: 768px) {
+       /* CSS styles for desktop devices (screens larger than 768px) */
+       /* Example: Larger font size, different layout, etc. */
+    body {
+        background-image: url("nurse-smiling.jpg")
+       }
+    .logoContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 200;
+        width: auto;
+        padding-top: 20vh;
+      }
+
+     .backgroundAccent {
+        background-color: #e5fffd;
+        height: 120vh;
+        width: 100%;
+      }
+     .secondaryHeaderBox {
+        padding-top: 2vh;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        font-size: 25px;
+        justify-content: center;
+      }
+
+      .secondaryHeaderBox > * {
+        border-radius: 1vw;
+      }
+
+      .imageWrapper {
+        border-color: solid black 10px;
+        display: flex;
+        display: contents;
+      }
+
+      .mainImage {
+        width: auto;
+        height: 50vw;
+        display: flex;
+        
+      }
+    }

@@ -1,0 +1,109 @@
+/* Card styling */
+.info-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ensure consistent card sizes */
+.card-body.h-100 {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* .whyChoose {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+
+.cardheader {
+    padding-bottom: 2vw;
+    font-weight: 200;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-card {
+    min-height: 300px !important;
+  }
+.whyChooseParag {
+   padding: 2vw;
+   list-style-type: "";
+   font-size: 2vw;
+   font-weight: 200;
+   width: 80vw;
+   padding-bottom: 6vw;
+}
+.cardPara {
+    padding-bottom: 5vw; 
+    font-weight: 200;
+  font-size: clamp(5vw, 10px, 8vw) !important;
+    max-width: 50%;
+}
+.servicesImage {
+   width: 10%;
+}
+.whyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.whyParasBox {
+  max-width: 600px;
+}
+.enrollment-card-container .row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.enrollment-card-container .col {
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+}
+
+@media (max-width: 600px) {
+  /* CSS styles for mobile devices (screens 768px and smaller) */
+  /* Example: Smaller font size, different layout, etc. */
+.whyChooseParag {
+   padding: 2vw;
+   list-style-type: "";
+   font-size: 12px;
+}
+.whyParasBox {
+  font-size: clamp(5vw, 10px, 8vw) !important;
+}
+.servicesImage {
+   width: 200vw !important;
+}
+.cardPara {
+    padding-bottom: 3vw;
+    font-weight: 200;
+    font-size: clamp(5vw, 10px, 8vw) !important;
+    max-width: 55%;
+    max-height: 60vw;
+}
+.enrollment-card-container .row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.enrollment-card-container .col {
+  padding-right: 2px !important;
+  padding-left: 2px !important;
+  height: 10% !important;
+}
+
+}
