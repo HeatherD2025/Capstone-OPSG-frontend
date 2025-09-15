@@ -11,6 +11,8 @@
 
 A web application used by a small company to attract potential clients. It also securely integrates with QuickBooks to provide users with at-a-glance financial insights and outstanding balance information. Built as a final project for Fullstack Academy.
 
+link to backend repository: https://github.com/HeatherD2025/Capstone-OPSG-backend
+
 ## Key Features
 
 - **Secure QuickBooks Integration**: Real-time access to financial data
