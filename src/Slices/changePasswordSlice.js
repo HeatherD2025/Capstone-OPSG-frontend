@@ -1,4 +1,4 @@
-import api from "../App/api";
+import api from "../api";
 
 export const changePasswordApi = api.injectEndpoints({
   endpoints: (build) => ({

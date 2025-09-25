@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./App/store.js";
-import ContextProvider from "./Features/Navigations/ContextProvider.jsx";
+import store from "./store/store.js";
+import ContextProvider from "./components/Navigations/ContextProvider.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 createRoot(document.getElementById("root")).render(

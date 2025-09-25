@@ -1,5 +1,5 @@
 import UserSearch from "../../../utils/SearchBarComponents/UserSearch";
-import AdminNav from "../../../Features/Navigations/Navbars/AdminNav";
+import AdminNav from "../../../components/Navigations/Navbars/AdminNav";
 import { useGetAllUsersQuery } from "../../../Slices/mainSlice";
 import { useState } from "react";
 import { ListGroup, Spinner, Container, Row, Col } from "react-bootstrap";

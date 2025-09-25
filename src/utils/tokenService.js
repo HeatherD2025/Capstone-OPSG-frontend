@@ -1,7 +1,6 @@
 // stores token in client browser
-export const storeToken = (state, { payload }) => {
-  localStorage.setItem("token", payload.token);
-  // localStorage.setItem("role", data.role);
+export const setToken = (token) => {
+  localStorage.setItem("token", token);
 };
 
 // returns token in client browser
@@ -10,6 +9,6 @@ export const getToken = () => {
 };
 
 // delete user token from client browser
-export const deleteToken = () => {
+export const removeToken = () => {
   return localStorage.removeItem("token");
 };
