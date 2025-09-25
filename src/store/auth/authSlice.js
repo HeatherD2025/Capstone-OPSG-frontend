@@ -3,7 +3,13 @@ import api from "../api";
 import jwtDecode from "jwt-decode";
 import { getToken, setToken, removeToken} from "../utils/tokenService";
 
-const tokenFromStorage = getToken();
+const applyAuthPayload = (state, payload) => {
+  setToken(payload.token);
+  state.isAuthenticated = true;
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isAdmin = payload.user?.isAdmin || false;
+};
 
 export const initializeAuth = createAsyncThunk(
   "auth/initializeAuth",
@@ -11,7 +17,7 @@ export const initializeAuth = createAsyncThunk(
     const token = getToken();
 
     if (!token) {
-      return { isAuthenticated: false, user: null, accessToken: null }
+      return { isAuthenticated: false, user: null, token: null }
     }
 
     try {
@@ -26,11 +32,11 @@ export const initializeAuth = createAsyncThunk(
       return {
         isAuthenticated: true,
         user,
-        accessToken: token,
+        token: token,
       };
     } catch (error) {
       removeToken();
-      return { isAuthenticated: false, user: null, accessToken: null}
+      return { isAuthenticated: false, user: null, token: null}
     }
   }
 );
@@ -38,10 +44,10 @@ export const initializeAuth = createAsyncThunk(
 const initialState ={
   isAuthenticated: false,
   user: null,
-  accessToken: null,
+  token: null,
+  isAdmin: false,
 };
 
-// register
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -49,7 +55,8 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
-      state.accessToken = null;
+      state.token = null;
+      state.isAdmin = false;
       removeToken()
     },
   },
@@ -58,48 +65,50 @@ const authSlice = createSlice({
    .addCase(initializeAuth.fulfilled, (state, action) => {
       state.isAuthenticated = action.payload.isAuthenticated;
       state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
+      state.token = action.payload.token;
+      state.isAdmin = action.payload.user?.isAdmin || false;
   })
 
     .addMatcher(
       api.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        setToken(payload.token)
-        state.isAuthenticated = true;
-        state.user = payload.user;
-        state.accessToken = payload.accessToken;
+        applyAuthPayload(state, payload)
+      })
+    .addMatcher(
+      api.endpoints.register.matchFulfilled,
+      (state, { payload }) => {
+        applyAuthPayload(state, payload)
+      })
+    .addMatcher(
+      api.endpoints.logout.matchFulfilled,
+      (state) => {
+        removeToken();
+        state.isAuthenticated = false;
+        state.user = null;
+        state.token = null;
+        state.isAdmin = false;
       }
-    )
-});
-
-const loginSlice = createSlice({
-  name: "siteLogin",
-  initialState: {},
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+    );
   },
 });
 
-const getAllUsersSlice = createSlice({
-  name: "getAllUsers",
-  initialState: {},
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addMatcher(api.endpoints.getAllUsers.matchFulfilled);
-  },
-});
+// const getAllUsersSlice = createSlice({
+//   name: "getAllUsers",
+//   initialState: {},
+//   reducers: {},
+//   extraReducers: (builder) => {
+//     builder.addMatcher(api.endpoints.getAllUsers.matchFulfilled);
+//   },
+// });
 
-const updateUserProfileSlice = createSlice({
-  name: "updateUserProfile",
-  initialState: {},
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addMatcher(api.endpoints.updateUserProfile.matchFulfilled);
-  },
-});
+// const updateUserProfileSlice = createSlice({
+//   name: "updateUserProfile",
+//   initialState: {},
+//   reducers: {},
+//   extraReducers: (builder) => {
+//     builder.addMatcher(api.endpoints.updateUserProfile.matchFulfilled);
+//   },
+// });
 
-export const siteRegisterReducer = registerSlice.reducer;
-export const siteLoginReducer = loginSlice.reducer;
-export const getAllUsersReducer = getAllUsersSlice.reducer;
-export const updateUserProfileReducer = updateUserProfileSlice.reducer;
+export const {logout} = authSlice.actions;
+export default authSlice.reducer;

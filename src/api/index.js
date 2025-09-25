@@ -20,7 +20,7 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 // export default api;
 export const baseQuery = fetchBaseQuery({
-  baseUrl: `${BASE_URL}/api/`, // DOUBLE CHECK THIS
+  baseUrl: `${BASE_URL}`, // DOUBLE CHECK THIS
   prepareHeaders: (headers) => {
     const LOCAL_TOKEN = getToken();
     if (LOCAL_TOKEN) {
