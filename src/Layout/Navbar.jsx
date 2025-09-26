@@ -5,7 +5,7 @@ import { getToken, deleteToken } from "../utils/tokenService";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import opsgLogo from "../assets/img/opsg-logo.png";
-import "../Layout/navbar.css";
+import "./navbar.css";
 import ReactiveButton from "reactive-button";
 import ListGroup from "react-bootstrap/ListGroup";
 
@@ -92,7 +92,7 @@ export default function NavBar() {
               style={{
                 fontColor: "black",
                 border: "none",
-                backgroundColor: "white"
+                backgroundColor: "white",
               }}
             >
               ABOUT
@@ -104,7 +104,7 @@ export default function NavBar() {
               style={{
                 fontColor: "black",
                 border: "none",
-                backgroundColor: "white"
+                backgroundColor: "white",
               }}
             >
               SERVICES
@@ -116,7 +116,7 @@ export default function NavBar() {
               style={{
                 fontColor: "black",
                 border: "none",
-                backgroundColor: "white"
+                backgroundColor: "white",
               }}
             >
               CONTACT
@@ -126,11 +126,11 @@ export default function NavBar() {
                 className="nav-item"
                 action
                 onClick={() => navigate(`/user/${userId}`)}
-              style={{
-                fontColor: "black",
-                border: "none",
-                backgroundColor: "white"
-              }}
+                style={{
+                  fontColor: "black",
+                  border: "none",
+                  backgroundColor: "white",
+                }}
               >
                 PROFILE
               </ListGroup.Item>
@@ -149,9 +149,9 @@ export default function NavBar() {
               }}
             >
               <ListGroup.Item
-              style={{
-                border: "solid var(--bs-body-bg)",
-              }}
+                style={{
+                  border: "solid var(--bs-body-bg)",
+                }}
               >
                 <span
                   style={{
@@ -196,9 +196,9 @@ export default function NavBar() {
                 </span>
               </ListGroup.Item>
               <ListGroup.Item
-              style={{
-                border: "solid var(--bs-body-bg)",
-              }}
+                style={{
+                  border: "solid var(--bs-body-bg)",
+                }}
               >
                 <span>
                   {token ? (
@@ -209,7 +209,7 @@ export default function NavBar() {
                     ></button>
                   ) : (
                     <ReactiveButton
-                    className="btn"
+                      className="btn"
                       rounded
                       idleText={"REGISTER"}
                       type="button"

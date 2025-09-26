@@ -6,7 +6,7 @@ import opsgLogo from "../../assets/img/opsg-logo.png";
 import nurseSmiling from "../../assets/img/nurseSmiling.jpg";
 import NavBar from "../Navbar";
 import AnimationCountUp from "../../utils/AnimationCountUp";
-import "../Pages/home.css";
+import "./home.css";
 import "../../../src/app.css";
 import HomeInfoCards from "../../utils/HomeInfoCards";
 import usaMap from "../../assets/img/usaMap.png";

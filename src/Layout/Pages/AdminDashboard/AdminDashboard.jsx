@@ -1,5 +1,5 @@
 import "./adminDashboard.css";
-import AdminNav from "../../../components/Navigations/Navbars/AdminNav";
+import AdminNav from "../../../components/navigations/navbars/AdminNav";
 import InfoCard from "../../../utils/InfoCard";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
