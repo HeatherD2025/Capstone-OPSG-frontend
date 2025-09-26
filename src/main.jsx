@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import ContextProvider from "./components/Navigations/ContextProvider.jsx";
+import ContextProvider from "./components/navigations/ContextProvider.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 createRoot(document.getElementById("root")).render(

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../api";
+import api from "../features/api/mainApi";
 import jwtDecode from "jwt-decode";
 import { getToken, setToken, removeToken} from "../utils/tokenService";
 

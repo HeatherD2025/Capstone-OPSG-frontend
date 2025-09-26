@@ -1,7 +1,7 @@
 import React from "react";
-import UserSearch from "../../../utils/SearchBarComponents/UserSearch";
+import UserSearch from "../../../utils/searchBarComponents/UserSearch";
 
-import AdminNav from "../../../components/Navigations/Navbars/AdminNav";
+import AdminNav from "../../../components/navigations/AdminNav";
 import flowersImage from "../../../assets/img/beautiful-flowers.png";
 
 import Row from "react-bootstrap/Row";

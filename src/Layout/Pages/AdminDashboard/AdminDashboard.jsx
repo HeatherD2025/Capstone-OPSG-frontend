@@ -1,10 +1,10 @@
-import "./adminDashboard.css";
-import AdminNav from "../../../components/navigations/navbars/AdminNav";
+import "../../../styles/adminElements/adminDashboard.css";
+import AdminNav from "../../../components/navigations/AdminNav";
 import InfoCard from "../../../utils/InfoCard";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
 
-export default function AdminPage() {
+export default function AdminDashboard() {
   return (
     <div className="admin-dashboard dark-theme">
       <Container fluid>

@@ -3,16 +3,16 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   useGetUserQuery,
   useUpdateUserProfileMutation,
-} from "../../Slices/mainSlice";
-import { useChangePasswordMutation } from "../../Slices/changePasswordSlice";
+} from "../../slices/userSlice";
+// import { useChangePasswordMutation } from "../../Slices/changePasswordSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InfoModal from "../../utils/Modal";
-import "./../../app.css";
+import "./../../styles/app.css";
 import ReactiveButton from "reactive-button";
-import UserHeader from "./UserDash/UserHeader";
+import UserHeader from "../pages/userDashboard/UserHeader";
 
 export default function Profile() {
   const navigate = useNavigate();

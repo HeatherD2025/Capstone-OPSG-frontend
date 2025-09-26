@@ -1,9 +1,9 @@
-import UserSearch from "../../../utils/SearchBarComponents/UserSearch";
-import AdminNav from "../../../components/Navigations/Navbars/AdminNav";
-import { useGetAllUsersQuery } from "../../../Slices/mainSlice";
+import UserSearch from "../../../utils/searchBarComponents/UserSearch";
+import AdminNav from "../../../components/navigations/AdminNav";
+import { useGetAllUsersQuery } from "../../../slices/authSlice";
 import { useState } from "react";
 import { ListGroup, Spinner, Container, Row, Col } from "react-bootstrap";
-import "./adminAllUsers.css";
+import "../../../styles/adminElements/adminAllUsers.css";
 import ReactiveButton from "reactive-button";
 import Footer from "../../../utils/footer";
 

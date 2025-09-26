@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./AdminNav.css";
+import "../../styles/adminElements/AdminNav";
 
-import { deleteToken } from "../../../utils/tokenService";
+import { removeToken } from "../../utils/tokenService";
 
-import opsgLogo from "../../../assets/img/opsg-logo.png";
+import opsgLogo from "../../assets/img/opsg-logo.png";
 
 const AdminNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -48,7 +48,7 @@ const AdminNav = (props) => {
             </li> */}
             <li className="list-item">
               <i className="bi bi-box-arrow-left"></i>
-              <Link to="/" onClick={() => deleteToken()}>
+              <Link to="/" onClick={() => removeToken()}>
                 Log out
               </Link>
             </li>

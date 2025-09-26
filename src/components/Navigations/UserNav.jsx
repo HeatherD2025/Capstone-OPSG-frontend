@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "./UserNav.css";
-import opsgLogo from "../../../assets/img/opsg-logo.png";
+import opsgLogo from "../../assets/img/opsg-logo.png";
 import { Button } from "react-bootstrap";
 
 export const UserNav = (props) => {

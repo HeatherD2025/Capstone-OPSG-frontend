@@ -1,4 +1,4 @@
-import api from "../api";
+import api from "../features/api";
 
 const qbApi = api.injectEndpoints({
   endpoints: (build) => ({

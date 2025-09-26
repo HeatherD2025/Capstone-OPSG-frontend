@@ -1,19 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Home from "./Layout/Pages/Home";
-import Login from "./Layout/Pages/Login";
-import Registration from "./Layout/Pages/Registration";
-import OurServices from "./Layout/Pages/OurServices";
-import ContactForm from "./Layout/Pages/ContactForm";
-import UserPage from "./Layout/Pages/UserDash/UserDashboard";
-import Profile from "./Layout/Pages/Profile";
-import UserInvoice from "./Layout/Pages/UserDash/UserInvoice";
+import Home from "./layout/pages/Home";
+import Login from "./layout/pages/Login";
+import Registration from "./layout/pages/Registration";
+import OurServices from "./layout/pages/OurServices";
+import ContactForm from "./layout/Pages/ContactForm";
+import UserPage from "./layout/pages/userDashboard/UserDashboard";
+import Profile from "./layout/pages/Profile";
+import UserInvoice from "./layout/Pages/userDashboard/UserInvoice";
 
-import AdminPage from "./Layout/Pages/AdminDashboard/AdminDashboard";
-import AdminAllUsers from "./Layout/Pages/AdminDashboard/AdminAllUsers";
-import AdminUser from "./Layout/Pages/AdminDashboard/AdminUser";
-import AdminSearch from "./Layout/Pages/AdminDashboard/AdminSearch";
+import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
+import AdminAllUsers from "./layout/pages/adminDashboard/AdminAllUsers";
+import AdminUser from "./layout/pages/adminDashboard/AdminUser";
+import AdminSearch from "./layout/pages/adminDashboard/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
 
 // const AuthContext = React.createContext({ role: 'visitor'});
@@ -25,7 +25,7 @@ function App() {
       <Route exact path="/admin/user/user/:userId" element={<AdminUser />} />
       <Route exact path="/admin/user" element={<AdminAllUsers />} />
       <Route exact path="/admin/search" element={<AdminSearch />} />
-      <Route exact path="/admin/dashboard" element={<AdminPage />} />
+      <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
 
       {/* User Protected Routes */}
       <Route exact path="/profile/invoices/:userId" element={<UserInvoice />} />

@@ -1,8 +1,8 @@
-import "./adminHeader.css";
+import "../../../styles/adminElements/adminHeader.css";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 
 import { Row, Col, Image, Container } from "react-bootstrap";
-import AdminNav from "../../../components/Navigations/Navbars/AdminNav";
+import AdminNav from "../../../components/navigations/AdminNav";
 
 export default function AdminHeader() {
   return (

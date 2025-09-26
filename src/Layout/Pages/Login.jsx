@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../Slices/mainSlice";
+import { useLoginMutation } from "../../slices/userSlice";
 import { useState } from "react";
 import NavBar from "../Navbar";
-import "../../app.css";
+import "../../styles/app.css";
 import ReactiveButton from "reactive-button";
 
 import InfoModal from "../../utils/Modal";

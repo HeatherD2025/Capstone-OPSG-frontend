@@ -1,4 +1,4 @@
-import { useGetCustomerObjectQuery } from "../../Slices/qbSlice";
+import { useGetCustomerObjectQuery } from "../../slices/qbSlice";
 import InfoCard from "../InfoCard";
 
 function BusinessName({ id, bg }) {

@@ -4,7 +4,7 @@ import React from "react";
 export const userContext = createContext()
 
 const ContextProvider = ({ children }) => {
-  const [isAdmin, setIsAdmin] = React.useState(true);
+  const [isAdmin, setIsAdmin] = React.useState(false);
   const [authenticated, setAuthenticated] = React.useState(true);
   
 

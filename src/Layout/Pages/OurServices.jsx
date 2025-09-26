@@ -2,10 +2,10 @@ import { Row, Col, Container } from "react-bootstrap";
 import { motion } from "motion/react";
 import React from "react";
 import NavBar from "../Navbar";
-import CredentialsCards from "../../utils/ServicesCards/CredentialsCards";
-import EnrollmentCards from "../../utils/ServicesCards/EnrollmentCards";
-import ConsultingCards from "../../utils/ServicesCards/ConsultingCards";
-import "../../Layout/Pages/ourServices.css";
+import CredentialsCards from "../../utils/servicesCards/CredentialsCards";
+import EnrollmentCards from "../../utils/servicesCards/EnrollmentCards";
+import ConsultingCards from "../../utils/servicesCards/ConsultingCards";
+import "../../styles/ourServices.css";
 import Footer from "../../utils/footer";
 import medicalDocument from "../../assets/img/medical-document.jpg";
 

@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getToken, deleteToken } from "../utils/tokenService";
 import { useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import opsgLogo from "../assets/img/opsg-logo.png";
 import "./navbar.css";
 import ReactiveButton from "reactive-button";
@@ -18,8 +18,8 @@ export default function NavBar() {
 
   let userId;
   if (token) {
-    const { id } = jwtDecode(token);
-    userId = id;
+    const decoded = jwtDecode(token);
+    userId = decoded?.id;
   }
 
   useEffect(() => {
@@ -161,18 +161,17 @@ export default function NavBar() {
                 >
                   {token ? (
                     <ReactiveButton
+                      onClick={handleLogout}
                       rounded
                       idleText={"LOGOUT"}
                       type="button"
                       variant="secondary"
+                      navigate="/"
                       style={{
                         width: "80px",
                         backgroundColor: "#558e89",
                         fontSize: "12px",
                       }}
-                      // className=""
-                      onClick={handleLogout}
-                      navigate="/"
                     >
                       {isLoggedIn}
                     </ReactiveButton>
@@ -188,7 +187,7 @@ export default function NavBar() {
                         fontSize: "12px",
                       }}
                       className="navbar-right"
-                      onClick={handleLogout} // TODO make sure this is fine, I dont think its fine
+                      onClick={() => navigate ('/login')} 
                     >
                       {isLoggedIn}
                     </ReactiveButton>

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getToken } from "../utils/tokenService.js";
+import { getToken } from "../../utils/tokenService";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -16,6 +16,6 @@ export const baseQuery = fetchBaseQuery({
 
 export const api = createApi({
   baseQuery,
-  tagTypes: [], // common tags here if needed
+  tagTypes: ["User"],
   endpoints: () => ({}), // empty base endpoints, to be extended
 });
