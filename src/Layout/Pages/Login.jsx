@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../slices/userSlice";
-import { useState } from "react";
 import NavBar from "../Navbar";
 import "../../styles/app.css";
 import ReactiveButton from "reactive-button";
@@ -12,20 +12,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Card from "react-bootstrap/Card";
-// import storeToken from "../../utils/tokenService";
+
+import { axiosPrivate } from "../../features/axios";
+import { setToken, setRefreshToken, setAuthHeader } from "../../utils/tokenService";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [login, status] = useLoginMutation();
+  const [login, {isLoading: rtqLoading}] = useLoginMutation();
 
   // Modal logic
   const [response, setResponse] = useState();
   const [show, setShow] = useState(false);
-
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
-  //TESTING
+  // local loading for button
   const [loading, setLoading] = useState(false);
 
   // stores data from login form
@@ -45,19 +46,47 @@ export default function Login() {
   // submit login request
   const submit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const payload = await login(formData).unwrap();
-      const userId = payload.user.id;
-      const isAdmin = payload.user.isAdmin;
+
+      const accessToken =
+        payload?.accessToken ||
+        payload?.token ||
+        payload?.data?.accessToken ||
+        payload?.tokens?.accessToken ||
+        payload?.access_token;
+      const refreshToken =
+        payload?.refreshToken ||
+        payload?.refresh_token ||
+        payload?.data?.refreshToken ||
+        payload?.tokens?.refreshToken;
+
+      if (accessToken) {
+        setToken(accessToken);
+        setAuthHeader(axiosPrivate, accessToken);
+      }
+      if (refreshToken) setRefreshToken(refreshToken);
+
+      const userId = payload?.user?.id ?? payload?.userId ?? payload?.id;
+      const isAdmin = payload?.user?.isAdmin ?? payload?.isAdmin ?? false;
+
       if (isAdmin) {
         navigate(`/admin/dashboard`);
-      } else {
+      } else if (userId) {
         navigate(`/user/${userId}`);
+      } else {
+        navigate("/")
       }
-    } catch (err) {
-      console.error(err);
-      setResponse(err);
+    } catch (error) {
+      console.error("Login error", error);
+      const message = 
+      err?.data?.message || err?.data || err?.mesage || JSON.stringify(error);
+      setResponse(message);
       openModal();
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,7 +104,7 @@ export default function Login() {
                 show={show}
                 hide={closeModal}
                 heading="Error"
-                body={response?.error?.data}
+                body={response}
               />
             ) : (
               <></>
@@ -148,10 +177,9 @@ export default function Login() {
                     />
                   </Form.Group>
 
-                  {/* // TESTING */}
                   <ReactiveButton
                     rounded
-                    buttonState={loading ? "loading" : "idle"}
+                    buttonState={rtqLoading ? "loading" : "idle"}
                     idleText={"SUBMIT"}
                     loadingText={"Loading"}
                     variant="secondary"
@@ -161,8 +189,8 @@ export default function Login() {
                       width: "80px",
                       fontSize: "12px",
                       backgroundColor: "#558e89",
-                      // marginTop: "10px",
                     }}
+                     disabled={rtqLoading || loading}
                   />
                 </Form>
               </Card.Body>
