@@ -1,5 +1,5 @@
-import { createBrowserRouter, Router } from "react-router-dom";
-import Home from "./layout/pages/Home";
+import { createBrowserRouter } from "react-router-dom";
+import Home from "../src/layout/pages/Home.jsx";
 import Profile from "./layout/pages/Profile";
 
 // protected routes are created as children under the root route
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   }
 ]);
 
-export default Router;
+export default router;
 
         // element: <ProtectedRoutes isLoggedIn="true" />,
         // children: [

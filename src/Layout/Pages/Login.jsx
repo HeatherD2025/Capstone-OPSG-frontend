@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../slices/userSlice";
+import { useLoginMutation } from "../../features/api/authApi";
 import NavBar from "../Navbar";
 import "../../styles/app.css";
 import ReactiveButton from "reactive-button";
@@ -82,7 +82,7 @@ export default function Login() {
     } catch (error) {
       console.error("Login error", error);
       const message = 
-      err?.data?.message || err?.data || err?.mesage || JSON.stringify(error);
+      error?.data?.message || error?.data || error?.mesage || JSON.stringify(error);
       setResponse(message);
       openModal();
     } finally {

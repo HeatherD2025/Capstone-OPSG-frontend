@@ -24,3 +24,5 @@ export const {
   useRegisterMutation,
   useLoginMutation,
 } = authApi;
+
+export default authApi;

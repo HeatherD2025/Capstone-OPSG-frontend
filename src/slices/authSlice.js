@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../features/api/mainApi";
-import jwtDecode from "jwt-decode";
-import { getToken, setToken, removeToken} from "../utils/tokenService";
+import { jwtDecode } from "jwt-decode";
+import { getToken, setToken, removeToken } from "../utils/tokenService";
 
+// helper to apply user payload to redux state
 const applyAuthPayload = (state, payload) => {
   setToken(payload.token);
   state.isAuthenticated = true;
@@ -13,11 +14,11 @@ const applyAuthPayload = (state, payload) => {
 
 export const initializeAuth = createAsyncThunk(
   "auth/initializeAuth",
-  async (__, thunkAPI) => {
+  async () => {
     const token = getToken();
 
     if (!token) {
-      return { isAuthenticated: false, user: null, token: null }
+      return { isAuthenticated: false, user: null, token: null };
     }
 
     try {
@@ -28,7 +29,7 @@ export const initializeAuth = createAsyncThunk(
         lastName: decoded.lastName,
         email: decoded.email,
         isAdmin: decoded.isAdmin || false,
-      }
+      };
       return {
         isAuthenticated: true,
         user,
@@ -36,12 +37,12 @@ export const initializeAuth = createAsyncThunk(
       };
     } catch (error) {
       removeToken();
-      return { isAuthenticated: false, user: null, token: null}
+      return { isAuthenticated: false, user: null, token: null };
     }
   }
 );
 
-const initialState ={
+const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
@@ -57,58 +58,29 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.isAdmin = false;
-      removeToken()
+      removeToken();
     },
   },
   extraReducers: (builder) => {
-   builder
-   .addCase(initializeAuth.fulfilled, (state, action) => {
-      state.isAuthenticated = action.payload.isAuthenticated;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isAdmin = action.payload.user?.isAdmin || false;
-  })
+    builder
+      .addCase(initializeAuth.fulfilled, (state, action) => {
+        state.isAuthenticated = action.payload.isAuthenticated;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isAdmin = action.payload.user?.isAdmin || false;
+      })
 
-    .addMatcher(
-      api.endpoints.login.matchFulfilled,
-      (state, { payload }) => {
-        applyAuthPayload(state, payload)
+      .addMatcher(api.endpoints.login.matchFulfilled, (state, { payload }) => {
+        applyAuthPayload(state, payload);
       })
-    .addMatcher(
-      api.endpoints.register.matchFulfilled,
-      (state, { payload }) => {
-        applyAuthPayload(state, payload)
-      })
-    .addMatcher(
-      api.endpoints.logout.matchFulfilled,
-      (state) => {
-        removeToken();
-        state.isAuthenticated = false;
-        state.user = null;
-        state.token = null;
-        state.isAdmin = false;
-      }
-    );
+      .addMatcher(
+        api.endpoints.register.matchFulfilled,
+        (state, { payload }) => {
+          applyAuthPayload(state, payload);
+        }
+      );
   },
 });
 
-// const getAllUsersSlice = createSlice({
-//   name: "getAllUsers",
-//   initialState: {},
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder.addMatcher(api.endpoints.getAllUsers.matchFulfilled);
-//   },
-// });
-
-// const updateUserProfileSlice = createSlice({
-//   name: "updateUserProfile",
-//   initialState: {},
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder.addMatcher(api.endpoints.updateUserProfile.matchFulfilled);
-//   },
-// });
-
-export const {logout} = authSlice.actions;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -34,8 +34,8 @@ export default function UserSearch({ showAllUsers, onSearch, onShowAll }) {
       const data = await response.json();
       setResults(data.users);
       if (onSearch) onSearch();
-    } catch (err) {
-      console.error("Search failed:", err);
+    } catch (error) {
+      console.error("Search failed:", error);
     }
   };
 

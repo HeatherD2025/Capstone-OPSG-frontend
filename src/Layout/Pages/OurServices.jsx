@@ -109,6 +109,7 @@ const ourServices = () => {
 
         <img
           src={medicalDocument}
+          alt="medical document"
           classname="servicesImage"
           style={{
             width: "30%",

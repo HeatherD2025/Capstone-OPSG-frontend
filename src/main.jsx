@@ -1,18 +1,29 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { HashRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./store/store.js";
 import ContextProvider from "./components/navigations/ContextProvider.jsx";
+import { initializeAuth } from "./slices/authSlice.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+function Root() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeAuth()); // restores login from localStorage/token
+  }, [dispatch]);
+
+  return <App />;
+}
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <ContextProvider>
         <Router>
-          <App />
+          <Root />
         </Router>
       </ContextProvider>
     </Provider>

@@ -4,7 +4,7 @@ import { getToken } from "../../utils/tokenService";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: BASE_URL, // DOUBLE CHECK THIS
+  baseUrl: BASE_URL,
   prepareHeaders: (headers) => {
     const LOCAL_TOKEN = getToken();
     if (LOCAL_TOKEN) {
@@ -19,3 +19,5 @@ export const api = createApi({
   tagTypes: ["User"],
   endpoints: () => ({}), // empty base endpoints, to be extended
 });
+
+export default api;

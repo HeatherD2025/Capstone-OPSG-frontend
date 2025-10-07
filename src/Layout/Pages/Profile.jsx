@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import {
-  useGetUserQuery,
+  useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
-} from "../../slices/userSlice";
-// import { useChangePasswordMutation } from "../../Slices/changePasswordSlice";
+  useUpdateUserPasswordMutation
+} from "../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -17,7 +17,7 @@ import UserHeader from "../pages/userDashboard/UserHeader";
 export default function Profile() {
   const navigate = useNavigate();
   const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetUserQuery(userId);
+  const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 
@@ -55,8 +55,8 @@ export default function Profile() {
       setModalBody("Your profile was updated successfully");
       setModalShow(true);
       setEditMode(false);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

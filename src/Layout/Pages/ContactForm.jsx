@@ -68,8 +68,8 @@ export default function ContactFormPage() {
       alert("Message sent successfully!");
       setFormData({ fullName: "", email: "", phone: "", message: "" });
       recaptchaRef.current.reset();
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       alert("Failed to send message. Please try again later");
     } finally {
       setLoading(false);

@@ -2,23 +2,37 @@ import api from "./mainApi";
 
 const userApi = api.injectEndpoints({
   endpoints: (build) => ({
+    getCurrentUser: build.query({
+      query: () => ({
+        url: "/user/me",
+        method: "GET",
+      }),
+      providesTags: ["User"]
+    }),
+    
     updateUserProfile: build.mutation({
-      query: ({ firstName, lastName, email }) => ({
+      query: (body) => ({
         url: "/users/me",
         method: "PUT",
-        body: { firstName, lastName, email },
+        body,
       }),
+      invalidatesTags: ["User"]
     }),
 
     updateUserPassword: build.mutation({
-      query: ({ currentPassword, newPassword }) => ({
+      query: ({ currentPassword, newPassword, confirmPassword }) => ({
         url: "/users/me/password",
-        method: "PUT",
-        body: { currentPassword, newPassword },
+        method: "PATCH",
+        body: { currentPassword, newPassword, confirmPassword  },
       }),
     }),
   }),
 });
 
-export const { useUpdateUserProfileMutation, useUpdateUserPasswordMutation } =
+export const { 
+  useGetCurrentUserQuery, 
+  useUpdateUserProfileMutation, 
+  useUpdateUserPasswordMutation } =
   userApi;
+
+  export default userApi;

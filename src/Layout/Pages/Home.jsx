@@ -48,6 +48,7 @@ const Home = () => {
           >
             <img
               src={opsgLogo}
+              alt="OPSG logo"
               // className="rounded-circle usr-image2"
               style={{
                 width: "10vw",
@@ -108,7 +109,7 @@ const Home = () => {
                 fluid="true"
                 rounded="true"
                 thumbnail="true"
-                alt="Nurse Smiling"
+                alt="Nurse smiling"
                 loading="lazy"
                 style={{
                   margin: "auto",
@@ -151,7 +152,7 @@ const Home = () => {
                 <img
                   className="usMap"
                   src={usaMap}
-                  alt="United States Map"
+                  alt="United States map"
                   style={{
                     opacity: "18%",
                     width: "85%",

@@ -1,5 +1,5 @@
 import "../../../styles/userElements/userDashboard.css";
-import { UserNav } from "../../../components/navigations/UserNav";
+import UserNav from "../../../components/navigations/UserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import InfoCard from "../../../utils/InfoCard";
 import { Row, Col, Image, Container } from "react-bootstrap";

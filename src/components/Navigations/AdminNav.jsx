@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/adminElements/AdminNav";
+import "../../styles/adminElements/adminNav.css";
 
 import { removeToken } from "../../utils/tokenService";
 
@@ -26,6 +26,7 @@ const AdminNav = (props) => {
           <div className="sidebar-header">
             <img
               src={opsgLogo}
+              alt="OPSG logo"
               className="rounded-circle usr-image"
               height={isNotActive ? "20" : "70"}
               width={isNotActive ? "20" : "70"}

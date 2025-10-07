@@ -1,6 +1,6 @@
 import UserSearch from "../../../utils/searchBarComponents/UserSearch";
 import AdminNav from "../../../components/navigations/AdminNav";
-import { useGetAllUsersQuery } from "../../../slices/authSlice";
+import { useGetAllUsersQuery } from "../../../features/api/adminApi";
 import { useState } from "react";
 import { ListGroup, Spinner, Container, Row, Col } from "react-bootstrap";
 import "../../../styles/adminElements/adminAllUsers.css";

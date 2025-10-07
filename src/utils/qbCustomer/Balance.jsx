@@ -1,4 +1,4 @@
-import { useGetCustomerObjectQuery } from "../../slices/qbSlice";
+import {  useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import InfoCard from "../InfoCard";
 
 function Balance({ id, bg }) {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import "./UserNav.css";
+import "../../styles/userElements/userNav.css";
 import opsgLogo from "../../assets/img/opsg-logo.png";
 import { Button } from "react-bootstrap";
 
-export const UserNav = (props) => {
+const UserNav = (props) => {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [isNotActive, setNotActive] = useState(false);
@@ -65,6 +65,7 @@ export const UserNav = (props) => {
             >
               <img
                 src={opsgLogo}
+                alt="OPSG logo"
                 className="rounded-circle usr-image2 nav navbar-nav"
                 height={isNotActive ? "0" : "80"}
                 width={isNotActive ? "0" : "80"}
@@ -169,3 +170,5 @@ export const UserNav = (props) => {
     </div>
   );
 };
+
+export default UserNav;

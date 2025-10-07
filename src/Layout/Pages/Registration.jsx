@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "../../Slices/mainSlice";
+import { useRegisterMutation } from "../../features/api/authApi";
 import { useState } from "react";
 import ReactiveButton from "reactive-button";
-import "../../app.css";
+import "../../styles/app.css";
 import Footer from "../../utils/footer";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";

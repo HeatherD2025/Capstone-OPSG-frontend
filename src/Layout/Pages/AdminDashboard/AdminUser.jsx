@@ -3,11 +3,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 
 import {
-  useGetUserQuery,
-  useUpdateUserProfileMutation,
-} from "FIX THIS HERE!!!!!!!!!!!!";
-import { useChangePasswordMutation } from "FIX THIS HERE!!!!!!!!!!!!";
-
+  useGetCurrentUserQuery, 
+  useUpdateUserProfileMutation, 
+  useUpdateUserPasswordMutation
+} from "../../../features/api/userApi"
+// import { useChangePasswordMutation } from "FIX THIS HERE!!!!!!!!!!!!";
 
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -59,8 +59,8 @@ export default function Profile() {
       setModalBody("Your profile was updated succesfully");
       setModalShow(true);
       setEditMode(false);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

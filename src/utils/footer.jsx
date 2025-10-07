@@ -43,7 +43,7 @@ const Footer = () => {
           >
             <img
               src={opsgLogo}
-              alt="Logo"
+              alt="OPSG logo"
               style={{
                 width: "60px",
                 height: "auto",

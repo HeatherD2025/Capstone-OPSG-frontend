@@ -1,5 +1,4 @@
 import axios from 'axios';
-import axiosInstance from '../features/axios';
 
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";

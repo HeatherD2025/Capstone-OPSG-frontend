@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { getToken, deleteToken } from "../utils/tokenService";
+import { getToken, removeToken } from "../utils/tokenService";
 import { useEffect } from "react";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import opsgLogo from "../assets/img/opsg-logo.png";
-import "./navbar.css";
+import "../styles/navbar.css";
 import ReactiveButton from "reactive-button";
 import ListGroup from "react-bootstrap/ListGroup";
 
@@ -31,7 +31,7 @@ export default function NavBar() {
   }, [token]);
 
   const handleLogout = () => {
-    deleteToken(token);
+    removeToken(token);
     navigate("/login");
   };
 
@@ -65,6 +65,7 @@ export default function NavBar() {
             >
               <img
                 src={opsgLogo}
+                alt="OPSG logo"
                 className="rounded-circle usr-image2 nav navbar-nav"
                 style={{
                   width: "clamp(35px, 1vw, 10px)",

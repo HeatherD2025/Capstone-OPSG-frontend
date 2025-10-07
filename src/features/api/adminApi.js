@@ -43,3 +43,5 @@ export const {
   useUpdateUserMutation,
   useDeleteUserMutation,
 } = adminApi;
+
+export default adminApi;
