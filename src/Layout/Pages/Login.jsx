@@ -16,7 +16,7 @@ import Card from "react-bootstrap/Card";
 import { axiosPrivate } from "../../features/axios";
 import { setToken, setRefreshToken, setAuthHeader } from "../../utils/tokenService";
 
-export default function Login() {
+const Login = () => {
   const navigate = useNavigate();
   const [login, {isLoading: rtqLoading}] = useLoginMutation();
 
@@ -50,6 +50,7 @@ export default function Login() {
 
     try {
       const payload = await login(formData).unwrap();
+      console.log(payload);
 
       const accessToken =
         payload?.accessToken ||
@@ -201,4 +202,6 @@ export default function Login() {
       <Footer />
     </>
   );
-}
+};
+
+export default Login;

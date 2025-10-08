@@ -18,6 +18,6 @@ const ContextProvider = ({ children }) => {
       {children}
     </userContext.Provider>
   )
-}
+};
 
 export default ContextProvider;
