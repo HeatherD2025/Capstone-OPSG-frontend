@@ -7,9 +7,13 @@ import { axiosPrivate } from "./axios";
 
 export const axiosBaseQuery = 
   ({ baseUrl } = {}) =>
-    // accepts url, method, body, and query string (params) from RTKQ
+    // accepts url, method, body (data?), and query string (params) from RTKQ
     async ({ url, method, data, params }) => {
         try {
+            const fullUrl = baseUrl
+              ? `${baseUrl.replace(/\/+$/, '')}/${url.replace(/^\/+/, '')}`
+              : url.replace(/^\/+/, '');
+
             // calls axiosPrivate to trigger token/refreshes automatically
             const result = await axiosPrivate({
                 url: baseUrl ? baseUrl + url : url,
@@ -17,7 +21,7 @@ export const axiosBaseQuery =
                 data,
                 params,
             });
-            // returns body or error in correct shape for RTKQ
+            // returns the body or an error in correct shape for RTKQ
             return { data: result.data };
         } catch (axiosError) {
             const error = axiosError;

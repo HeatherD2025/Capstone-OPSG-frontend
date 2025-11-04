@@ -1,5 +1,5 @@
-function Invoices() {
-  return <></>;
-}
+// function Invoices() {
+//   return <></>;
+// }
 
-export default Invoices;
+// export default Invoices;

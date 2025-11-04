@@ -3,9 +3,8 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 
 import {
-  useGetCurrentUserQuery, 
   useUpdateUserProfileMutation, 
-  useUpdateUserPasswordMutation
+  useChangePasswordMutation
 } from "../../../features/api/userApi"
 // import { useChangePasswordMutation } from "FIX THIS HERE!!!!!!!!!!!!";
 

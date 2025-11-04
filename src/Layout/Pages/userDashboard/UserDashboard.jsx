@@ -1,14 +1,26 @@
 import "../../../styles/userElements/userDashboard.css";
 import UserNav from "../../../components/navigations/UserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
-import InfoCard from "../../../utils/InfoCard";
 import { Row, Col, Image, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import FullName from "../../../utils/qbCustomer/FullName";
+import BusinessName from "../../../utils/qbCustomer/BusinessName";
+import { useContext } from "react";
+import { userContext } from "../../../components/navigations/ContextProvider";
+import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 
-export default function UserInvoice() {
-  const objId = useParams();
-  const id = objId.userId;
+export default function UserDashboard() {
+  // const objId = useParams();
+  // const id = objId.userId;
+  const { authenticated } = useContext(userContext);
+
+  const { data: user, isLoading, isError } = useGetCurrentUserQuery(undefined, {
+    skip: !authenticated, // only fetch if logged in
+  });
+
+  if (!authenticated) return <p>Please log in...</p>;
+  if (isLoading) return <p>Loading user data...</p>;
+  if (isError) return <p>Error loading user data</p>;
+  if (!user) return null;
 
   return (
     <div className="dashboard-wrapper">
@@ -37,7 +49,7 @@ export default function UserInvoice() {
             <Row className="mb-4">
               <Col>
                 <div className="profile-card p-4">
-                  <FullName bg="primary" id={id} />
+                  <BusinessName bg="primary" id={user.id} />
                 </div>
               </Col>
             </Row>

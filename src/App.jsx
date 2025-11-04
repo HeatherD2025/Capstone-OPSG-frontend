@@ -1,3 +1,6 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { initializeAuth } from "./slices/authSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./layout/pages/Home";
@@ -5,7 +8,7 @@ import Login from "./layout/pages/Login";
 import Registration from "./layout/pages/Registration";
 import OurServices from "./layout/pages/OurServices";
 import ContactForm from "./layout/Pages/ContactForm";
-import UserPage from "./layout/pages/userDashboard/UserDashboard";
+import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
 import Profile from "./layout/pages/Profile";
 import UserInvoice from "./layout/Pages/userDashboard/UserInvoice";
 
@@ -20,6 +23,13 @@ import AdminRoute from "./components/routes/AdminRoute";
 // const AuthContext = React.createContext({ role: 'visitor'});
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // rehydrate auth state from localStorage
+    dispatch(initializeAuth());
+  }, [dispatch]);
+
   return (
     <Routes>
       {/* Admin Routes (most specific first) */}
@@ -61,7 +71,7 @@ function App() {
 
       {/* User Protected Routes */}
       <Route
-        path="/profile/:userId"
+        path="/user/profile/:userId"
         element={
           <ProtectedRoute>
             <Profile />
@@ -73,7 +83,7 @@ function App() {
         path="/user/:userId"
         element={
           <ProtectedRoute>
-            <UserPage />
+            <UserDashboard />
           </ProtectedRoute>
         }
       />

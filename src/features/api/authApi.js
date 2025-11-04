@@ -1,4 +1,7 @@
 import api from "./mainApi";
+import { axiosBaseQuery } from "../axiosBaseQuery";
+
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 const authApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -6,7 +9,7 @@ const authApi = api.injectEndpoints({
       query: ({ email, firstName, lastName, password }) => ({
         url: "/auth/register",
         method: "POST",
-        body: { email, firstName, lastName, password },
+        data: { email, firstName, lastName, password },
       }),
     }),
 
@@ -14,15 +17,12 @@ const authApi = api.injectEndpoints({
       query: ({ email, password }) => ({
         url: "/auth/login",
         method: "POST",
-        body: { email, password },
+        data: { email, password },
       }),
     }),
   }),
 });
 
-export const {
-  useRegisterMutation,
-  useLoginMutation,
-} = authApi;
+export const { useRegisterMutation, useLoginMutation } = authApi;
 
 export default authApi;

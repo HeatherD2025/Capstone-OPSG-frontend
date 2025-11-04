@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../features/api/authApi";
 import { useState } from "react";
+import { setToken } from "../../utils/tokenService";
 import ReactiveButton from "reactive-button";
 import "../../styles/app.css";
 import Footer from "../../utils/footer";
@@ -79,6 +80,7 @@ export default function Registration() {
       const payload = await register(formData).unwrap();
       // on successful registration, go to user dash
       const userId = payload.registerUser.id;
+      setToken(payload.token);
       navigate(`/user/${userId}`);
     } catch (error) {
       const errorMsg =

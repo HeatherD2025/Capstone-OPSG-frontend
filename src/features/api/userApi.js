@@ -4,35 +4,46 @@ const userApi = api.injectEndpoints({
   endpoints: (build) => ({
     getCurrentUser: build.query({
       query: () => ({
-        url: "/user/me",
+        url: "/users/me",
         method: "GET",
       }),
-      providesTags: ["User"]
-    }),
-    
-    updateUserProfile: build.mutation({
-      query: (body) => ({
-        url: "/users/me",
-        method: "PUT",
-        body,
-      }),
-      invalidatesTags: ["User"]
+      providesTags: ["User"],
     }),
 
-    updateUserPassword: build.mutation({
+    // updateUserProfile: build.mutation({
+    //   query: (body) => ({
+    //     url: "/users/me",
+    //     method: "PUT",
+    //     data: body,
+    //   }),
+    //   invalidatesTags: ["User"],
+    // }),
+
+    // TEST CODE
+    updateUserProfile: build.mutation({
+      query: ({ id, firstName, lastName, email }) => ({
+        url: `/users/updateUserProfile/${id}`,
+        method: "PUT",
+        body: { firstName, lastName, email },
+      }),
+      invalidatesTags: ["User"],
+    }),
+    //
+
+    changePassword: build.mutation({
       query: ({ currentPassword, newPassword, confirmPassword }) => ({
         url: "/users/me/password",
         method: "PATCH",
-        body: { currentPassword, newPassword, confirmPassword  },
+        body: { currentPassword, newPassword, confirmPassword },
       }),
     }),
   }),
 });
 
-export const { 
-  useGetCurrentUserQuery, 
-  useUpdateUserProfileMutation, 
-  useUpdateUserPasswordMutation } =
-  userApi;
+export const {
+  useGetCurrentUserQuery,
+  useUpdateUserProfileMutation,
+  useChangePasswordMutation,
+} = userApi;
 
-  export default userApi;
+export default userApi;

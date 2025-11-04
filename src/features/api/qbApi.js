@@ -10,10 +10,18 @@ const qbApi = createApi({
   }),
   endpoints: (build) => ({
     getCustomerObject: build.query({
-      query: (id) => ({
-        url: `/qbauth/customer/${id}`,
-        method: "GET",
-      }),
+      query: (id) => {
+        if (!id) {
+          console.warn("Skipping Quickbooks customer fetch - no ID provided");
+          return { url: "", method: "GET" };
+        }
+
+        console.log("Fetching qb customer with Id", id);
+        return {
+          url: `/qbauth/customer/${id}`,
+          method: "GET",
+        };
+      },
     }),
 
     disconnect: build.mutation({

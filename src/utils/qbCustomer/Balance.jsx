@@ -1,36 +1,52 @@
-import {  useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
+import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import InfoCard from "../InfoCard";
 
 function Balance({ id, bg }) {
-  const {
-    data: arrCustomer,
-    status,
-    isLoading,
-  } = useGetCustomerObjectQuery(id);
+  if (!id) {
+    return (
+      <InfoCard
+        bg={bg}
+        title="No user found"
+      />
+    );
+  }
+  const { data, error, isLoading } = useGetCustomerObjectQuery(id, {
+    skip: !id,
+  });
+
+  if (isLoading) return <InfoCard bg={bg} title="Loading..." />;
+
+  if (error || data?.error) {
+    return (
+      <InfoCard
+        bg="danger"
+        title="Failed to fetch balance"
+        text="Quickbooks data unavailable"
+      />
+    );
+  }
+
+  // if (!arrCustomer || arrCustomer.length === 0) {
+  //   return <InfoCard bg="success" title="No outstanding balance 🎉" />
+  // }
+
+  // attempt to retrieve "balance" from qb's report format
+  //   const balanceValue =
+  //     arrCustomer[0]?.ColData?.find((c) => c.id === "balance" || c.value)?.value ||
+  //     arrCustomer[0]?.Balance ||
+  //     0;
+
+  const customer = data?.QueryResponse?.Customer?.[0];
+  const balanceValue = customer?.Balance || 0;
 
   return (
-    <>
-      {arrCustomer === null && status === "fulfilled" ? (
-        <InfoCard bg="success" title="No outstanding balance 🎉" />
-      ) : arrCustomer.error ? (
-        <InfoCard
-          bg="success"
-          title="failed to fetch your information from quickbooks"
-        />
-      ) : !isLoading ? (
-        arrCustomer[0]?.Balance === 0 ? (
-          <InfoCard bg="success" title="No outstanding balance 🎉" />
-        ) : (
-          <InfoCard
-            bg={bg}
-            title="Outstanding Balance"
-            text={`$${arrCustomer[0]?.Balance}`}
-          />
-        )
-      ) : (
-        <InfoCard bg={bg} title="Loading..." />
-      )}
-    </>
+    <InfoCard
+      bg={balanceValue === 0 ? "success" : bg}
+      title={
+        balanceValue === 0 ? "No outstanding balance 🎉" : "Outstanding Balance"
+      }
+      text={balanceValue === 0 ? "Demo account" : `$${balanceValue}`}
+    />
   );
 }
 

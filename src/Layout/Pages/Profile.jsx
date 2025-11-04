@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
-  useUpdateUserPasswordMutation
+  useChangePasswordMutation
 } from "../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
@@ -16,8 +16,8 @@ import UserHeader from "../pages/userDashboard/UserHeader";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery(userId);
+  // const { userId } = useParams();
+  const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery();
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 

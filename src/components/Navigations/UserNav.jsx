@@ -1,36 +1,34 @@
 import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../slices/authSlice";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/userElements/userNav.css";
 import opsgLogo from "../../assets/img/opsg-logo.png";
 import { Button } from "react-bootstrap";
+import { useGetCurrentUserQuery } from "../../features/api/userApi";
 
 const UserNav = (props) => {
-  const { userId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isNotActive, setNotActive] = useState(false);
-  const [isDropdownActive, setDropdownActive] = useState("false");
+  // const [isDropdownActive, setDropdownActive] = useState("false");
+
+  const { data: user, isLoading, isError } = useGetCurrentUserQuery();
+
+  if (isLoading) return <p>Loading user data...</p>;
+  if (isError) return <p>Error loading user data</p>;
+  if (!user) return null;
 
   var arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
   var crossIcon = <i className="bi bi-x-circle"></i>;
 
-  const handleClick = () => {
-    localStorage.removeItem("token");
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    dispatch(logout()); // resets redux auth state
     navigate("/");
   };
 
-  // Button logic
-  const handleEditProfileClick = () => {
-    navigate(`/profile/${userId}`);
-  };
-  const handleHomeClick = () => {
-    navigate(`/`);
-  };
-  const handleInvoiceClick = () => {
-    navigate(`/profile/invoices/${userId}`);
-  };
-  //importing handle logout for logout button
-  //nvm its in another function copy and pasting it
-  //nvm using handleClick
   return (
     <div>
       <div
@@ -93,7 +91,7 @@ const UserNav = (props) => {
           <ul className="list-unstyled components">
             <li className="list-item">
               <Button
-                onClick={handleHomeClick}
+                onClick={() => navigate("/")}
                 variant="link"
                 className="icon-btn"
               >
@@ -112,14 +110,14 @@ const UserNav = (props) => {
             </li>
             <li className="list-item">
               <Button
-                onClick={handleInvoiceClick}
+                onClick={() => navigate(`/profile/invoices/${user.id}`)}
                 variant="link"
                 className="icon-btn"
               >
                 <i className="bi bi-people-fill"></i>
               </Button>
               <Link
-                to={`/profile/invoices/${userId}`}
+                to={`/profile/invoices/${user.id}`}
                 style={{
                   color: "black",
                   fontWeight: "200",
@@ -131,14 +129,14 @@ const UserNav = (props) => {
             </li>
             <li className="list-item-unstyled">
               <Button
-                onClick={handleEditProfileClick}
+                onClick={() => navigate(`/profile/${user.id}`)}
                 variant="link"
                 className="icon-btn"
               >
                 <i className="bi bi-gear"></i>
               </Button>
               <Link
-                to={`/profile/${userId}`}
+                to={`/profile/${user.id}`}
                 style={{
                   color: "black",
                   fontWeight: "200",
@@ -149,12 +147,16 @@ const UserNav = (props) => {
               </Link>
             </li>
             <li className="list-item">
-              <Button onClick={handleClick} variant="link" className="icon-btn">
+              <Button
+                onClick={handleLogout}
+                variant="link"
+                className="icon-btn"
+              >
                 <i className="bi bi-box-arrow-left"></i>
               </Button>
               <Link
                 to="/"
-                onClick={handleClick}
+                onClick={handleLogout}
                 style={{
                   color: "black",
                   fontWeight: "200",

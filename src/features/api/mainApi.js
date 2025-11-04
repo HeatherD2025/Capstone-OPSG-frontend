@@ -1,23 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getToken } from "../../utils/tokenService";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { axiosBaseQuery } from "../axiosBaseQuery";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
-
-export const baseQuery = fetchBaseQuery({
-  baseUrl: BASE_URL,
-  prepareHeaders: (headers) => {
-    const LOCAL_TOKEN = getToken();
-    if (LOCAL_TOKEN) {
-      headers.set("authorization", `Bearer ${LOCAL_TOKEN}`);
-    }
-    return headers;
-  },
-});
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3500";
 
 export const api = createApi({
-  baseQuery,
+  reducerPath: "api",
+  baseQuery: axiosBaseQuery({ baseUrl: BASE_URL }),
   tagTypes: ["User"],
-  endpoints: () => ({}), // empty base endpoints, to be extended
+  endpoints: () => ({}), // empty base points to be inbjected by my other APis
 });
 
 export default api;

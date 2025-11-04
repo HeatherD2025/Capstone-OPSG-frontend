@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { getToken, removeToken } from "../utils/tokenService";
+import { useGetCurrentUserQuery } from "../features/api/userApi";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import opsgLogo from "../assets/img/opsg-logo.png";
@@ -14,28 +16,40 @@ export default function NavBar() {
   const token = getToken();
 
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
-  const [isLoading, setLoading] = useState(false);
+  // const [isLoading, setLoading] = useState(false);
 
-  let userId;
-  if (token) {
-    const decoded = jwtDecode(token);
-    userId = decoded?.id;
+  const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+
+
+  let userId = user?.id;
+
+  if (token && typeof token === "string") {
+    try {
+      const decoded = jwtDecode(token);
+      userId = decoded?.id;
+    } catch (error) {
+      console.warn("Invalid token, clearing storage", error);
+      removeToken();
+      userId = undefined; // no value available vs. null - intentionally no value
+    }
   }
 
-  useEffect(() => {
-    if (token) {
-      setIsLoggedIn("LOGOUT");
-    } else {
-      setIsLoggedIn("LOGIN");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     setIsLoggedIn("LOGOUT");
+  //   } else {
+  //     setIsLoggedIn("LOGIN");
+  //   }
+  // }, [isAuthenticated]);
 
   const handleLogout = () => {
-    removeToken(token);
+    removeToken();
     navigate("/login");
   };
 
   const [isNotActive, setNotActive] = useState("true");
+  
 
   return (
     <header>
@@ -49,7 +63,7 @@ export default function NavBar() {
           zIndex: "5",
         }}
       >
-        <div className="container-fluid" style={{ diplay: "contents" }}>
+        <div className="container-fluid" style={{ display: "contents" }}>
           <div className="navbar-header">
             <div
               className="navLogoWrapper"
@@ -230,3 +244,4 @@ export default function NavBar() {
     </header>
   );
 }
+
