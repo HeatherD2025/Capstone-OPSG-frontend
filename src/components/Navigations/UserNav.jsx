@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../slices/authSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../styles/userElements/userNav.css";
 import opsgLogo from "../../assets/img/opsg-logo.png";
 import { Button } from "react-bootstrap";
@@ -12,7 +12,7 @@ const UserNav = (props) => {
   const dispatch = useDispatch();
   const [isNotActive, setNotActive] = useState(false);
   // const [isDropdownActive, setDropdownActive] = useState("false");
-
+  const { userId } = useParams();
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
 
   if (isLoading) return <p>Loading user data...</p>;
@@ -129,14 +129,14 @@ const UserNav = (props) => {
             </li>
             <li className="list-item-unstyled">
               <Button
-                onClick={() => navigate(`/profile/${user.id}`)}
+                onClick={() => navigate(`/profile/${userId}`)}
                 variant="link"
                 className="icon-btn"
               >
                 <i className="bi bi-gear"></i>
               </Button>
               <Link
-                to={`/profile/${user.id}`}
+                to={`/profile/${userId}`}
                 style={{
                   color: "black",
                   fontWeight: "200",

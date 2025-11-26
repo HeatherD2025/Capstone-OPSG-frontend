@@ -62,19 +62,31 @@ import Balance from "../../../utils/qbCustomer/Balance";
 import BusinessName from "../../../utils/qbCustomer/BusinessName";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 import { useContext } from "react";
-import { userContext } from "../../../components/navigations/ContextProvider";
+import userContext from "../../../components/navigations/ContextProvider";
+import { faker } from "@faker-js/faker";
 
 export default function UserInvoice() {
   const { authenticated } = useContext(userContext);
+  const demoInvoice = faker.finance.amount({
+    min: 150,
+    max: 5450,
+    dec: 5,
+    symbol: "$",
+  });
 
   // only fires if authenticated
-  const { data: user, isLoading, error } = useGetCurrentUserQuery(undefined, {
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useGetCurrentUserQuery(undefined, {
     skip: !authenticated, // only query after login
   });
 
   if (!authenticated) return <p>Please log in...</p>;
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading user data</p>;
+  if (!authenticated && !user) return <p>{`${demoInvoice}`}</p>;
 
   return (
     <div className="dashboard-wrapper">

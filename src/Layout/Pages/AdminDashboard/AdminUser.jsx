@@ -17,7 +17,7 @@ import Row from "react-bootstrap/Row";
 import InfoModal from "../../../utils/Modal";
 import AdminHeader from "../adminDashboard/AdminHeader";
 
-export default function Profile() {
+export default function EditUserProfile() {
   const navigate = useNavigate();
   const { userId } = useParams();
   const { data: user, error, isLoading, refetch } = useGetUserQuery(userId);
@@ -55,7 +55,7 @@ export default function Profile() {
     try {
       await updateUserProfile({ id: userId, ...formData }).unwrap();
       setModalHeading("Profile Updated");
-      setModalBody("Your profile was updated succesfully");
+      setModalBody("User profile was updated succesfully");
       setModalShow(true);
       setEditMode(false);
     } catch (error) {

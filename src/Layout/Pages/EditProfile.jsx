@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { useGetUserQuery } from "../../features/api/adminApi";
 import {
   useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
-  useChangePasswordMutation
+  useChangePasswordMutation,
 } from "../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
@@ -12,12 +13,13 @@ import Row from "react-bootstrap/Row";
 import InfoModal from "../../utils/Modal";
 import "./../../styles/app.css";
 import ReactiveButton from "reactive-button";
-import UserHeader from "../pages/userDashboard/UserHeader";
+import UserHeader from "./userDashboard/UserHeader";
 
-export default function Profile() {
+export default function EditProfile() {
   const navigate = useNavigate();
-  // const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery();
+  const { userId } = useParams();
+  // const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery();
+  const { data: user, error, isLoading, refetch } = useGetUserQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 

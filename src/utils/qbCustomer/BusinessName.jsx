@@ -1,15 +1,19 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import InfoCard from "../InfoCard.jsx";
+import { faker } from "@faker-js/faker";
 
 function BusinessName({ id, bg }) {
-  if (!id) {
-    return (
-      <InfoCard
-        bg={bg}
-        title="No user found"
-      />
-    );
-  }
+  const demoCompany = faker.company.name().toUpperCase();
+  // const demoEmail = faker.internet.email();
+
+  // if (!id) {
+  //   return (
+  //     <InfoCard
+  //       bg={bg}
+  //       title="No user found"
+  //     />
+  //   );
+  // }
 
   const { data, isLoading, error } = useGetCustomerObjectQuery(id, {
     skip: !id,
@@ -20,8 +24,12 @@ function BusinessName({ id, bg }) {
   if (isLoading) return <InfoCard bg={bg} title="Loading..." />;
   if (error) return <InfoCard bg="danger" title="Failed to fetch company" />;
 
-  if (customerArray.length === 0)
-    return <InfoCard bg={bg} title="Not yet billed in QuickBooks" />;
+  if (customerArray.length === 0) return;
+  <InfoCard
+    bg={bg}
+    title={`${demoCompany}`}
+    // subtitle={`Billed to ${demoEmail}`}
+  />;
 
   return (
     <>

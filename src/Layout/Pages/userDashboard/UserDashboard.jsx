@@ -2,7 +2,7 @@ import "../../../styles/userElements/userDashboard.css";
 import UserNav from "../../../components/navigations/UserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Image, Container } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import BusinessName from "../../../utils/qbCustomer/BusinessName";
 import { useContext } from "react";
 import { userContext } from "../../../components/navigations/ContextProvider";

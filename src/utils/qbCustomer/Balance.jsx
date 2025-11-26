@@ -1,18 +1,22 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import InfoCard from "../InfoCard";
+import { faker } from "@faker-js/faker";
 
 function Balance({ id, bg }) {
-  if (!id) {
-    return (
-      <InfoCard
-        bg={bg}
-        title="No user found"
-      />
-    );
-  }
+  const demoInvoice = faker.finance.amount({
+    min: 150,
+    max: 5450,
+    dec: 5,
+    symbol: "$",
+  });
+
   const { data, error, isLoading } = useGetCustomerObjectQuery(id, {
     skip: !id,
   });
+
+  if (!id) {
+    return <InfoCard bg={bg} title={`${demoInvoice}`} />;
+  }
 
   if (isLoading) return <InfoCard bg={bg} title="Loading..." />;
 

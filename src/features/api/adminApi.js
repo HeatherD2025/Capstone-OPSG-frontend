@@ -18,14 +18,14 @@ const adminApi = api.injectEndpoints({
       providesTags: ["User"],
     }),
 
-    updateUser: build.mutation({
-      query: ({ id, ...rest }) => ({
-        url: `/admin/users/${id}`,
-        method: "PUT",
-        body: rest,
-      }),
-      invalidatesTags: ["User"],
-    }),
+    // updateUser: build.mutation({
+    //   query: ({ id, ...rest }) => ({
+    //     url: `/admin/updateUser/${id}`,
+    //     method: "PUT",
+    //     body: rest,
+    //   }),
+    //   invalidatesTags: ["User"],
+    // }),
 
     deleteUser: build.mutation({
       query: (id) => ({

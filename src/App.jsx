@@ -3,17 +3,19 @@ import { useDispatch } from "react-redux";
 import { initializeAuth } from "./slices/authSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./layout/pages/Home";
 import Login from "./layout/pages/Login";
 import Registration from "./layout/pages/Registration";
 import OurServices from "./layout/pages/OurServices";
 import ContactForm from "./layout/Pages/ContactForm";
+
 import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
-import Profile from "./layout/pages/Profile";
+import EditProfile from "./layout/pages/EditProfile";
 import UserInvoice from "./layout/Pages/userDashboard/UserInvoice";
 
 import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
-import AdminAllUsers from "./layout/pages/adminDashboard/AdminAllUsers";
+// import AdminAllUsers from "./layout/pages/adminDashboard/AdminAllUsers";
 import AdminUser from "./layout/pages/adminDashboard/AdminUser";
 import AdminSearch from "./layout/pages/adminDashboard/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
@@ -51,14 +53,14 @@ function App() {
         }
       />
 
-      <Route
-        path="/admin/user"
+      {/* <Route
+        path="/admin/users"
         element={
           <AdminRoute>
             <AdminAllUsers />
           </AdminRoute>
         }
-      />
+      /> */}
 
       <Route
         path="/admin/search"
@@ -71,10 +73,10 @@ function App() {
 
       {/* User Protected Routes */}
       <Route
-        path="/user/profile/:userId"
+        path="/profile/:userId"
         element={
           <ProtectedRoute>
-            <Profile />
+            <EditProfile />
           </ProtectedRoute>
         }
       />
