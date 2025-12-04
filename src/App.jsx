@@ -8,11 +8,11 @@ import Home from "./layout/pages/Home";
 import Login from "./layout/pages/Login";
 import Registration from "./layout/pages/Registration";
 import OurServices from "./layout/pages/OurServices";
-import ContactForm from "./layout/Pages/ContactForm";
+import ContactForm from "./layout/pages/ContactForm";
 
 import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
 import EditProfile from "./layout/pages/EditProfile";
-import UserInvoice from "./layout/Pages/userDashboard/UserInvoice";
+import UserInvoice from "./layout/pages/userDashboard/UserInvoice";
 
 import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
 // import AdminAllUsers from "./layout/pages/adminDashboard/AdminAllUsers";
