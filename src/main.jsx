@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider, useDispatch } from "react-redux";
 import store from "./store/store.js";
-import ContextProvider from "../src/components/navigations/ContextProvider.jsx";
+import ContextProvider from "./components/navigations/ContextProvider.jsx";
 import { initializeAuth } from "./slices/authSlice.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
