@@ -62,7 +62,7 @@
        /* CSS styles for desktop devices (screens larger than 768px) */
        /* Example: Larger font size, different layout, etc. */
     body {
-        background-image: url("nurse-smiling.jpg")
+        background-image: url("nurseSmiling.jpg")
        }
     .logoContainer {
         display: flex;

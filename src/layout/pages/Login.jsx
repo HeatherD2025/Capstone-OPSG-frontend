@@ -481,7 +481,7 @@ const Login = () => {
     try {
       const payload = await login(formData).unwrap();
 
-      // your backend may return either token or accessToken
+      // backend may return either token or accessToken
       const accessToken = payload?.data?.accessToken || payload?.data?.token;
       const refreshToken = payload?.data?.refreshToken;
       const user = payload?.data?.user;
@@ -491,21 +491,21 @@ const Login = () => {
       console.log("User:", user);
 
       if (accessToken && refreshToken && user) {
-        // ✅ Store tokens in Redux (and localStorage automatically)
+        // Store tokens in Redux (and localStorage automatically)
         dispatch(setTokens({ accessToken, refreshToken }));
 
-        // ✅ Configure axios for authenticated requests
+        // Configure axios for authenticated requests
         setAuthHeader(axiosPrivate, accessToken);
         axiosPrivate.defaults.headers.common["Content-Type"] =
           "application/json";
 
-        // ✅ Update context (for non-Redux parts of app)
+        // Update context (for non-Redux parts of app)
         setAuthenticated(true);
         if (user.isAdmin) setIsAdmin(true);
 
         const userId = user.id || user._id;
 
-        // ✅ Navigate based on role
+        // Navigate based on role
         if (user.isAdmin) {
           navigate(`/admin/dashboard`);
         } else {

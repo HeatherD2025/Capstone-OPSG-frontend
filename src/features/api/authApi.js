@@ -1,7 +1,4 @@
 import api from "./mainApi";
-import { axiosBaseQuery } from "../axiosBaseQuery";
-
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 const authApi = api.injectEndpoints({
   endpoints: (build) => ({

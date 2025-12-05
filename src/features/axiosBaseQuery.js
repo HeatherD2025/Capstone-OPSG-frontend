@@ -16,7 +16,7 @@ export const axiosBaseQuery =
 
             // calls axiosPrivate to trigger token/refreshes automatically
             const result = await axiosPrivate({
-                url: baseUrl ? baseUrl + url : url,
+                url: fullUrl,
                 method,
                 data,
                 params,

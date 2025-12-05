@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { axiosBaseQuery } from "../axiosBaseQuery";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3500";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const api = createApi({
   reducerPath: "api",
