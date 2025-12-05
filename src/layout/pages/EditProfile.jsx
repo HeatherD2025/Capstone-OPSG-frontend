@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useGetUserQuery } from "../../features/api/adminApi";
 import {
   useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
@@ -19,7 +18,7 @@ export default function EditProfile() {
   const navigate = useNavigate();
   const { userId } = useParams();
   // const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery();
-  const { data: user, error, isLoading, refetch } = useGetUserQuery(userId);
+  const { data: user, error, isLoading, refetch } = useGetCurrentUserQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 

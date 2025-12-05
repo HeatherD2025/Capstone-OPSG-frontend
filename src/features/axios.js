@@ -55,13 +55,6 @@ axiosPrivate.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// attaching refresh interceptor
-attachRefreshInterceptor(axiosPrivate, {
-  refreshEndpoint: "/auth/refresh",
-  onRefreshFail: () => {
-    window.location.href = "/login";
-  },
-});
 
 axiosPrivate.interceptors.response.use(
   (response) => {

@@ -53,14 +53,14 @@ function App() {
         }
       />
 
-      {/* <Route
+      <Route
         path="/admin/users"
         element={
           <AdminRoute>
             <AdminAllUsers />
           </AdminRoute>
         }
-      /> */}
+      />
 
       <Route
         path="/admin/search"
@@ -73,7 +73,7 @@ function App() {
 
       {/* User Protected Routes */}
       <Route
-        path="/profile/:userId"
+        path="/updateUserProfile/:userId"
         element={
           <ProtectedRoute>
             <EditProfile />
