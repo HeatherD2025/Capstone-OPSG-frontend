@@ -3,7 +3,7 @@ import React, {useState } from "react";
 // import { getToken } from "../../utils/tokenService";
 import AdminNav from "../../../components/navigations/AdminNav";
 import { Card, Row, Col, Alert, Spinner, Container } from "react-bootstrap";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
 import Footer from "../../../utils/footer";
@@ -13,34 +13,46 @@ import {
 } from "../../../features/api/adminApi"
 
 export default function AdminSearch() {
+
   const navigate = useNavigate();
-//   const [usersArray, setUsersArray] = useState([]);
+
   const [term, setTerm] = useState("");
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [searching, setSearching] = useState(false);
+  const [triggerSearch, setTriggerSearch] = useState(false);
 
 // fetch all users on inital load
 const {
   data: allUsers,
-  isLoading: allLoading,
-  error: allError, 
-} = useGetAllUsersQuery(undefined, {
-  skip: term.length > 0,
-});
+  isLoading: loadingAllUsers,
+  error: allUsersError, 
+} = useGetAllUsersQuery();
 
 const {
-  data: searchResults,
-  isLoading: searchLoading,
+  data: searchedUsers,
+  isLoading: loadingSearch,
   error: searchError,
 } = useSearchUsersQuery(term, {
-  skip: term.length === 0,
+  skip: !triggerSearch,
 })
 
-const users = term.length > 0 ? searchResults?.data : allUsers?.data;
-const loading = allLoading || searchLoading;
+const handleSearch = () => {
+  if (!term.trim()) {
+    alert("Enter a search term");
+    return;
+  };
+  setTriggerSearch(true);
+};
 
-const handleShowAll = () => setTerm("");
+const handleShowAll = () => {
+  setTerm("");
+  setTriggerSearch(false);
+};
+
+const loading = loadingAllUsers || loadingSearch;
+
+const usersToShow = triggerSearch 
+  ? searchResults?.data 
+  : allUsers?.data;
+
 
 //     const fetchAllUsers = async () => {
 //       const token = getToken();
@@ -89,7 +101,7 @@ const handleShowAll = () => setTerm("");
                 />
               </Col>
 
-              {term.length > 0 && (
+              {usersToShow?.length > 0 && (
                 <Col xs="auto">
                   <ReactiveButton
                     rounded
@@ -109,9 +121,8 @@ const handleShowAll = () => setTerm("");
             </Row>
 
             {/* Error messages */}
-            {(allError || searchError) && (
-              <Alert variant="danger">Something went wrong</Alert>
-            )}
+            {allUsersError && <Alert variant="danger">Failed to load users</Alert>}
+            {searchError && <Alert variant="danger">Search failed</Alert>}
          
 
             {/* Users List */}
@@ -121,12 +132,12 @@ const handleShowAll = () => setTerm("");
                   <Spinner animation="border" role="status" />
           
                 // </Col>
-              ) : users?.length === 0 ? (
+              ) : !usersToShow || usersToShow.length === 0 ? (
                 <Col>
                   <Alert variant="info">No users found.</Alert>
                 </Col>
               ) : (
-                users?.map((user) => (
+                usersToShow.map((user) => (
                   <Col key={user.id}>
                     <Card>
                       <Card.Body>

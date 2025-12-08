@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-
+import { useGetAdminUserByIdQuery } from "../../../features/api/adminApi";
 import {
   useUpdateUserProfileMutation, 
   useChangePasswordMutation
@@ -20,7 +20,7 @@ import AdminHeader from "../adminDashboard/AdminHeader";
 export default function EditUserProfile() {
   const navigate = useNavigate();
   const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetUserQuery(userId);
+  const { data: user, error, isLoading, refetch } = useGetAdminUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 

@@ -4,12 +4,19 @@ const adminApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllUsers: build.query({
       query: () => ({
-        url: "/admin/users",
+        url: `/admin/users`,
         method: "GET",
       }),
       providesTags: ["User"],
     }),
 
+    getAdminUserById: build.query({
+      query: (term) => ({
+       url: `admin/users/${userId}`,
+       method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
 
     searchUsers: build.query({
       query: (term) => ({
@@ -19,31 +26,23 @@ const adminApi = api.injectEndpoints({
       }),
     }),
 
-    // updateUser: build.mutation({
-    //   query: ({ id, ...rest }) => ({
-    //     url: `/admin/updateUser/${id}`,
-    //     method: "PUT",
-    //     body: rest,
+
+    // deleteUserById: build.mutation({
+    //   query: (id) => ({
+    //     url: `/admin/users/${id}`,
+    //     method: "DELETE",
     //   }),
     //   invalidatesTags: ["User"],
     // }),
 
-    deleteUserById: build.mutation({
-      query: (id) => ({
-        url: `/admin/users/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["User"],
-    }),
   }),
 });
 
 export const {
   useGetAllUsersQuery,
+  useGetAdminUserByIdQuery,
   useSearchUsersQuery,
-  useGetUserQuery,
-  useUpdateUserMutation,
-  useDeleteUserByIdMutation,
+  // useDeleteUserByIdMutation,
 } = adminApi;
 
-export default adminApi;
+// export default adminApi;

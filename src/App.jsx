@@ -15,7 +15,7 @@ import EditProfile from "./layout/pages/EditProfile";
 import UserInvoice from "./layout/pages/userDashboard/UserInvoice";
 
 import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
-// import AdminAllUsers from "./layout/pages/adminDashboard/AdminAllUsers";
+("");
 import AdminUser from "./layout/pages/adminDashboard/AdminUser";
 import AdminSearch from "./layout/pages/adminDashboard/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
@@ -45,7 +45,7 @@ function App() {
       />
 
       <Route
-        path="/admin/user/user/:userId"
+        path="/admin/users/:userId"
         element={
           <AdminRoute>
             <AdminUser />
@@ -57,7 +57,7 @@ function App() {
         path="/admin/users"
         element={
           <AdminRoute>
-            <AdminAllUsers />
+            <AdminUser />
           </AdminRoute>
         }
       />

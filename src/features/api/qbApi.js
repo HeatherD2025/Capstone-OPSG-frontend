@@ -33,6 +33,9 @@ const qbApi = createApi({
   }),
 });
 
-export const { useGetCustomerObjectQuery, useDisconnectMutation } = qbApi;
+export const { 
+  useGetCustomerObjectQuery, 
+  useDisconnectMutation 
+} = qbApi;
 
 export default qbApi;
