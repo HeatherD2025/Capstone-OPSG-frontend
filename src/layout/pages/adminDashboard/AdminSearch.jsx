@@ -50,7 +50,7 @@ const handleShowAll = () => {
 const loading = loadingAllUsers || loadingSearch;
 
 const usersToShow = triggerSearch 
-  ? searchResults?.data 
+  ? searchedUsers?.data 
   : allUsers?.data;
 
 
