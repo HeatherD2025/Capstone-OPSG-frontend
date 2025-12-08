@@ -14,7 +14,7 @@ function Balance({ id, bg }) {
     skip: !id,
   });
 
-  if (!id) {
+  if (!data) {
     return <InfoCard bg={bg} title={`${demoInvoice}`} />;
   }
 
