@@ -97,12 +97,12 @@ export default function UserInvoice() {
             <Row className="mb-4">
               <Col>
                 <div className="profile-card p-4">
-                  <BusinessName bg="primary" id={user.id} />
+                  <BusinessName  />
                 </div>
               </Col>
               <Col>
                 <div className="profile-card p-4">
-                  <Balance bg="primary" id={user.id} />
+                  <Balance  />
                 </div>
               </Col>
             </Row>

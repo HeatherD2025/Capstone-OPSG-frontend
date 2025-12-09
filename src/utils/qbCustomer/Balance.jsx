@@ -6,7 +6,7 @@ function Balance({ id, bg }) {
   const demoInvoice = faker.finance.amount({
     min: 150,
     max: 5450,
-    dec: 5,
+    dec: 2,
     symbol: "$",
   });
 
@@ -15,7 +15,7 @@ function Balance({ id, bg }) {
   });
 
   if (!data) {
-    return <InfoCard bg={bg} title={`${demoInvoice}`} />;
+    return <InfoCard bg={bg} title={`Current balance due ${demoInvoice}`} />;
   }
 
   if (isLoading) return <InfoCard bg={bg} title="Loading..." />;

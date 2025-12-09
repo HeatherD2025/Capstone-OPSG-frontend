@@ -47,6 +47,8 @@ export default function AdminDashboard() {
                       <Button
                         variant="success"
                         className="w-100"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => {
                           window.location.href =
                             "https://opsg-backend.onrender.com/qbauth/connect";
@@ -57,7 +59,7 @@ export default function AdminDashboard() {
                     }
                   />
                 </Col>
-                <Col md={6}>
+                {/*  <Col md={6}>
                   <InfoCard
                     variant="dark"
                     title="Disconnect from QuickBooks"
@@ -75,8 +77,8 @@ export default function AdminDashboard() {
                         Disconnect
                       </Button>
                     }
-                  />
-                </Col>
+                  /> 
+                </Col> */}
               </Row>
             </Container>
           </Col>

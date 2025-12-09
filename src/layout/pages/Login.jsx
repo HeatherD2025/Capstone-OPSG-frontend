@@ -485,9 +485,8 @@ const Login = () => {
       const accessToken = payload?.data?.accessToken || payload?.data?.token;
       const refreshToken = payload?.data?.refreshToken;
       const user = payload?.data?.user;
+      const company = payload?.data.user.company;
 
-      console.log("Access token:", accessToken);
-      console.log("Refresh token:", refreshToken);
       console.log("User:", user);
 
       if (accessToken && refreshToken && user) {
@@ -509,7 +508,7 @@ const Login = () => {
         if (user.isAdmin) {
           navigate(`/admin/dashboard`);
         } else {
-          navigate(`/user/${userId}`);
+          navigate(`/user/dashboard`);
         }
       } else {
         console.warn("Missing token or user data from login response");

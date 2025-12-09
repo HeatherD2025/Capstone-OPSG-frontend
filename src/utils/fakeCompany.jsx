@@ -1,10 +1,9 @@
 import { faker } from "@faker-js/faker";
-import InfoCard from "../InfoCard";
 
 const fakeCompany = {
   name: faker.company.name().toUpperCase(),
   email: faker.internet.email(undefined, undefined, "example.com"),
-  souce: "faker-demo",
+  source: "faker-demo",
 };
 
 // const demoBalance = faker.finance.amount({

@@ -1,9 +1,6 @@
 import React, {useState } from "react";
-// // import UserSearch from "../../../utils/searchBarComponents/UserSearch";
-// import { getToken } from "../../utils/tokenService";
 import AdminNav from "../../../components/navigations/AdminNav";
 import { Card, Row, Col, Alert, Spinner, Container, Form } from "react-bootstrap";
-// import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
 import Footer from "../../../utils/footer";

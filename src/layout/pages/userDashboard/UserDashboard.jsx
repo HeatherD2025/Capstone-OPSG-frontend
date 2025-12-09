@@ -1,9 +1,11 @@
 import "../../../styles/userElements/userDashboard.css";
 import UserNav from "../../../components/navigations/UserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
-import { Row, Col, Image, Container } from "react-bootstrap";
+import { Row, Col, Image, Container, Button } from "react-bootstrap";
+import InfoCard from "../../../utils/InfoCard";
 // import { useParams } from "react-router-dom";
 import BusinessName from "../../../utils/qbCustomer/BusinessName";
+import Balance from "../../../utils/qbCustomer/Balance";
 import { useContext } from "react";
 import { userContext } from "../../../components/navigations/ContextProvider";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
@@ -22,13 +24,15 @@ export default function UserDashboard() {
   if (isError) return <p>Error loading user data</p>;
   if (!user) return null;
 
+  console.log(user)
+
   return (
     <div className="dashboard-wrapper">
       <UserNav />
       <Container fluid className="dashboard-content">
-        <Row className="justify-content-center">
+        <Row>
           {/* Main Content Column */}
-          <Col xl={10} lg={11} className="main-content">
+          <Col xl={12} lg={11} className="main-content">
             {/* Dashboard Header */}
             <Row className="header-section mb-5 align-items-end">
               <Col>
@@ -49,7 +53,29 @@ export default function UserDashboard() {
             <Row className="mb-4">
               <Col>
                 <div className="profile-card p-4">
-                  <BusinessName bg="primary" id={user.id} />
+                  <BusinessName/>
+
+                  <Balance />
+
+                  <InfoCard
+                    variant="dark"
+                    titleClass="text-success"
+                    bodyClass="bg-dark"
+                    text={
+                      <Button
+                        variant="success"
+                        className="w-100"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          window.location.href =
+                            "https://opsg-backend.onrender.com/qbauth/connect";
+                        }}
+                      >
+                        Connect to Quickbooks
+                      </Button>
+                    }
+                  />
                 </div>
               </Col>
             </Row>

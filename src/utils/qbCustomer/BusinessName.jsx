@@ -1,43 +1,35 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import { useGetCurrentUserQuery } from "../../features/api/userApi.js";
 import InfoCard from "../InfoCard.jsx";
+import fakeCompany from "../fakeCompany.jsx";
 
 function BusinessName({ id, bg }) {
-  // const demoCompany = faker.company.name().toUpperCase();
-  // const demoEmail = faker.internet.email();
+  // fetching logged in user
+  const {
+    data: userData,
+    isLoading: userLoading,
+    error: userError,
+  } = useGetCurrentUserQuery();
 
-  // if (!id) {
-  //   return (
-  //     <InfoCard
-  //       bg={bg}
-  //       title="No user found"
-  //     />
-  //   );
-  // }
+  // const qbId = user?.company?.quickbooksId;
 
-  const { 
-    data: qbData, 
-    isLoading: qbLoading, 
-    error: qbError 
-  } = useGetCustomerObjectQuery(id, {skip: !id,});
+  // fetching qb if user has qbId
+  const {
+    data: qbData,
+    isLoading: qbLoading,
+    error: qbError,
+  } = useGetCustomerObjectQuery(id, { skip: !id });
 
-  const { 
-    data: userData, 
-    isLoading: userLoading, 
-    error: userError 
-  } = useGetCurrentUserQuery(id, {skip: !id,});
-
-
-  //normalizer function
+  //normalizer functions for qb and user data
   function normalizeQB(data) {
-    const customerArray = data?.QueryResponse?.Customer || [];
-    if (!customerArray.length) return null;
+    const customerArray = data?.QueryResponse?.Customer;
+    if (!customerArray?.length) return null;
 
     const c = customerArray[0];
     return {
       name: c?.FullyQualifiedName || null,
       email: c?.PrimaryEmailAddr?.Address || null,
-      source: "quickbooks"
+      source: "quickbooks",
     };
   }
 
@@ -47,53 +39,25 @@ function BusinessName({ id, bg }) {
 
     return {
       name: comp?.name || comp?.companyName || null,
-      email: comp?.email || comp?.email || null,
-      souce: "seeded db"
+      email: comp?.email || null,
+      souce: "seeded db",
     };
   }
 
-  const qbCompany = normalizeQB(qbData);
-  const localCompany = normalizeUserCompany(userData);
+  // priority order of company source
+  const company =
+    normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompany;
 
-  if (qbLoading || userLoading)
-    return <InfoCard bg={bg} title="Loading..." />;
-
+  if (qbLoading || userLoading) return <InfoCard bg={bg} title="Loading..." />;
   if (qbError || userError)
     return <InfoCard bg="danger" title="Failed to fetch company" />;
 
-  const company = qbCompany || localCompany;
-
-  if (!company) {
-    return <InfoCard bg={bg} title="No company found"
-    />
-  }
-
-  // if (customerArray.length === 0) return;
-  // <InfoCard
-  //   bg={bg}
-  //   title={`${demoCompany}`}
-  // subtitle={`Billed to ${demoEmail}`}
-  // />;
-
   return (
-    <>
-      <InfoCard
-        bg={bg}
-        title={company.name}
-        subtitle={`Billed to ${company.email || "No email available"}`}
-      />
-      {/* {status === "fulfilled" && customerArray.length === 0 ? (
-        <InfoCard bg={bg} title="Not yet billed in quickbooks" />
-      ) : !isLoading && customerArray.length > 0 ? (
-        <InfoCard
-          bg={bg}
-          title={customerArray[0]?.FullyQualifiedName}
-          subtitle={`Billed to ${customerArray[0]?.PrimaryEmailAddr.Address}`}
-        />
-      ) : (
-        <InfoCard bg={bg} title="Loading..." />
-      )} */}
-    </>
+    <InfoCard
+      bg={bg}
+      title={company.name}
+      subtitle={company.email}
+    />
   );
 }
 

@@ -41,12 +41,9 @@ const AdminNav = (props) => {
             </li>
             <li className="list-item">
               <i className="bi bi-people-fill"></i>
-              <Link to="/admin/users">Users</Link>
+              <Link to="/admin/search">Users</Link>
             </li>
-            <li className="icon-btn">
-              <i className="bi bi-search"></i>
-              <Link to="/admin/search">Search Users</Link>
-            </li>
+
             <li className="list-item">
               <i className="bi bi-box-arrow-left"></i>
               <Link to="/" onClick={() => removeToken()}>

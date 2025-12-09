@@ -82,7 +82,7 @@ function App() {
       />
 
       <Route
-        path="/user/:userId"
+        path="/user/dashboard"
         element={
           <ProtectedRoute>
             <UserDashboard />
