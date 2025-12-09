@@ -136,7 +136,7 @@ const UserNav = (props) => {
                 <i className="bi bi-gear"></i>
               </Button>
               <Link
-                to={`/profile/${userId}`}
+                to={`/user/me/updateUserProfile`}
                 style={{
                   color: "black",
                   fontWeight: "200",

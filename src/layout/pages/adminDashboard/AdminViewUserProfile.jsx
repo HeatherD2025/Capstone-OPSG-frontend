@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-import { useGetAdminUserByIdQuery } from "../../../features/api/adminApi";
-import {
-  useUpdateUserProfileMutation, 
-  useChangePasswordMutation
-} from "../../../features/api/userApi"
-// import { useChangePasswordMutation } from "FIX THIS HERE!!!!!!!!!!!!";
+import { useGetUserByIdQuery } from "../../../features/api/adminApi";
 
-
+import { Button } from "bootstrap";
+import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import InfoModal from "../../../utils/Modal";
-import AdminHeader from "../adminDashboard/AdminHeader";
+import AdminHeader from "./AdminHeader";
 
 export default function EditUserProfile() {
   const navigate = useNavigate();
   const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetAdminUserByIdQuery(userId);
+  const { data: user, error, isLoading, refetch } = useGetUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 
@@ -106,7 +98,7 @@ export default function EditUserProfile() {
     setPwdError("");
   };
 
-  if (isLoading) return <p>Loading user data...</p>;
+  if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
 
   return (

@@ -7,6 +7,7 @@ import Footer from "../../../utils/footer";
 import {
   useSearchUsersQuery,
   useGetAllUsersQuery,
+  useGetUserByIdQuery,
 } from "../../../features/api/adminApi"
 
 export default function AdminSearch() {

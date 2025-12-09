@@ -3,7 +3,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getToken, removeToken } from "../utils/tokenService";
-import { useGetCurrentUserQuery } from "../features/api/userApi";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import opsgLogo from "../assets/img/opsg-logo.png";
@@ -21,7 +20,6 @@ export default function NavBar() {
   const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
 
-
   let userId = user?.id;
 
   if (token && typeof token === "string") {
@@ -34,6 +32,22 @@ export default function NavBar() {
       userId = undefined; // no value available vs. null - intentionally no value
     }
   }
+
+  // helper function profile navigation
+  // if isAdmin, navigate "admin/dashboard"
+  // if not, navigate "user/dashboard"
+  // declare const for adminprofile and userprofile
+
+  const profileNavigation = () => {
+    const adminProfile = "admin/dashboard";
+    const userProfile = "user/dashboard";
+
+    if (!isAdmin) {
+      navigate(userProfile);
+    } else {
+      navigate(adminProfile);
+    }
+  };
 
   // useEffect(() => {
   //   if (isAuthenticated) {
@@ -49,7 +63,6 @@ export default function NavBar() {
   };
 
   const [isNotActive, setNotActive] = useState("true");
-  
 
   return (
     <header>
@@ -140,7 +153,7 @@ export default function NavBar() {
               <ListGroup.Item
                 className="nav-item"
                 action
-                onClick={() => navigate(`/user/${userId}`)}
+                onClick={() => profileNavigation()}
                 style={{
                   fontColor: "black",
                   border: "none",
@@ -202,7 +215,7 @@ export default function NavBar() {
                         fontSize: "12px",
                       }}
                       className="navbar-right"
-                      onClick={() => navigate ('/login')} 
+                      onClick={() => navigate("/login")}
                     >
                       {isLoggedIn}
                     </ReactiveButton>
@@ -244,4 +257,3 @@ export default function NavBar() {
     </header>
   );
 }
-

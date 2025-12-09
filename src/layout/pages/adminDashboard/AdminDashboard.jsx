@@ -40,7 +40,6 @@ export default function AdminDashboard() {
                 <Col md={6}>
                   <InfoCard
                     variant="dark"
-                    title="Connect to QuickBooks"
                     titleClass="text-success"
                     bodyClass="bg-dark"
                     text={
@@ -54,7 +53,7 @@ export default function AdminDashboard() {
                             "https://opsg-backend.onrender.com/qbauth/connect";
                         }}
                       >
-                        Connect
+                        Connect to Quickbooks
                       </Button>
                     }
                   />

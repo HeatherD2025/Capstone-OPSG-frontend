@@ -16,7 +16,7 @@ import UserInvoice from "./layout/pages/userDashboard/UserInvoice";
 
 import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
 ("");
-import AdminUser from "./layout/pages/adminDashboard/AdminUser";
+import AdminUser from "./layout/pages/adminDashboard/AdminViewUserProfile";
 import AdminSearch from "./layout/pages/adminDashboard/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
 
@@ -53,14 +53,14 @@ function App() {
         }
       />
 
-      <Route
+      {/* <Route
         path="/admin/users"
         element={
           <AdminRoute>
             <AdminUser />
           </AdminRoute>
         }
-      />
+      /> */}
 
       <Route
         path="/admin/search"
@@ -73,15 +73,6 @@ function App() {
 
       {/* User Protected Routes */}
       <Route
-        path="/updateUserProfile/:userId"
-        element={
-          <ProtectedRoute>
-            <EditProfile />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
         path="/user/dashboard"
         element={
           <ProtectedRoute>
@@ -89,6 +80,24 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/user/me/updateUserProfile"
+        element={
+          <ProtectedRoute>
+            <EditProfile />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* <Route
+        path="/user/me/password"
+        element={
+          <ProtectedRoute>
+            <EditProfile />
+          </ProtectedRoute>
+        }
+      /> */}
 
       <Route
         path="/profile/invoices/:userId"

@@ -37,7 +37,7 @@ const AdminNav = (props) => {
           <ul className="list-unstyled components">
             <li className="list-item">
               <i className="bi bi-house"></i>
-              <Link to="/admin/dashboard">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="list-item">
               <i className="bi bi-people-fill"></i>
