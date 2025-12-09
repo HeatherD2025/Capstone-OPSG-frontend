@@ -1,5 +1,6 @@
 import "../../../styles/userElements/userDashboard.css";
-import UserNav from "../../../components/navigations/UserNav";
+// import UserNav from "../../../components/navigations/UserNav";
+import TestUserNav from "../../../components/navigations/TestUserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import InfoCard from "../../../utils/InfoCard";
@@ -27,10 +28,12 @@ export default function UserDashboard() {
   console.log(user)
 
   return (
-    <div className="dashboard-wrapper">
-      <UserNav />
+    <div className="dashboard-wrapper dark-theme">
+      <TestUserNav />
       <Container fluid className="dashboard-content">
         <Row>
+
+          
           {/* Main Content Column */}
           <Col xl={12} lg={11} className="main-content">
             {/* Dashboard Header */}
@@ -50,6 +53,7 @@ export default function UserDashboard() {
                 </div>
               </Col>
             </Row>
+            
             <Row className="mb-4">
               <Col>
                 <div className="profile-card p-4">

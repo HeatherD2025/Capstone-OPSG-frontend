@@ -10,6 +10,7 @@ const AdminNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
   var arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
   var crossIcon = <i className="bi bi-x-circle"></i>;
+
   return (
     <div>
       <div className="wrapper">
@@ -27,7 +28,6 @@ const AdminNav = (props) => {
             <img
               src={opsgLogo}
               alt="OPSG logo"
-              className="rounded-circle usr-image"
               height={isNotActive ? "20" : "70"}
               width={isNotActive ? "20" : "70"}
             ></img>

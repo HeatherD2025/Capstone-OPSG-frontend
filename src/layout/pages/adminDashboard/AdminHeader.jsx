@@ -13,9 +13,9 @@ export default function AdminHeader() {
           <Col xs={1} md={4}>
             <Image src={opsgLogo} roundedCircle className="small-image" />
           </Col>
-          <Col className="display-5 mt-4" md="auto">
+          {/* <Col className="display-5 mt-4" md="auto">
             OnPoint Admin View
-          </Col>
+          </Col> */}
         </Row>
         <Row className="justify-content-md-center mt-4"></Row>
       </Container>

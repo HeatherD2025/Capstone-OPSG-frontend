@@ -1,5 +1,5 @@
 import "../../../styles/userElements/userHeader.css";
-import UserNav from "../../../components/navigations/UserNav";
+// import UserNav from "../../../components/navigations/UserNav";
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Image, Container } from "react-bootstrap";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
@@ -16,31 +16,42 @@ export default function UserHeader() {
   console.log("UserHeader loaded with userId:", user.id);
 
   return (
-    <div className="dashboard-wrapper">
-      <UserNav />
-      <Container fluid className="dashboard-content">
-        <Row className="justify-content-center">
-          {/* Main Content Column */}
-          <Col xl={10} lg={11} className="main-content">
-            {/* Dashboard Header */}
-            <Row className="header-section mb-5 align-items-end">
-              <Col>
-                <div className="d-flex align-items-center">
-                  <Image
-                    src={opsgLogo}
-                    alt="OPSG Logo"
-                    width={60}
-                    className="me-3 logo-hover"
-                  />
-                  <h1 className="dashboard-title">
-                    <span className="fw-bold">OnPoint</span>
-                    <span className="fw-light"> User Dashboard</span>
-                  </h1>
-                </div>
-              </Col>
-            </Row>
+    // <div className="dashboard-wrapper">
+    //   <UserNav />
+    //   <Container fluid className="dashboard-content">
+    //     <Row className="justify-content-center">
+    //       {/* Main Content Column */}
+    //       <Col xl={10} lg={11} className="main-content">
+    //         {/* Dashboard Header */}
+    //         <Row className="header-section mb-5 align-items-end">
+    //           <Col>
+    //             <div className="d-flex align-items-center">
+    //               <Image
+    //                 src={opsgLogo}
+    //                 alt="OPSG Logo"
+    //                 width={60}
+    //                 className="me-3 logo-hover"
+    //               />
+    //               <h1 className="dashboard-title">
+    //                 <span className="fw-bold">OnPoint</span>
+    //                 <span className="fw-light"> User Dashboard</span>
+    //               </h1>
+    //             </div>
+    //           </Col>
+    //         </Row>
+    //       </Col>
+    //     </Row>
+    //   </Container>
+    // </div>
+        <div className="page">
+      {/* <UserNav /> */}
+      <Container data-bs-theme="dark">
+        <Row className="justify-content-md-center">
+          <Col xs={1} md={4}>
+            <Image src={opsgLogo} roundedCircle className="small-image" />
           </Col>
         </Row>
+        <Row className="justify-content-md-center mt-4"></Row>
       </Container>
     </div>
   );

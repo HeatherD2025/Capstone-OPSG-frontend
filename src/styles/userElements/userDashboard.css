@@ -1,4 +1,10 @@
-/* Base Layout */
+Base Layout
+.dark-theme {
+  background-color: #393939;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
 .dashboard-wrapper {
   display: flex;
   min-height: 100vh;
@@ -67,3 +73,4 @@
     padding: 1.5rem;
   }
 }
+

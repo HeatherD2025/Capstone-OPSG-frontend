@@ -1,4 +1,16 @@
 /* Base Layout */
+.page {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+.small-image {
+  height: 7rem;
+}
+
+
 .dashboard-wrapper {
   display: flex;
   min-height: 100vh;
