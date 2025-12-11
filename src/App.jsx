@@ -10,9 +10,7 @@ import Registration from "./layout/pages/Registration";
 import OurServices from "./layout/pages/OurServices";
 import ContactForm from "./layout/pages/ContactForm";
 
-
-import TestUserDashboard from "./layout/pages/TestUserdashboard";
-// import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
+import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
 import EditProfile from "./layout/pages/EditProfile";
 import UserInvoice from "./layout/pages/userDashboard/UserInvoice";
 
@@ -78,7 +76,7 @@ function App() {
         path="/user/dashboard"
         element={
           <ProtectedRoute>
-            <TestUserDashboard />
+            <UserDashboard />
           </ProtectedRoute>
         }
       />

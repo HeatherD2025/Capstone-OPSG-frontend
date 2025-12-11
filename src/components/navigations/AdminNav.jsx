@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/adminElements/adminNav.css";
+import { Button } from "react-bootstrap";
 
+import "../../styles/dashboardNav.css";
 import { removeToken } from "../../utils/tokenService";
-
-import opsgLogo from "../../assets/img/opsg-logo.png";
 
 const AdminNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -13,9 +12,9 @@ const AdminNav = (props) => {
 
   return (
     <div>
-      <div className="wrapper">
+      <div className="navWrapper">
         <nav id="sidebar" className={isNotActive ? "active" : ""}>
-          <button
+          <Button
             type="button"
             id="sidebarCollapse"
             onClick={() => setNotActive(!isNotActive)}
@@ -23,8 +22,9 @@ const AdminNav = (props) => {
           >
             <span className={isNotActive ? "" : "hidden"}>{arrowRight}</span>
             <span className={isNotActive ? "hidden" : ""}>{crossIcon}</span>
-          </button>
-          <div className="sidebar-header">
+          </Button>
+
+          {/* <div className="sidebar-header">
             <img
               src={opsgLogo}
               alt="OPSG logo"
@@ -32,13 +32,15 @@ const AdminNav = (props) => {
               width={isNotActive ? "20" : "70"}
             ></img>
             <h3>OnPoint</h3>
-          </div>
+          </div> */}
 
           <ul className="list-unstyled components">
+
             <li className="list-item">
               <i className="bi bi-house"></i>
               <Link to="/">Home</Link>
             </li>
+
             <li className="list-item">
               <i className="bi bi-people-fill"></i>
               <Link to="/admin/search">Users</Link>

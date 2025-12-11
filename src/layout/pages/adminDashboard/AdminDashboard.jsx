@@ -1,42 +1,22 @@
-import "../../../styles/adminElements/adminDashboard.css";
 import AdminNav from "../../../components/navigations/AdminNav";
+import AdminHeader from "./AdminHeader";
 import InfoCard from "../../../utils/InfoCard";
-import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
+import opsgLogo from "../../../assets/img/opsg-logo.png";
 
 export default function AdminDashboard() {
   return (
     <div className="admin-dashboard dark-theme">
+      <AdminHeader />
+      <AdminNav />
+
       <Container fluid>
         <Row className="g-0">
-          {/* Navigation Column */}
-          <Col xs={2} className="nav-column">
-            <AdminNav />
-          </Col>
-
           {/* Content Column */}
           <Col xs={10} className="content-column">
             <Container>
-              {/* Header */}
-              <Row className="mb-5">
-                <Col>
-                  <div className="d-flex align-items-center">
-                    <Image
-                      src={opsgLogo}
-                      alt="OPSG Logo"
-                      width={60}
-                      className="me-3 logo-hover"
-                    />
-                    <h1 className="admin-title">
-                      <span className="text-gradient">OnPoint</span> Admin
-                      Dashboard
-                    </h1>
-                  </div>
-                </Col>
-              </Row>
-
               {/* Action Cards */}
-              <Row className="g-4 mb-5">
+              <Row className="g-4 mb-5 action-cards">
                 <Col md={6}>
                   <InfoCard
                     variant="dark"

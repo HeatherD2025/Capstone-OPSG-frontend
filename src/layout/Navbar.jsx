@@ -33,14 +33,25 @@ export default function NavBar() {
     }
   }
 
-  // helper function profile navigation
-  // if isAdmin, navigate "admin/dashboard"
-  // if not, navigate "user/dashboard"
-  // declare const for adminprofile and userprofile
+  // Get the current URL
+  // Remove unwanted words from it
+  // Decide which dashboard path to use
+  // Build the new URL
+  // Navigate
 
   const profileNavigation = () => {
-    const adminProfile = "admin/dashboard";
-    const userProfile = "user/dashboard";
+    const currentUrl = window.location.hash.replace("#", "");
+
+    const cleanedUrl = currentUrl
+      .replace("/ourservices", "")
+      .replace("/contactform", "")
+      .replace("/login", "")
+      .replace("/register", "");
+
+    const baseOfUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+
+    const adminProfile = baseOfUrl + "admin/dashboard";
+    const userProfile = baseOfUrl + "user/dashboard";
 
     if (!isAdmin) {
       navigate(userProfile);

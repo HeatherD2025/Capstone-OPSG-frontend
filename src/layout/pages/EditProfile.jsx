@@ -9,9 +9,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InfoModal from "../../utils/Modal";
+import "../../styles/userElements/userHeader.css"
+import "../../styles/userElements/userNav.css"
 import "./../../styles/app.css";
 import ReactiveButton from "reactive-button";
 import UserHeader from "./userDashboard/UserHeader";
+import UserNav from "../../components/navigations/UserNav";
 
 export default function EditProfile() {
   const navigate = useNavigate();
@@ -117,6 +120,7 @@ export default function EditProfile() {
 
   return (
     <>
+      <UserNav />
       <UserHeader />
       <div className="background">
         <div

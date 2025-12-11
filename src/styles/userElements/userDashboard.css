@@ -1,76 +1,75 @@
-Base Layout
+ /* Dark Theme Base */
 .dark-theme {
   background-color: #393939;
   color: #e0e0e0;
   min-height: 100vh;
 }
 
-.dashboard-wrapper {
-  display: flex;
+/* Layout */
+.action-cards {
+  margin-left: 15%;
+  width: 100%;
+}
+
+.nav-column {
+  background-color: #2a2a2a;
   min-height: 100vh;
-  background: #f8fafc;
 }
 
-.dashboard-content {
-  flex: 1;
+.content-column {
   padding: 2rem;
-  margin-left: 250px; /* Matches navbar width */
-  transition: margin 0.3s ease;
 }
 
-/* Header Styles */
-.header-section {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 1rem;
-}
-
-.dashboard-title {
+/* Typography */
+.user-title {
   font-size: 2.2rem;
-  color: #2d3748;
+  color: #ffffff;
   letter-spacing: -0.5px;
   margin-bottom: 0;
 }
 
-/* Card Styles */
-.profile-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #3b82f6;
+.text-gradient {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.stats-grid {
-  margin-top: 1.5rem;
+/* Cards */
+.bg-dark {
+  background-color: #4c4c4c !important;
+  border: 1px solid #333;
 }
 
-/* Interactive Elements */
-.logo-hover {
-  transition: all 0.3s ease;
+/* Buttons */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-.logo-hover:hover {
-  transform: rotate(-5deg) scale(1.05);
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .dashboard-content {
-    margin-left: 80px; /* Matches collapsed navbar */
-  }
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .dashboard-content {
-    margin-left: 0;
-    padding: 1.5rem;
+  .nav-column {
+    min-height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
   }
 
-  .dashboard-title {
-    font-size: 1.8rem;
-  }
-
-  .profile-card {
-    padding: 1.5rem;
+  .content-column {
+    padding-bottom: 80px;
+    width: 100%;
   }
 }
 

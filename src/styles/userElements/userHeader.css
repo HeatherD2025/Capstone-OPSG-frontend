@@ -26,8 +26,13 @@
 
 /* Header Styles */
 .header-section {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 1rem;
+  margin: 2% 5%;
+}
+
+.opsgLogo {
+  width: 10%;
+  aspect-ratio: 1/1;
+  margin-right: 2%;
 }
 
 .dashboard-title {

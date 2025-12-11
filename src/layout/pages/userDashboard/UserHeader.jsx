@@ -1,5 +1,5 @@
 import "../../../styles/userElements/userHeader.css";
-// import UserNav from "../../../components/navigations/UserNav";
+
 import opsgLogo from "../../../assets/img/opsg-logo.png";
 import { Row, Col, Image, Container } from "react-bootstrap";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
@@ -46,12 +46,21 @@ export default function UserHeader() {
         <div className="page">
       {/* <UserNav /> */}
       <Container data-bs-theme="dark">
-        <Row className="justify-content-md-center">
-          <Col xs={1} md={4}>
-            <Image src={opsgLogo} roundedCircle className="small-image" />
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center mt-4"></Row>
+         <Row className="mb-5">
+                <Col>
+                  <div className="d-flex align-items-center header-section">
+                    <Image
+                      src={opsgLogo}
+                      alt="OPSG Logo"
+                      className="opsgLogo"
+                    />
+                    <h1 className="user-title">
+                      <span className="text-gradient">OnPoint</span> User
+                      Dashboard
+                    </h1>
+                  </div>
+                </Col>
+              </Row>
       </Container>
     </div>
   );
