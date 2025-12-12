@@ -9,11 +9,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InfoModal from "../../Modal";
-import "../../../styles/userElements/userHeader.css";
+import "../../../styles/profileHeader.css";
 import "../../../styles/dashboardNav.css";
 import "../../../styles/app.css";
 import ReactiveButton from "reactive-button";
-import UserHeader from "./UserHeader";
+import ProfileHeader from "../ProfileHeader";
+// import UserHeader from "./UserHeader";
 import UserNav from "../../navigations/UserNav";
 
 export default function EditProfile() {

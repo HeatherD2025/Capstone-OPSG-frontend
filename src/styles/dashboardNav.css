@@ -10,8 +10,8 @@
 }
 #sidebarCollapse {
   position: absolute;
-  top: 0.5rem;
-  right: 1.3rem;
+  top: 2rem;
+  right: 2rem;
 }
 #sidebar {
   height: inherit;
@@ -24,6 +24,7 @@
 }
 #sidebar .list-item {
   margin: 2rem 0;
+  padding: .5rem 0rem .5rem 0rem;
   font-size: 15px;
   font-weight: 600;
 }

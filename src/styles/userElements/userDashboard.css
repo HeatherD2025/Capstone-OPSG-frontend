@@ -22,20 +22,27 @@
 
 /* Typography */
 .user-title {
-  font-size: 2.2rem;
   color: #ffffff;
   letter-spacing: -0.5px;
   margin-bottom: 0;
 }
 
-.text-gradient {
+/* .text-gradient {
   background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
+} */
 
 /* Cards */
+.actionCardsContainer {
+  width: 100%;
+}
+
+.action-cards {
+  width: 200%;
+}
+
 .bg-dark {
   background-color: #4c4c4c !important;
   border: 1px solid #333;

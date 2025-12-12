@@ -7,7 +7,8 @@ import { Button } from "bootstrap";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
-import AdminHeader from "./AdminHeader";
+import ProfileHeader from "../ProfileHeader";
+// import AdminHeader from "./AdminHeader";
 
 export default function EditUserProfile() {
   const navigate = useNavigate();
@@ -103,7 +104,7 @@ export default function EditUserProfile() {
 
   return (
     <>
-      <AdminHeader />
+      <ProfileHeader />
       <div
         style={{ paddingTop: "60px" }}
         className="d-flex justify-content-center align-items-center"

@@ -1,24 +1,29 @@
 import UserNav from "../components/navigations/UserNav";
-import UserHeader from "../components/profileComponents/userProfileComponents/UserHeader";
+// import UserHeader from "../components/profileComponents/userProfileComponents/UserHeader";
+import ProfileHeader from "../components/profileComponents/ProfileHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
 import BusinessName from "../components/qbComponents/BusinessName";
 import Balance from "../components/qbComponents/Balance";
+import "../styles/userElements/userDashboard.css";
 
 export default function UserDashboard() {
   return (
     <div className="admin-dashboard dark-theme">
-      <UserHeader />
+      {/* <UserHeader /> */}
+      <ProfileHeader />
       <UserNav />
 
       <Container fluid>
         <Row className="g-0">
           {/* Content Column */}
           <Col xs={10} className="content-column">
+          
             <Container>
               {/* Action Cards */}
               <Row className="g-4 mb-5 action-cards">
                 <Col md={12}>
+
                   <BusinessName />
 
                   <Balance />

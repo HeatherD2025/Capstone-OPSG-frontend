@@ -4,12 +4,12 @@
   color: white;
   padding-left: 50px;
   padding-top: 10px;
+  flex-shrink: 1;
 }
 
 .small-image {
   height: 7rem;
 }
-
 
 .dashboard-wrapper {
   display: flex;
@@ -26,7 +26,7 @@
 
 /* Header Styles */
 .header-section {
-  margin: 2% 5%;
+  margin: 2% 0% 3% 6.25%;
 }
 
 .opsgLogo {
@@ -35,20 +35,22 @@
   margin-right: 2%;
 }
 
-.dashboard-title {
-  font-size: 2.2rem;
-  color: #2d3748;
-  letter-spacing: -0.5px;
-  margin-bottom: 0;
+.welcomeHeader {
+  color: #ffffff !important;
+  font-size: xx-large !important;
+  margin: 0% 0% 0% 1%;
+}
+
+.opsgHeaderText {
+  background: #26bcba;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: xx-large;
+  margin-right: 1%;
 }
 
 /* Card Styles */
-.profile-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #3b82f6;
-}
 
 .stats-grid {
   margin-top: 1.5rem;

@@ -1,12 +1,15 @@
 import AdminNav from "../components/navigations/AdminNav";
-import AdminHeader from "../components/profileComponents/adminProfileComponents/AdminHeader";
+import "../styles/profileHeader.css";
+import ProfileHeader from "../components/profileComponents/ProfileHeader";
+// import AdminHeader from "../components/profileComponents/adminProfileComponents/AdminHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
 
 export default function AdminDashboard() {
   return (
     <div className="admin-dashboard dark-theme">
-      <AdminHeader />
+      {/* <AdminHeader /> */}
+      <ProfileHeader />
       <AdminNav />
 
       <Container fluid>

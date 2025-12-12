@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getToken, removeToken } from "../../utils/tokenService";
-import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import opsgLogo from "../../assets/img/opsg-logo.png";
 import "../../styles/navbar.css";
@@ -32,12 +31,6 @@ export default function NavBar() {
       userId = undefined; // no value available vs. null - intentionally no value
     }
   }
-
-  // Get the current URL
-  // Remove unwanted words from it
-  // Decide which dashboard path to use
-  // Build the new URL
-  // Navigate
 
   const profileNavigation = () => {
     const currentUrl = window.location.hash.replace("#", "");
