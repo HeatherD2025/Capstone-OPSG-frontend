@@ -1,16 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "../../features/api/authApi";
+import { useRegisterMutation } from "../features/api/authApi";
 import { useState } from "react";
-import { setToken } from "../../utils/tokenService";
+import { setToken } from "../utils/tokenService";
 import ReactiveButton from "reactive-button";
-import "../../styles/app.css";
-import Footer from "../../utils/footer";
-import Button from "react-bootstrap/Button";
+import "../styles/app.css";
+import Footer from "../components/Footer";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Card from "react-bootstrap/Card";
-import InfoModal from "../../utils/Modal";
-import NavBar from "../Navbar";
+import InfoModal from "./Modal";
+import NavBar from "../components/navigations/Navbar";
 
 export default function Registration() {
   const navigate = useNavigate();

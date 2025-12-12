@@ -1,5 +1,5 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
-import InfoCard from "../InfoCard";
+import InfoCard from "../servicesCards/InfoCard.jsx";
 import { faker } from "@faker-js/faker";
 
 function Balance({ id, bg }) {

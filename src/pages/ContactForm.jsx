@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import NavBar from "../Navbar";
+import NavBar from "../components/navigations/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import ReactiveButton from "reactive-button";
 import ReCAPTCHA from "react-google-recaptcha";
-import Footer from "../../utils/footer";
+import Footer from "../components/Footer";
 import { motion } from "motion/react";
 
 export default function ContactFormPage() {

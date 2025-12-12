@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, CardBody } from "react-bootstrap";
-import stethoscope from "../assets/img/stethoscope.png";
-import certificate from "../assets/img/certificate.png";
-import medicalBag from "../assets/img/medicalBag.png";
+import stethoscope from "../../assets/img/stethoscope.png";
+import certificate from "../../assets/img/certificate.png";
+import medicalBag from "../../assets/img/medicalBag.png";
 
 const HomeInfoCards = () => {
   const cardData = [

@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { getToken, removeToken } from "../utils/tokenService";
+import { getToken, removeToken } from "../../utils/tokenService";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import opsgLogo from "../assets/img/opsg-logo.png";
-import "../styles/navbar.css";
+import opsgLogo from "../../assets/img/opsg-logo.png";
+import "../../styles/navbar.css";
 import ReactiveButton from "reactive-button";
 import ListGroup from "react-bootstrap/ListGroup";
 

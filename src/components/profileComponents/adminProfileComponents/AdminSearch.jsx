@@ -1,75 +1,79 @@
-import React, {useState } from "react";
-import AdminNav from "../../../components/navigations/AdminNav";
-import { Card, Row, Col, Alert, Spinner, Container, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import AdminNav from "../../navigations/AdminNav";
+import {
+  Card,
+  Row,
+  Col,
+  Alert,
+  Spinner,
+  Container,
+  Form,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
-import Footer from "../../../utils/footer";
+import Footer from "../../Footer";
 import {
   useSearchUsersQuery,
   useGetAllUsersQuery,
   useGetUserByIdQuery,
-} from "../../../features/api/adminApi"
+} from "../../../features/api/adminApi";
 
 export default function AdminSearch() {
-
   const navigate = useNavigate();
 
   const [term, setTerm] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
 
-// fetch all users on inital load
-const {
-  data: allUsers,
-  isLoading: loadingAllUsers,
-  error: allUsersError, 
-} = useGetAllUsersQuery();
+  // fetch all users on inital load
+  const {
+    data: allUsers,
+    isLoading: loadingAllUsers,
+    error: allUsersError,
+  } = useGetAllUsersQuery();
 
-const {
-  data: searchedUsers,
-  isLoading: loadingSearch,
-  error: searchError,
-} = useSearchUsersQuery(term, {
-  skip: !triggerSearch,
-})
+  const {
+    data: searchedUsers,
+    isLoading: loadingSearch,
+    error: searchError,
+  } = useSearchUsersQuery(term, {
+    skip: !triggerSearch,
+  });
 
-const handleSearch = () => {
-  if (!term.trim()) {
-    alert("Enter a search term");
-    return;
+  const handleSearch = () => {
+    if (!term.trim()) {
+      alert("Enter a search term");
+      return;
+    }
+    setTriggerSearch(true);
   };
-  setTriggerSearch(true);
-};
 
-const handleShowAll = () => {
-  setTerm("");
-  setTriggerSearch(false);
-};
+  const handleShowAll = () => {
+    setTerm("");
+    setTriggerSearch(false);
+  };
 
-const loading = loadingAllUsers || loadingSearch;
+  const loading = loadingAllUsers || loadingSearch;
 
-const usersToShow = triggerSearch 
-  ? searchedUsers?.data 
-  : allUsers?.data;
+  const usersToShow = triggerSearch ? searchedUsers?.data : allUsers?.data;
 
+  //     const fetchAllUsers = async () => {
+  //       const token = getToken();
+  //       if (!token) return;
 
-//     const fetchAllUsers = async () => {
-//       const token = getToken();
-//       if (!token) return;
-
-//       setLoading(true);
-//       setError(null);
+  //       setLoading(true);
+  //       setError(null);
 
   return (
-     <>
+    <>
       <Container fluid style={{ backgroundColor: "#272932" }}>
         <Row className="g-0">
           <Col xs="auto" style={{ width: "10rem", marginLeft: "2rem" }}>
             <AdminNav />
           </Col>
 
-           <Col style={{ backgroundColor: "#272932", minHeight: "100vh" }}>
-             {/* Search bar and buttons */}
-             <Row className="mt-3 mb-4">
+          <Col style={{ backgroundColor: "#272932", minHeight: "100vh" }}>
+            {/* Search bar and buttons */}
+            <Row className="mt-3 mb-4">
               <Col>
                 <Form.Control
                   type="text"
@@ -119,18 +123,18 @@ const usersToShow = triggerSearch
             </Row>
 
             {/* Error messages */}
-            {allUsersError && <Alert variant="danger">Failed to load users</Alert>}
+            {allUsersError && (
+              <Alert variant="danger">Failed to load users</Alert>
+            )}
             {searchError && <Alert variant="danger">Search failed</Alert>}
-         
 
             {/* Users List */}
             <Row xs={1} md={2} lg={3} className="g-4">
               {loading ? (
                 // <Col>
-                  <Spinner animation="border" role="status" />
-          
-                // </Col>
-              ) : !usersToShow || usersToShow.length === 0 ? (
+                <Spinner animation="border" role="status" />
+              ) : // </Col>
+              !usersToShow || usersToShow.length === 0 ? (
                 <Col>
                   <Alert variant="info">No users found.</Alert>
                 </Col>
@@ -142,7 +146,9 @@ const usersToShow = triggerSearch
                         <Card.Title className="text-center">
                           {user.firstName} {user.lastName}
                         </Card.Title>
-                        <Card.Text className="text-center">{user.email}</Card.Text>
+                        <Card.Text className="text-center">
+                          {user.email}
+                        </Card.Text>
                       </Card.Body>
                       <Card.Footer className="text-center">
                         <ReactiveButton
@@ -377,5 +383,3 @@ const usersToShow = triggerSearch
 //     </>
 //   );
 // }
-
-

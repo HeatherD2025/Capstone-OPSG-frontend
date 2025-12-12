@@ -4,24 +4,23 @@ import { initializeAuth } from "./slices/authSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./layout/pages/Home";
-import Login from "./layout/pages/Login";
-import Registration from "./layout/pages/Registration";
-import OurServices from "./layout/pages/OurServices";
-import ContactForm from "./layout/pages/ContactForm";
+import Home from "./pages/Home";
+import Login from "./components/Login";
+import Registration from "./components/Registration";
+import OurServices from "./pages/OurServices";
+import ContactForm from "./pages/ContactForm";
 
-import UserDashboard from "./layout/pages/userDashboard/UserDashboard";
-import EditProfile from "./layout/pages/EditProfile";
-import UserInvoice from "./layout/pages/userDashboard/UserInvoice";
+import UserDashboard from "./pages/UserDashboard";
+import EditProfile from "./components/profileComponents/userProfileComponents/EditProfile";
+import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
-import AdminDashboard from "./layout/pages/adminDashboard/AdminDashboard";
-("");
-import AdminUser from "./layout/pages/adminDashboard/AdminViewUserProfile";
-import AdminSearch from "./layout/pages/adminDashboard/AdminSearch";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminViewUserProfile from "./components/profileComponents/adminProfileComponents/AdminViewUserProfile";
+import AdminSearch from "./components/profileComponents/adminProfileComponents/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
 
-import ProtectedRoute from "./components/routes/ProtectedRoute";
-import AdminRoute from "./components/routes/AdminRoute";
+import ProtectedRoute from "../src/routes/ProtectedRoute";
+import AdminRoute from "../src/routes/AdminRoute";
 // const AuthContext = React.createContext({ role: 'visitor'});
 
 function App() {
@@ -48,7 +47,7 @@ function App() {
         path="/admin/users/:userId"
         element={
           <AdminRoute>
-            <AdminUser />
+            <AdminViewUserProfile />
           </AdminRoute>
         }
       />

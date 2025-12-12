@@ -2,15 +2,15 @@ import { motion } from "motion/react";
 // const { scrollYProgress } = useScroll();
 
 import { Row, Col, Image, Container, CardImg } from "react-bootstrap";
-import opsgLogo from "../../assets/img/opsg-logo.png";
-import nurseSmiling from "../../assets/img/nurseSmiling.jpg";
-import NavBar from "../Navbar";
-import AnimationCountUp from "../../utils/AnimationCountUp";
-import "../../styles/home.css";
-import "../../styles/app.css";
-import HomeInfoCards from "../../utils/HomeInfoCards";
-import usaMap from "../../assets/img/usaMap.png";
-import Footer from "../../utils/footer";
+import opsgLogo from "../assets/img/opsg-logo.png";
+import nurseSmiling from "../assets/img/nurseSmiling.jpg";
+import NavBar from "../components/navigations/Navbar";
+import AnimationCountUp from "../components/AnimationCountUp";
+import "../styles/home.css";
+import "../styles/app.css";
+import HomeInfoCards from "../components/servicesCards/HomeInfoCards";
+import usaMap from "../assets/img/usaMap.png";
+import Footer from "../components/Footer";
 
 const Home = () => {
   // animate fading in

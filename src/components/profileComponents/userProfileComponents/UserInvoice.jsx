@@ -55,14 +55,15 @@
 
 // TEST CODE
 
+
+import UserDashboard from "../../../pages/UserDashboard";
 import "../../../styles/userElements/userDashboard.css";
-import UserNav from "../../../components/navigations/UserNav";
 import { Row, Col, Container } from "react-bootstrap";
-import Balance from "../../../utils/qbCustomer/Balance";
-import BusinessName from "../../../utils/qbCustomer/BusinessName";
+import Balance from "../../qbComponents/Balance";
+import BusinessName from "../../qbComponents/BusinessName";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 import { useContext } from "react";
-import userContext from "../../../components/navigations/ContextProvider";
+import userContext from "../../navigations/ContextProvider";
 import { faker } from "@faker-js/faker";
 
 export default function UserInvoice() {
@@ -90,7 +91,7 @@ export default function UserInvoice() {
 
   return (
     <div className="dashboard-wrapper">
-      <UserNav />
+      <UserDashboard />
       <Container fluid className="dashboard-content">
         <Row className="justify-content-center">
           <Col xl={10} lg={11} className="main-content">

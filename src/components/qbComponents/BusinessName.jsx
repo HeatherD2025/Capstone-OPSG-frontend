@@ -1,7 +1,7 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import { useGetCurrentUserQuery } from "../../features/api/userApi.js";
-import InfoCard from "../InfoCard.jsx";
-import fakeCompany from "../fakeCompany.jsx";
+import InfoCard from "../servicesCards/InfoCard.jsx";
+import fakeCompany from "./fakeCompany.jsx";
 
 function BusinessName({ id, bg }) {
   // fetching logged in user
@@ -52,13 +52,7 @@ function BusinessName({ id, bg }) {
   if (qbError || userError)
     return <InfoCard bg="danger" title="Failed to fetch company" />;
 
-  return (
-    <InfoCard
-      bg={bg}
-      title={company.name}
-      subtitle={company.email}
-    />
-  );
+  return <InfoCard bg={bg} title={company.name} subtitle={company.email} />;
 }
 
 export default BusinessName;

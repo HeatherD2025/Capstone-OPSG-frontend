@@ -430,22 +430,22 @@
 import React, { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../features/api/authApi";
-import NavBar from "../Navbar";
-import "../../styles/app.css";
+import { useLoginMutation } from "../features/api/authApi";
+import NavBar from "../components/navigations/Navbar";
+import "../styles/app.css";
 import ReactiveButton from "reactive-button";
 
-import InfoModal from "../../utils/Modal";
-import Footer from "../../utils/footer";
+import InfoModal from "./Modal";
+import Footer from "./Footer";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import { axiosPrivate } from "../../features/axios";
-import { setAuthHeader } from "../../utils/tokenService";
-import { userContext } from "../../components/navigations/ContextProvider";
+import { axiosPrivate } from "../features/axios";
+import { setAuthHeader } from "../utils/tokenService";
+import { userContext } from "./navigations/ContextProvider";
 
 // Redux slice action to store tokens
-import { setTokens, logout } from "../../slices/authSlice";
+import { setTokens, logout } from "../slices/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();

@@ -6,7 +6,7 @@ import { useGetUserByIdQuery } from "../../../features/api/adminApi";
 import { Button } from "bootstrap";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import InfoModal from "../../../utils/Modal";
+import InfoModal from "../../Modal";
 import AdminHeader from "./AdminHeader";
 
 export default function EditUserProfile() {
