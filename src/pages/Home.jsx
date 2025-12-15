@@ -52,7 +52,6 @@ const Home = () => {
       >
         {/* <motion.div style={{ scaleX: scrollYProgress }} /> */}
         <NavBar />
-
           <div className="introContainer">
 
             <div className="logoHeaderContainer">

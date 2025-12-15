@@ -6,6 +6,7 @@ import { Provider, useDispatch } from "react-redux";
 import store from "./store/store.js";
 import ContextProvider from "./components/navigations/ContextProvider.jsx";
 import { initializeAuth } from "./slices/authSlice.js";
+import ScrollToTop from "./components/scrollToTop.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Root() {
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <ContextProvider>
         <Router>
+          <ScrollToTop />
           <Root />
         </Router>
       </ContextProvider>

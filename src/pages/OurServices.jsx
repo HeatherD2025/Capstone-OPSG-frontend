@@ -28,7 +28,6 @@ const ourServices = () => {
   return (
     <div
       className="backgroundAccent"
-      style={{ zIndex: "-1", width: "100%", height: "100vh" }}
     >
       <NavBar />
       <Container className="main mt-5" fluid>
