@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 // const { scrollYProgress } = useScroll();
 
-import { Row, Col, Image, Container, CardImg } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import opsgLogo from "../assets/img/opsg-logo.png";
 import nurseSmiling from "../assets/img/nurseSmiling.jpg";
 import NavBar from "../components/navigations/Navbar";
@@ -23,11 +23,26 @@ const Home = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        delay: 0.2,
+        duration: 1,
+        delay: 0.4,
       },
     },
   };
+
+  const fadeinAnimationDelay = {
+    initial: (direction) => ({
+      opacity: 0,
+      y: 100 * direction,
+    }),
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 1.5,
+      },
+    },
+  }
 
   return (
     <div className="background" style={{ minHeight: "100vh" }}>
@@ -37,87 +52,73 @@ const Home = () => {
       >
         {/* <motion.div style={{ scaleX: scrollYProgress }} /> */}
         <NavBar />
-        <div className="nameLogo">
-          <div
-            className="logoContainer"
-            style={{
-              alignItems: "center",
-              fontSize: "clamp(16px, 3vw, 100px)",
-              fontWeight: "200",
-            }}
-          >
-            <img
-              src={opsgLogo}
-              alt="OPSG logo"
-              // className="rounded-circle usr-image2"
-              style={{
-                width: "10vw",
-                height: "auto",
-                paddingRight: "1vw",
-              }}
-            ></img>
-            <Row>
-              <Col>OnPoint Solutions Group</Col>
-            </Row>
-          </div>
 
-          <Container className="main mt-5" fluid>
-            {/* animate fade in going down */}
-            <motion.div
-              variants={fadeInAnimationVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              custom={-1} // make y negative, so fade in from top moving down
-            >
-              <Row className="justify-content-md-center">
-                <Col className="display-1" md="auto" style={{ margin: "auto" }}>
-                  You care for patients
-                </Col>
-              </Row>
-              <Row
-                className="justify-content-md-center"
-                style={{ color: "#558e89" }}
-              >
-                <Col className="display-1" md="auto">
-                  We'll take care of the rest
-                </Col>
-              </Row>
+          <div className="introContainer">
 
-              <Row
-                className="justify-content-md-center mt-3 mb-5"
-                style={{
-                  display: "flex",
-                }}
-              >
-                <Col className="text-muted">
-                  <div
-                    className="secondaryHeaderBox"
-                    style={{ verticalAlign: "middle" }}
-                  >
-                    <div className="secondHeader">Credentials </div>
-                    <div className="secondHeader">Enrollments</div>
-                    <div className="secondHeader">Consulting</div>
-                  </div>
-                </Col>
-              </Row>
-            </motion.div>
-            <div className="mainImage">
+            <div className="logoHeaderContainer">
+
+                <div className="logoContainer">
+                  <img
+                    src={opsgLogo}
+                    alt="OPSG logo"
+                    // className="rounded-circle usr-image2"
+                    style={{
+                      width: "5vw",
+                      height: "auto",
+                      paddingRight: "1vw",
+                    }}
+                  ></img>
+                  <h1 className="opsgName">OnPoint Solutions Group</h1>
+                </div>
+
+                  <Col className="text-muted">
+                        <div className="secondaryHeaderBox">
+                          <div>Credentials </div>
+                          <div>Enrollments</div>
+                          <div>Consulting</div>
+                        </div>
+                  </Col>
+
+                
+                <div className="introTextContainer">
+                  {/* animate fade in going down */}
+                  <motion.div
+                    variants={fadeInAnimationVariants}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true }}
+                    custom={-3} // make y negative, so fade in from top moving down
+                    >
+                      <h1 className="introTextFirstLine">You care for patients</h1> 
+
+                    </motion.div>
+                    
+                    <motion.div
+                      variants={fadeinAnimationDelay}
+                      initial="initial"
+                      whileInView="animate"
+                      viewport={{ once: true }}
+                      custom={3}
+                    >
+                  
+                      <h1 className="introTextSecondLine">We'll take care of the rest</h1>
+                        
+                  </motion.div>
+                </div>
+
+              </div>
+
               <img
                 className="mainImage"
                 src={nurseSmiling}
                 fluid="true"
-                rounded="true"
                 thumbnail="true"
                 alt="Nurse smiling"
                 loading="lazy"
-                style={{
-                  margin: "auto",
-                  borderRadius: "2%",
-                  filter: "drop-shadow(8px 8px 10px gray)",
-                }}
               />
-            </div>
+
+          </div>
+
 
             <div className="counterWrapperContainer">
               <div
@@ -146,7 +147,7 @@ const Home = () => {
                   }}
                 >
                   Trusted by over <AnimationCountUp from={0} to={50} />{" "}
-                  Hospitals, providers, and practicioners
+                  Hospitals, providers, and practicioners nationwide
                 </h3>
 
                 <img
@@ -155,7 +156,7 @@ const Home = () => {
                   alt="United States map"
                   style={{
                     opacity: "18%",
-                    width: "85%",
+                    width: "80%",
                     transform: "translate(4%, 10%)",
                   }}
                 ></img>
@@ -171,12 +172,12 @@ const Home = () => {
               }}
             >
               <div>
-                <HomeInfoCards></HomeInfoCards>
+                <HomeInfoCards />
               </div>
             </div>
-          </Container>
+
           <Footer />
-        </div>
+
       </div>
     </div>
   );

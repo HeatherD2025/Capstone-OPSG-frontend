@@ -1,9 +1,8 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import { useGetCurrentUserQuery } from "../../features/api/userApi.js";
-import InfoCard from "../servicesCards/InfoCard.jsx";
 import fakeCompany from "./fakeCompany.jsx";
 
-function BusinessName({ id, bg }) {
+function BusinessName({ id }) {
   // fetching logged in user
   const {
     data: userData,
@@ -11,7 +10,6 @@ function BusinessName({ id, bg }) {
     error: userError,
   } = useGetCurrentUserQuery();
 
-  // const qbId = user?.company?.quickbooksId;
 
   // fetching qb if user has qbId
   const {
@@ -20,7 +18,7 @@ function BusinessName({ id, bg }) {
     error: qbError,
   } = useGetCustomerObjectQuery(id, { skip: !id });
 
-  //normalizer functions for qb and user data
+  // normalizer functions for qb and user data
   function normalizeQB(data) {
     const customerArray = data?.QueryResponse?.Customer;
     if (!customerArray?.length) return null;
@@ -48,9 +46,8 @@ function BusinessName({ id, bg }) {
   const company =
     normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompany;
 
-  if (qbLoading || userLoading) return <InfoCard bg={bg} title="Loading..." />;
-  if (qbError || userError)
-    return <InfoCard bg="danger" title="Failed to fetch company" />;
+  if (qbLoading || userLoading) return <p>Loading...</p>;
+  if (qbError || userError) return <p>Failed to fetch company</p>;
 
   return <p>{company.name}</p>;
 }

@@ -1,7 +1,8 @@
-.btn-custom3, .button3 {
+.btn-custom3,
+.button3 {
   border: none;
   background-color: rgb(121, 203, 187);
-  font-size: "12px" ;
+  font-size: "12px";
   padding: 8px;
   border-radius: 10%;
   color: #000000;
@@ -9,99 +10,129 @@
 }
 
 .formLabel {
-    font-size: 12px;
-    padding-left: 2px;
+  font-size: 12px;
+  padding-left: 2px;
 }
 
+@media (max-width: 600px) {
+  /* CSS styles for mobile devices (screens 768px and smaller) */
+  /* Example: Smaller font size, different layout, etc. */
+  body {
+  }
+  .logoContainer {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding-top: 18vh;
+    align-items: center;
+  }
 
-  @media (max-width: 600px) {
-       /* CSS styles for mobile devices (screens 768px and smaller) */
-       /* Example: Smaller font size, different layout, etc. */
-    body {
-      
-    }
-    .logoContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 200;
-        width: auto;
-        padding-top: 18vh;
-      }
+  .backgroundAccent {
+    background-color: #e5fffd;
+    height: 85vh;
+    width: 100%;
+  }
+  .secondaryHeaderBox {
+    padding-top: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    font-size: 14px;
+    justify-content: center;
+  }
 
-     .backgroundAccent {
-        background-color: #e5fffd;
-        height: 85vh;
-        width: 100%;
-      }
-     .secondaryHeaderBox {
-        padding-top: 2vh;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1em;
-        font-size: 14px;
-        justify-content: center;
-      }
+  .secondaryHeaderBox > * {
+    border-radius: 1vw;
+  }
 
-      .secondaryHeaderBox > * {
-        border-radius: 1vw;
-      }
-
-      .mainImage {
-        display: flex;
-        height: 60vw;
-        /* width: auto;
+  .mainImage {
+    display: flex;
+    height: 60vw;
+    /* width: auto;
 
         border-color: solid black 10px;
         display: contents; */
-      }
-    }
+  }
+}
 
 @media (min-device-width: 768px) {
-       /* CSS styles for desktop devices (screens larger than 768px) */
-       /* Example: Larger font size, different layout, etc. */
-    body {
-        background-image: url("nurseSmiling.jpg")
-       }
-    .logoContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 200;
-        width: auto;
-        padding-top: 20vh;
-      }
+  /* CSS styles for desktop devices (screens larger than 768px) */
+  /* Example: Larger font size, different layout, etc. */
+  body {
+    background-image: url("nurseSmiling.jpg");
+  }
 
-     .backgroundAccent {
-        background-color: #e5fffd;
-        height: 120vh;
-        width: 100%;
-      }
-     .secondaryHeaderBox {
-        padding-top: 2vh;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1em;
-        font-size: 25px;
-        justify-content: center;
-      }
+  .introContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20vh;
+    gap: 2vw;
+  }
 
-      .secondaryHeaderBox > * {
-        border-radius: 1vw;
-      }
+  .logoHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 40vh;
+    align-items: center;
+  }
 
-      .imageWrapper {
-        border-color: solid black 10px;
-        display: flex;
-        display: contents;
-      }
+  .logoContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: clamp(10px, 2vw, 50px);
+    font-weight: 200;
+    align-items: center;
+    margin-top: 5vh;
+  }
+  .opsgName {
+    font-weight: 200;
+  }
 
-      .mainImage {
-        width: auto;
-        height: 50vw;
-        display: flex;
-        
-      }
-    }
+  .backgroundAccent {
+    background-color: #e5fffd;
+    height: 120vh;
+    width: 100%;
+  }
+  .secondaryHeaderBox {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+    font-size: 20px;
+  }
+
+  .secondaryHeaderBox > * {
+    border-radius: 1vw;
+  }
+
+  .imageWrapper {
+    border-color: solid black 10px;
+    display: flex;
+    display: contents;
+  }
+
+  .introTextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .introTextFirstLine {
+    color: #558e89;
+    font-weight: 200;
+    font-size: 4rem;
+    margin: 6rem 0rem 2rem 0rem;
+  }
+  .introTextSecondLine {
+    font-weight: 200;
+    font-size: 4rem;
+  }
+  .mainImage {
+    height: 70vh;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+    margin-right: 3vw;
+  }
+  .cardsContainer {
+    margin-bottom: 4rem;
+  }
+}

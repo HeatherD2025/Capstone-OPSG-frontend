@@ -14,9 +14,8 @@ export default function NavBar() {
   const token = getToken();
 
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
-  // const [isLoading, setLoading] = useState(false);
 
-  const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
+  const { isAdmin } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
 
   let userId = user?.id;
@@ -53,25 +52,15 @@ export default function NavBar() {
     }
   };
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     setIsLoggedIn("LOGOUT");
-  //   } else {
-  //     setIsLoggedIn("LOGIN");
-  //   }
-  // }, [isAuthenticated]);
-
   const handleLogout = () => {
     removeToken();
     navigate("/login");
   };
 
-  const [isNotActive, setNotActive] = useState("true");
-
   return (
     <header>
       <nav
-        className="navbar bg-light2"
+        className="navbar bg-light2 navbarTestClass"
         style={{
           overflow: "hidden",
           position: "fixed" /* Set the navbar to fixed position */,
@@ -86,7 +75,7 @@ export default function NavBar() {
               className="navLogoWrapper"
               style={{
                 display: "flex",
-                marginLeft: ".5vw",
+                marginLeft: "1vw",
                 fontWeight: "200",
                 fontSize: "clamp(12px, 3vw, 20px)",
                 flexDirection: "column",

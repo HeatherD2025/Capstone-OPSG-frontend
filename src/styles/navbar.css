@@ -10,6 +10,7 @@
     .mainScreenButtons {
       width: 2px;
     }
+    
     .bg-light2 {
     --bs-bg-opacity: 1;
     background-color: #ffffff;

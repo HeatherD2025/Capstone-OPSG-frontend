@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -23,16 +23,6 @@ const AdminNav = (props) => {
             <span className={isNotActive ? "" : "hidden"}>{arrowRight}</span>
             <span className={isNotActive ? "hidden" : ""}>{crossIcon}</span>
           </Button>
-
-          {/* <div className="sidebar-header">
-            <img
-              src={opsgLogo}
-              alt="OPSG logo"
-              height={isNotActive ? "20" : "70"}
-              width={isNotActive ? "20" : "70"}
-            ></img>
-            <h3>OnPoint</h3>
-          </div> */}
 
           <ul className="list-unstyled components">
 

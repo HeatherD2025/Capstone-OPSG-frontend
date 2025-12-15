@@ -8,16 +8,15 @@
 
 /* Header Styles */
 .header-section {
- display: flex;
- flex-wrap: nowrap;
- align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .headerContainer {
   display: flex;
   flex-direction: row;
   width: 100%;
-
 }
 
 .opsgLogo {
@@ -30,7 +29,7 @@
   color: #ffffff !important;
   font-size: xx-large !important;
   margin: 0% 0% 0% 1%;
-  width: 50%
+  width: 50%;
 }
 
 .welcomeHeaderContainer {
@@ -38,10 +37,10 @@
   display: flex;
   flex-wrap: nowrap;
   font-size: large;
-  margin: 2% 5% 0% 5%;
+  margin: 2% 0% 0% 5%;
 }
 .welcome {
-  margin-right: 2%
+  margin-right: 2%;
 }
 
 .opsgHeaderText {
