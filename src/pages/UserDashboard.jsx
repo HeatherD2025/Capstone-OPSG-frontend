@@ -1,9 +1,7 @@
 import UserNav from "../components/navigations/UserNav";
-// import UserHeader from "../components/profileComponents/userProfileComponents/UserHeader";
 import ProfileHeader from "../components/profileComponents/ProfileHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
-import BusinessName from "../components/qbComponents/BusinessName";
 import Balance from "../components/qbComponents/Balance";
 import "../styles/userElements/userDashboard.css";
 
@@ -23,8 +21,6 @@ export default function UserDashboard() {
               {/* Action Cards */}
               <Row className="g-4 mb-5 action-cards">
                 <Col md={12}>
-
-                  <BusinessName />
 
                   <Balance />
 

@@ -22,10 +22,11 @@ export default function EditProfile() {
   const { userId } = useParams();
   const {
     data: user,
-    error,
     isLoading,
-    refetch,
+    error,
   } = useGetCurrentUserQuery(userId);
+  console.log("USER FROM API:", user)
+
   const [updateUserProfile] = useUpdateUserProfileMutation();
   // const [changePassword] = useChangePasswordMutation();
 
@@ -38,7 +39,6 @@ export default function EditProfile() {
   const [modalShow, setModalShow] = useState(false);
   const [modalHeading, setModalHeading] = useState("");
   const [modalBody, setModalBody] = useState("");
-  const [editMode, setEditMode] = useState(false);
   const [showPwdForm, setShowPwdForm] = useState(false);
   const [currentPwd, setCurrentPwd] = useState("");
   const [newPwd, setNewPwd] = useState("");
@@ -46,11 +46,11 @@ export default function EditProfile() {
   const [pwdError, setPwdError] = useState("");
 
   useEffect(() => {
-    if (user) {
+    if (user?.data) {
       setFormData({
-        firstName: user.firstName || "",
-        lastName: user.lastName || "",
-        email: user.email || "",
+        firstName: user.data.firstName || "",
+        lastName: user.data.lastName || "",
+        email: user.data.email || "",
       });
     }
   }, [user]);
@@ -127,7 +127,7 @@ export default function EditProfile() {
   return (
     <>
       <UserNav />
-      <UserHeader />
+      <ProfileHeader />
       <div className="background">
         <div
           className="d-flex justify-content-center align-items-center"
@@ -139,24 +139,9 @@ export default function EditProfile() {
           >
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h2 style={{ fontSize: "14px", marginTop: "10px" }}>
-                {editMode ? "EDIT PROFILE" : "MY PROFILE"}
+                EDIT PROFILE
               </h2>
-              {!editMode && (
-                <ReactiveButton
-                  onClick={() => setEditMode(true)}
-                  rounded
-                  className="button3"
-                  variant="secondary"
-                  type={"submit"}
-                  idleText="EDIT PROFILE"
-                  style={{
-                    marginRight: "5px",
-                    width: "140px",
-                    fontSize: "12px",
-                    backgroundColor: "#558e89",
-                  }}
-                />
-              )}
+
             </div>
 
             <Form onSubmit={handleSubmit}>
@@ -171,7 +156,6 @@ export default function EditProfile() {
                         FIRST NAME
                       </Form.Label>
                       <Form.Control
-                        readOnly={!editMode}
                         value={formData.firstName}
                         onChange={(e) =>
                           setFormData((f) => ({
@@ -188,7 +172,6 @@ export default function EditProfile() {
                         LAST NAME
                       </Form.Label>
                       <Form.Control
-                        readOnly={!editMode}
                         value={formData.lastName}
                         onChange={(e) =>
                           setFormData((f) => ({
@@ -207,7 +190,6 @@ export default function EditProfile() {
                       EMAIL
                     </Form.Label>
                     <Form.Control
-                      readOnly={!editMode}
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -216,7 +198,7 @@ export default function EditProfile() {
                     />
                   </Form.Group>
 
-                  {editMode && (
+        
                     <Row className="align-items-end mb-3">
                       <Col>
                         <Form.Group controlId="password">
@@ -228,7 +210,6 @@ export default function EditProfile() {
                           <Form.Control
                             type="password"
                             placeholder="********"
-                            readOnly
                           />
                         </Form.Group>
                       </Col>
@@ -251,9 +232,7 @@ export default function EditProfile() {
                         </Col>
                       )}
                     </Row>
-                  )}
 
-                  {editMode && (
                     <div className="d-flex justify-content-end">
                       <ReactiveButton
                         type="submit"
@@ -284,7 +263,6 @@ export default function EditProfile() {
                         }}
                       />
                     </div>
-                  )}
                 </>
               )}
 

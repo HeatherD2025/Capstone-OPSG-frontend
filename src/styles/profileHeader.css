@@ -1,36 +1,27 @@
 /* Base Layout */
-.page {
+.profileHeader {
   background-color: rgb(48, 48, 48);
   color: white;
-  padding-left: 50px;
-  padding-top: 10px;
+  padding: 1rem 0rem 1rem 12rem;
   flex-shrink: 1;
-}
-
-.small-image {
-  height: 7rem;
-}
-
-.dashboard-wrapper {
-  display: flex;
-  min-height: 100vh;
-  background: #f8fafc;
-}
-
-.dashboard-content {
-  flex: 1;
-  padding: 2rem;
-  margin-left: 250px; /* Matches navbar width */
-  transition: margin 0.3s ease;
 }
 
 /* Header Styles */
 .header-section {
-  margin: 2% 0% 3% 6.25%;
+ display: flex;
+ flex-wrap: nowrap;
+ align-items: center;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
 }
 
 .opsgLogo {
-  width: 10%;
+  width: 8%;
   aspect-ratio: 1/1;
   margin-right: 2%;
 }
@@ -39,6 +30,18 @@
   color: #ffffff !important;
   font-size: xx-large !important;
   margin: 0% 0% 0% 1%;
+  width: 50%
+}
+
+.welcomeHeaderContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: large;
+  margin: 2% 5% 0% 5%;
+}
+.welcome {
+  margin-right: 2%
 }
 
 .opsgHeaderText {
@@ -47,7 +50,6 @@
   background-clip: text;
   color: transparent;
   font-size: xx-large;
-  margin-right: 1%;
 }
 
 /* Card Styles */

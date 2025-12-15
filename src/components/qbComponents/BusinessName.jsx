@@ -52,7 +52,7 @@ function BusinessName({ id, bg }) {
   if (qbError || userError)
     return <InfoCard bg="danger" title="Failed to fetch company" />;
 
-  return <InfoCard bg={bg} title={company.name} subtitle={company.email} />;
+  return <p>{company.name}</p>;
 }
 
 export default BusinessName;
