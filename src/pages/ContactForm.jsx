@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import NavBar from "../components/navigations/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "react-bootstrap/Card";
 import ReactiveButton from "reactive-button";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "../components/Footer";
@@ -44,18 +42,36 @@ export default function ContactFormPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     const token = recaptchaRef.current?.getValue();
     if (!token) {
       setRecaptchaError("please verify you're not a robot");
       return;
     }
-    setRecaptchaError("");
+
     setLoading(true);
 
     try {
-      emailjs.send(
+    const verify = await fetch("/.netlify/functions/verify-recaptcha", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    });
+
+    const result = await verify.json();
+
+    if (!result.success) {
+      setRecaptchaError("reCAPTCHA verification failed");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
@@ -65,6 +81,7 @@ export default function ContactFormPage() {
           message: formData.message,
         }
       );
+      
       alert("Message sent successfully!");
       setFormData({ fullName: "", email: "", phone: "", message: "" });
       recaptchaRef.current.reset();
@@ -201,6 +218,9 @@ export default function ContactFormPage() {
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                        onChange={(token) => {
+                          if (token) setRecaptchaError("");
+                        }}
                       />
                       {recaptchaError && (
                         <div className="text-danger mt-1">{recaptchaError}</div>

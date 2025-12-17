@@ -145,7 +145,7 @@ const Home = () => {
                     zIndex: "2",
                   }}
                 >
-                  Trusted by over <AnimationCountUp from={0} to={50} />{" "}
+                  Trusted by over <AnimationCountUp loading="lazy" from={0} to={50} />{" "}
                   Hospitals, providers, and practicioners nationwide
                 </h3>
 

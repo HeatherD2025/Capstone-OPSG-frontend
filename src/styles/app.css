@@ -83,7 +83,7 @@
     font-size: clamp(10px, 2vw, 50px);
     font-weight: 200;
     align-items: center;
-    margin-top: 5vh;
+    margin-top: 6vh;
   }
   .opsgName {
     font-weight: 200;
