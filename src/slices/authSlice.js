@@ -4,9 +4,9 @@ import { jwtDecode } from "jwt-decode";
 import {
   getToken,
   setToken,
+  removeToken,
   getRefreshToken,
   setRefreshToken,
-  clearTokens,
 } from "../utils/tokenService";
 
 // Helper to apply user + tokens into Redux state and persist locally
@@ -53,7 +53,7 @@ export const initializeAuth = createAsyncThunk(
         refreshToken,
       };
     } catch (error) {
-      clearTokens();
+      removeToken();
       return {
         isAuthenticated: false,
         user: null,
@@ -88,7 +88,7 @@ const authSlice = createSlice({
       state.accessToken = null;
       state.refreshToken = null;
       state.isAdmin = false;
-      clearTokens();
+      removeToken();
     },
 
     // used by Login.jsx (manual dispatch)

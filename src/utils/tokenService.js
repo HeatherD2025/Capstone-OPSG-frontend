@@ -98,7 +98,7 @@ export const attachRefreshInterceptor = (
         const refreshToken = getRefreshToken();
 
         if (!refreshToken || !refreshEndpoint) {
-          clearTokens();
+          removeToken();
           if (typeof onRefreshFail === "function") onRefreshFail();
           isRefreshing = false;
           return Promise.reject(error);
@@ -126,7 +126,7 @@ export const attachRefreshInterceptor = (
           return axiosInstance(originalRequest);
         } catch (err) {
           processQueue(err, null);
-          clearTokens();
+          removeToken();
           if (typeof onRefreshFail === "function") onRefreshFail();
           return Promise.reject(err);
         } finally {
