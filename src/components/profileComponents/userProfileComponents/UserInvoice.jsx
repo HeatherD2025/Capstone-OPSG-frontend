@@ -55,57 +55,49 @@
 
 // TEST CODE
 
-
-import UserDashboard from "../../../pages/UserDashboard";
+import ProfileHeader from "../ProfileHeader.jsx";
+import UserNav from "../../navigations/UserNav.jsx";
 import "../../../styles/userElements/userDashboard.css";
 import { Row, Col, Container } from "react-bootstrap";
 import Balance from "../../qbComponents/Balance";
 import BusinessName from "../../qbComponents/BusinessName";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 import { useContext } from "react";
-import userContext from "../../navigations/ContextProvider";
-import { faker } from "@faker-js/faker";
+import { userContext } from "../../navigations/ContextProvider";
+// import { faker } from "@faker-js/faker";
 
 export default function UserInvoice() {
   const { authenticated } = useContext(userContext);
-  const demoInvoice = faker.finance.amount({
-    min: 150,
-    max: 5450,
-    dec: 5,
-    symbol: "$",
-  });
+
+
+  // const demoInvoice = faker.finance.amount({
+  //   min: 150,
+  //   max: 5450,
+  //   dec: 5,
+  //   symbol: "$",
+  // });
 
   // only fires if authenticated
-  const {
-    data: user,
-    isLoading,
-    error,
-  } = useGetCurrentUserQuery(undefined, {
+  const { data, isLoading, error } = useGetCurrentUserQuery(undefined, {
     skip: !authenticated, // only query after login
   });
 
   if (!authenticated) return <p>Please log in...</p>;
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading user data</p>;
-  if (!authenticated && !user) return <p>{`${demoInvoice}`}</p>;
+  // if (!authenticated && !user) return <p>{`${demoInvoice}`}</p>;
 
   return (
     <div className="dashboard-wrapper">
-      <UserDashboard />
+    <ProfileHeader />
+     <UserNav />
+
       <Container fluid className="dashboard-content">
         <Row className="justify-content-center">
           <Col xl={10} lg={11} className="main-content">
             <Row className="mb-4">
-              <Col>
-                <div className="profile-card p-4">
-                  <BusinessName  />
-                </div>
-              </Col>
-              <Col>
-                <div className="profile-card p-4">
-                  <Balance  />
-                </div>
-              </Col>
+                  <BusinessName />
+                  <Balance />
             </Row>
           </Col>
         </Row>

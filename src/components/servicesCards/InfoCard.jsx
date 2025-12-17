@@ -10,14 +10,14 @@ import Card from "react-bootstrap/Card";
  * @param {string} image - imgage for card
  */
 
-export default function InfoCard({
-  bg,
+function InfoCard({
   title,
   subtitle,
   text,
   link,
   linkHint,
   image,
+  children,
 }) {
   return (
     <Card
@@ -25,12 +25,15 @@ export default function InfoCard({
       style={{ width: "18rem", backgroundColor: "#79cbbb" }}
     >
       <Card.Body>
-        <Card.Img {...image}></Card.Img>
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{subtitle}</Card.Subtitle>
-        <Card.Text>{text}</Card.Text>
-        <Card.Link href={link}>{linkHint}</Card.Link>
+        { image && <Card.Img {...image} /> }
+        { title && <Card.Title>{title}</Card.Title>}
+        { subtitle && <Card.Subtitle className="mb-2 text-muted">{subtitle}</Card.Subtitle> }
+        { text && <Card.Text>{text}</Card.Text>}
+        {children}
+        { link && <Card.Link href={link}>{linkHint}</Card.Link>}
       </Card.Body>
     </Card>
   );
 }
+
+export default InfoCard;

@@ -16,13 +16,13 @@ export default function UserDashboard() {
         <Row className="g-0">
           {/* Content Column */}
           <Col xs={10} className="content-column">
-          
             <Container>
               {/* Action Cards */}
               <Row className="g-4 mb-5 action-cards">
                 <Col md={12}>
-
-                  <Balance />
+                  <InfoCard>
+                    <Balance />
+                  </InfoCard>
 
                   <InfoCard
                     variant="dark"

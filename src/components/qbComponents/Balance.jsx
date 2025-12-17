@@ -1,9 +1,8 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
-import InfoCard from "../servicesCards/InfoCard.jsx";
 import { faker } from "@faker-js/faker";
 
 function Balance({ id, bg }) {
-  const demoInvoice = faker.finance.amount({
+  const fakeBalance = faker.finance.amount({
     min: 150,
     max: 5450,
     dec: 2,
@@ -15,42 +14,26 @@ function Balance({ id, bg }) {
   });
 
   if (!data) {
-    return <InfoCard bg={bg} title={`Current balance due ${demoInvoice}`} />;
+    return <p>Current balance due: {fakeBalance}</p>;
   }
 
-  if (isLoading) return <InfoCard bg={bg} title="Loading..." />;
+  if (isLoading) return <p>Loading..." </p>;
 
   if (error || data?.error) {
-    return (
-      <InfoCard
-        bg="danger"
-        title="Failed to fetch balance"
-        text="Quickbooks data unavailable"
-      />
-    );
+    return <p>Failed to fetch balance, Quickbooks data unavailable</p>;
   }
-
-  // if (!arrCustomer || arrCustomer.length === 0) {
-  //   return <InfoCard bg="success" title="No outstanding balance 🎉" />
-  // }
-
-  // attempt to retrieve "balance" from qb's report format
-  //   const balanceValue =
-  //     arrCustomer[0]?.ColData?.find((c) => c.id === "balance" || c.value)?.value ||
-  //     arrCustomer[0]?.Balance ||
-  //     0;
 
   const customer = data?.QueryResponse?.Customer?.[0];
   const balanceValue = customer?.Balance || 0;
 
   return (
-    <InfoCard
+    <p
       bg={balanceValue === 0 ? "success" : bg}
       title={
         balanceValue === 0 ? "No outstanding balance 🎉" : "Outstanding Balance"
       }
       text={balanceValue === 0 ? "Demo account" : `$${balanceValue}`}
-    />
+    ></p>
   );
 }
 

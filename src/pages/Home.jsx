@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-// const { scrollYProgress } = useScroll();
 
 import { Row, Col} from "react-bootstrap";
 import opsgLogo from "../assets/img/opsg-logo.png";
