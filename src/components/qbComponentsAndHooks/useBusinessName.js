@@ -2,7 +2,7 @@ import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import { useGetCurrentUserQuery } from "../../features/api/userApi.js";
 import fakeCompany from "./fakeCompany.jsx";
 
-function BusinessName({ id }) {
+export default function useBusinessName() {
   // fetching logged in user
   const {
     data: userData,
@@ -10,13 +10,14 @@ function BusinessName({ id }) {
     error: userError,
   } = useGetCurrentUserQuery();
 
+  const qbId = userData?.qbId || null;
 
   // fetching qb if user has qbId
   const {
     data: qbData,
     isLoading: qbLoading,
     error: qbError,
-  } = useGetCustomerObjectQuery(id, { skip: !id });
+  } = useGetCustomerObjectQuery(qbId, { skip: !qbId });
 
   // normalizer functions for qb and user data
   function normalizeQB(data) {
@@ -45,11 +46,8 @@ function BusinessName({ id }) {
   // priority order of company source
   const company =
     normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompany;
+    const isLoading = userLoading || qbLoading;
+    const error = userError || qbError;
 
-  if (qbLoading || userLoading) return <p>Loading...</p>;
-  if (qbError || userError) return <p>Failed to fetch company</p>;
-
-  return <p>{company.name}</p>;
+  return { company, isLoading, error };
 }
-
-export default BusinessName;
