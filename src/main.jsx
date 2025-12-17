@@ -6,7 +6,7 @@ import { Provider, useDispatch } from "react-redux";
 import store from "./store/store.js";
 import ContextProvider from "./components/navigations/ContextProvider.jsx";
 import { initializeAuth } from "./slices/authSlice.js";
-import ScrollToTop from "./components/ScrollToTop.jsx";
+import ScrollToTop from "../src/components/ScrollToTop.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Root() {
