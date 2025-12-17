@@ -1,8 +1,11 @@
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 import { useGetCurrentUserQuery } from "../../features/api/userApi.js";
-import fakeCompany from "./fakeCompany.js";
+// import fakeCompany from "./fakeCompany.jsx";
+import fakeCompanyInfo from "./fakeCompany.js";
 
 export default function useBusinessName() {
+  const { fakeCompanyName } = fakeCompanyInfo()
+
   // fetching logged in user
   const {
     data: userData,
@@ -45,7 +48,8 @@ export default function useBusinessName() {
 
   // priority order of company source
   const company =
-    normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompany;
+    // normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompany;
+        normalizeQB(qbData) || normalizeUserCompany(userData) || fakeCompanyName;
     const isLoading = userLoading || qbLoading;
     const error = userError || qbError;
 

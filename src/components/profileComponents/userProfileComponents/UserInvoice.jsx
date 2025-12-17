@@ -58,7 +58,6 @@
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "../../navigations/UserNav.jsx";
 import "../../../styles/userElements/userDashboard.css";
-import { Row, Col, Container } from "react-bootstrap";
 import Balance from "../../qbComponentsAndHooks/Balance.jsx";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 import useBusinessName from "../../qbComponentsAndHooks/useBusinessName.js";
@@ -93,7 +92,8 @@ export default function UserInvoice() {
         <ProfileHeader />
         <UserNav />
       </div>
-      <div className="card">
+
+      <div className="invoiceContainer">
         <div className="card-header bg-black"></div>
         <div className="card-body">
           <div className="container">
@@ -171,22 +171,10 @@ export default function UserInvoice() {
               <div className="col-xl-8">
                 <ul className="list-unstyled float-end me-0">
                   <li>
-                    <span className="me-3 float-start">Total Amount:</span>
-                    <i className="fas fa-dollar-sign"></i> 6850,00
-                  </li>
-                  <li>
-                    {" "}
-                    <span className="me-5">Discount:</span>
-                    <i className="fas fa-dollar-sign"></i> 500,00
-                  </li>
-                  <li>
-                    <span
-                      className="float-start"
-                      style={{ marginRight: "35px" }}
-                    >
-                      Shippment:{" "}
+                    <span className="me-3 float-start">
+                      Total Amount: {company.balanceValue}
                     </span>
-                    <i className="fas fa-dollar-sign"></i> 500,00
+                    <i className="fas fa-dollar-sign"></i>
                   </li>
                 </ul>
               </div>
