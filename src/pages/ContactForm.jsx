@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Card } from "react-bootstrap";
 import ReactiveButton from "reactive-button";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "../components/Footer";
 import { motion } from "motion/react";
+import NavBar from "../components/navigations/Navbar";
 
 export default function ContactFormPage() {
   const fadeInAnimationVariants = {
@@ -42,7 +44,6 @@ export default function ContactFormPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -55,23 +56,23 @@ export default function ContactFormPage() {
     setLoading(true);
 
     try {
-    const verify = await fetch("/.netlify/functions/verify-recaptcha", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ token }),
-    });
+      const verify = await fetch("/.netlify/functions/verify-recaptcha", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
 
-    const result = await verify.json();
+      const result = await verify.json();
 
-    if (!result.success) {
-      setRecaptchaError("reCAPTCHA verification failed");
-      setLoading(false);
-      return;
-    }
+      if (!result.success) {
+        setRecaptchaError("reCAPTCHA verification failed");
+        setLoading(false);
+        return;
+      }
 
-    await emailjs.send(
+      await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
@@ -81,7 +82,7 @@ export default function ContactFormPage() {
           message: formData.message,
         }
       );
-      
+
       alert("Message sent successfully!");
       setFormData({ fullName: "", email: "", phone: "", message: "" });
       recaptchaRef.current.reset();
@@ -131,9 +132,8 @@ export default function ContactFormPage() {
                   style={{
                     padding: "30px",
                     width: "100%",
-                    maxWidth: "600px",
+                    maxWidth: "50vw",
                     margin: "0 auto",
-                    marginTop: "2rem",
                   }}
                 >
                   <form onSubmit={handleSubmit}>
@@ -256,4 +256,4 @@ export default function ContactFormPage() {
       <Footer />
     </>
   );
- }
+}
