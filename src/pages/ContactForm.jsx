@@ -53,6 +53,11 @@ export default function ContactFormPage() {
       return;
     }
 
+    console.log(
+      "I PUT THIS HERE reCAPTCHA key:",
+      import.meta.env.VITE_RECAPTCHA_SITE_KEY
+    );
+
     setLoading(true);
 
     try {
