@@ -4,7 +4,7 @@
 // Decide: allow or deny
 // If allowed → send email
 // Return a simple result
-import emailjs from "emailjs-com";
+import emailjs from "emailjs-node";
 
 const sendContactMessage = async (e) => {
     const { token, fullName, email, phone, message } = JSON.parse(e.body);
