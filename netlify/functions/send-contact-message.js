@@ -4,7 +4,6 @@
 // Decide: allow or deny
 // If allowed → send email
 // Return a simple result
-import emailjs from "emailjs-node";
 
 const sendContactMessage = async (e) => {
     const { token, fullName, email, phone, message } = JSON.parse(e.body);
@@ -45,29 +44,61 @@ const sendContactMessage = async (e) => {
         }
       }
 
-    try {
-       await emailjs.send(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
-        {
-          full_name: fullName,
-          email_address: email,
-          phone_number: phone,
-          message: message,
-        }
-      );
+      const emailRes = await fetch("https://api.emailjs.com/api/v1.0/email/send",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json",},
+        body: JSON.stringify({
+          service_id: process.env.EMAILJS_SERVICE_ID,
+          template_id: process.env.EMAILJS_TEMPLATE_ID,
+          user_id: process.env.EMAILJS_PUBLIC_KEY,
+          template_params: {
+            full_name: fullName,
+            email_address: email,
+            phone_number: phone,
+            message: message,
+          },
+       }),
+      }
+    );
+
+    if (!emailRes) {
+      const errorText = await emailRes.text();
+
+      return {
+        statusCode: 502,
+        body: JSON.stringify({
+          error: "Email service failed",
+          details: errorText,
+        }),
+      };
+    }
+    // try {
+    //    await emailjs.send(
+    //     process.env.EMAILJS_SERVICE_ID,
+    //     process.env.EMAILJS_TEMPLATE_ID,
+    //     {
+    //       full_name: fullName,
+    //       email_address: email,
+    //       phone_number: phone,
+    //       message: message,
+    //     }
+    //   );
 
     return {
         statusCode: 200,
-        body: JSON.stringify({ ok: true, message: "Email sent successfully"}),
+        body: JSON.stringify({ 
+          ok: true, 
+          message: "Email sent successfully"
+        }),
     };
     
-    } catch (err) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: "Failed to send email. Please try again later"}),
-        };
-    }
+    // } catch (err) {
+    //     return {
+    //         statusCode: 500,
+    //         body: JSON.stringify({ error: "Failed to send email. Please try again later"}),
+    //     };
+    // }
 
 };
 
