@@ -1,14 +1,23 @@
-import { useState, useEffect, useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import ReactiveButton from "reactive-button";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "../components/Footer";
 import { motion } from "motion/react";
+import { useRecaptcha } from "../utils/useRecaptcha";
 import NavBar from "../components/navigations/Navbar";
 
 export default function ContactFormPage() {
+  const [loading, setLoading] = useState(false);
+
+  const {
+    recaptchaRef,
+    error: recaptchaError,
+    getToken,
+    reset: removeRecaptchaToken,
+  } = useRecaptcha()
+
   const fadeInAnimationVariants = {
     initial: (direction) => ({
       opacity: 0,
@@ -23,6 +32,7 @@ export default function ContactFormPage() {
       },
     },
   };
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -30,74 +40,74 @@ export default function ContactFormPage() {
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [recaptchaError, setRecaptchaError] = useState("");
-
-  const recaptchaRef = useRef(null);
-
-  useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-  }, []);
+  // useEffect(() => {
+  //   emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = recaptchaRef.current?.getValue();
-    if (!token) {
-      setRecaptchaError("please verify you're not a robot");
-      return;
-    }
+    const token = getToken();
+    if (!token) return;
 
-    console.log(
-      "I PUT THIS HERE reCAPTCHA key:",
-      import.meta.env.VITE_RECAPTCHA_SITE_KEY
-    );
+    removeRecaptchaToken();
+    }
 
     setLoading(true);
 
     try {
-      const verify = await fetch("/.netlify/functions/verify-recaptcha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token }),
-      });
-
-      const result = await verify.json();
-
-      if (!result.success) {
-        setRecaptchaError("reCAPTCHA verification failed");
-        setLoading(false);
-        return;
-      }
-
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          full_name: formData.fullName,
-          email_address: formData.email,
-          phone_number: formData.phone,
-          message: formData.message,
-        }
-      );
-
-      alert("Message sent successfully!");
-      setFormData({ fullName: "", email: "", phone: "", message: "" });
-      recaptchaRef.current.reset();
+      const res = fetch("/.netlify/functions/send-contact-message");
+      if (!res.ok) throw new Error()
+        alert("Message sent successfully!");
     } catch (error) {
-      console.error(error);
-      alert("Failed to send message. Please try again later");
+        alert("Please try sending your message again")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  
+
+    // try {
+    //   const verify = await fetch("/.netlify/functions/verify-recaptcha", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ token }),
+    //   });
+
+    //   const result = await verify.json();
+
+    //   if (!result.success) {
+    //     setRecaptchaError("reCAPTCHA verification failed");
+    //     setLoading(false);
+    //     return;
+    //   }
+
+    //   await emailjs.send(
+    //     import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    //     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    //     {
+    //       full_name: formData.fullName,
+    //       email_address: formData.email,
+    //       phone_number: formData.phone,
+    //       message: formData.message,
+    //     }
+    //   );
+
+    //   alert("Message sent successfully!");
+    //   setFormData({ fullName: "", email: "", phone: "", message: "" });
+    //   recaptchaRef.current.reset();
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Failed to send message. Please try again later");
+    // } finally {
+    //   setLoading(false);
+    // }
 
   return (
     <>
@@ -223,9 +233,7 @@ export default function ContactFormPage() {
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                        onChange={(token) => {
-                          if (token) setRecaptchaError("");
-                        }}
+                        onChange={() => {}}
                       />
                       {recaptchaError && (
                         <div className="text-danger mt-1">{recaptchaError}</div>
@@ -261,4 +269,5 @@ export default function ContactFormPage() {
       <Footer />
     </>
   );
+ }
 }
