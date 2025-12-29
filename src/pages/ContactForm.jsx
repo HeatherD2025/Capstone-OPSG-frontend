@@ -40,74 +40,47 @@ export default function ContactFormPage() {
     message: "",
   });
 
-  // useEffect(() => {
-  //   emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-  // }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const token = getToken();
-    if (!token) return;
-
-    removeRecaptchaToken();
+    if (!token) {
+      alert("Please verify you are not a robot");
+      return;
     }
 
     setLoading(true);
 
-    try {
-      const res = fetch("/.netlify/functions/send-contact-message");
-      if (!res.ok) throw new Error()
-        alert("Message sent successfully!");
-    } catch (error) {
-        alert("Please try sending your message again")
-    } finally {
-      setLoading(false)
+  try {
+    const res = await fetch("/.netlify/functions/send-contact-message", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...formData, token }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to send message");
     }
-  
 
-    // try {
-    //   const verify = await fetch("/.netlify/functions/verify-recaptcha", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ token }),
-    //   });
+    alert(data.message || "Message sent successfully!");
+    setFormData({ fullName: "", email: "", phone: "", message: "" });
 
-    //   const result = await verify.json();
+    removeRecaptchaToken();
 
-    //   if (!result.success) {
-    //     setRecaptchaError("reCAPTCHA verification failed");
-    //     setLoading(false);
-    //     return;
-    //   }
+  } catch (err) {
+    alert(err.message || "Please try sending your message again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
-    //   await emailjs.send(
-    //     import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    //     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    //     {
-    //       full_name: formData.fullName,
-    //       email_address: formData.email,
-    //       phone_number: formData.phone,
-    //       message: formData.message,
-    //     }
-    //   );
-
-    //   alert("Message sent successfully!");
-    //   setFormData({ fullName: "", email: "", phone: "", message: "" });
-    //   recaptchaRef.current.reset();
-    // } catch (error) {
-    //   console.error(error);
-    //   alert("Failed to send message. Please try again later");
-    // } finally {
-    //   setLoading(false);
-    // }
 
   return (
     <>
@@ -233,7 +206,6 @@ export default function ContactFormPage() {
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                        onChange={() => {}}
                       />
                       {recaptchaError && (
                         <div className="text-danger mt-1">{recaptchaError}</div>
@@ -270,4 +242,3 @@ export default function ContactFormPage() {
     </>
   );
  }
-}
