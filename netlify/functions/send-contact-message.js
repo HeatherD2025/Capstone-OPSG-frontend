@@ -34,6 +34,13 @@ const sendContactMessage = async (e) => {
         }
     );
 
+    if (!process.env.RECAPTCHA_SECRET_KEY) {
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ error: "Missing reCAPTCHA secret" }),
+  };
+}
+
       const data = await res.json();
 
       // second guard
@@ -73,17 +80,6 @@ const sendContactMessage = async (e) => {
         }),
       };
     }
-    // try {
-    //    await emailjs.send(
-    //     process.env.EMAILJS_SERVICE_ID,
-    //     process.env.EMAILJS_TEMPLATE_ID,
-    //     {
-    //       full_name: fullName,
-    //       email_address: email,
-    //       phone_number: phone,
-    //       message: message,
-    //     }
-    //   );
 
     return {
         statusCode: 200,
@@ -92,13 +88,6 @@ const sendContactMessage = async (e) => {
           message: "Email sent successfully"
         }),
     };
-    
-    // } catch (err) {
-    //     return {
-    //         statusCode: 500,
-    //         body: JSON.stringify({ error: "Failed to send email. Please try again later"}),
-    //     };
-    // }
 
 };
 
