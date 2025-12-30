@@ -15,7 +15,7 @@ export default function ContactFormPage() {
     recaptchaRef,
     error: recaptchaError,
     getToken,
-    reset: removeRecaptchaToken,
+    resetToken: removeRecaptchaToken,
   } = useRecaptcha();
 
   const fadeInAnimationVariants = {
