@@ -16,7 +16,7 @@ export default function ContactFormPage() {
     error: recaptchaError,
     getToken,
     reset: removeRecaptchaToken,
-  } = useRecaptcha()
+  } = useRecaptcha();
 
   const fadeInAnimationVariants = {
     initial: (direction) => ({
@@ -56,33 +56,31 @@ export default function ContactFormPage() {
 
     setLoading(true);
 
-  try {
-    const res = await fetch("/.netlify/functions/send-contact-message", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData, token }),
-    });
+    try {
+      const res = await fetch("/.netlify/functions/send-contact-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, token }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      throw new Error(data.error || "Failed to send message");
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      console.log(error);
+
+      alert(data.message || "Message sent successfully!");
+      setFormData({ fullName: "", email: "", phone: "", message: "" });
+
+      removeRecaptchaToken();
+    } catch (error) {
+      alert(error.message || "Please try sending your message again.");
+    } finally {
+      setLoading(false);
     }
-
-    console.log(error)
-
-    alert(data.message || "Message sent successfully!");
-    setFormData({ fullName: "", email: "", phone: "", message: "" });
-
-    removeRecaptchaToken();
-
-  } catch (err) {
-    alert(err.message || "Please try sending your message again.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <>
@@ -243,4 +241,4 @@ export default function ContactFormPage() {
       <Footer />
     </>
   );
- }
+}
