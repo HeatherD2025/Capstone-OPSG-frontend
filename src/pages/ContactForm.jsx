@@ -69,8 +69,6 @@ export default function ContactFormPage() {
         throw new Error(data.error || "Failed to send message");
       }
 
-      console.log(error);
-
       alert(data.message || "Message sent successfully!");
       setFormData({ fullName: "", email: "", phone: "", message: "" });
 
