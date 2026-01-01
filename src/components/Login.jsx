@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../features/api/authApi";
@@ -14,10 +14,9 @@ import Card from "react-bootstrap/Card";
 import { axiosPrivate } from "../features/axios";
 import { setAuthHeader } from "../utils/tokenService";
 import { userContext } from "./navigations/ContextProvider";
-
-// Redux slice action to store tokens
 import { setTokens, logout } from "../slices/authSlice";
 
+// login should trigger state change, update context flags and navigate
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ const Login = () => {
   // Modal logic
   const [response, setResponse] = useState();
   const [show, setShow] = useState(false);
+
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
@@ -52,11 +52,10 @@ const Login = () => {
     try {
       const payload = await login(formData).unwrap();
 
-      // backend may return either token or accessToken
-      const accessToken = payload?.data?.accessToken || payload?.data?.token;
-      const refreshToken = payload?.data?.refreshToken;
-      const user = payload?.data?.user;
-      const company = payload?.data.user.company;
+      // declare consistent name as backend may return either token or accessToken
+      const accessToken = payload?.accessToken || payload?.token;
+      const refreshToken = payload?.refreshToken;
+      const user = payload?.user;
 
       console.log("User:", user);
 
@@ -73,7 +72,7 @@ const Login = () => {
         setAuthenticated(true);
         if (user.isAdmin) setIsAdmin(true);
 
-        const userId = user.id || user._id;
+        // const userId = user.id || user._id;
 
         // Navigate based on role
         if (user.isAdmin) {
@@ -88,11 +87,13 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
+
       const message =
         error?.data?.message ||
         error?.data ||
         error?.message ||
         JSON.stringify(error);
+
       setResponse(message);
       openModal();
     } finally {

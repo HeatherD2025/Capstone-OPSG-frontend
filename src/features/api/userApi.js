@@ -7,6 +7,7 @@ const userApi = api.injectEndpoints({
         url: "/users/me",
         method: "GET",
       }),
+      transformResponse: (response) => response.data,
       providesTags: ["User"],
     }),
 
@@ -14,28 +15,18 @@ const userApi = api.injectEndpoints({
       query: (body) => ({
         url: "/users/me",
         method: "PUT",
-        data,
+        data: body,
       }),
       invalidatesTags: ["User"],
     }),
-
-    // TEST CODE
-    // updateUserProfile: build.mutation({
-    //   query: ({ id, firstName, lastName, email }) => ({
-    //     url: `/users/updateUserProfile/${id}`,
-    //     method: "PUT",
-    //     body: { firstName, lastName, email },
-    //   }),
-    //   invalidatesTags: ["User"],
-    // }),
-    //
 
     changePassword: build.mutation({
       query: ({ currentPassword, newPassword, confirmPassword }) => ({
         url: "/users/me/password",
         method: "PATCH",
-        body: { currentPassword, newPassword, confirmPassword },
+        data: { currentPassword, newPassword, confirmPassword },
       }),
+      transformResponse: (response) => response.data,
     }),
   }),
 });
@@ -45,5 +36,3 @@ export const {
   useUpdateUserProfileMutation,
   useChangePasswordMutation,
 } = userApi;
-
-// export default userApi;

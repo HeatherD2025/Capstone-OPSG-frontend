@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-
+import { useDispatch } from "react-redux";
 import "../../styles/dashboardNav.css";
+import { logout } from "../../slices/authSlice";
 import { removeToken } from "../../utils/tokenService";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
 
 const UserNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
+  const dispatch = useDispatch();
   // const [isDropdownActive, setDropdownActive] = useState("false");
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
 
   if (isLoading) return <p>Loading user data...</p>;
   if (isError) return <p>Error loading user data</p>;
-  if (!user) return null;
+  if (!user) return <p>No user found</p>;
 
   var arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
   var crossIcon = <i className="bi bi-x-circle"></i>;
@@ -60,7 +62,12 @@ const UserNav = (props) => {
 
             <li className="list-item">
               <i className="bi bi-box-arrow-left"></i>
-              <Link to="/" onClick={() => removeToken()}>
+              <Link 
+                to="/" 
+                onClick={() =>{
+                  removeToken();
+                  dispatch(logout());
+                }}>
                 Log out
               </Link>
             </li>

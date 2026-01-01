@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
+  useChangePasswordMutation
 } from "../../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
@@ -14,11 +15,9 @@ import "../../../styles/dashboardNav.css";
 import "../../../styles/app.css";
 import ReactiveButton from "reactive-button";
 import ProfileHeader from "../ProfileHeader";
-// import UserHeader from "./UserHeader";
 import UserNav from "../../navigations/UserNav";
 
 export default function EditProfile() {
-  const navigate = useNavigate();
   const { userId } = useParams();
   const {
     data: user,
@@ -28,17 +27,19 @@ export default function EditProfile() {
   console.log("USER FROM API:", user)
 
   const [updateUserProfile] = useUpdateUserProfileMutation();
-  // const [changePassword] = useChangePasswordMutation();
+  const [changePassword] = useChangePasswordMutation();
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    company: "",
     email: "",
   });
 
   const [modalShow, setModalShow] = useState(false);
   const [modalHeading, setModalHeading] = useState("");
   const [modalBody, setModalBody] = useState("");
+  const [editMode, setEditMode] = useState(true);
   const [showPwdForm, setShowPwdForm] = useState(false);
   const [currentPwd, setCurrentPwd] = useState("");
   const [newPwd, setNewPwd] = useState("");
@@ -46,11 +47,12 @@ export default function EditProfile() {
   const [pwdError, setPwdError] = useState("");
 
   useEffect(() => {
-    if (user?.data) {
+    if (user) {
       setFormData({
-        firstName: user.data.firstName || "",
-        lastName: user.data.lastName || "",
-        email: user.data.email || "",
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        company: user.company?.name || "",
+        email: user.email || "",
       });
     }
   }, [user]);
@@ -58,7 +60,7 @@ export default function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateUserProfile({ id: userId, ...formData }).unwrap();
+      await updateUserProfile(formData).unwrap();
       setModalHeading("Profile Updated");
       setModalBody("Your profile was updated successfully");
       setModalShow(true);
@@ -81,7 +83,6 @@ export default function EditProfile() {
     }
     try {
       await changePassword({
-        id: userId,
         currentPassword: currentPwd,
         newPassword: newPwd,
         confirmPassword: confirmPwd,
@@ -104,6 +105,7 @@ export default function EditProfile() {
     setFormData({
       firstName: user.firstName,
       lastName: user.lastName,
+      company: user.company,
       email: user.email,
     });
     setEditMode(false);
@@ -114,6 +116,7 @@ export default function EditProfile() {
     setFormData({
       firstName: user.firstName,
       lastName: user.lastName,
+      company: user.company,
       email: user.email,
     });
     setEditMode(true);
@@ -128,17 +131,15 @@ export default function EditProfile() {
     <>
       <UserNav />
       <ProfileHeader />
-      <div className="background">
+      <div className="dark-theme">
         <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ position: "absolute", top: "40%", right: "30%" }}
+          className="d-flex"
         >
           <div
-            className="bg-white rounded shadow p-4"
-            style={{ width: "100%", maxWidth: "600px" }}
+            className="bg-gray rounded shadow edit-profile"
           >
-            <div className="d-flex justify-content-between align-items-center mb-4">
-              <h2 style={{ fontSize: "14px", marginTop: "10px" }}>
+            <div className="d-flex justify-content-between mb-4">
+              <h2 style={{ fontSize: "14px", marginTop: "7vh" }}>
                 EDIT PROFILE
               </h2>
 
@@ -183,21 +184,42 @@ export default function EditProfile() {
                     </Form.Group>
                   </Row>
 
-                  <Form.Group className="mb-3" controlId="email">
-                    <Form.Label
-                      style={{ fontSize: "12px", paddingLeft: "3px" }}
-                    >
-                      EMAIL
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData((f) => ({ ...f, email: e.target.value }))
-                      }
-                    />
-                  </Form.Group>
+                  <Row>
+                    <Form.Group as={Col} controlId="company">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        COMPANY
+                      </Form.Label>
 
+                      <Form.Control
+                        value={formData.company}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: e.target.value,
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group className="mb-3" controlId="email">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        EMAIL
+                      </Form.Label>
+                      <Form.Control
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData((f) => ({ ...f, email: e.target.value }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
         
                     <Row className="align-items-end mb-3">
                       <Col>

@@ -69,7 +69,6 @@ export default function EditUserProfile() {
     }
     try {
       await changePassword({
-        id: userId,
         currentPassword: currentPwd,
         newPassword: newPwd,
         confirmPassword: confirmPwd,

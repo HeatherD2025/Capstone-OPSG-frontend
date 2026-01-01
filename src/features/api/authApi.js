@@ -3,11 +3,12 @@ import api from "./mainApi";
 const authApi = api.injectEndpoints({
   endpoints: (build) => ({
     register: build.mutation({
-      query: ({ email, firstName, lastName, password }) => ({
+      query: ({ email, firstName, lastName, password, company }) => ({
         url: "/auth/register",
         method: "POST",
-        data: { email, firstName, lastName, password },
+        data: { email, firstName, lastName, password, company },
       }),
+      transformResponse: (response) => response.data,
     }),
 
     login: build.mutation({
@@ -16,6 +17,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         data: { email, password },
       }),
+      transformResponse: (response) => response.data,
     }),
 
     refreshTokenHandler: build.mutation({
@@ -24,6 +26,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         data: { refreshToken },
       }),
+      transformResponse: (response) => response.data,
     }),
   }),
 });
@@ -33,5 +36,3 @@ export const {
   useLoginMutation,
   useRefreshTokenHandlerMutation,
 } = authApi;
-
-// export default authApi;

@@ -1,7 +1,7 @@
 import UserNav from "../components/navigations/UserNav";
 import ProfileHeader from "../components/profileComponents/ProfileHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
-import { Row, Col, Container, Button, Image } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import Balance from "../components/qbComponentsAndHooks/Balance";
 import "../styles/userElements/userDashboard.css";
 

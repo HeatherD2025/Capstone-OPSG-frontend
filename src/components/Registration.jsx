@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../features/api/authApi";
 import { useState } from "react";
-import { setToken } from "../utils/tokenService";
+import { useDispatch } from "react-redux";
+import { setTokens } from "../slices/authSlice";
+import { setAuthHeader } from "../utils/tokenService";
+import { userContext } from "./navigations/ContextProvider";
 import ReactiveButton from "reactive-button";
 import "../styles/app.css";
 import Footer from "../components/Footer";
@@ -13,6 +16,9 @@ import NavBar from "../components/navigations/Navbar";
 
 export default function Registration() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { setAuthenticated, setIsAdmin } = useContext(userContext);
+
   const [register, status] = useRegisterMutation();
 
   // Modal logic
@@ -67,6 +73,7 @@ export default function Registration() {
   // submit registration request
   const submit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     // Validate password before submission
     if (!validatePassword(formData.password)) {
@@ -77,20 +84,46 @@ export default function Registration() {
 
     try {
       const payload = await register(formData).unwrap();
-      // on successful registration, go to user dash
-      const userId = payload.registerUser.id;
-      setToken(payload.token);
-      navigate(`/user/${userId}`);
+
+      // declare consistent name as backend may return either token or accessToken
+      const accessToken = payload?.accessToken || payload?.token;
+      const refreshToken = payload?.refreshToken;
+      const user = payload?.user;
+
+      if (accessToken && refreshToken && user) {
+        // Store tokens in Redux (and localStorage automatically)
+        dispatch(setTokens({ accessToken, refreshToken }));
+
+        // Configure axios for authenticated requests
+        setAuthHeader(axiosPrivate, accessToken);
+        axiosPrivate.defaults.headers.common["Content-Type"] =
+          "application/json";
+
+        // Update context (for non-Redux parts of app)
+        setAuthenticated(true);
+        if (user.isAdmin) setIsAdmin(true);
+
+        if (user.isAdmin) navigate(`/admin/dashboard`);
+        else navigate(`/user/dashboard`);
+      } else {
+        console.warn("Missing token or user data from registration response");
+        setResponse("Registration succeeded but auth info missing");
+        openModal();
+      }
     } catch (error) {
-      const errorMsg =
-        typeof error.data === "string"
-          ? error.data.trim()
-          : error.data?.message || "Registration failed";
-      setResponse(
-        "Registration Failed. Have you already registered with this email?"
-      );
+
+      const message =
+        error?.data?.message ||
+        error?.data ||
+        error?.message ||
+        JSON.stringify(error);
+
+      setResponse(message);
       openModal();
-      console.error(errorMsg);
+      console.error("Registration error", message);
+    }
+    finally {
+      setLoading(false)
     }
   };
 

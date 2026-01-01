@@ -65,7 +65,7 @@
   .introContainer {
     display: flex;
     flex-direction: row;
-    margin-top: 22vh;
+    margin-top: 20vh;
     gap: 2vw;
   }
 
@@ -83,7 +83,8 @@
     font-size: clamp(10px, 2vw, 50px);
     font-weight: 200;
     align-items: center;
-    margin-top: 6vh;
+    margin-top: 8vh;
+    flex-shrink: 1;
   }
   .opsgName {
     font-weight: 200;
@@ -115,6 +116,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 2rem 1rem 0rem 5rem;
   }
   .introTextFirstLine {
     color: #558e89;
@@ -134,5 +136,10 @@
   }
   .cardsContainer {
     margin-bottom: 4rem;
+  }
+
+  .edit-profile {
+    margin: 0rem 5rem 5rem 10rem;
+    padding: 0rem 10rem 5rem 10rem;
   }
 }

@@ -1,90 +1,18 @@
-// import "../../../styles/userElements/userDashboard.css";
-// import UserNav from "../../../components/navigations/UserNav";
-// import opsgLogo from "../../../assets/img/opsg-logo.png";
-// import InfoCard from "../../../utils/InfoCard";
-// import { Row, Col, Image, Container } from "react-bootstrap";
-// import Balance from "../../../utils/qbCustomer/Balance";
-// import FullName from "../../../utils/qbCustomer/FullName";
-
-// export default function UserInvoice() {
-//   const objId = useParams();
-//   const id = objId.userId;
-
-//   return (
-//     <div className="dashboard-wrapper">
-//       <UserNav />
-//       <Container fluid className="dashboard-content">
-//         <Row className="justify-content-center">
-//           {/* Main Content Column */}
-//           <Col xl={10} lg={11} className="main-content">
-//             {/* Dashboard Header */}
-//             <Row className="header-section mb-5 align-items-end">
-//               <Col>
-//                 <div className="d-flex align-items-center">
-//                   <Image
-//                     src={opsgLogo}
-//                     alt="OPSG Logo"
-//                     width={60}
-//                     className="me-3 logo-hover"
-//                   />
-//                   <h1 className="dashboard-title">
-//                     <span className="fw-bold">OnPoint</span>
-//                     <span className="fw-light"> User Dashboard</span>
-//                   </h1>
-//                 </div>
-//               </Col>
-//             </Row>
-//             <Row className="mb-4">
-//               <Col>
-//                 <div className="profile-card p-4">
-//                   <FullName bg="primary" id={id} />
-//                 </div>
-//               </Col>
-//               <Col>
-//                 <div className="profile-card p-4">
-//                   <Balance bg="primary" id={id} />
-//                 </div>
-//               </Col>
-//             </Row>
-//           </Col>
-//         </Row>
-//       </Container>
-//     </div>
-//   );
-// }
-
-// TEST CODE
-
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "../../navigations/UserNav.jsx";
 import "../../../styles/userElements/userDashboard.css";
-import Balance from "../../qbComponentsAndHooks/Balance.jsx";
-import { useGetCurrentUserQuery } from "../../../features/api/userApi";
-import useBusinessName from "../../qbComponentsAndHooks/useBusinessName.js";
-import { useContext } from "react";
-import { userContext } from "../../navigations/ContextProvider";
-// import { faker } from "@faker-js/faker";
+import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 
 export default function UserInvoice() {
-  const { authenticated } = useContext(userContext);
-  const { company, isLoading, error } = useBusinessName();
+  // const { authenticated } = useContext(userContext);
+  const { company, isLoading, error } = useCompanyName();
 
-  // const demoInvoice = faker.finance.amount({
-  //   min: 150,
-  //   max: 5450,
-  //   dec: 5,
-  //   symbol: "$",
-  // });
+  if (isLoading) return <p>Loading user invoice...</p>;
+  if (error) return <p>Error loading user invoice. Please try again later.</p>;
 
-  // only fires if authenticated
-  // const { data, isLoading, error } = useGetCurrentUserQuery(undefined, {
-  //   skip: !authenticated,
-  // });
-
-  // if (!authenticated) return <p>Please log in...</p>;
-  // if (isLoading) return <p>Loading...</p>;
-  // if (error) return <p>Error loading user data</p>;
-  // if (!authenticated && !user) return <p>{`${demoInvoice}`}</p>;
+  const streetAddress = company?.streetAddress || "123 Main St, Detroit, MI";
+  const phoneNumber = company?.phoneNumber || "555 687-9344";
+  const email = company?.email || "demo@example.com"
 
   return (
     <>
@@ -112,11 +40,11 @@ export default function UserInvoice() {
                       color: "red",
                     }}
                   >
-                    {company.name}
+                    {company?.name || "Demo Company"}
                   </li>
-                  <li>{company.streetAddress}</li>
-                  <li>{company.phoneNumber}</li>
-                  <li>{company.email}</li>
+                  <li>{streetAddress}</li>
+                  <li>{phoneNumber}</li>
+                  <li>{email}</li>
                 </ul>
               </div>
             </div>
@@ -141,27 +69,21 @@ export default function UserInvoice() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>ASC </td>
+                    <td>ASC certification</td>
                     <td>
-                      <i className="fas fa-dollar-sign"></i> 500,00
+                      <i className="fas fa-dollar-sign"></i> 850.00
                     </td>
                   </tr>
                   <tr>
-                    <td>JBL Speaker</td>
+                    <td>SAM renewal</td>
                     <td>
-                      <i className="fas fa-dollar-sign"></i> 300,00
+                      <i className="fas fa-dollar-sign"></i> 300.00
                     </td>
                   </tr>
                   <tr>
-                    <td>Macbook Air</td>
+                    <td>Q3 sanitation check</td>
                     <td>
-                      <i className="fas fa-dollar-sign"></i> 1000,00
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Iphone 11 PRO</td>
-                    <td>
-                      <i className="fas fa-dollar-sign"></i> 5000,00
+                      <i className="fas fa-dollar-sign"></i> 500.00
                     </td>
                   </tr>
                 </tbody>
@@ -171,9 +93,9 @@ export default function UserInvoice() {
               <div className="col-xl-8">
                 <ul className="list-unstyled float-end me-0">
                   <li>
-                    <span className="me-3 float-start">
+                    {/* <span className="me-3 float-start">
                       Total Amount: {company.balanceValue}
-                    </span>
+                    </span> */}
                     <i className="fas fa-dollar-sign"></i>
                   </li>
                 </ul>
@@ -193,7 +115,7 @@ export default function UserInvoice() {
                 >
                   Total:
                   <span>
-                    <i className="fas fa-dollar-sign"></i> 6350,00
+                    <i className="fas fa-dollar-sign"></i> 1,650.00
                   </span>
                 </p>
               </div>
@@ -201,7 +123,7 @@ export default function UserInvoice() {
 
             <div className="row mt-2 mb-5">
               <p className="fw-bold">
-                Date: <span className="text-muted">23 June 20221</span>
+                Date: <span className="text-muted">November 23rd, 2025</span>
               </p>
               <p className="fw-bold mt-3">Signature:</p>
             </div>

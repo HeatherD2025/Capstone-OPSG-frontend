@@ -7,14 +7,16 @@ const adminApi = api.injectEndpoints({
         url: `/admin/users`,
         method: "GET",
       }),
+      transformResponse: (response) => response.data,
       providesTags: ["User"],
     }),
 
     getUserById: build.query({
-      query: (term) => ({
+      query: (userId) => ({
        url: `admin/users/${userId}`,
        method: "GET",
       }),
+      transformResponse: (response) => response.data,
       providesTags: ["User"],
     }),
 
@@ -24,6 +26,7 @@ const adminApi = api.injectEndpoints({
         method: "GET",
         params: { term },
       }),
+      transformResponse: (response) => response.data,
     }),
 
 
@@ -33,8 +36,8 @@ const adminApi = api.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: ["User"],
+      transformResponse: (response) => response.data,
     }),
-
   }),
 });
 
@@ -44,5 +47,3 @@ export const {
   useSearchUsersQuery,
   useDeleteUserByIdMutation,
 } = adminApi;
-
-// export default adminApi;
