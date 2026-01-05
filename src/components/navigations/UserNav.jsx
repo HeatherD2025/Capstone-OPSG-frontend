@@ -39,7 +39,12 @@ const UserNav = (props) => {
 
             <li className="list-item">
               <i className="bi bi-house"></i>
-              <Link to="/">Home</Link>
+              <Link to="/">OPSG Home</Link>
+            </li>
+
+            <li className="list-item">
+              <i className="bi bi-house"></i>
+              <Link to="/user/dashboard">Dashboard</Link>
             </li>
 
             <li className="list-item">

@@ -17,7 +17,7 @@ import {
   useGetAllUsersQuery,
 } from "../../../features/api/adminApi";
 
-export default function AdminSearch() {
+export default function AdminSearch({ onSelectUser }) {
   const navigate = useNavigate();
 
   const [term, setTerm] = useState("");
@@ -150,7 +150,7 @@ export default function AdminSearch() {
                           variant="secondary"
                           className="button3"
                           type="button"
-                          onClick={() => navigate(`/user/${user.id}`)}
+                          onClick={() => onSelectUser(user)}
                           style={{
                             width: "160px",
                             fontSize: "12px",

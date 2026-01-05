@@ -1,26 +1,19 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi";
 import { faker } from "@faker-js/faker";
 
 export default function useCompanyName(userResponse) {
   const user = userResponse?.data || userResponse;
-  const qbId = user?.qbId || null;
+  const qbId = user?.qbId;
 
-  const rawName = faker.company.name();
-  const fakeCompany = {
-    name: rawName
-      .split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" "),
-    email: faker.internet.email(undefined, undefined, "example.com"),
-    source: "faker-demo",
-  };
+  const {
+    data: qbData,
+    isLoading: qbLoading,
+    error: qbError,
+  } = useGetCustomerObjectQuery(qbId, {
+    skip: !qbId,
+  });
 
-  const [ company, setCompany ] = useState(null);
-  const [ isLoading, setIsLoading ] = useState(!!qbId);
-  const [ error, setError] = useState(null);
-
-  const { data: qbData, isLoading: qbLoading, error: qbError } = 
-    useGetCustomerObjectQuery(qbId, {skip: !qbId});
-    
   // normalizer functions for qb and user data
   function normalizeQB(data) {
     const customerArray = data?.QueryResponse?.Customer;
@@ -45,29 +38,29 @@ export default function useCompanyName(userResponse) {
     };
   };
 
-  useEffect(() => {
-    setIsLoading(qbLoading);
+  // stable faker fallback if no qb or db data
+  const fakeCompany = useMemo(() => {
+    const rawName = faker.company.name();
+    return {
+      name: rawName
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" "),
+      email: faker.internet.email(undefined, undefined, "example.com"),
+      source: "faker-demo",
+    };
+  }, []);
 
-  const qbCompany = normalizeQB(qbData);
-  const dbCompany =  normalizeUserCompany(user);
-  
-  if (qbCompany) {
-    setCompany(qbCompany);
-    setError(null);
-  } else if (dbCompany) {
-    setCompany(dbCompany);
-    setError(null);
-  } else {
-    setCompany(fakeCompany);
-    setError(qbError || null);
-  }
-
-  setIsLoading(false);
-}, [qbData, qbLoading, qbError, user]);
+  // choose final company source
+  const company = useMemo(() => {
+    return normalizeQB(qbData) || normalizeUserCompany(user) || fakeCompany;
+  }, [qbData, user, fakeCompany]);
 
   return {
     company,
-    isLoading,
-    error
+    isLoading: qbLoading,
+    error: qbError,
   };
 }

@@ -70,12 +70,13 @@ export default function NavBar() {
         }}
       >
         <div className="container-fluid" style={{ display: "contents" }}>
+
           <div className="navbar-header">
             <div
               className="navLogoWrapper"
               style={{
                 display: "flex",
-                marginLeft: "1vw",
+                marginLeft: "5rem",
                 fontWeight: "200",
                 fontSize: "clamp(12px, 3vw, 20px)",
                 flexDirection: "column",
@@ -103,7 +104,7 @@ export default function NavBar() {
               flexDirection: "row",
               flexWrap: "noWrap",
               gap: "clamp(1vw, 8vw, 8vw)",
-              fontSize: "clamp(1.25vw, 10vw, 10px)",
+              fontSize: "clamp(12px, 10vw, 14px)",
             }}
           >
             <ListGroup.Item
@@ -160,91 +161,96 @@ export default function NavBar() {
             )}
           </ListGroup>
 
-          <div className="mobileButtonWrapper">
-            <ListGroup
-              className="nav mobileButtonWrapper"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                position: "anchor-right",
-              }}
-            >
-              <ListGroup.Item
-                style={{
-                  border: "solid var(--bs-body-bg)",
-                }}
-              >
-                <span
+
+
+            <div className="mobileButtonWrapper">
+                <ListGroup
+                  className="nav mobileButtonWrapper"
                   style={{
-                    marginRight: "15px",
-                    border: "solid var(--bs-body-bg)",
+                    display: "flex",
+                    flexDirection: "row",
+                    position: "anchor-right",
                   }}
                 >
-                  {token ? (
-                    <ReactiveButton
-                      onClick={handleLogout}
-                      rounded
-                      idleText={"LOGOUT"}
-                      type="button"
-                      variant="secondary"
-                      navigate="/"
+                  <ListGroup.Item
+                    style={{
+                      border: "solid var(--bs-body-bg)",
+                    }}
+                  >
+                    <span
                       style={{
-                        width: "80px",
-                        backgroundColor: "#558e89",
-                        fontSize: "12px",
+                        border: "solid var(--bs-body-bg)",
                       }}
                     >
-                      {isLoggedIn}
-                    </ReactiveButton>
-                  ) : (
-                    <ReactiveButton
-                      rounded
-                      idleText={"LOGIN"}
-                      type="button"
-                      variant="secondary"
-                      style={{
-                        marginRight: "5px",
-                        backgroundColor: "#558e89",
-                        fontSize: "12px",
-                      }}
-                      className="navbar-right"
-                      onClick={() => navigate("/login")}
-                    >
-                      {isLoggedIn}
-                    </ReactiveButton>
-                  )}
-                </span>
-              </ListGroup.Item>
-              <ListGroup.Item
-                style={{
-                  border: "solid var(--bs-body-bg)",
-                }}
-              >
-                <span>
-                  {token ? (
-                    <button
-                      className="nav-link"
-                      href="/"
-                      variant="secondary"
-                    ></button>
-                  ) : (
-                    <ReactiveButton
-                      className="btn"
-                      rounded
-                      idleText={"REGISTER"}
-                      type="button"
-                      style={{
-                        backgroundColor: "#558e89",
-                        fontSize: "12px",
-                      }}
-                      // className="button"
-                      onClick={() => navigate("/register")}
-                    ></ReactiveButton>
-                  )}
-                </span>
-              </ListGroup.Item>
-            </ListGroup>
-          </div>
+                      {token ? (
+                        <ReactiveButton
+                          onClick={handleLogout}
+                          rounded
+                          idleText={"LOGOUT"}
+                          type="button"
+                          variant="secondary"
+                          navigate="/"
+                          style={{
+                            width: "8rem",
+                            backgroundColor: "#558e89",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {isLoggedIn}
+                        </ReactiveButton>
+                      ) : (
+                        <ReactiveButton
+                          rounded
+                          idleText={"LOGIN"}
+                          type="button"
+                          variant="secondary"
+                          style={{
+                            marginRight: "5px",
+                            width: "8rem",
+                            backgroundColor: "#558e89",
+                            fontSize: "12px",
+                          }}
+                          onClick={() => navigate("/login")}
+                        >
+                          {isLoggedIn}
+                        </ReactiveButton>
+                      )}
+                    </span>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item
+                    style={{
+                      border: "solid var(--bs-body-bg)",
+                    }}
+                  >
+                    <span>
+                      {token ? (
+                        <button
+                          className="nav-link"
+                          href="/"
+                          variant="secondary"
+                        ></button>
+                      ) : (
+                        <ReactiveButton
+                          rounded
+                          idleText={"REGISTER"}
+                          type="button"
+                          style={{
+                            backgroundColor: "#558e89",
+                            width: "8rem",
+                            fontSize: "12px",
+                            marginRight: "5rem",
+                          }}
+                          // className="button"
+                          onClick={() => navigate("/register")}
+                        ></ReactiveButton>
+                      )}
+                    </span>
+                  </ListGroup.Item>
+                </ListGroup>
+            </div>
+            
+
         </div>
       </nav>
     </header>

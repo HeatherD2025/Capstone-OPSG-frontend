@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-
 import { Button } from "bootstrap";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
 import ProfileHeader from "../ProfileHeader";
-// import AdminHeader from "./AdminHeader";
+import AdminNav from "../../navigations/AdminNav";
 
-export default function EditUserProfile() {
-  const navigate = useNavigate();
+// export default function AdminViewUserProfile({ user, onReturnToResults}) {
+  export default function AdminViewUserProfile({ onReturnToResults}) {
   const { userId } = useParams();
-  const { data: user, error, isLoading, refetch } = useGetUserByIdQuery(userId);
+  const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
 
@@ -103,6 +102,7 @@ export default function EditUserProfile() {
 
   return (
     <>
+     <AdminNav />
       <ProfileHeader />
       <div
         style={{ paddingTop: "60px" }}

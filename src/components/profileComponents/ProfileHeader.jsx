@@ -14,17 +14,19 @@ export default function ProfileHeader() {
   } = useGetCurrentUserQuery();
 
   const { isAdmin } = useSelector((state) => state.auth);
-  const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
-
-  if (userLoading) return <p>Loading user data</p>;
-  if (userError) return <p>Failed to load user data</p>;
-  if (!user) return <p>No user found</p>;
 
   const {
     company,
     isLoading: companyLoading,
     error: companyError,
   } = useCompanyName(user);
+
+  const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
+  const companyNameCalled = isAdmin? " " : `${company.name}`;
+
+  if (userLoading) return <p>Loading user data</p>;
+  if (userError) return <p>Failed to load user data</p>;
+  if (!user) return <p>No user found</p>;
 
   if (companyLoading) return (
       <div className="profileHeader">
@@ -58,7 +60,7 @@ export default function ProfileHeader() {
                   Welcome {user.firstName} {user.lastName}!
                 </p>
                 {company ? (
-                  <p>{company.name}</p> 
+                  <p>{companyNameCalled}</p> 
                 ) : (
                   <p>No company found</p>
                 )}
