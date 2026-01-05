@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, Row, Col, Container } from "react-bootstrap";
 import flipChart from "../../assets/img/flipChart.png";
+import "../../styles/app.css"
 
 const ConsultingCards = () => {
   const cardData = [
@@ -55,10 +56,8 @@ const ConsultingCards = () => {
             className="mb-4 d-flex justify-content-center"
           >
             <Card
-                className="info-card flex-grow-1"
+                className="infoCard flex-grow-1"
                 style={{ backgroundColor: "#79cbbb",
-                minHeight: "30%",
-                maxWidth: "clamp(200px, 40vw, 300px)",
                 maxHeight: "50vh",
                 zIndex: "1",
                  }}
@@ -72,9 +71,10 @@ const ConsultingCards = () => {
                       width: "25%",
                       paddingBottom: "5vh",
                       paddingTop: "4.7vh",
+                      fontSize: "20px",
                     }}
                   />
-                  <Card.Title>{card.title}</Card.Title>
+                  <Card.Title className="homeCards">{card.title}</Card.Title>
                 </CardBody>
               </Card>
           </Col>

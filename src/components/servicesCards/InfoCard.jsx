@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import "../../styles/app.css"
 
 /**
  * @param {string} bg - bootstrap color variable
@@ -21,13 +22,13 @@ function InfoCard({
 }) {
   return (
     <Card
-      className="info-card w-60 h-100"
+      className="infoCard w-60 h-100"
       style={{ width: "18rem", backgroundColor: "#79cbbb" }}
     >
       <Card.Body>
         { image && <Card.Img {...image} /> }
-        { title && <Card.Title>{title}</Card.Title>}
-        { subtitle && <Card.Subtitle className="mb-2 text-muted">{subtitle}</Card.Subtitle> }
+        { title && <Card.Title className="homeCards">{title}</Card.Title>}
+        { subtitle && <Card.Subtitle className="mb-2 text-muted homeCardsSubtitle">{subtitle}</Card.Subtitle> }
         { text && <Card.Text>{text}</Card.Text>}
         {children}
         { link && <Card.Link href={link}>{linkHint}</Card.Link>}

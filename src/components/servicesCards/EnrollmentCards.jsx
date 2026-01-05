@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, Row, Col, Container } from "react-bootstrap";
 import pen from "../../assets/img/pen.png";
+import "../../styles/app.css"
 
 const EnrollmentCards = () => {
   const cardData = [
@@ -56,7 +57,7 @@ const EnrollmentCards = () => {
             className="mb-4 d-flex justify-content-center"
           >
             <Card
-                className="info-card flex-grow-1"
+                className="infoCard flex-grow-1"
                 style={{ backgroundColor: "#79cbbb",
                 minHeight: "30%",
                 maxWidth: "clamp(200px, 40vw, 300px)",
@@ -75,7 +76,7 @@ const EnrollmentCards = () => {
                       paddingTop: "4.7vh",
                     }}
                   />
-                  <Card.Title>{card.title}</Card.Title>
+                  <Card.Title className="homeCards">{card.title}</Card.Title>
                 </CardBody>
               </Card>
           </Col>

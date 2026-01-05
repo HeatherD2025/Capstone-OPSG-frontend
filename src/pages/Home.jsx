@@ -55,6 +55,7 @@ const Home = () => {
 
             <div className="logoHeaderContainer">
 
+              <div className="logoAndSubtextContainer">
                 <div className="logoContainer">
                   <img
                     src={opsgLogo}
@@ -76,7 +77,7 @@ const Home = () => {
                           <div>Consulting</div>
                         </div>
                   </Col>
-
+              </div>
                 
                 <div className="introTextContainer">
                   {/* animate fade in going down */}
@@ -105,7 +106,7 @@ const Home = () => {
                 </div>
 
               </div>
-
+            <div className="mainImageContainer">
               <img
                 className="mainImage"
                 src={nurseSmiling}
@@ -114,6 +115,7 @@ const Home = () => {
                 alt="Nurse smiling"
                 loading="lazy"
               />
+            </div>
 
           </div>
 
@@ -128,35 +130,20 @@ const Home = () => {
                   justifyContent: "center",
                 }}
               >
-                <h3
-                  className="centeredCounter"
-                  style={{
-                    fontSize: "clamp(4.5vw, 6px, 2vw)",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    fontFamily: "arial",
-                    color: "#558e89",
-                    opacity: "100%",
-                    fontWeight: "200",
-                    lineHeight: "var(--bs-body-line-height)",
-                    zIndex: "2",
-                  }}
-                >
+                <p className="centeredCounter">
                   Trusted by over <AnimationCountUp loading="lazy" from={0} to={50} />{" "}
                   Hospitals, providers, and practicioners nationwide
-                </h3>
+                </p>
 
                 <img
                   className="usMap"
                   src={usaMap}
                   alt="United States map"
-                  style={{
-                    opacity: "18%",
-                    width: "80%",
-                    transform: "translate(4%, 10%)",
-                  }}
+                  // style={{
+                  //   opacity: "18%",
+                  //   width: "80%",
+                  //   transform: "translate(4%, 10%)",
+                  // }}
                 ></img>
               </div>
             </div>

@@ -78,7 +78,7 @@ export default function NavBar() {
                 display: "flex",
                 marginLeft: "5rem",
                 fontWeight: "200",
-                fontSize: "clamp(12px, 3vw, 20px)",
+                fontSize: "clamp(12px, 20px, 20px)",
                 flexDirection: "column",
                 flexWrap: "wrap",
                 alignItems: "center",
@@ -89,8 +89,8 @@ export default function NavBar() {
                 alt="OPSG logo"
                 className="rounded-circle usr-image2 nav navbar-nav"
                 style={{
-                  width: "clamp(35px, 1vw, 10px)",
-                  height: "clamp(35px, 1vw, 10px)",
+                  width: "clamp(35px, 10px, 10px)",
+                  height: "clamp(35px, 1px, 10px)",
                 }}
               ></img>
               <div>OnPoint</div>
@@ -104,7 +104,7 @@ export default function NavBar() {
               flexDirection: "row",
               flexWrap: "noWrap",
               gap: "clamp(1vw, 8vw, 8vw)",
-              fontSize: "clamp(12px, 10vw, 14px)",
+              fontSize: "clamp(12px, 16px, 16px)",
             }}
           >
             <ListGroup.Item
@@ -193,7 +193,8 @@ export default function NavBar() {
                           style={{
                             width: "8rem",
                             backgroundColor: "#558e89",
-                            fontSize: "12px",
+                            fontSize: "clamp(12px, 16px, 16px)",
+                            fontWeight: "200",
                           }}
                         >
                           {isLoggedIn}
@@ -208,7 +209,8 @@ export default function NavBar() {
                             marginRight: "5px",
                             width: "8rem",
                             backgroundColor: "#558e89",
-                            fontSize: "12px",
+                            fontSize: "clamp(12px, 16px, 16px)",
+                            fontWeight: "200",
                           }}
                           onClick={() => navigate("/login")}
                         >
@@ -238,7 +240,8 @@ export default function NavBar() {
                           style={{
                             backgroundColor: "#558e89",
                             width: "8rem",
-                            fontSize: "12px",
+                            fontSize: "clamp(12px, 16px, 16px)",
+                            fontWeight: "200",
                             marginRight: "5rem",
                           }}
                           // className="button"

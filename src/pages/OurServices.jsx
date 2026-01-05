@@ -45,8 +45,8 @@ const ourServices = () => {
               md="auto"
               style={{
                 margin: "auto",
-                paddingTop: "1.5em",
-                fontSize: "5vw",
+                paddingTop: "8rem",
+                fontSize: "60px",
                 paddingBottom: "2vw",
                 color: "#558e89",
               }}
@@ -56,32 +56,22 @@ const ourServices = () => {
           </Row>
         </motion.div>
       </Container>
-      {/* <div
-                className="display-1 row"
-                md="auto"
-                style={{
-                  fontSize: "2vw",
-                  fontWeight: "200",
-                  width: "80vw",
-                  paddingBottom: "6vw",
-                }}
-              > */}
       <div
         className="whyContainer"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "20px",
+          padding: "3rem 0rem 5rem 0rem",
         }}
       >
         <div
           className="whyParasBox"
           style={{
-            margin: "2vw",
-            maxWidth: "600px",
+            margin: "2rem 6rem 0rem 0rem",
+            maxWidth: "900px",
             fontWeight: "200",
-            fontSize: "1.6vw",
+            fontSize: "20px",
           }}
         >
           <p>
@@ -120,53 +110,59 @@ const ourServices = () => {
 
       {/* Credentials Section */}
       <Container className="py-5 justify-content-center">
-        <h2 className="text-center cardheader">Credentials</h2>
-        <h3
-          className="text-center mb-4 mx-auto cardPara"
-          style={{
-            paddingBottom: "5vw",
-            fontWeight: "200",
-            fontSize: "2vw",
-            maxWidth: "60%",
-          }}
-        >
-          Recredentialing, Applications and License Renewals
-        </h3>
+        <p className="text-center cardheader"
+          style={{fontSize: "40px"}}
+        >Credentials</p>
+          <p
+            className="text-center mb-4 mx-auto cardPara"
+            style={{
+              paddingBottom: "5vw",
+              fontWeight: "200",
+              fontSize: "20px",
+              maxWidth: "60%",
+            }}
+          >
+            Recredentialing, Applications and License Renewals
+          </p>
         <CredentialsCards />
       </Container>
 
       {/* Enrollment Section */}
       <Container className="py-5">
-        <h2 className="text-center cardheader">Enrollment</h2>
-        <h3
-          className="text-center mb-4 mx-auto cardPara"
-          style={{
-            paddingBottom: "5vw",
-            fontWeight: "200",
-            fontSize: "2vw",
-            maxWidth: "60%",
-          }}
-        >
-          Medicare Opt-Out, Group Providers and Individual Providers Serving
-          Commercial and Government Payers
-        </h3>
+        <p className="text-center cardheader"
+           style={{fontSize: "40px"}}
+        >Enrollment</p>
+          <p
+            className="text-center mb-4 mx-auto cardPara"
+            style={{
+              paddingBottom: "5vw",
+              fontWeight: "200",
+              fontSize: "20px",
+              maxWidth: "60%",
+            }}
+          >
+            Medicare Opt-Out, Group Providers and Individual Providers Serving
+            Commercial and Government Payers
+          </p>
         <EnrollmentCards />
       </Container>
 
       {/* Consulting Section */}
       <Container className="py-5">
-        <h2 className="text-center cardheader">Consulting</h2>
-        <h3
-          className="text-center mb-4 mx-auto cardPara"
-          style={{
-            paddingBottom: "5vw",
-            fontWeight: "200",
-            fontSize: "2vw",
-            maxWidth: "60%",
-          }}
-        >
-          Development Planning Assessing Compliance, Risk, and Opportunities
-        </h3>
+        <p className="text-center cardheader"
+           style={{fontSize: "40px"}}
+        >Consulting</p>
+          <p
+            className="text-center mb-4 mx-auto cardPara"
+            style={{
+              paddingBottom: "5vw",
+              fontWeight: "200",
+              fontSize: "20px",
+              maxWidth: "60%",
+            }}
+          >
+            Development Planning Assessing Compliance, Risk, and Opportunities
+          </p>
         <ConsultingCards />
       </Container>
       <Footer />

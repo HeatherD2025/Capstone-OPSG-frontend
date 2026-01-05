@@ -12,13 +12,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.info-card {
+.infoCard {
   background-color: #79cbbb !important;
   transition: transform 0.25s ease-in-out;
   transform-origin: center center;
   z-index: 1;
 }
-.info-card:hover {
+.infoCard:hover {
   transform: scale(1.25) !important;
   z-index: 10;
 }
@@ -35,7 +35,7 @@
     justify-content: center;
   }
 
-  .info-card {
+  .infoCard {
     background-color: #79cbbb !important;
     transition: transform 0.25s ease-in-out;
     transform-origin: center center;
@@ -54,10 +54,10 @@
 @media (min-device-width: 768px) {
   /* CSS styles for desktop devices (screens larger than 768px) */
   /* Example: Larger font size, different layout, etc. */
-  .homeInfoCards {
+  .infoCards {
     gap: 3vw;
   }
-  .info-card {
+  .infoCard {
     background-color: #79cbbb !important;
     transition: transform 0.25s ease-in-out;
     transform-origin: center center;

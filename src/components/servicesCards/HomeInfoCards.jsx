@@ -3,6 +3,7 @@ import { Card, CardBody } from "react-bootstrap";
 import stethoscope from "../../assets/img/stethoscope.png";
 import certificate from "../../assets/img/certificate.png";
 import medicalBag from "../../assets/img/medicalBag.png";
+import "../../styles/app.css"
 
 const HomeInfoCards = () => {
   const cardData = [
@@ -36,14 +37,14 @@ const HomeInfoCards = () => {
       {cardData.map((card, index) => (
         <Card
           key={index}
-          className="info-card"
+          className="infoCards"
           style={{ backgroundColor: "#79cbbb", margin: "3vw", zIndex: "1", }}
         >
           <CardBody
             style={{
               display: "flex",
               flexDirection: "column",
-              maxWidth: "270px",
+              width: "20rem",
             }}
           >
             <Card.Img
@@ -57,18 +58,13 @@ const HomeInfoCards = () => {
                 paddingTop: "2.5vh",
               }}
             />
-            <Card.Title
-              style={{
-                display: "block",
-                paddingBottom: "1em",
-              }}
-            >
+            <Card.Title className="homeCards">
               {card.title}
             </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Subtitle className="mb-2 text-muted homeCardsSubtitle">
               {card.subtitle}
             </Card.Subtitle>
-            <Card.Text style={{ paddingBottom: "2vh" }}>{card.text}</Card.Text>
+            <Card.Text className="homeCardsText" style={{ paddingBottom: "2vh" }}>{card.text}</Card.Text>
             {card.link && (
               <Card.Link href={card.link}>{card.linkHint}</Card.Link>
             )}

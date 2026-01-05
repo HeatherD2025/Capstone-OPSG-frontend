@@ -17,7 +17,8 @@
 @media (max-width: 600px) {
   /* CSS styles for mobile devices (screens 768px and smaller) */
   /* Example: Smaller font size, different layout, etc. */
-  body {
+  .body {
+    margin: 0rem 5rem 0rem 5rem;
   }
   .logoContainer {
     display: flex;
@@ -25,8 +26,11 @@
     width: auto;
     padding-top: 18vh;
     align-items: center;
+    order: 1;
   }
-
+  .opsgName {
+   font-size: clamp(14px, 30px, 30px);
+  }
   .backgroundAccent {
     background-color: #e5fffd;
     height: 85vh;
@@ -44,23 +48,37 @@
   .secondaryHeaderBox > * {
     border-radius: 1vw;
   }
-
+  .introTextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 1rem 0rem 2rem;
+    order: 2;
+  }
+  .introTextFirstLine {
+    color: #558e89;
+    font-weight: 200;
+    font-size: 60px;
+    margin: 6rem 0rem 2rem 0rem;
+  }
+  .introTextSecondLine {
+    display: flex;
+    justify-content: center;
+    font-weight: 200;
+    font-size: 60px;
+    margin: 0rem 0rem 2rem 2rem;
+  }
   .mainImage {
     display: flex;
-    height: 60vw;
-    /* width: auto;
-
-        border-color: solid black 10px;
-        display: contents; */
+    max-height: 60vw;
+    flex-shrink: 1;
+    order: 3;
   }
 }
 
 @media (min-device-width: 768px) {
   /* CSS styles for desktop devices (screens larger than 768px) */
   /* Example: Larger font size, different layout, etc. */
-  body {
-    background-image: url("nurseSmiling.jpg");
-  }
 
   .introContainer {
     display: flex;
@@ -75,19 +93,26 @@
     width: 50vw;
     height: 40vh;
     align-items: center;
+    margin: 0rem 1rem 0rem 1rem;
+  }
+  .logoAndSubtextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .logoContainer {
     display: flex;
     flex-direction: row;
-    font-size: clamp(10px, 2vw, 50px);
     font-weight: 200;
     align-items: center;
     margin-top: 8vh;
     flex-shrink: 1;
   }
   .opsgName {
+    font-size: clamp(14px, 40px, 40px);
     font-weight: 200;
+    flex-wrap: nowrap;
   }
 
   .backgroundAccent {
@@ -99,7 +124,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 1em;
-    font-size: 20px;
+    font-size: clamp(12px, 16px, 16px);
   }
 
   .secondaryHeaderBox > * {
@@ -116,28 +141,73 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 1rem 0rem 5rem;
+    margin: 2rem 1rem 0rem 1rem;
   }
+
   .introTextFirstLine {
     color: #558e89;
     font-weight: 200;
-    font-size: 4rem;
+    font-size: clamp (30px, 60px, 60px);
     margin: 6rem 0rem 2rem 0rem;
   }
   .introTextSecondLine {
+    display: flex;
+    justify-content: center;
     font-weight: 200;
-    font-size: 4rem;
+    font-size: clamp (30px, 60px, 60px);
+    margin: 0rem 0rem 2rem 2rem;
+  }
+  .mainImageContainer {
+    width: 45rem;
+    margin-right: 5rem;
   }
   .mainImage {
-    height: 70vh;
+    width: 100%;
+    height: auto;
     border-radius: 2%;
     filter: drop-shadow(8px 8px 10px gray);
-    margin-right: 3vw;
+  }
+  .counterWrapperContainer {
+    width: auto;
+  }
+  .centeredCounter {
+    font-size: clamp(20px, 60px, 60px);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: #558e89;
+    font-weight: 200;
+    line-height: var(--bs-body-line-height);
+    z-index: 2;
+  }
+  .usMap {
+    width: 100%;
+    height: auto;
+    opacity: 8%;
+    width: 60rem;
+    transform: translate(-6%, 10%);
   }
   .cardsContainer {
     margin-bottom: 4rem;
+    max-width: 100rem;
   }
-
+  .infoCards {
+    display: flex;
+    flex-direction: row;
+  }
+  .homeCards {
+    width: 100%;
+    height: auto
+  }
+  .homeCardsSubtitle {
+    font-size: clamp(12px, 20px, 20px);
+    font-weight: 200;
+  }
+  .homeCardsText {
+    font-size: clamp(12px, 16px, 16px);
+    font-weight: 200;
+  }
   .edit-profile {
     margin: 0rem 5rem 5rem 10rem;
     padding: 0rem 10rem 5rem 10rem;
