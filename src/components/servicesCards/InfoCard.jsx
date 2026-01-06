@@ -23,7 +23,6 @@ function InfoCard({
   return (
     <Card
       className="infoCard w-60 h-100"
-      style={{ width: "18rem", backgroundColor: "#79cbbb" }}
     >
       <Card.Body>
         { image && <Card.Img {...image} /> }

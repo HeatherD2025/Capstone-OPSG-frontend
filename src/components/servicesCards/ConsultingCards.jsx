@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardBody, Row, Col, Container } from "react-bootstrap";
 import flipChart from "../../assets/img/flipChart.png";
-import "../../styles/app.css"
+import "../../styles/app.css";
+import "../../styles/home.css";
 
 const ConsultingCards = () => {
   const cardData = [
@@ -9,37 +10,37 @@ const ConsultingCards = () => {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Staff bylaws, policies and procedures",
+      subtitle: "Staff bylaws, policies and procedures",
     },
     {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Criteria-based privledging",
+      subtitle: "Criteria-based privledging",
     },
     {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Regulatory and accrediation compliance",
+      subtitle: "Regulatory and accrediation compliance",
     },
     {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Peer review of FPPE/OPPE",
+      subtitle: "Peer review of FPPE/OPPE",
     },
     {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Credential file audit",
+      subtitle: "Credential file audit",
     },
     {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      title: "Staff department core functions",
+      subtitle: "Staff department core functions",
     },
   ];
   return (
@@ -54,15 +55,35 @@ const ConsultingCards = () => {
             lg={4}     // Ensures 3 cards per row on large screens
             xl={4}     // Ensures 3 cards per row on extra large screens
             className="mb-4 d-flex justify-content-center"
+            style={{ 
+              minHeight: "30%",
+              maxWidth: "700%",
+            }}
           >
             <Card
                 className="infoCard flex-grow-1"
-                style={{ backgroundColor: "#79cbbb",
-                maxHeight: "50vh",
-                zIndex: "1",
-                 }}
               >
-                <CardBody className="d-flex flex-column align-items-center text-center">
+                <CardBody>
+                  <Card.Img
+                    src={card.src}
+                    alt={card.alt}
+                  />
+                  <Card.Title>
+                    {card.title}
+                  </Card.Title>
+                                              
+                  <Card.Subtitle className="text-muted">
+                    {card.subtitle}
+                  </Card.Subtitle>
+                                              
+                  <Card.Text style={{ paddingBottom: "2vh" }}>{card.text}</Card.Text>
+                                              
+                   {card.link && (
+                  <Card.Link href={card.link}>{card.linkHint}</Card.Link>
+                  )}
+                                              
+                 </CardBody>
+                {/* <CardBody className="d-flex flex-column align-items-center text-center">
                   <Card.Img 
                     src={card.src} 
                     alt={card.alt} 
@@ -75,7 +96,7 @@ const ConsultingCards = () => {
                     }}
                   />
                   <Card.Title className="homeCards">{card.title}</Card.Title>
-                </CardBody>
+                </CardBody> */}
               </Card>
           </Col>
         ))}

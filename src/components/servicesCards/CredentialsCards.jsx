@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardBody, Row, Col, Container } from "react-bootstrap";
 import certificate from "../../assets/img/certificate.png";
-import "../../styles/app.css"
+import "../../styles/app.css";
+import "../../styles/home.css";
 
 const CredentialsCards = () => {
   const cardData = [
@@ -9,19 +10,19 @@ const CredentialsCards = () => {
       src: certificate,
       alt: "certificate",
       className: "homeCards",
-      title: "Healthcare Facilites",
+      subtitle: "Healthcare Facilites",
     },
     {
       src: certificate,
       alt: "certificate",
       className: "homeCards",
-      title: "ASC",
+      subtitle: "ASC",
     },
     {
       src: certificate,
       alt: "certificate",
       className: "homeCards",
-      title: "Staffing Agencies",
+      subtitle: "Staffing Agencies",
     },
   ];
 
@@ -29,7 +30,7 @@ const CredentialsCards = () => {
  <Container fluid> {/* Changed to fluid to avoid container padding */}
       <Row className="justify-content-center g-1">
         {cardData.map((card, index) => (
-          <Col 
+          <Col
             key={index} 
             xs={12}    // Full width on extra small screens
             sm={6}     // 2 cards per row on small screens
@@ -44,14 +45,8 @@ const CredentialsCards = () => {
           >
             <Card
                 className="infoCard flex-grow-1"
-                style={{ backgroundColor: "#79cbbb",
-                minHeight: "30%",
-                maxWidth: "clamp(200px, 300px, 300px)",
-                maxHeight: "50vh",
-                zIndex: "1",
-                 }}
               >
-                <CardBody className="d-flex flex-column align-items-center text-center">
+                {/* <CardBody className="d-flex flex-column align-items-center text-center">
                   <Card.Img 
                     src={card.src} 
                     alt={card.alt} 
@@ -63,7 +58,27 @@ const CredentialsCards = () => {
                     }}
                   />
                   <Card.Title className="homeCards">{card.title}</Card.Title>
-                </CardBody>
+                </CardBody> */}
+              <CardBody>
+                 <Card.Img
+                   src={card.src}
+                   alt={card.alt}
+                 />
+                 <Card.Title>
+                   {card.title}
+                 </Card.Title>
+                                
+                 <Card.Subtitle className="text-muted">
+                    {card.subtitle}
+                  </Card.Subtitle>
+                                
+                   <Card.Text style={{ paddingBottom: "2vh" }}>{card.text}</Card.Text>
+                                
+                   {card.link && (
+                    <Card.Link href={card.link}>{card.linkHint}</Card.Link>
+                   )}
+                                
+                  </CardBody>
               </Card>
           </Col>
         ))}

@@ -17,6 +17,11 @@
   transition: transform 0.25s ease-in-out;
   transform-origin: center center;
   z-index: 1;
+  min-height: 30%;
+  max-width: clamp(22rem, 30rem, 30rem);
+  max-height: 50vh;
+  z-index: 1;
+  margin: 3rem;
 }
 .infoCard:hover {
   transform: scale(1.25) !important;
@@ -57,7 +62,7 @@
   .infoCards {
     gap: 3vw;
   }
-  .infoCard {
+  /* .infoCard {
     background-color: #79cbbb !important;
     transition: transform 0.25s ease-in-out;
     transform-origin: center center;
@@ -65,12 +70,12 @@
     display: inline-flex;
     scale: 95%;
     text-align: center;
-  }
-  .usMap {
+  } */
+  /* .usMap {
     transform: translate(38%, 0%);
     width: 55%;
     margin-bottom: 100px;
-  }
+  } */
   .footer {
     background-color: #558e89;
     color: white;

@@ -126,15 +126,8 @@
     gap: 1em;
     font-size: clamp(12px, 16px, 16px);
   }
-
   .secondaryHeaderBox > * {
     border-radius: 1vw;
-  }
-
-  .imageWrapper {
-    border-color: solid black 10px;
-    display: flex;
-    display: contents;
   }
 
   .introTextContainer {
@@ -143,19 +136,24 @@
     align-items: center;
     margin: 2rem 1rem 0rem 1rem;
   }
-
   .introTextFirstLine {
     color: #558e89;
     font-weight: 200;
-    font-size: clamp (30px, 60px, 60px);
+    font-size: clamp(30px, 60px, 60px);
     margin: 6rem 0rem 2rem 0rem;
   }
   .introTextSecondLine {
     display: flex;
     justify-content: center;
     font-weight: 200;
-    font-size: clamp (30px, 60px, 60px);
+    font-size: clamp(30px, 60px, 60px);
     margin: 0rem 0rem 2rem 2rem;
+  }
+
+  .imageWrapper {
+    border-color: solid black 10px;
+    display: flex;
+    display: contents;
   }
   .mainImageContainer {
     width: 45rem;
@@ -167,6 +165,7 @@
     border-radius: 2%;
     filter: drop-shadow(8px 8px 10px gray);
   }
+  
   .counterWrapperContainer {
     width: auto;
   }
@@ -188,25 +187,54 @@
     width: 60rem;
     transform: translate(-6%, 10%);
   }
-  .cardsContainer {
-    margin-bottom: 4rem;
-    max-width: 100rem;
-  }
-  .infoCards {
+
+  /* .cardsContainer {
+    margin: 12rem 5rem 12rem 5rem;
+    max-width: 200rem;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+  } */
+  .card-img {
+    width: 25%;
+    display: block;
+    align-self: anchor-center;
+    padding-bottom: 4vh;
+    padding-top: 2.5vh;
   }
-  .homeCards {
-    width: 100%;
-    height: auto
+  .card-body {
+    background-color: #79cbbb; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 25rem;
+    min-width: 15rem;
   }
-  .homeCardsSubtitle {
+  .card-title {
+    font-size: clamp(14px, 30px, 30px);
+    font-weight: 200;
+    margin-bottom: 2rem;
+  }
+  .card-subtitle {
     font-size: clamp(12px, 20px, 20px);
     font-weight: 200;
   }
-  .homeCardsText {
-    font-size: clamp(12px, 16px, 16px);
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: clamp(10px, 16px, 16px);
     font-weight: 200;
+    margin: 1rem 2rem 2rem 2rem;
+  }
+
+  .formCard {
+    background-color: white !important;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+    padding: 2rem;
+    max-width: 50rem;
+    margin: auto;
   }
   .edit-profile {
     margin: 0rem 5rem 5rem 10rem;

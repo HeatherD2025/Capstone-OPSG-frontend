@@ -139,27 +139,11 @@ const Home = () => {
                   className="usMap"
                   src={usaMap}
                   alt="United States map"
-                  // style={{
-                  //   opacity: "18%",
-                  //   width: "80%",
-                  //   transform: "translate(4%, 10%)",
-                  // }}
                 ></img>
               </div>
             </div>
-            <div
-              className="cardsContainer"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "space-around",
-                gap: "3vw",
-              }}
-            >
-              <div>
-                <HomeInfoCards />
-              </div>
-            </div>
+
+            <HomeInfoCards />
 
           <Footer />
 
