@@ -10,7 +10,6 @@ import InfoModal from "./Modal";
 import Footer from "./Footer";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
 import { axiosPrivate } from "../features/axios";
 import { setAuthHeader } from "../utils/tokenService";
 import { userContext } from "./navigations/ContextProvider";
@@ -118,9 +117,9 @@ const Login = () => {
                 body={response}
               />
             )}
-            <Card className="w-50 mt-5" style={{ display: "flex" }}>
-              <Card.Header>
-                <Nav variant="tabs" defaultActiveKey="/login">
+
+              <div className="loginRegisterFormContainer">
+                <Nav variant="tabs" defaultActiveKey="/login" className="loginRegisterHeader">
                   <Nav.Item>
                     <Nav.Link
                       href="/#/login"
@@ -148,9 +147,8 @@ const Login = () => {
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
-              </Card.Header>
-              <Card.Body>
-                <Form onSubmit={submit}>
+
+                <Form onSubmit={submit} className="loginRegisterForm">
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label
                       className="formLabel"
@@ -198,8 +196,7 @@ const Login = () => {
                     disabled={rtqLoading || loading}
                   />
                 </Form>
-              </Card.Body>
-            </Card>
+              </div>
           </div>
         </div>
       </div>

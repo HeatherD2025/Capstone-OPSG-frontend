@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import {
   useGetCurrentUserQuery,
   useUpdateUserProfileMutation,
-  useChangePasswordMutation
+  useChangePasswordMutation,
 } from "../../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
@@ -19,12 +19,8 @@ import UserNav from "../../navigations/UserNav";
 
 export default function EditProfile() {
   const { userId } = useParams();
-  const {
-    data: user,
-    isLoading,
-    error,
-  } = useGetCurrentUserQuery(userId);
-  console.log("USER FROM API:", user)
+  const { data: user, isLoading, error } = useGetCurrentUserQuery(userId);
+  console.log("USER FROM API:", user);
 
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
@@ -32,8 +28,15 @@ export default function EditProfile() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    company: "",
     email: "",
+    company: {
+      name: "",
+      streetAddress: "",
+      phoneNumber: "",
+      city: "",
+      state: "",
+      zip: "",
+    },
   });
 
   const [modalShow, setModalShow] = useState(false);
@@ -51,8 +54,15 @@ export default function EditProfile() {
       setFormData({
         firstName: user.firstName || "",
         lastName: user.lastName || "",
-        company: user.company?.name || "",
         email: user.email || "",
+        company: {
+          name: user.company?.name || "",
+          streetAddress: user.company?.streetAddress || "",
+          phoneNumber: user.company?.phoneNumber || "",
+          city: user.company?.city || "",
+          state: user.company?.state || "",
+          zip: user.company?.zip || "",
+        },
       });
     }
   }, [user]);
@@ -64,7 +74,6 @@ export default function EditProfile() {
       setModalHeading("Profile Updated");
       setModalBody("Your profile was updated successfully");
       setModalShow(true);
-      setEditMode(false);
     } catch (error) {
       console.error(error);
     }
@@ -132,17 +141,12 @@ export default function EditProfile() {
       <UserNav />
       <ProfileHeader />
       <div className="dark-theme">
-        <div
-          className="d-flex"
-        >
-          <div
-            className="bg-gray rounded shadow edit-profile"
-          >
+        <div className="d-flex">
+          <div className="bg-gray rounded shadow edit-profile">
             <div className="d-flex justify-content-between mb-4">
               <h2 style={{ fontSize: "14px", marginTop: "7vh" }}>
                 EDIT PROFILE
               </h2>
-
             </div>
 
             <Form onSubmit={handleSubmit}>
@@ -166,6 +170,7 @@ export default function EditProfile() {
                         }
                       />
                     </Form.Group>
+
                     <Form.Group as={Col} controlId="lastName">
                       <Form.Label
                         style={{ fontSize: "12px", paddingLeft: "3px" }}
@@ -193,11 +198,125 @@ export default function EditProfile() {
                       </Form.Label>
 
                       <Form.Control
-                        value={formData.company}
+                        value={formData.company.name}
                         onChange={(e) =>
                           setFormData((f) => ({
                             ...f,
-                            company: e.target.value,
+                            company: {
+                              ...f.company,
+                              name: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="streetAddress">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        STREET ADDRESS
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.streetAddress}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              streetAddress: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="city">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        CITY
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.city}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              city: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="state">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        STATE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.state}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              state: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="zip">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        ZIP CODE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.zip}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              zip: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="phoneNumber">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        PHONE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.phoneNumber}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              phoneNumber: e.target.value,
+                            },
                           }))
                         }
                       />
@@ -220,71 +339,68 @@ export default function EditProfile() {
                       />
                     </Form.Group>
                   </Row>
-        
-                    <Row className="align-items-end mb-3">
-                      <Col>
-                        <Form.Group controlId="password">
-                          <Form.Label
-                            style={{ fontSize: "12px", paddingLeft: "3px" }}
-                          >
-                            PASSWORD
-                          </Form.Label>
-                          <Form.Control
-                            type="password"
-                            placeholder="********"
-                          />
-                        </Form.Group>
-                      </Col>
-                      {!showPwdForm && (
-                        <Col xs="auto">
-                          <ReactiveButton
-                            onClick={() => setShowPwdForm(true)}
-                            rounded
-                            idleText="CHANGE PASSWORD"
-                            loadingText="Loading"
-                            variant="secondary"
-                            className="button3"
-                            style={{
-                              marginRight: "5px",
-                              width: "150px",
-                              fontSize: "12px",
-                              backgroundColor: "#558e89",
-                            }}
-                          />
-                        </Col>
-                      )}
-                    </Row>
 
-                    <div className="d-flex justify-content-end">
-                      <ReactiveButton
-                        type="submit"
-                        rounded
-                        idleText="SAVE CHANGES"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="button3"
-                        style={{
-                          marginRight: "18px",
-                          width: "150px",
-                          fontSize: "12px",
-                          backgroundColor: "#558e89",
-                        }}
-                      />
-                      <ReactiveButton
-                        onClick={handleCancel}
-                        rounded
-                        idleText="CANCEL CHANGES"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="button3"
-                        style={{
-                          width: "150px",
-                          fontSize: "12px",
-                          marginRight: "234px",
-                          backgroundColor: "gray",
-                        }}
-                      />
-                    </div>
+                  <Row className="align-items-end mb-3">
+                    <Col>
+                      <Form.Group controlId="password">
+                        <Form.Label
+                          style={{ fontSize: "12px", paddingLeft: "3px" }}
+                        >
+                          PASSWORD
+                        </Form.Label>
+                        <Form.Control type="password" placeholder="********" />
+                      </Form.Group>
+                    </Col>
+                    {!showPwdForm && (
+                      <Col xs="auto">
+                        <ReactiveButton
+                          onClick={() => setShowPwdForm(true)}
+                          rounded
+                          idleText="CHANGE PASSWORD"
+                          loadingText="Loading"
+                          variant="secondary"
+                          className="button3"
+                          style={{
+                            marginRight: "5px",
+                            width: "150px",
+                            fontSize: "12px",
+                            backgroundColor: "#558e89",
+                          }}
+                        />
+                      </Col>
+                    )}
+                  </Row>
+
+                  <div className="d-flex justify-content-end">
+                    <ReactiveButton
+                      type="submit"
+                      rounded
+                      idleText="SAVE CHANGES"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="button3"
+                      style={{
+                        marginRight: "18px",
+                        width: "150px",
+                        fontSize: "12px",
+                        backgroundColor: "#558e89",
+                      }}
+                    />
+                    <ReactiveButton
+                      onClick={handleCancel}
+                      rounded
+                      idleText="CANCEL CHANGES"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="button3"
+                      style={{
+                        width: "150px",
+                        fontSize: "12px",
+                        marginRight: "234px",
+                        backgroundColor: "gray",
+                      }}
+                    />
+                  </div>
                 </>
               )}
 

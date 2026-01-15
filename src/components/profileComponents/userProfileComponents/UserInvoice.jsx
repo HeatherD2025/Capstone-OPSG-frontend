@@ -1,18 +1,27 @@
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "../../navigations/UserNav.jsx";
 import "../../../styles/userElements/userDashboard.css";
+import "../../../styles/invoices.css";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
+import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
 
 export default function UserInvoice() {
-  // const { authenticated } = useContext(userContext);
-  const { company, isLoading, error } = useCompanyName();
+    const {
+    data: user,
+    isLoading: userLoading,
+    error: userError,
+  } = useGetCurrentUserQuery();
 
-  if (isLoading) return <p>Loading user invoice...</p>;
-  if (error) return <p>Error loading user invoice. Please try again later.</p>;
+  const { company, companyIsLoading, companyError } = useCompanyName();
+  
+  if (userLoading || companyIsLoading) {
+    return <p>Loading user invoice...</p>;
+  }
 
-  const streetAddress = company?.streetAddress || "123 Main St, Detroit, MI";
-  const phoneNumber = company?.phoneNumber || "555 687-9344";
-  const email = company?.email || "demo@example.com"
+  if (userError || companyError) {
+    return <p>Error loading user invoice. Please try again later.</p>;
+  }
+
 
   return (
     <>
@@ -21,13 +30,12 @@ export default function UserInvoice() {
         <UserNav />
       </div>
 
-      <div className="invoiceContainer">
-        <div className="card-header bg-black"></div>
-        <div className="card-body">
-          <div className="container">
+      <div className="mainContainer">
+
+          <div className="invoiceContainer">
             <div className="row">
               <div className="col-xl-12">
-                <i className="far fa-building text-danger fa-6x float-start"></i>
+                <i className="far fa-building fa-6x float-start"></i>
               </div>
             </div>
 
@@ -36,15 +44,14 @@ export default function UserInvoice() {
                 <ul className="list-unstyled float-end">
                   <li
                     style={{
-                      fontSize: "30px",
-                      color: "red",
+                      fontSize: "30px"
                     }}
                   >
-                    {company?.name || "Demo Company"}
+                    {user.company?.name || "Demo Company"}
                   </li>
-                  <li>{streetAddress}</li>
-                  <li>{phoneNumber}</li>
-                  <li>{email}</li>
+                  <li>{user.company?.streetAddress}</li>
+                  <li>{user.company?.phoneNumber}</li>
+                  <li>{user.company?.email}</li>
                 </ul>
               </div>
             </div>
@@ -93,9 +100,6 @@ export default function UserInvoice() {
               <div className="col-xl-8">
                 <ul className="list-unstyled float-end me-0">
                   <li>
-                    {/* <span className="me-3 float-start">
-                      Total Amount: {company.balanceValue}
-                    </span> */}
                     <i className="fas fa-dollar-sign"></i>
                   </li>
                 </ul>
@@ -125,11 +129,8 @@ export default function UserInvoice() {
               <p className="fw-bold">
                 Date: <span className="text-muted">November 23rd, 2025</span>
               </p>
-              <p className="fw-bold mt-3">Signature:</p>
             </div>
           </div>
-        </div>
-        <div className="card-footer bg-black"></div>
       </div>
     </>
   );

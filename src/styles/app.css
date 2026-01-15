@@ -187,7 +187,21 @@
     width: 60rem;
     transform: translate(-6%, 10%);
   }
+  .loginRegisterFormContainer {
+    background-color: white;
+    width: 40rem;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+    max-width: 50rem;
+    margin: auto;
+  }
+  .loginRegisterHeader {
+    background-color: rgb(234, 234, 234);
 
+  }
+  .loginRegisterForm {
+    padding: 2rem;
+  }
   /* .cardsContainer {
     margin: 12rem 5rem 12rem 5rem;
     max-width: 200rem;

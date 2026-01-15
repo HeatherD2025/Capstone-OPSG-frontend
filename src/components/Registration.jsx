@@ -11,7 +11,6 @@ import "../styles/app.css";
 import Footer from "../components/Footer";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
-import Card from "react-bootstrap/Card";
 import InfoModal from "./Modal";
 import NavBar from "../components/navigations/Navbar";
 
@@ -147,9 +146,9 @@ export default function Registration() {
             ) : (
               <></>
             )}
-            <Card className="w-50 mt-5">
-              <Card.Header>
-                <Nav variant="tabs" defaultActiveKey="/register">
+
+             <div className="loginRegisterFormContainer">
+                <Nav variant="tabs" defaultActiveKey="/register" className="loginRegisterHeader">
                   <Nav.Item>
                     <Nav.Link
                       href="/#/login"
@@ -175,9 +174,8 @@ export default function Registration() {
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
-              </Card.Header>
-              <Card.Body>
-                <Form onSubmit={submit}>
+
+                <Form onSubmit={submit} className="loginRegisterForm">
                   <Form.Group className="mb-3" controlId="formBasicCompany">
                     <Form.Label
                       style={{
@@ -299,8 +297,7 @@ export default function Registration() {
                     disabled={!!passwordError || !formData.password}
                   ></ReactiveButton>
                 </Form>
-              </Card.Body>
-            </Card>
+               </div>
           </div>
         </div>
       </div>

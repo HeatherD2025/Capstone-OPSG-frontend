@@ -1,0 +1,9 @@
+.mainContainer {
+  background-color: #393939;
+  height: 100%;
+}
+.invoiceContainer {
+    background: white;
+    width: 80rem;
+    padding: 2rem 2rem 10rem 15rem;
+}

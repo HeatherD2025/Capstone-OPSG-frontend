@@ -27,20 +27,16 @@
   margin-bottom: 0;
 }
 
-/* .text-gradient {
-  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-} */
-
 /* Cards */
 .actionCardsContainer {
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
 
 .action-cards {
-  width: 200%;
+  width: 30rem;
+  
 }
 
 .bg-dark {

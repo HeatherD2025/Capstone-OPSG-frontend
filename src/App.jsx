@@ -89,15 +89,6 @@ function App() {
         }
       />
 
-      {/* <Route
-        path="/user/me/password"
-        element={
-          <ProtectedRoute>
-            <EditProfile />
-          </ProtectedRoute>
-        }
-      /> */}
-
       <Route
         path="/profile/invoices/:userId"
         element={
