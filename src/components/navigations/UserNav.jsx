@@ -20,7 +20,6 @@ const UserNav = (props) => {
   var arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
   var crossIcon = <i className="bi bi-x-circle"></i>;
 
-
   return (
     <div>
       <div className="navWrapper">
@@ -36,7 +35,6 @@ const UserNav = (props) => {
           </Button>
 
           <ul className="list-unstyled components">
-
             <li className="list-item">
               <i className="bi bi-house"></i>
               <Link to="/">OPSG Home</Link>
@@ -49,31 +47,24 @@ const UserNav = (props) => {
 
             <li className="list-item">
               <i className="bi bi-people"></i>
-              <Link
-                to={`/profile/invoices/${user.id}`}
-              >
-                Invoices
-              </Link>
+              <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
             </li>
 
             <li className="list-item">
               <i className="bi bi-gear"></i>
-              <Link
-                to={`/user/me/updateUserProfile`}
-              >
-                Edit profile
-              </Link>
+              <Link to={`/user/me/updateUserProfile`}>Edit Profile</Link>
             </li>
 
             <li className="list-item">
               <i className="bi bi-box-arrow-left"></i>
-              <Link 
-                to="/" 
-                onClick={() =>{
+              <Link
+                to="/"
+                onClick={() => {
                   removeToken();
                   dispatch(logout());
-                }}>
-                Log out
+                }}
+              >
+                Log Out
               </Link>
             </li>
           </ul>

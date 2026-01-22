@@ -1,109 +1,76 @@
-/* Card styling */
-.infoCard {
+/* Home Cards base style */
+.homeCards {
+  background-color: #79cbbb;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  transform-origin: center;
+  height: 15rem;
+  width: 20rem;
+  margin: 2rem;
 }
 
-.infoCard:hover {
-  transform: translateY(-5px);
+.homeCards:hover {
+  transform: translateY(-40px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  z-index: 10;
 }
 
-/* Ensure consistent card sizes */
-.card-body.h-100 {
+/* Card content */
+.homeCards .card-body {
+  background-color: #79cbbb;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-}
-
-.card-title {
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-/* .whyChoose {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-
-.cardheader {
-    padding-bottom: 2vw;
-    font-weight: 200;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .infoCard {
-    min-height: 300px !important;
-  }
-.whyChooseParag {
-   padding: 2vw;
-   list-style-type: "";
-   font-size: 2vw;
-   font-weight: 200;
-   width: 80vw;
-   padding-bottom: 6vw;
-}
-.cardPara {
-    padding-bottom: 5vw; 
-    font-weight: 200;
-  font-size: clamp(5vw, 10px, 8vw) !important;
-    max-width: 50%;
-}
-.servicesImage {
-   width: 10%;
-}
-.whyContainer {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.whyParasBox {
-  max-width: 600px;
-}
-.enrollment-card-container .row {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
+  text-align: center;
+  padding: 2rem;
 }
 
-.enrollment-card-container .col {
-  padding-right: 8px !important;
-  padding-left: 8px !important;
+.homeCards .card-title {
+  font-size: clamp(16px, 1.8vw, 28px);
+  font-weight: 200;
+  margin: 1.5rem 0;
 }
 
+.homeCards .card-subtitle {
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-weight: 200;
+  margin-top: 1rem;
 }
 
+.homeCards .card-text {
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: 200;
+  margin: 0 1.5rem 1.5rem;
+}
+
+/* Card Image */
+.homeCardImage {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Tablet size */
+@media (max-width: 768px) {
+  .homeCards {
+    margin: 1.5rem;
+    max-width: 24rem;
+  }
+}
+
+
+/* Mobile size */
 @media (max-width: 600px) {
-  /* CSS styles for mobile devices (screens 768px and smaller) */
-  /* Example: Smaller font size, different layout, etc. */
-.whyChooseParag {
-   padding: 2vw;
-   list-style-type: "";
-   font-size: 12px;
-}
-.whyParasBox {
-  font-size: clamp(5vw, 10px, 8vw) !important;
-}
-.servicesImage {
-   width: 200vw !important;
-}
-.cardPara {
-    padding-bottom: 3vw;
-    font-weight: 200;
-    font-size: clamp(5vw, 10px, 8vw) !important;
-    max-width: 55%;
-    max-height: 60vw;
-}
-.enrollment-card-container .row {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
+  .homeCards {
+    transform: scale(0.9);
+    margin: 1rem;
+  }
 
-.enrollment-card-container .col {
-  padding-right: 2px !important;
-  padding-left: 2px !important;
-  height: 10% !important;
-}
-
+  .homeCards:hover {
+    transform: scale(0.95);
+  }
 }

@@ -1,16 +1,16 @@
-import opsgLogo from "../assets/img/opsg-logo.png";
+import opsgLogo from "../assets/images/opsg-logo.webp";
 import { Row, Col, Container } from "react-bootstrap";
-import phone from "../assets/img/phone.png";
-import fax from "../assets/img/fax.png";
+import phone from "../assets/images/phone.webp";
+import fax from "../assets/images/fax.webp";
+import "../styles/app.css";
 
 const Footer = () => {
   return (
     <footer
       style={{
         backgroundColor: "#558e89",
-        padding: "10px 0 25px 0",
-        width: "100%",
-        zIndex: 100, // just to make sure
+        marginTop: "20rem",
+        padding: "5rem 0rem 5rem 0rem",
       }}
     >
       <Container>
@@ -20,7 +20,7 @@ const Footer = () => {
             md={5}
             className="text-center text-md-start mb-3 mb-md-0"
           >
-            <p style={{ margin: 0, padding: "15px 0", fontSize: "0.9rem" }}>
+            <p style={{ margin: 0, fontSize: "0.9rem" }}>
               M. Michelle Zachary, CPCS, CPMSM
               <br />
               <a
@@ -52,7 +52,7 @@ const Footer = () => {
           </Col>
 
           <Col xs={12} md={5} className="text-center text-md-end">
-            <p style={{ margin: 0, padding: "15px 0", fontSize: "0.9rem" }}>
+            <p style={{ margin: 0,  fontSize: "0.9rem" }}>
               M. Catherine Cutrone, CPCS
               <br />
               <a

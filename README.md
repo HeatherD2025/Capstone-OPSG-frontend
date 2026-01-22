@@ -1,7 +1,7 @@
 # OnPoint Solutions Group Business Website - Fullstack Academy Final Project
 ## [Deployed Website](https://onpointsolutions.netlify.app/#/)
 
-![Business Logo](https://i.postimg.cc/SNH5v8J8/opsg-logo.png)
+![Business Logo](https://i.postimages.cc/SNH5v8J8/opsg-logo.webp)
 
 ### Created By
 

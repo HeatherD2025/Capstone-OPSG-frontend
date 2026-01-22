@@ -159,7 +159,7 @@ const Login = () => {
                     <Form.Control
                       type="email"
                       name="email"
-                      placeholder="Enter email"
+                      placeholder="demo@demo.com"
                       onChange={update}
                       style={{ fontSize: "12px" }}
                     />
@@ -174,7 +174,7 @@ const Login = () => {
                     <Form.Control
                       type="password"
                       name="password"
-                      placeholder="Enter password"
+                      placeholder="123"
                       onChange={update}
                       style={{ fontSize: "12px" }}
                     />

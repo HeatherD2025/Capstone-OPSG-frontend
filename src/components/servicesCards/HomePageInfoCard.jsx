@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import "../../styles/ourServices.css";
+import "../../styles/home.css";
 
 /**
  * @param {string} bg - bootstrap color variable
@@ -9,7 +9,7 @@ import "../../styles/ourServices.css";
  * @param {string} image - imgage for card
  */
 
-function InfoCard({
+function HomePageInfoCard({
   title,
   subtitle,
   text,
@@ -18,12 +18,12 @@ function InfoCard({
 }) {
   return (
     <Card
-      className="homeCards"
+      className="homePageCards"
     >
       <Card.Body>
-        { image && <Card.Img className="homeCardImage" {...image} /> }
+        { image && <Card.Img className="homePageCardImage" {...image} /> }
         { title && <Card.Title >{title}</Card.Title>}
-        { subtitle && <Card.Subtitle className="mb-2 text-muted homeCardsSubtitle">{subtitle}</Card.Subtitle> }
+        { subtitle && <Card.Subtitle className="mb-2 text-muted homePageCardsSubtitle">{subtitle}</Card.Subtitle> }
         { text && <Card.Text>{text}</Card.Text>}
         {children}
       </Card.Body>
@@ -31,4 +31,4 @@ function InfoCard({
   );
 }
 
-export default InfoCard;
+export default HomePageInfoCard;

@@ -13,10 +13,20 @@
   font-size: 12px;
   padding-left: 2px;
 }
+  .footer {
+    background-color: #558e89;
+    color: white;
+    padding: 40px 0;
+    width: 100%;
+    margin-top: 20rem;
+  }
+
+  .footerTextBoxes {
+    margin-bottom: 20px;
+  }
 
 @media (max-width: 600px) {
   /* CSS styles for mobile devices (screens 768px and smaller) */
-  /* Example: Smaller font size, different layout, etc. */
   .body {
     margin: 0rem 5rem 0rem 5rem;
   }
@@ -78,7 +88,6 @@
 
 @media (min-device-width: 768px) {
   /* CSS styles for desktop devices (screens larger than 768px) */
-  /* Example: Larger font size, different layout, etc. */
 
   .introContainer {
     display: flex;
@@ -179,13 +188,16 @@
     font-weight: 200;
     line-height: var(--bs-body-line-height);
     z-index: 2;
+    margin-top: 10rem;
   }
   .usMap {
     width: 100%;
     height: auto;
     opacity: 8%;
     width: 60rem;
-    transform: translate(-6%, 10%);
+    transform: translate(-6%, -70%);
+    z-index: 1;
+    margin-bottom: -15rem;
   }
   .loginRegisterFormContainer {
     background-color: white;
@@ -201,45 +213,6 @@
   }
   .loginRegisterForm {
     padding: 2rem;
-  }
-  /* .cardsContainer {
-    margin: 12rem 5rem 12rem 5rem;
-    max-width: 200rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  } */
-  .card-img {
-    width: 25%;
-    display: block;
-    align-self: anchor-center;
-    padding-bottom: 4vh;
-    padding-top: 2.5vh;
-  }
-  .card-body {
-    background-color: #79cbbb; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 25rem;
-    min-width: 15rem;
-  }
-  .card-title {
-    font-size: clamp(14px, 30px, 30px);
-    font-weight: 200;
-    margin-bottom: 2rem;
-  }
-  .card-subtitle {
-    font-size: clamp(12px, 20px, 20px);
-    font-weight: 200;
-  }
-  .card-text {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-size: clamp(10px, 16px, 16px);
-    font-weight: 200;
-    margin: 1rem 2rem 2rem 2rem;
   }
 
   .formCard {

@@ -1,8 +1,8 @@
 import React from "react";
-import { Card, CardBody, Row, Col, Container } from "react-bootstrap";
-import flipChart from "../../assets/img/flipChart.png";
-import "../../styles/app.css";
-import "../../styles/home.css";
+import { Row, Col, Container } from "react-bootstrap";
+import flipChart from "../../assets/images/flipChart.webp";
+import InfoCard from "./InfoCard";
+import "../../styles/ourServices.css";
 
 const ConsultingCards = () => {
   const cardData = [
@@ -10,7 +10,7 @@ const ConsultingCards = () => {
       src: flipChart,
       alt: "FlipChart",
       className: "homeCards",
-      subtitle: "Staff bylaws, policies and procedures",
+      subtitle: "Staff bylaws, policies, and procedures",
     },
     {
       src: flipChart,
@@ -44,7 +44,8 @@ const ConsultingCards = () => {
     },
   ];
   return (
- <Container fluid> {/* Changed to fluid to avoid container padding */}
+
+  <Container fluid> {/* Changed to fluid to avoid container padding */}
       <Row className="justify-content-center g-1">
         {cardData.map((card, index) => (
           <Col 
@@ -60,50 +61,19 @@ const ConsultingCards = () => {
               maxWidth: "700%",
             }}
           >
-            <Card
-                className="infoCard flex-grow-1"
-              >
-                <CardBody>
-                  <Card.Img
-                    src={card.src}
-                    alt={card.alt}
-                  />
-                  <Card.Title>
-                    {card.title}
-                  </Card.Title>
-                                              
-                  <Card.Subtitle className="text-muted">
-                    {card.subtitle}
-                  </Card.Subtitle>
-                                              
-                  <Card.Text style={{ paddingBottom: "2vh" }}>{card.text}</Card.Text>
-                                              
-                   {card.link && (
-                  <Card.Link href={card.link}>{card.linkHint}</Card.Link>
-                  )}
-                                              
-                 </CardBody>
-                {/* <CardBody className="d-flex flex-column align-items-center text-center">
-                  <Card.Img 
-                    src={card.src} 
-                    alt={card.alt} 
+           
+              <InfoCard
+                title={card.title}
+                subtitle={card.subtitle}
+                text={card.text}
+                image={{ src: card.src, alt: card.alt }}
+              />
 
-                    style={{
-                      width: "25%",
-                      paddingBottom: "5vh",
-                      paddingTop: "4.7vh",
-                      fontSize: "20px",
-                    }}
-                  />
-                  <Card.Title className="homeCards">{card.title}</Card.Title>
-                </CardBody> */}
-              </Card>
           </Col>
         ))}
       </Row>
     </Container>
   );
 };
-
 
 export default ConsultingCards;
