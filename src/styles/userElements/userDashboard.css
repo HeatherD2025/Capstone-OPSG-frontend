@@ -6,17 +6,6 @@
 }
 
 /* Layout */
-.action-cards-container {
- width: 100%;
- display: flex;
- flex-direction: row;
-}
-
-.action-cards {
-  margin-left: 15%;
-  width: 100%;
-}
-
 .nav-column {
   background-color: #2a2a2a;
   min-height: 100vh;
@@ -34,15 +23,15 @@
 }
 
 /* Cards */
-.actionCardsContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+.action-cards-container {
+ width: 50%;
+ display: flex;
+ flex-direction: row;
+ margin-left: 5rem;
 }
 
 .action-cards {
   width: 30rem;
-  
 }
 
 .bg-dark {

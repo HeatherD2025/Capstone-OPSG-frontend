@@ -38,12 +38,16 @@
   margin-right: 2%;
 }
 
+.opsg-header-text-container {
+  width: 50%;
+}
+
 .opsg-header-text {
   background: #26bcba;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: xx-large;
+  font-size: 16px;
   width: 50%;
 }
 

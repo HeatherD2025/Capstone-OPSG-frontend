@@ -48,9 +48,9 @@ export default function ProfileHeader() {
     <div className="profile-header">
       <Container data-bs-theme="dark" className="header-container">
               <Image src={opsgLogo} alt="OPSG Logo" className="opsg-header-logo" />
-              <span>
+              <span className="opsg-header-text-container">
                 <p className="opsg-header-text">OnPoint</p>
-                <p>{headerText}</p>
+                <p className="opsg-header-text">{headerText}</p>
               </span>
               {/* <p className="welcome-header">{headerText}</p> */}
 
