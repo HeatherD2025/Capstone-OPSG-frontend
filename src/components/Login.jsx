@@ -70,13 +70,9 @@ const Login = () => {
         // Update context (for non-Redux parts of app)
         setAuthenticated(true);
         if (user.isAdmin) setIsAdmin(true);
-
+        navigate(`/dashboard`);
         // const userId = user.id || user._id;
 
-        // Navigate based on role
-        if (user) {
-          navigate(`/dashboard`);
-        } 
       } else {
         console.warn("Missing token or user data from login response");
         dispatch(logout()); // clear state & tokens
