@@ -13,6 +13,11 @@ export default function UserInvoice() {
   } = useGetCurrentUserQuery();
 
   const { company, companyIsLoading, companyError } = useCompanyName();
+
+function getRandomInvoice(max) {
+  return Math.floor(Math.random() * max);
+}
+  const randomInvoiceNumber = getRandomInvoice(5000)
   
   if (userLoading || companyIsLoading) {
     return <p>Loading user invoice...</p>;
@@ -63,7 +68,7 @@ export default function UserInvoice() {
               >
                 Invoice
               </h3>
-              <p>123456789</p>
+              <p>{randomInvoiceNumber}</p>
             </div>
 
             <div className="row mx-3">
