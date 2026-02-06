@@ -56,8 +56,6 @@ const Login = () => {
       const refreshToken = payload?.refreshToken;
       const user = payload?.user;
 
-      console.log("User:", user);
-
       if (accessToken && refreshToken && user) {
         // Store tokens in Redux (and localStorage automatically)
         dispatch(setTokens({ accessToken, refreshToken }));

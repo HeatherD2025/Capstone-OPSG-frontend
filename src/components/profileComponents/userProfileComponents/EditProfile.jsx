@@ -17,7 +17,6 @@ import UserNav from "./UserNav";
 export default function EditProfile() {
   const { userId } = useParams();
   const { data: user, isLoading, error } = useGetCurrentUserQuery(userId);
-  console.log("USER FROM API:", user);
 
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
