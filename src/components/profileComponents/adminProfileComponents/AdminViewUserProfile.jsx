@@ -7,10 +7,10 @@ import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
 import ProfileHeader from "../ProfileHeader";
-import AdminNav from "../../navigations/AdminNav";
+import AdminNav from "./AdminNav";
 
 // export default function AdminViewUserProfile({ user, onReturnToResults}) {
-  export default function AdminViewUserProfile({ onReturnToResults}) {
+export default function AdminViewUserProfile({ onReturnToResults }) {
   const { userId } = useParams();
   const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
@@ -61,8 +61,8 @@ import AdminNav from "../../navigations/AdminNav";
         !currentPwd
           ? "Enter your current password"
           : newPwd !== confirmPwd
-          ? "New passwords must match"
-          : "Enter a new password"
+            ? "New passwords must match"
+            : "Enter a new password",
       );
       return;
     }
@@ -102,7 +102,7 @@ import AdminNav from "../../navigations/AdminNav";
 
   return (
     <>
-     <AdminNav />
+      <AdminNav />
       <ProfileHeader />
       <div
         style={{ paddingTop: "60px" }}

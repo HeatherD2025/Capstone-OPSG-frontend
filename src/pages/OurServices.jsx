@@ -1,7 +1,7 @@
 import { Row, Col, Container } from "react-bootstrap";
 import { motion } from "motion/react";
 import React from "react";
-import NavBar from "../components/navigations/Navbar";
+import NavBar from "../components/navigation/Navbar";
 import "../styles/ourServices.css";
 import Footer from "../components/Footer";
 import medicalDocument from "../assets/images/medical-document.webp";
@@ -27,119 +27,118 @@ const ourServices = () => {
   };
 
   const credentialsData = [
-      {
-        image: {
+    {
+      image: {
         src: certificate,
         alt: "certificate",
-        },
-        subtitle: "Healthcare Facilites",
       },
-      {
-        image: {
+      subtitle: "Healthcare Facilites",
+    },
+    {
+      image: {
         src: certificate,
         alt: "certificate",
-        },
-        subtitle: "ASC",
       },
-      {
-        image: {
+      subtitle: "ASC",
+    },
+    {
+      image: {
         src: certificate,
         alt: "certificate",
-        },
-        subtitle: "Staffing Agencies",
       },
-    ];
+      subtitle: "Staffing Agencies",
+    },
+  ];
 
   const enrollmentData = [
-      {
-        image: {
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "CAQH",
       },
-      {
-        image: {
+      subtitle: "CAQH",
+    },
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "NPPES",
       },
-      {
-        image: {
+      subtitle: "NPPES",
+    },
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "PECOS",
       },
-      {
-        image: {
+      subtitle: "PECOS",
+    },
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "SAM",
       },
-      {
-        image: {
+      subtitle: "SAM",
+    },
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "Sanitation Checks",
       },
-      {
-        image: {
+      subtitle: "Sanitation Checks",
+    },
+    {
+      image: {
         src: pen,
         alt: "pen on paper",
-        },
-        subtitle: "OIG",
       },
-    ];
+      subtitle: "OIG",
+    },
+  ];
 
-    const consultingData = [
+  const consultingData = [
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Staff bylaws, policies, and procedures",
     },
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Criteria-based privledging",
     },
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Regulatory and accrediation compliance",
     },
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Peer review of FPPE/OPPE",
     },
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Credential file audit",
     },
     {
       image: {
         src: flipChart,
         alt: "flip chart",
-        },
+      },
       subtitle: "Staff department core functions",
     },
   ];
-
 
   return (
     <div className="background">
@@ -154,21 +153,14 @@ const ourServices = () => {
           custom={-1} // make y negative, so fade in from top moving down
         >
           <Row className="justify-content-md-center">
-            <Col
-              className="services-header"
-              md="auto"
-            >
+            <Col className="services-header" md="auto">
               Why Choose OnPoint Solutions?
             </Col>
           </Row>
         </motion.div>
       </Container>
-      <div
-        className="why-container"
-      >
-        <div
-          className="why-paras-wrapper"
-        >
+      <div className="why-container">
+        <div className="why-paras-wrapper">
           <p className="why-para-section">
             <strong>Support:</strong> Every client is assigned a Certified
             Provider Credentialing Specialist (CPCS) to ensure personalized
@@ -199,8 +191,8 @@ const ourServices = () => {
       </div>
 
       {/* Credentials Section */}
-      <Container >
-        <ServiceSection 
+      <Container>
+        <ServiceSection
           title="Credentials"
           description="Recredentialing, Applications and License Renewals"
           cards={credentialsData}
@@ -208,8 +200,8 @@ const ourServices = () => {
       </Container>
 
       {/* Enrollment Section */}
-      <Container >
-        <ServiceSection 
+      <Container>
+        <ServiceSection
           title="Enrollment"
           description="Medicare Opt-Out, Group Providers and Individual Providers Serving
           Commercial and Government Payers"
@@ -219,7 +211,7 @@ const ourServices = () => {
 
       {/* Consulting Section */}
       <Container>
-        <ServiceSection 
+        <ServiceSection
           title="Consulting"
           description="Development Planning Assessing Compliance, Risk, and Opportunities"
           cards={consultingData}

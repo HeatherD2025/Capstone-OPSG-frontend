@@ -1,5 +1,6 @@
-import UserNav from "../navigations/UserNav";
-import AdminNav from "../navigations/AdminNav";
+import React from "react";
+import UserNav from "./userProfileComponents/UserNav";
+import AdminNav from "./adminProfileComponents/AdminNav";
 import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
@@ -7,6 +8,7 @@ import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Balance from "../qbComponentsAndHooks/Balance";
+import { BalanceProvider } from "./BalanceProvider";
 import "../../styles/dashboard.css";
 
 export default function Dashboard() {
@@ -17,15 +19,13 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard dark-theme">
-      {/* <UserHeader /> */}
       <ProfileHeader />
 
       {isAdmin ? <AdminNav /> : <UserNav />}
 
+    <BalanceProvider id={currentUser.id}>
       <Container fluid className="action-cards-container">
-        {isAdmin ? (
-          ""
-        ) : (
+        {!isAdmin && currentUser && (
           <InfoCard>
             <Balance
               text={
@@ -36,13 +36,15 @@ export default function Dashboard() {
                     height: "100%",
                     width: "100%",
                   }}
-                  onClick={() => navigate(`/profile/invoices/${currentUser.id}`)}
-                ></button>
+                  onClick={() =>
+                    navigate(`/profile/invoices/${currentUser.id}`)
+                  }
+                />
               }
-            >
-              </Balance>
-            </InfoCard>
-          )}
+            />
+          </InfoCard>
+        )}
+
         <InfoCard
           variant="dark"
           titleClass="text-success"
@@ -63,6 +65,7 @@ export default function Dashboard() {
           }
         />
       </Container>
+     </BalanceProvider>
     </div>
   );
 }

@@ -12,7 +12,7 @@ import Row from "react-bootstrap/Row";
 import InfoModal from "../../Modal";
 import ReactiveButton from "reactive-button";
 import ProfileHeader from "../ProfileHeader";
-import UserNav from "../../navigations/UserNav";
+import UserNav from "./UserNav";
 
 export default function EditProfile() {
   const { userId } = useParams();
@@ -82,8 +82,8 @@ export default function EditProfile() {
         !currentPwd
           ? "Enter your current password"
           : newPwd !== confirmPwd
-          ? "New passwords must match"
-          : "Enter a new password"
+            ? "New passwords must match"
+            : "Enter a new password",
       );
       return;
     }

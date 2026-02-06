@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import AdminNav from "../../navigations/AdminNav";
+import { useState } from "react";
+import AdminNav from "./AdminNav";
 import {
   Card,
   Row,
@@ -18,12 +18,11 @@ import {
 } from "../../../features/api/adminApi";
 import "../../../styles/app.css";
 
-export default function AdminSearch({ onSelectUser }) {
+export default function AdminSearch() {
   const navigate = useNavigate();
 
   const [term, setTerm] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
-  const [error, setError] = useState("");
 
   // fetch all users on inital load
   const {
@@ -31,8 +30,6 @@ export default function AdminSearch({ onSelectUser }) {
     isLoading: loadingAllUsers,
     error: allUsersError,
   } = useGetAllUsersQuery();
-
-  console.log(data);
 
   const {
     data: searchedUsers,
@@ -42,35 +39,20 @@ export default function AdminSearch({ onSelectUser }) {
     skip: !triggerSearch,
   });
 
-  const filteredUsers = searchedUsers.data?.results.filter((a) => 
-    a.data?.toLowerCase.includes(term),
-  ) ?? [];
+  // decide which data to show
+  const usersToShow = triggerSearch ? searchedUsers?.data : allUsers?.data;
 
+  const loading = triggerSearch ? loadingSearch : loadingAllUsers;
 
   const handleSearch = () => {
-    if (!term.trim()) {
-      alert("Enter a search term");
-      return;
-    } 
-    if (filteredUsers.length === 0) {
-    setTriggerSearch([]);
-    setError("No matching users found");
-    return;
-  }
+    if (!term.trim()) return;
     setTriggerSearch(true);
   };
-
-  useEffect(() => {
-    handleSearch();
-  }, [term, searchedUsers.data]);
 
   const handleShowAll = () => {
     setTerm("");
     setTriggerSearch(false);
   };
-
-  const loading = loadingAllUsers;
-  const usersToShow = triggerSearch ? searchedUsers : allUsers;
 
   return (
     <>
@@ -112,7 +94,7 @@ export default function AdminSearch({ onSelectUser }) {
                 />
               </Col>
 
-              {usersToShow?.length > 0 && (
+              {triggerSearch && (
                 <Col xs="auto">
                   <ReactiveButton
                     rounded
@@ -140,10 +122,8 @@ export default function AdminSearch({ onSelectUser }) {
             {/* Users List */}
             <Row xs={1} md={2} lg={3} className="g-4">
               {loading ? (
-                // <Col>
                 <Spinner animation="border" role="status" />
-              ) : // </Col>
-              !usersToShow || usersToShow.length === 0 ? (
+              ) : !usersToShow || usersToShow.length === 0 ? (
                 <Col>
                   <Alert variant="info">No users found.</Alert>
                 </Col>
@@ -156,9 +136,10 @@ export default function AdminSearch({ onSelectUser }) {
                           {user.firstName} {user.lastName}
                         </Card.Title>
                         <Card.Text className="text-center">
-                          {user.email}
+                          {user.company} {user.email}
                         </Card.Text>
                       </Card.Body>
+
                       <Card.Footer className="text-center">
                         <ReactiveButton
                           rounded
@@ -167,7 +148,7 @@ export default function AdminSearch({ onSelectUser }) {
                           variant="secondary"
                           className="btn-primary-soft"
                           type="button"
-                          onClick={() => onSelectUser(user)}
+                          onClick={() => navigate(`/admin/users/${user.id}`)}
                           style={{
                             width: "160px",
                             fontSize: "12px",

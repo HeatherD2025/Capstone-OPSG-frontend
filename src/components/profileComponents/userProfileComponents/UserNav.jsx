@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import "../../styles/dashboardNav.css";
-import { logout } from "../../slices/authSlice";
-import { removeToken } from "../../utils/tokenService";
-import { useGetCurrentUserQuery } from "../../features/api/userApi";
+import { logout } from "../../../slices/authSlice";
+import { removeToken } from "../../../utils/tokenService";
+import { useGetCurrentUserQuery } from "../../../features/api/userApi";
 
 const UserNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -23,7 +23,7 @@ const UserNav = (props) => {
   return (
     <div>
       <div className="nav-wrapper">
-         <nav id="sidebar" className={isNotActive ? "active" : ""}>
+        <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <Button
             type="button"
             id="dashboard-collapse"

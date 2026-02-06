@@ -6,14 +6,14 @@ import { useDispatch } from "react-redux";
 import { setTokens } from "../slices/authSlice";
 import { setAuthHeader } from "../utils/tokenService";
 import { useContext } from "react";
-import { userContext } from "./navigations/ContextProvider";
+import { userContext } from "./navigation/ContextProvider";
 import ReactiveButton from "reactive-button";
 import "../styles/app.css";
 import Footer from "../components/Footer";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import InfoModal from "./Modal";
-import NavBar from "../components/navigations/Navbar";
+import NavBar from "./navigation/Navbar";
 import StateDropdown from "../utils/stateDropdown";
 
 export default function Registration() {

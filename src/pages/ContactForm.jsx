@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "../components/Footer";
 import { motion } from "motion/react";
 import { useRecaptcha } from "../utils/useRecaptcha";
-import NavBar from "../components/navigations/Navbar";
+import NavBar from "../components/navigation/Navbar";
 import Form from "react-bootstrap/Form";
 import "../styles/app.css";
 
@@ -96,11 +96,8 @@ export default function ContactFormPage() {
 
           <div className="contact-form-container">
             <Form onSubmit={handleSubmit} className="login-register-form">
-
               <Form.Group className="mb-3" controlId="form-basic-name">
-                <Form.Label>
-                  FIRST AND LAST NAME
-                </Form.Label>
+                <Form.Label>FIRST AND LAST NAME</Form.Label>
 
                 <Form.Control
                   type="text"
@@ -110,9 +107,7 @@ export default function ContactFormPage() {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="form-basic-email">
-                <Form.Label>
-                  E-MAIL
-                </Form.Label>
+                <Form.Label>E-MAIL</Form.Label>
 
                 <Form.Control
                   type="email"
@@ -123,9 +118,7 @@ export default function ContactFormPage() {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="form-basic-phone">
-                <Form.Label>
-                  PHONE NUMBER
-                </Form.Label>
+                <Form.Label>PHONE NUMBER</Form.Label>
 
                 <Form.Control
                   type="phone"
@@ -135,10 +128,8 @@ export default function ContactFormPage() {
                 />
               </Form.Group>
 
-              <Form.Group  className="mb-4" controlId="form-basic-message">
-                <Form.Label>
-                  MESSAGE
-                </Form.Label>
+              <Form.Group className="mb-4" controlId="form-basic-message">
+                <Form.Label>MESSAGE</Form.Label>
 
                 <Form.Control
                   as="textarea"

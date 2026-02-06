@@ -11,10 +11,10 @@ export default function AdminUsers() {
             <AdminSearch onSelectUser={setSelectedUser}/>
           ) : (
             <AdminEditUserProfile 
-              user={selectedUser}
+              onSelectUser={setSelectedUser}
               onReturnToResults={() => setSelectedUser(null)}  
             />
-            )};
+            )}
         </>
     );
 }

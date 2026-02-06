@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../features/api/authApi";
-import NavBar from "../components/navigations/Navbar";
+import NavBar from "./navigation/Navbar";
 import "../styles/app.css";
 import ReactiveButton from "reactive-button";
 
@@ -12,7 +12,7 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import { axiosPrivate } from "../features/axios";
 import { setAuthHeader } from "../utils/tokenService";
-import { userContext } from "./navigations/ContextProvider";
+import { userContext } from "./navigation/ContextProvider";
 import { setTokens, logout } from "../slices/authSlice";
 
 // login should trigger state change, update context flags and navigate
@@ -72,7 +72,6 @@ const Login = () => {
         if (user.isAdmin) setIsAdmin(true);
         navigate(`/dashboard`);
         // const userId = user.id || user._id;
-
       } else {
         console.warn("Missing token or user data from login response");
         dispatch(logout()); // clear state & tokens
@@ -99,9 +98,7 @@ const Login = () => {
       <div className="background">
         <div className="background-accent">
           <NavBar />
-          <div
-            className="d-flex justify-content-center vh-80 login-register-modal"
-          >
+          <div className="d-flex justify-content-center vh-80 login-register-modal">
             {show && (
               <InfoModal
                 show={show}
@@ -111,66 +108,59 @@ const Login = () => {
               />
             )}
 
-              <div className="login-register-form-container">
-                <Nav variant="tabs" defaultActiveKey="/login" className="login-register-header">
-                  <Nav.Item>
-                    <Nav.Link
-                      href="/#/login"
-                      className="login-register-tab-link"
-                    >
-                      LOGIN
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link
-                      href="/#/register"
-                      className="login-register-tab-link"
-                    >
-                      REGISTER
-                    </Nav.Link>
-                  </Nav.Item>
-                </Nav>
+            <div className="login-register-form-container">
+              <Nav
+                variant="tabs"
+                defaultActiveKey="/login"
+                className="login-register-header"
+              >
+                <Nav.Item>
+                  <Nav.Link href="/#/login" className="login-register-tab-link">
+                    LOGIN
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link
+                    href="/#/register"
+                    className="login-register-tab-link"
+                  >
+                    REGISTER
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
 
-                <Form onSubmit={submit} className="login-register-form">
-                  <Form.Group className="mb-3" controlId="form-basic-email">
-                    <Form.Label
-                      className="form-label"
-                    >
-                      EMAIL
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      placeholder="demo@demo.com"
-                      onChange={update}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="form-basic-password">
-                    <Form.Label
-                      className="form-label"
-                    >
-                      PASSWORD
-                    </Form.Label>
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      placeholder="123"
-                      onChange={update}
-                    />
-                  </Form.Group>
-
-                  <ReactiveButton
-                    rounded
-                    buttonState={rtqLoading ? "loading" : "idle"}
-                    idleText={"SUBMIT"}
-                    loadingText={"Loading"}
-                    variant="secondary"
-                    className="submit-btn-custom"
-                    type="submit"
-                    disabled={rtqLoading || loading}
+              <Form onSubmit={submit} className="login-register-form">
+                <Form.Group className="mb-3" controlId="form-basic-email">
+                  <Form.Label className="form-label">EMAIL</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="demo@demo.com"
+                    onChange={update}
                   />
-                </Form>
-              </div>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-password">
+                  <Form.Label className="form-label">PASSWORD</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="123"
+                    onChange={update}
+                  />
+                </Form.Group>
+
+                <ReactiveButton
+                  rounded
+                  buttonState={rtqLoading ? "loading" : "idle"}
+                  idleText={"SUBMIT"}
+                  loadingText={"Loading"}
+                  variant="secondary"
+                  className="submit-btn-custom"
+                  type="submit"
+                  disabled={rtqLoading || loading}
+                />
+              </Form>
+            </div>
           </div>
         </div>
       </div>

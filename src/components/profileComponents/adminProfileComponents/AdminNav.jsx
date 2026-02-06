@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 import "../../styles/dashboardNav.css";
-import { removeToken } from "../../utils/tokenService";
+import { removeToken } from "../../../utils/tokenService";
 
 const AdminNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -25,7 +25,6 @@ const AdminNav = (props) => {
           </Button>
 
           <ul className="list-unstyled components">
-
             <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
               <Link to="/">OPSG Home</Link>
