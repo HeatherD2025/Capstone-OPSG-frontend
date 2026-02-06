@@ -1,13 +1,13 @@
 import React from "react";
-import UserNav from "../components/profileComponents/userProfileComponents/UserNav";
-import AdminNav from "../components/profileComponents/adminProfileComponents/AdminNav";
-import ProfileHeader from "../components/profileComponents/ProfileHeader";
+import UserNav from "./userProfileComponents/UserNav";
+import AdminNav from "./adminProfileComponents/AdminNav";
+import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Balance from "../components/qbComponentsAndHooks/Balance";
-import { BalanceProvider } from "../components/profileComponents/BalanceProvider";
+import Balance from "../qbComponentsAndHooks/Balance";
+import { BalanceProvider } from "./BalanceProvider";
 import "../../styles/dashboard.css";
 
 export default function Dashboard() {
