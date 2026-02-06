@@ -1,5 +1,5 @@
 
-.navWrapper {
+.nav-wrapper {
   position: fixed;
   padding-top: 10%;
   left: 0;
@@ -8,7 +8,7 @@
   background-color: #272932;
   border-radius: 5px;
 }
-#sidebarCollapse {
+#sidebar-collapse {
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -22,7 +22,7 @@
   margin-left: 0.5rem;
   color: #e9e9ea;
 }
-#sidebar .list-item {
+#sidebar .dashboard-list-item {
   margin: 2rem 0;
   padding: .5rem 0rem .5rem 0rem;
   font-size: 15px;
@@ -82,10 +82,10 @@
     text-align: center;
     margin: 0;
   }
-  #sidebar {
+  .dashboard-sidebar {
     margin: 1rem;
   }
-  #sidebarCollapse {
+  .dashboard-collapse {
     right: 0.5rem;
   }
   #sidebar.active .sidebar-header h3 {
@@ -100,6 +100,28 @@
     transform: translateX(50%);
   }
 }
-.list-item {
+.dashboard-list-item {
   color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .dashboard-content {
+    margin-left: 80px; /* Matches collapsed navbar */
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
+
+  .profile-card {
+    padding: 1.5rem;
+  }
 }

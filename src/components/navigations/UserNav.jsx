@@ -22,11 +22,11 @@ const UserNav = (props) => {
 
   return (
     <div>
-      <div className="navWrapper">
-        <nav id="sidebar" className={isNotActive ? "active" : ""}>
+      <div className="nav-wrapper">
+        <nav className={`dashboard-sidebar ${isNotActive ? "active" : ""}`}>
           <Button
             type="button"
-            id="sidebarCollapse"
+            id="dashboard-collapse"
             onClick={() => setNotActive(!isNotActive)}
             className="btn btn-custom collapse-button"
           >
@@ -35,27 +35,27 @@ const UserNav = (props) => {
           </Button>
 
           <ul className="list-unstyled components">
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
               <Link to="/">OPSG Home</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
               <Link to="/user/dashboard">Dashboard</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-people"></i>
               <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-gear"></i>
               <Link to={`/user/me/updateUserProfile`}>Edit Profile</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-box-arrow-left"></i>
               <Link
                 to="/"

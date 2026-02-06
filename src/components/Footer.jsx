@@ -6,13 +6,7 @@ import "../styles/app.css";
 
 const Footer = () => {
   return (
-    <footer
-      style={{
-        backgroundColor: "#558e89",
-        marginTop: "20rem",
-        padding: "5rem 0rem 5rem 0rem",
-      }}
-    >
+    <footer className="footer">
       <Container>
         <Row className="align-items-center">
           <Col
@@ -20,16 +14,12 @@ const Footer = () => {
             md={5}
             className="text-center text-md-start mb-3 mb-md-0"
           >
-            <p style={{ margin: 0, fontSize: "0.9rem" }}>
+            <p>
               M. Michelle Zachary, CPCS, CPMSM
               <br />
               <a
                 href="mailto:szachary@onpointsolutionsgroup.org"
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  fontSize: "0.8rem",
-                }}
+                className="footer-email-link"
               >
                 szachary@onpointsolutionsgroup.org
               </a>
@@ -44,24 +34,17 @@ const Footer = () => {
             <img
               src={opsgLogo}
               alt="OPSG logo"
-              style={{
-                width: "60px",
-                height: "auto",
-              }}
+              className="opsg-logo"
             />
           </Col>
 
           <Col xs={12} md={5} className="text-center text-md-end">
-            <p style={{ margin: 0,  fontSize: "0.9rem" }}>
+            <p>
               M. Catherine Cutrone, CPCS
               <br />
               <a
                 href="mailto:ccutrone@onpointsolutionsgroup.org"
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  fontSize: "0.8rem",
-                }}
+                className="footer-email-link"
               >
                 ccutrone@onpointsolutionsgroup.org
               </a>
@@ -69,16 +52,16 @@ const Footer = () => {
           </Col>
         </Row>
 
-        <div className="btmFooterTextBox">
+        <div className="btm-footer-text-box">
           <Row className="justify-content-center">
             <Col xs={12} sm={6} className="text-center mb-2 mb-sm-0">
               <div className="d-flex justify-content-center align-items-center">
                 <img
                   src={phone}
                   alt="Phone"
-                  style={{ width: "20px", height: "20px", marginRight: "8px" }}
+                  className="footer-contact-icons"
                 />
-                <span style={{ fontSize: "0.9rem" }}>(970) 394-5560</span>
+                <span>(970) 394-5560</span>
               </div>
             </Col>
             <Col xs={12} sm={6} className="text-center">
@@ -86,9 +69,9 @@ const Footer = () => {
                 <img
                   src={fax}
                   alt="Fax"
-                  style={{ width: "20px", height: "20px", marginRight: "8px" }}
+                  className="footer-contact-icons"
                 />
-                <span style={{ fontSize: "0.9rem" }}>(970) 317-2233</span>
+                <span>(970) 317-2233</span>
               </div>
             </Col>
           </Row>

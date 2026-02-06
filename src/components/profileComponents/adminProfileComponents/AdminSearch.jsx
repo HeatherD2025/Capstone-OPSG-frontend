@@ -16,6 +16,7 @@ import {
   useSearchUsersQuery,
   useGetAllUsersQuery,
 } from "../../../features/api/adminApi";
+import "../../../styles/app.css";
 
 export default function AdminSearch({ onSelectUser }) {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ export default function AdminSearch({ onSelectUser }) {
                   idleText={"SEARCH"}
                   loadingText={"Loading"}
                   variant="secondary"
-                  className="button3"
+                  className="submit-btn-custom"
                   type="button"
                   onClick={handleSearch}
                   style={{
@@ -101,7 +102,7 @@ export default function AdminSearch({ onSelectUser }) {
                     rounded
                     idleText="SHOW ALL USERS"
                     variant="secondary"
-                    className="button3"
+                    className="submit-btn-custom"
                     type="button"
                     onClick={handleShowAll}
                     style={{
@@ -148,7 +149,7 @@ export default function AdminSearch({ onSelectUser }) {
                           buttonState="idle"
                           idleText={"VIEW PROFILE"}
                           variant="secondary"
-                          className="button3"
+                          className="btn-primary-soft"
                           type="button"
                           onClick={() => onSelectUser(user)}
                           style={{

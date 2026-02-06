@@ -31,7 +31,7 @@ export default function Registration() {
 
   const [loading, setLoading] = useState(false);
 
-  // stores data from login form
+  // stores data from register form
   const [formData, setFormData] = useState({
     company: "",
     firstName: "",
@@ -130,11 +130,10 @@ export default function Registration() {
   return (
     <>
       <div className="background">
-        <div className="backgroundAccent">
+        <div className="background-accent">
           <NavBar />
           <div
-            style={{ paddingTop: "120px" }}
-            className="d-flex justify-content-center vh-80"
+            className="d-flex justify-content-center vh-80 login-register-modal"
           >
             {show ? (
               <InfoModal
@@ -147,16 +146,12 @@ export default function Registration() {
               <></>
             )}
 
-             <div className="loginRegisterFormContainer">
-                <Nav variant="tabs" defaultActiveKey="/register" className="loginRegisterHeader">
+             <div className="login-register-form-container">
+                <Nav variant="tabs" defaultActiveKey="/register" className="login-register-header">
                   <Nav.Item>
                     <Nav.Link
                       href="/#/login"
-                      style={{
-                        fontSize: "12px",
-                        paddingBottom: "10px",
-                        paddingTop: "15px",
-                      }}
+                      className="login-register-tab-link"
                     >
                       LOGIN
                     </Nav.Link>
@@ -164,19 +159,15 @@ export default function Registration() {
                   <Nav.Item>
                     <Nav.Link
                       href="/#/register"
-                      style={{
-                        fontSize: "12px",
-                        paddingBottom: "10px",
-                        paddingTop: "15px",
-                      }}
+                      className="login-register-tab-link"
                     >
                       REGISTER
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
 
-                <Form onSubmit={submit} className="loginRegisterForm">
-                  <Form.Group className="mb-3" controlId="formBasicCompany">
+                <Form onSubmit={submit} className="login-register-form">
+                  <Form.Group className="mb-3" controlId="form-basic-company">
                     <Form.Label
                       style={{
                         fontSize: "12px",
@@ -196,7 +187,7 @@ export default function Registration() {
                       }}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicFirstName">
+                  <Form.Group className="mb-3" controlId="form-basic-first-name">
                     <Form.Label
                       style={{
                         fontSize: "12px",
@@ -216,7 +207,7 @@ export default function Registration() {
                       }}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicLastName">
+                  <Form.Group className="mb-3" controlId="form-basic-last-name">
                     <Form.Label
                       style={{
                         fontSize: "12px",
@@ -236,7 +227,7 @@ export default function Registration() {
                       }}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Group className="mb-3" controlId="form-basic-email">
                     <Form.Label
                       style={{
                         fontSize: "12px",
@@ -256,7 +247,7 @@ export default function Registration() {
                       }}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Group className="mb-3" controlId="form-basic-password">
                     <Form.Label
                       style={{
                         fontSize: "12px",
@@ -286,14 +277,8 @@ export default function Registration() {
                     buttonState={loading ? "loading" : "idle"}
                     idleText={"SUBMIT"}
                     loadingText={"Loading"}
-                    variant="secondary"
-                    className="button3"
+                    className="submit-btn-custom"
                     type="submit"
-                    style={{
-                      width: "80px",
-                      fontSize: "12px",
-                      backgroundColor: "#558e89",
-                    }}
                     disabled={!!passwordError || !formData.password}
                   ></ReactiveButton>
                 </Form>

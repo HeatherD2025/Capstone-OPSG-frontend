@@ -1,230 +1,253 @@
-.btn-custom3,
-.button3 {
+/* Buttons */
+.btn-primary-soft {
   border: none;
-  background-color: rgb(121, 203, 187);
-  font-size: "12px";
+  background-color: #79cbbb;
+  font-size: 12px;
   padding: 8px;
   border-radius: 10%;
-  color: #000000;
+  color: #000;
   font-weight: 200;
 }
 
-.formLabel {
-  font-size: 12px;
-  padding-left: 2px;
+/*Footer*/
+.footer {
+  background-color: #558e89 !important;
+  color: black;
+  padding: 5rem 0rem 5rem 0rem;
+  width: 100%;
+  margin-top: 10rem;
 }
-  .footer {
-    background-color: #558e89;
-    color: white;
-    padding: 40px 0;
-    width: 100%;
-    margin-top: 20rem;
-  }
 
-  .footerTextBoxes {
-    margin-bottom: 20px;
-  }
+.footer-email-link {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-contact-icons {
+  width: 2rem; 
+  height: 2rem; 
+  margin-right: 8px;
+}
+
+/*Background layout and helpers*/
+body {
+  font-size: 14px;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e5fffd;
+}
+
+/*Header and intro section*/
+.logo-container {
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+
+.homepage-opsg-logo {
+  width: 5vw;
+  height: auto;
+  padding-right: 1vw;
+}
+
+.logo-and-subtext-container {
+  justify-items: center;
+}
+
+.logo-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 10rem;
+  width: 45%;
+}
+
+.opsg-name {
+  font-size: clamp(14px, 40px, 40px);
+  font-weight: 200;
+}
+
+.secondary-header-box {
+  display: flex;
+  gap: 1rem;
+  font-size: clamp(12px, 16px, 16px);
+}
+
+.secondary-header-box > * {
+  border-radius: 1vw;
+}
+
+.intro-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 6rem;
+}
+
+.intro-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-text-first-line,
+.intro-text-second-line {
+  font-weight: 200;
+  font-size: clamp(30px, 60px, 60px);
+}
+
+.intro-text-first-line {
+  color: #558e89;
+}
+
+/*Main image*/
+.main-image-container {
+  max-width: 50rem;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 2%;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+
+/*Counter section*/
+.counter-section-wrapper {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  display: grid;
+  justify-content: center;
+  font-size: clamp(20px, 60px, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #558e89;
+  font-weight: 200;
+}
+
+.centered-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 115%;
+  left: 40%;
+}
+
+.centered-counter-text {
+  position: absolute;
+  top: 134%;
+  left: 33%;
+  width: 50%;
+}
+
+.us-map {
+  width: 60rem;
+  height: auto;
+  opacity: 0.08;
+}
 
 @media (max-width: 600px) {
-  /* CSS styles for mobile devices (screens 768px and smaller) */
-  .body {
-    margin: 0rem 5rem 0rem 5rem;
-  }
-  .logoContainer {
-    display: flex;
-    flex-direction: row;
-    width: auto;
-    padding-top: 18vh;
-    align-items: center;
-    order: 1;
-  }
-  .opsgName {
-   font-size: clamp(14px, 30px, 30px);
-  }
-  .backgroundAccent {
-    background-color: #e5fffd;
-    height: 85vh;
-    width: 100%;
-  }
-  .secondaryHeaderBox {
-    padding-top: 2vh;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    font-size: 14px;
-    justify-content: center;
-  }
-
-  .secondaryHeaderBox > * {
-    border-radius: 1vw;
-  }
-  .introTextContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem 1rem 0rem 2rem;
-    order: 2;
-  }
-  .introTextFirstLine {
-    color: #558e89;
-    font-weight: 200;
-    font-size: 60px;
-    margin: 6rem 0rem 2rem 0rem;
-  }
-  .introTextSecondLine {
-    display: flex;
-    justify-content: center;
-    font-weight: 200;
-    font-size: 60px;
-    margin: 0rem 0rem 2rem 2rem;
-  }
-  .mainImage {
-    display: flex;
-    max-height: 60vw;
-    flex-shrink: 1;
-    order: 3;
+  .us-map {
+    transform: translate(14%, 0%);
   }
 }
 
-@media (min-device-width: 768px) {
-  /* CSS styles for desktop devices (screens larger than 768px) */
+/* Home Cards styling */
+.home-page-cards {
+  background-color: #79cbbb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  max-width: 20rem;
+}
 
-  .introContainer {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20vh;
-    gap: 2vw;
-  }
+.home-page-cards:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
 
-  .logoHeaderContainer {
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
-    height: 40vh;
-    align-items: center;
-    margin: 0rem 1rem 0rem 1rem;
-  }
-  .logoAndSubtextContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.home-page-cards .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
 
-  .logoContainer {
-    display: flex;
-    flex-direction: row;
-    font-weight: 200;
-    align-items: center;
-    margin-top: 8vh;
-    flex-shrink: 1;
-  }
-  .opsgName {
-    font-size: clamp(14px, 40px, 40px);
-    font-weight: 200;
-    flex-wrap: nowrap;
-  }
+.home-page-card-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
 
-  .backgroundAccent {
-    background-color: #e5fffd;
-    height: 100%;
-    width: 100%;
-  }
-  .secondaryHeaderBox {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 1em;
-    font-size: clamp(12px, 16px, 16px);
-  }
-  .secondaryHeaderBox > * {
-    border-radius: 1vw;
-  }
+/*Forms*/
+.login-register-form-container,
+.form-card {
+  background-color: #fff;
+  border-radius: 2%;
+  filter: drop-shadow(8px 8px 10px gray);
+  max-width: 30rem;
+  width: 100%;
+  margin: auto;
+}
 
-  .introTextContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem 1rem 0rem 1rem;
-  }
-  .introTextFirstLine {
-    color: #558e89;
-    font-weight: 200;
-    font-size: clamp(30px, 60px, 60px);
-    margin: 6rem 0rem 2rem 0rem;
-  }
-  .introTextSecondLine {
-    display: flex;
-    justify-content: center;
-    font-weight: 200;
-    font-size: clamp(30px, 60px, 60px);
-    margin: 0rem 0rem 2rem 2rem;
-  }
+.contact-form-container {
+  background-color: #fff;
+  border-radius: 2%;
+  filter: drop-shadow(8px 8px 10px gray);
+  max-width: 40rem;
+  width: 100%;
+  margin: auto;
+}
 
-  .imageWrapper {
-    border-color: solid black 10px;
-    display: flex;
-    display: contents;
-  }
-  .mainImageContainer {
-    width: 45rem;
-    margin-right: 5rem;
-  }
-  .mainImage {
-    width: 100%;
-    height: auto;
-    border-radius: 2%;
-    filter: drop-shadow(8px 8px 10px gray);
-  }
-  
-  .counterWrapperContainer {
-    width: auto;
-  }
-  .centeredCounter {
-    font-size: clamp(20px, 60px, 60px);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    color: #558e89;
-    font-weight: 200;
-    line-height: var(--bs-body-line-height);
-    z-index: 2;
-    margin-top: 10rem;
-  }
-  .usMap {
-    width: 100%;
-    height: auto;
-    opacity: 8%;
-    width: 60rem;
-    transform: translate(-6%, -70%);
-    z-index: 1;
-    margin-bottom: -15rem;
-  }
-  .loginRegisterFormContainer {
-    background-color: white;
-    width: 40rem;
-    border-radius: 2%;
-    filter: drop-shadow(8px 8px 10px gray);
-    max-width: 50rem;
-    margin: auto;
-  }
-  .loginRegisterHeader {
-    background-color: rgb(234, 234, 234);
+.form-label, .form-control {
+  font-size: 12px;
+}
 
-  }
-  .loginRegisterForm {
-    padding: 2rem;
-  }
+.reactive-btn.rounded.submit-btn-custom {
+  width: 80px;
+  font-size: 12px;
+  background-color: #558e89;
+  margin-top: 5px;
+}
 
-  .formCard {
-    background-color: white !important;
-    border-radius: 2%;
-    filter: drop-shadow(8px 8px 10px gray);
-    padding: 2rem;
-    max-width: 50rem;
-    margin: auto;
-  }
-  .edit-profile {
-    margin: 0rem 5rem 5rem 10rem;
-    padding: 0rem 10rem 5rem 10rem;
-  }
+.login-register-modal {
+  margin-top: 5rem;
+}
+
+.login-register-header {
+  background-color: #eaeaea;
+  display: flex;
+  align-content: center;
+}
+
+.login-register-tab-link {
+  font-size: 12px;
+  padding-bottom: 10px;
+  margin-top: .3rem;
+}
+
+.login-register-form {
+  padding: 2rem;
+}
+
+/*Profile edit*/
+.edit-profile {
+  margin: 0 5rem 5rem 10rem;
+  padding: 0 10rem 5rem 10rem;
+}
+
+/* contact page */
+.contact-page-header {
+  text-align: center;
+  padding: 5rem 0rem 2rem 0rem;
+  font-weight: 100;
 }

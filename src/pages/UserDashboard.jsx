@@ -12,7 +12,7 @@ export default function UserDashboard() {
       <ProfileHeader />
       <UserNav />
 
-      <Container fluid className="actionCardsContainer">
+      <Container fluid className="action-cards-container">
         <Row className="g-0">
           {/* Content Column */}
           <Col xs={10} className="content-column">
@@ -20,6 +20,8 @@ export default function UserDashboard() {
               {/* Action Cards */}
               <Row className="g-4 mb-5 action-cards">
                 <Col md={12}>
+                  {/* CHECK IF THIS CARD STYLING BELOW WORKS
+                  className="home-page-cards" */}
                 <div className="action-cards">
                   <InfoCard className="action-cards">
                     <Balance />

@@ -12,11 +12,11 @@ const AdminNav = (props) => {
 
   return (
     <div>
-      <div className="navWrapper">
+      <div className="nav-wrapper">
         <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <Button
             type="button"
-            id="sidebarCollapse"
+            id="sidebar-collapse"
             onClick={() => setNotActive(!isNotActive)}
             className="btn btn-custom"
           >
@@ -26,22 +26,22 @@ const AdminNav = (props) => {
 
           <ul className="list-unstyled components">
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
               <Link to="/">OPSG Home</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
               <Link to="/admin/dashboard">Dashboard</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-people-fill"></i>
               <Link to="/admin/search">All Users</Link>
             </li>
 
-            <li className="list-item">
+            <li className="dashboard-list-item">
               <i className="bi bi-box-arrow-left"></i>
               <Link to="/" onClick={() => removeToken()}>
                 Log out

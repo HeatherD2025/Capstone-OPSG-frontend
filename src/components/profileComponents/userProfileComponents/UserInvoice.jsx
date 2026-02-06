@@ -30,9 +30,9 @@ export default function UserInvoice() {
         <UserNav />
       </div>
 
-      <div className="mainContainer">
+      <div className="main-container">
 
-          <div className="invoiceContainer">
+          <div className="invoice-container">
             <div className="row">
               <div className="col-xl-12">
                 <i className="far fa-building fa-6x float-start"></i>

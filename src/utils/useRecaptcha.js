@@ -1,10 +1,5 @@
 import { useRef, useState } from "react";
 
-// manage my recaptcha token
-// expose helpers (getToken, reset)
-// track errors
-// be reuseable
-
 export function useRecaptcha() {
   const recaptchaRef = useRef(null);
   const [ error, setError ] = useState("");

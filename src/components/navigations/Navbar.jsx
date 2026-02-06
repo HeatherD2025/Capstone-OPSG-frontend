@@ -32,19 +32,24 @@ export default function NavBar() {
   }
 
   const profileNavigation = () => {
+    //read the hash and remove # for a clean string
     const currentUrl = window.location.hash.replace("#", "");
 
+    // known routes to clean from url (replace() ok if unique routes)
     const cleanedUrl = currentUrl
       .replace("/ourservices", "")
       .replace("/contactform", "")
       .replace("/login", "")
       .replace("/register", "");
 
+    // normalize the trailing slash
     const baseOfUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
 
+    // build dash based on role
     const adminProfile = baseOfUrl + "admin/dashboard";
     const userProfile = baseOfUrl + "user/dashboard";
 
+    // navigate without reload
     if (!isAdmin) {
       navigate(userProfile);
     } else {
@@ -59,100 +64,51 @@ export default function NavBar() {
 
   return (
     <header>
-      <nav
-        className="navbar bg-light2 navbarTestClass"
-        style={{
-          overflow: "hidden",
-          position: "fixed" /* Set the navbar to fixed position */,
-          top: "0" /* Position the navbar at the top of the page */,
-          width: "100%",
-          zIndex: "5",
-        }}
-      >
+      <nav className="navbar bg-light2">
         <div className="container-fluid" style={{ display: "contents" }}>
-
           <div className="navbar-header">
-            <div
-              className="navLogoWrapper"
-              style={{
-                display: "flex",
-                marginLeft: "5rem",
-                fontWeight: "200",
-                fontSize: "clamp(12px, 20px, 20px)",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                alignItems: "center",
-              }}
-            >
+            <div className="nav-logo-wrapper">
               <img
                 src={opsgLogo}
                 alt="OPSG logo"
-                className="rounded-circle usr-image2 nav navbar-nav"
-                style={{
-                  width: "clamp(35px, 10px, 10px)",
-                  height: "clamp(35px, 1px, 10px)",
-                }}
+                className="opsg-navbar-logo"
               ></img>
               <div>OnPoint</div>
             </div>
           </div>
 
           <ListGroup
-            className="nav navbar-nav  sidebar-header2"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "noWrap",
-              gap: "clamp(1vw, 8vw, 8vw)",
-              fontSize: "clamp(12px, 16px, 16px)",
-            }}
+            className="nav navbar-nav main-links"
           >
             <ListGroup.Item
-              className="nav-item"
+              className="navbar-item"
               action
               onClick={() => navigate("/")}
-              style={{
-                fontColor: "black",
-                border: "none",
-                backgroundColor: "white",
-              }}
             >
               ABOUT
             </ListGroup.Item>
+
             <ListGroup.Item
-              className="nav-item"
+              className="navbar-item"
               action
               onClick={() => navigate("/ourservices")}
-              style={{
-                fontColor: "black",
-                border: "none",
-                backgroundColor: "white",
-              }}
             >
               SERVICES
             </ListGroup.Item>
+
             <ListGroup.Item
-              className="nav-item"
+              className="navbar-item"
               action
               onClick={() => navigate("/contactform")}
-              style={{
-                fontColor: "black",
-                border: "none",
-                backgroundColor: "white",
-              }}
             >
               CONTACT
             </ListGroup.Item>
+
             {token ? (
               <ListGroup.Item
-                className="nav-item"
+                className="navbar-item"
                 action
                 onClick={() => profileNavigation()}
-                style={{
-                  fontColor: "black",
-                  border: "none",
-                  backgroundColor: "white",
-                }}
               >
                 PROFILE
               </ListGroup.Item>
@@ -162,98 +118,69 @@ export default function NavBar() {
           </ListGroup>
 
 
-
-            <div className="mobileButtonWrapper">
-                <ListGroup
-                  className="nav mobileButtonWrapper"
+            <ListGroup
+              className="nav login-register-buttons"
+            >
+              <ListGroup.Item
+                style={{
+                  border: "solid var(--bs-body-bg)",
+                }}
+              >
+                <span
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    position: "anchor-right",
+                    border: "solid var(--bs-body-bg)",
                   }}
                 >
-                  <ListGroup.Item
-                    style={{
-                      border: "solid var(--bs-body-bg)",
-                    }}
-                  >
-                    <span
-                      style={{
-                        border: "solid var(--bs-body-bg)",
-                      }}
+                  {token ? (
+                    <ReactiveButton
+                      onClick={handleLogout}
+                      rounded
+                      idleText={"LOGOUT"}
+                      type="button"
+                      variant="secondary"
+                      navigate="/"
+                      className="login-register-btn-custom"
                     >
-                      {token ? (
-                        <ReactiveButton
-                          onClick={handleLogout}
-                          rounded
-                          idleText={"LOGOUT"}
-                          type="button"
-                          variant="secondary"
-                          navigate="/"
-                          style={{
-                            width: "8rem",
-                            backgroundColor: "#558e89",
-                            fontSize: "clamp(12px, 16px, 16px)",
-                            fontWeight: "200",
-                          }}
-                        >
-                          {isLoggedIn}
-                        </ReactiveButton>
-                      ) : (
-                        <ReactiveButton
-                          rounded
-                          idleText={"LOGIN"}
-                          type="button"
-                          variant="secondary"
-                          style={{
-                            marginRight: "5px",
-                            width: "8rem",
-                            backgroundColor: "#558e89",
-                            fontSize: "clamp(12px, 16px, 16px)",
-                            fontWeight: "200",
-                          }}
-                          onClick={() => navigate("/login")}
-                        >
-                          {isLoggedIn}
-                        </ReactiveButton>
-                      )}
-                    </span>
-                  </ListGroup.Item>
+                      {isLoggedIn}
+                    </ReactiveButton>
+                  ) : (
+                    <ReactiveButton
+                      rounded
+                      idleText={"LOGIN"}
+                      type="button"
+                      className="login-register-btn-custom"
+                      onClick={() => navigate("/login")}
+                    >
+                      {isLoggedIn}
+                    </ReactiveButton>
+                  )}
+                </span>
+              </ListGroup.Item>
 
-                  <ListGroup.Item
-                    style={{
-                      border: "solid var(--bs-body-bg)",
-                    }}
-                  >
-                    <span>
-                      {token ? (
-                        <button
-                          className="nav-link"
-                          href="/"
-                          variant="secondary"
-                        ></button>
-                      ) : (
-                        <ReactiveButton
-                          rounded
-                          idleText={"REGISTER"}
-                          type="button"
-                          style={{
-                            backgroundColor: "#558e89",
-                            width: "8rem",
-                            fontSize: "clamp(12px, 16px, 16px)",
-                            fontWeight: "200",
-                            marginRight: "5rem",
-                          }}
-                          // className="button"
-                          onClick={() => navigate("/register")}
-                        ></ReactiveButton>
-                      )}
-                    </span>
-                  </ListGroup.Item>
-                </ListGroup>
-            </div>
-            
-
+              <ListGroup.Item
+                style={{
+                  border: "solid var(--bs-body-bg)",
+                }}
+              >
+                <span>
+                  {token ? (
+                    <button
+                      className="nav-link"
+                      href="/"
+                      variant="secondary"
+                    ></button>
+                  ) : (
+                    <ReactiveButton
+                      rounded
+                      idleText={"REGISTER"}
+                      type="button"
+                      className="login-register-btn-custom"
+                      onClick={() => navigate("/register")}
+                    ></ReactiveButton>
+                  )}
+                </span>
+              </ListGroup.Item>
+            </ListGroup>
         </div>
       </nav>
     </header>

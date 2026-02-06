@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { motion } from "motion/react";
 import { useRecaptcha } from "../utils/useRecaptcha";
 import NavBar from "../components/navigations/Navbar";
+import Form from "react-bootstrap/Form";
 import "../styles/app.css";
 
 export default function ContactFormPage() {
@@ -82,148 +83,98 @@ export default function ContactFormPage() {
 
   return (
     <>
-      <div className="background" style={{ minHeight: "100vh" }}>
-        <div className="backgroundAccent" style={{ minHeight: "100vh" }}>
-          <NavBar />
-          <motion.div
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            custom={-1}
-          >
-            <h2
-              style={{
-                textAlign: "center",
-                paddingTop: "150px",
-                fontWeight: "175",
-              }}
-            >
-              We'd Love To Hear From You!
-            </h2>
+      <div className="background">
+        <NavBar />
+        <motion.div
+          variants={fadeInAnimationVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          custom={-1}
+        >
+          <h2 className="contact-page-header">We'd Love To Hear From You!</h2>
 
+          <div className="contact-form-container">
+            <Form onSubmit={handleSubmit} className="login-register-form">
 
-              <div
-                className="container py-4 py-md-5"
-                style={{ paddingTop: "300px" }}
-              >
-                <div
-                  className="formCard"
-                >
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="fullName"
-                        className="form-label"
-                        style={{ fontSize: "12px" }}
-                      >
-                        FIRST AND LAST NAME
-                      </label>
-                      <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        className="form-control"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        required
-                        style={{ fontSize: "12px" }}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="email"
-                        className="form-label"
-                        style={{ fontSize: "12px" }}
-                      >
-                        EMAIL ADDRESS
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="form-control"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        style={{ fontSize: "12px" }}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="phone"
-                        className="form-label"
-                        style={{ fontSize: "12px" }}
-                      >
-                        PHONE NUMBER
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        className="form-control"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        style={{ fontSize: "12px" }}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="message"
-                        className="form-label"
-                        style={{ fontSize: "12px" }}
-                      >
-                        MESSAGE
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        className="form-control"
-                        rows={7}
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        style={{ fontSize: "12px" }}
-                      />
-                    </div>
-                    <div className="mb-3 text-center">
-                      {" "}
-                      <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                      />
-                      {recaptchaError && (
-                        <div className="text-danger mt-1">{recaptchaError}</div>
-                      )}
-                    </div>
+              <Form.Group className="mb-3" controlId="form-basic-name">
+                <Form.Label>
+                  FIRST AND LAST NAME
+                </Form.Label>
 
-                    <div className="text-center">
-                      <ReactiveButton
-                        rounded
-                        buttonState={loading ? "loading" : "idle"}
-                        idleText={"SUBMIT"}
-                        loadingText={"Loading"}
-                        variant="secondary"
-                        className="button3"
-                        type="submit"
-                        style={{
-                          justifyContent: "left",
-                          width: "80px",
-                          fontSize: "12px",
-                          backgroundColor: "#558e89",
-                          marginTop: "5px",
-                        }}
-                      ></ReactiveButton>
-                    </div>
-                  </form>
-                </div>
+                <Form.Control
+                  type="text"
+                  name="fullName"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="form-basic-email">
+                <Form.Label>
+                  E-MAIL
+                </Form.Label>
+
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="johndoe@email.com"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="form-basic-phone">
+                <Form.Label>
+                  PHONE NUMBER
+                </Form.Label>
+
+                <Form.Control
+                  type="phone"
+                  name="phone"
+                  placeholder="(555)555-5555"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group  className="mb-4" controlId="form-basic-message">
+                <Form.Label>
+                  MESSAGE
+                </Form.Label>
+
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  type="message"
+                  name="message"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <div className="mb-3 text-center">
+                {" "}
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                />
+                {recaptchaError && (
+                  <div className="text-danger mt-1">{recaptchaError}</div>
+                )}
               </div>
-          </motion.div>
-        </div>
-      </div>
 
-      <Footer />
+              <div className="text-center">
+                <ReactiveButton
+                  rounded
+                  buttonState={loading ? "loading" : "idle"}
+                  idleText={"SUBMIT"}
+                  loadingText={"Loading"}
+                  className="submit-btn-custom"
+                  type="submit"
+                ></ReactiveButton>
+              </div>
+            </Form>
+          </div>
+        </motion.div>
+        <Footer />
+      </div>
     </>
   );
 }

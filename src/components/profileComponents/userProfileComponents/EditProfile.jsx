@@ -10,9 +10,6 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InfoModal from "../../Modal";
-import "../../../styles/profileHeader.css";
-import "../../../styles/dashboardNav.css";
-import "../../../styles/app.css";
 import ReactiveButton from "reactive-button";
 import ProfileHeader from "../ProfileHeader";
 import UserNav from "../../navigations/UserNav";
@@ -359,7 +356,7 @@ export default function EditProfile() {
                           idleText="CHANGE PASSWORD"
                           loadingText="Loading"
                           variant="secondary"
-                          className="button3"
+                          className="btn-primary-soft"
                           style={{
                             marginRight: "5px",
                             width: "150px",
@@ -378,7 +375,7 @@ export default function EditProfile() {
                       idleText="SAVE CHANGES"
                       loadingText="Loading"
                       variant="secondary"
-                      className="button3"
+                      className="btn-primary-soft"
                       style={{
                         marginRight: "18px",
                         width: "150px",
@@ -392,7 +389,7 @@ export default function EditProfile() {
                       idleText="CANCEL CHANGES"
                       loadingText="Loading"
                       variant="secondary"
-                      className="button3"
+                      className="btn-primary-soft"
                       style={{
                         width: "150px",
                         fontSize: "12px",
@@ -453,7 +450,7 @@ export default function EditProfile() {
                       idleText="SAVE"
                       loadingText="Loading"
                       variant="secondary"
-                      className="button3"
+                      className="btn-primary-soft"
                       style={{
                         marginRight: "5px",
                         width: "90px",
@@ -468,7 +465,7 @@ export default function EditProfile() {
                       idleText="CANCEL"
                       loadingText="Loading"
                       variant="secondary"
-                      className="button3"
+                      className="btn-primary-soft"
                       style={{
                         width: "90px",
                         fontSize: "12px",

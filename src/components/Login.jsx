@@ -103,11 +103,10 @@ const Login = () => {
   return (
     <>
       <div className="background">
-        <div className="backgroundAccent">
+        <div className="background-accent">
           <NavBar />
           <div
-            style={{ paddingTop: "120px" }}
-            className="d-flex justify-content-center vh-80"
+            className="d-flex justify-content-center vh-80 login-register-modal"
           >
             {show && (
               <InfoModal
@@ -118,17 +117,12 @@ const Login = () => {
               />
             )}
 
-              <div className="loginRegisterFormContainer">
-                <Nav variant="tabs" defaultActiveKey="/login" className="loginRegisterHeader">
+              <div className="login-register-form-container">
+                <Nav variant="tabs" defaultActiveKey="/login" className="login-register-header">
                   <Nav.Item>
                     <Nav.Link
                       href="/#/login"
-                      style={{
-                        variant: "secondary",
-                        fontSize: "12px",
-                        paddingBottom: "10px",
-                        paddingTop: "15px",
-                      }}
+                      className="login-register-tab-link"
                     >
                       LOGIN
                     </Nav.Link>
@@ -136,23 +130,17 @@ const Login = () => {
                   <Nav.Item>
                     <Nav.Link
                       href="/#/register"
-                      style={{
-                        variant: "secondary",
-                        fontSize: "12px",
-                        paddingBottom: "10px",
-                        paddingTop: "15px",
-                      }}
+                      className="login-register-tab-link"
                     >
                       REGISTER
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
 
-                <Form onSubmit={submit} className="loginRegisterForm">
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form onSubmit={submit} className="login-register-form">
+                  <Form.Group className="mb-3" controlId="form-basic-email">
                     <Form.Label
-                      className="formLabel"
-                      style={{ paddingLeft: "3px" }}
+                      className="form-label"
                     >
                       EMAIL
                     </Form.Label>
@@ -161,13 +149,11 @@ const Login = () => {
                       name="email"
                       placeholder="demo@demo.com"
                       onChange={update}
-                      style={{ fontSize: "12px" }}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Group className="mb-3" controlId="form-basic-password">
                     <Form.Label
-                      className="formLabel"
-                      style={{ paddingLeft: "3px" }}
+                      className="form-label"
                     >
                       PASSWORD
                     </Form.Label>
@@ -176,7 +162,6 @@ const Login = () => {
                       name="password"
                       placeholder="123"
                       onChange={update}
-                      style={{ fontSize: "12px" }}
                     />
                   </Form.Group>
 
@@ -186,13 +171,8 @@ const Login = () => {
                     idleText={"SUBMIT"}
                     loadingText={"Loading"}
                     variant="secondary"
-                    className="button3"
+                    className="submit-btn-custom"
                     type="submit"
-                    style={{
-                      width: "80px",
-                      fontSize: "12px",
-                      backgroundColor: "#558e89",
-                    }}
                     disabled={rtqLoading || loading}
                   />
                 </Form>

@@ -1,14 +1,12 @@
 import AdminNav from "../components/navigations/AdminNav";
-import "../styles/profileHeader.css";
+import "../styles/dashboardNav.css";
 import ProfileHeader from "../components/profileComponents/ProfileHeader";
-// import AdminHeader from "../components/profileComponents/adminProfileComponents/AdminHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
 
 export default function AdminDashboard() {
   return (
     <div className="admin-dashboard dark-theme">
-      {/* <AdminHeader /> */}
       <ProfileHeader />
       <AdminNav />
 
@@ -21,6 +19,8 @@ export default function AdminDashboard() {
               <Row className="g-4 mb-5 action-cards">
                 <Col md={6}>
                   <InfoCard
+                  // CHECK IF THIS CARD STYLING BELOW WORKS
+                    // className="home-page-cards"
                     variant="dark"
                     titleClass="text-success"
                     bodyClass="bg-dark"

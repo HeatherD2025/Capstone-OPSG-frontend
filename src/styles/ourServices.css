@@ -1,76 +1,107 @@
-/* Home Cards base style */
-.homeCards {
-  background-color: #79cbbb;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-  transform-origin: center;
-  height: 15rem;
-  width: 20rem;
-  margin: 2rem;
+.services-header {
+  margin: auto;
+  font-size: 40px;
+  font-weight: 100;
+  padding-bottom: 4rem;
+  color: #558e89;
 }
 
-.homeCards:hover {
-  transform: translateY(-40px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-  z-index: 10;
+/*Service cards*/
+.services-section-container {
+  display: grid;
+  justify-content: stretch;
+  justify-items: center;
 }
 
-/* Card content */
-.homeCards .card-body {
+
+.info-card {
   background-color: #79cbbb;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+  transform 0.25s ease-in-out,
+  box-shadow 0.25s ease-in-out;
+  max-width: 300px;
+  min-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.info-card .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 2rem;
+  height: 220px;
 }
 
-.homeCards .card-title {
-  font-size: clamp(16px, 1.8vw, 28px);
-  font-weight: 200;
-  margin: 1.5rem 0;
-}
-
-.homeCards .card-subtitle {
-  font-size: clamp(14px, 1.2vw, 20px);
-  font-weight: 200;
+.info-card-image-wrapper {
+  height: 120px;
+  width: 100%;
   margin-top: 1rem;
 }
 
-.homeCards .card-text {
-  font-size: clamp(12px, 1vw, 16px);
+.info-card-image {
+  height: 50%;
+  width: 30%;
+  object-fit: cover;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+  padding-top: 5rem;
+  font-weight: 100;
+  font-size: 40px;
+  max-width: 60%;
+  margin: auto;
+}
+
+.card-description {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
   font-weight: 200;
-  margin: 0 1.5rem 1.5rem;
+  padding-bottom: 2rem;
 }
 
-/* Card Image */
-.homeCardImage {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+.card-title {
+  margin-top: 1rem;
 }
 
-/* Tablet size */
-@media (max-width: 768px) {
-  .homeCards {
-    margin: 1.5rem;
-    max-width: 24rem;
-  }
+.card-subtitle {
+  margin-top: 2rem;
 }
 
+/* Why choose OPSG section */
+.why-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
 
-/* Mobile size */
-@media (max-width: 600px) {
-  .homeCards {
-    transform: scale(0.9);
-    margin: 1rem;
-  }
+.why-paras-wrapper {
+  width: 38rem;
+  margin-right: 5rem;
+  max-width: 50%;
+  font-weight: 200;
+  font-size: 18px;
+}
 
-  .homeCards:hover {
-    transform: scale(0.95);
-  }
+.why-para-section {
+  margin: 2rem;
+}
+
+.services-main-image {
+  width: 50%;
+  border-radius: 2%;
+  filter: drop-shadow(8px 8px 10px gray);
 }
