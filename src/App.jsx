@@ -99,7 +99,7 @@ function App() {
       />
 
       {/* Visitor Routes */}
-      <Route path="/userdashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/contactform" element={<ContactForm />} />
       <Route path="/ourservices" element={<OurServices />} />
       <Route path="/login" element={<Login />} />
