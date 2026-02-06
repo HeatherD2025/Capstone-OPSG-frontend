@@ -78,8 +78,8 @@ const authSlice = createSlice({
   reducers: {
     loginSuccess: (state, action) => {
       state.user = action.payload.user;
-      state.isAuthenticated = true;
-      state.isAdmin = action.payload.isAdmin;
+      // state.isAuthenticated = true;
+      // state.isAdmin = action.payload.isAdmin;
     },
     // called manually on logout
     logout: (state) => {

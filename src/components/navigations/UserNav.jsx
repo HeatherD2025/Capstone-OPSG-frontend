@@ -23,7 +23,7 @@ const UserNav = (props) => {
   return (
     <div>
       <div className="nav-wrapper">
-        <nav className={`dashboard-sidebar ${isNotActive ? "active" : ""}`}>
+         <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <Button
             type="button"
             id="dashboard-collapse"
