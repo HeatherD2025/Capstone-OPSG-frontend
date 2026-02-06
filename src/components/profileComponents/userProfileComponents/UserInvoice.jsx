@@ -1,6 +1,6 @@
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "../../navigations/UserNav.jsx";
-import "../../../styles/userElements/dashboard.css";
+import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";

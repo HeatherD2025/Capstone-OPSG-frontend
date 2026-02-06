@@ -7,7 +7,7 @@ import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Balance from "../qbComponentsAndHooks/Balance";
-import "../styles/userElements/dashboard.css";
+import "../../styles/dashboard.css";
 
 export default function Dashboard() {
   const { isAdmin, user } = useSelector((state) => state.auth);
