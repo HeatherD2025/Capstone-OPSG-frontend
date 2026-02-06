@@ -17,13 +17,16 @@ export default function Dashboard() {
 
   const { data: currentUser, isLoading, isError } = useGetCurrentUserQuery();
 
+  if (isLoading) return <p>Loading dashboard...</p>;
+  if (isError) return <p>Error loading dashboard.</p>;
+
   return (
     <div className="dashboard dark-theme">
       <ProfileHeader />
 
       {isAdmin ? <AdminNav /> : <UserNav />}
 
-    <BalanceProvider id={currentUser.id}>
+    <BalanceProvider id={currentUser?.id}>
       <Container fluid className="action-cards-container">
         {!isAdmin && currentUser && (
           <InfoCard>
