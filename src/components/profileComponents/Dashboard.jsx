@@ -26,10 +26,9 @@ export default function Dashboard() {
         {isAdmin ? (
           ""
         ) : (
-          <InfoCard
-            className="action-cards"
+          <Balance
             text={
-              <Button
+              <button
                 rel="noopener noreferrer"
                 style={{
                   opacity: "0%",
@@ -37,11 +36,10 @@ export default function Dashboard() {
                   width: "100%",
                 }}
                 onClick={() => navigate(`/profile/invoices/${currentUser.id}`)}
-              ></Button>
+              ></button>
             }
           >
-            <Balance></Balance>
-          </InfoCard>
+            </Balance>
         )}
         <InfoCard
           variant="dark"
