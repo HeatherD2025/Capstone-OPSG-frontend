@@ -10,11 +10,11 @@ import Registration from "./components/Registration";
 import OurServices from "./pages/OurServices";
 import ContactForm from "./pages/ContactForm";
 
-import UserDashboard from "./components/profileComponents/Dashboard";
+import Dashboard from "./components/profileComponents/Dashboard";
 import EditProfile from "./components/profileComponents/userProfileComponents/EditProfile";
 import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
-import AdminDashboard from "./pages/AdminDashboard";
+// import AdminDashboard from "./pages/AdminDashboard";
 import AdminViewUserProfile from "./components/profileComponents/adminProfileComponents/AdminViewUserProfile";
 import AdminSearch from "./components/profileComponents/adminProfileComponents/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
@@ -38,7 +38,7 @@ function App() {
         path="/admin/dashboard"
         element={
           <AdminRoute>
-            <AdminDashboard />
+            <Dashboard />
           </AdminRoute>
         }
       />
@@ -75,7 +75,7 @@ function App() {
         path="/user/dashboard"
         element={
           <ProtectedRoute>
-            <UserDashboard />
+            <Dashboard />
           </ProtectedRoute>
         }
       />
@@ -99,7 +99,7 @@ function App() {
       />
 
       {/* Visitor Routes */}
-      <Route path="/userdashboard" element={<UserDashboard />} />
+      <Route path="/userdashboard" element={<Dashboard />} />
       <Route path="/contactform" element={<ContactForm />} />
       <Route path="/ourservices" element={<OurServices />} />
       <Route path="/login" element={<Login />} />
