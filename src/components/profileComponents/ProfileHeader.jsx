@@ -54,7 +54,7 @@ export default function ProfileHeader() {
               {/* <p className="welcome-header">{headerText}</p> */}
 
               <div className="welcome-header-container">
-                <span>
+                <span className="welcome-header">
                   <p>
                     Welcome {user.firstName} {user.lastName}!
                   </p>
