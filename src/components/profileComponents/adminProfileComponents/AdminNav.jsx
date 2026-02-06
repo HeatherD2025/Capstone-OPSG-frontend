@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-import "../../styles/dashboardNav.css";
+import "../../../styles/dashboardNav.css";
 import { removeToken } from "../../../utils/tokenService";
 
 const AdminNav = (props) => {

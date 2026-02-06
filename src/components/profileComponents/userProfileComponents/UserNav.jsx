@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import "../../styles/dashboardNav.css";
+import "../../../styles/dashboardNav.css";
 import { logout } from "../../../slices/authSlice";
 import { removeToken } from "../../../utils/tokenService";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi";
