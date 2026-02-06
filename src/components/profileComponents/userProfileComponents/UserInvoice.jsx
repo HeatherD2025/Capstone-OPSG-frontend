@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "./UserNav.jsx";
 import "../../../styles/dashboard.css";
@@ -9,6 +10,7 @@ import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 export default function UserInvoice() {
   const { balance } = useBalance();
   const { company, companyIsLoading, companyError } = useCompanyName();
+  const { user } = useSelector((state) => state.auth);
 
   function getRandomInvoice(max) {
     return Math.floor(Math.random() * max);
