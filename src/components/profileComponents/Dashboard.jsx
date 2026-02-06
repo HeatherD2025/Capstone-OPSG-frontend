@@ -12,6 +12,8 @@ export default function Dashboard() {
   const { isAdmin, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
+  const { data: currentUser, isLoading, isError } = useGetCurrentUserQuery();
+
   return (
     <div className="admin-dashboard dark-theme">
       {/* <UserHeader /> */}
@@ -28,7 +30,12 @@ export default function Dashboard() {
             text={
               <Button
                 rel="noopener noreferrer"
-                onClick={() => navigate(`/profile/invoices/${user.id}`)}
+                style={{
+                  opacity: "0%",
+                  height: "100%",
+                  width: "100%",
+                }}
+                onClick={() => navigate(`/profile/invoices/${currentUser.id}`)}
               ></Button>
             }
           >
