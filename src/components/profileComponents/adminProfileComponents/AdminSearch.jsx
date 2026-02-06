@@ -31,6 +31,8 @@ export default function AdminSearch() {
     error: allUsersError,
   } = useGetAllUsersQuery();
 
+  console.log(allUsers)
+
   const {
     data: searchedUsers,
     isLoading: loadingSearch,
