@@ -1,6 +1,6 @@
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "../../navigations/UserNav.jsx";
-import "../../../styles/userElements/userDashboard.css";
+import "../../../styles/userElements/dashboard.css";
 import "../../../styles/invoices.css";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
@@ -30,12 +30,9 @@ function getRandomInvoice(max) {
 
   return (
     <>
-      <div className="dashboard-wrapper">
+      <div className="dark-theme">
         <ProfileHeader />
         <UserNav />
-      </div>
-
-      <div className="main-container">
 
           <div className="invoice-container">
             <div className="row">

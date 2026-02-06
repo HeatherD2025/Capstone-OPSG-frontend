@@ -4,8 +4,8 @@
 }
 .invoice-container {
   background: white;
-  max-width: 80rem;
-  margin-left: 15rem;
+  max-width: 60rem;
+  margin: 2rem 5rem 0rem 14rem;
   padding: 2rem;
   margin-left: 10rem;
 }

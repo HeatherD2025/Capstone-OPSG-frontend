@@ -7,7 +7,7 @@ import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Balance from "../qbComponentsAndHooks/Balance";
-// import "../styles/userElements/userDashboard.css";
+import "../styles/userElements/dashboard.css";
 
 export default function Dashboard() {
   const { isAdmin, user } = useSelector((state) => state.auth);
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const { data: currentUser, isLoading, isError } = useGetCurrentUserQuery();
 
   return (
-    <div className="admin-dashboard dark-theme">
+    <div className="dashboard dark-theme">
       {/* <UserHeader /> */}
       <ProfileHeader />
 
