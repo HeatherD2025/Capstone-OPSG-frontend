@@ -4,6 +4,7 @@
   color: white;
   flex-shrink: 1;
   padding: 1rem;
+  
 }
 
 /* Header Styles */
@@ -11,18 +12,19 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
 }
 
-.opsg-logo {
-  width: clamp(40px, 6vw, 90px);
-  aspect-ratio: 1/1;
-  margin-right: 2%;
+.opsg-header-logo {
+  margin-left: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
+
 
 .welcome-header {
   color: white;
   font-size: 1.8rem;
-  margin: 0% 0% 0% 1%;
   width: 50%;
 }
 
@@ -31,7 +33,6 @@
   display: flex;
   flex-wrap: nowrap;
   font-size: large;
-  margin: 2% 0% 0% 5%;
 }
 .welcome {
   margin-right: 2%;
