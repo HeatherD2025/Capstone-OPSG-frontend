@@ -31,8 +31,6 @@ export default function AdminSearch() {
     error: allUsersError,
   } = useGetAllUsersQuery();
 
-  console.log(allUsers)
-
   const {
     data: searchedUsers,
     isLoading: loadingSearch,
@@ -42,7 +40,9 @@ export default function AdminSearch() {
   });
 
   // decide which data to show
-  const usersToShow = triggerSearch ? searchedUsers?.data : allUsers?.data;
+  const usersToShow = triggerSearch 
+    ? searchedUsers?.data?.data // drill down from outer RTK Query obj to user array
+    : allUsers?.data?.data
 
   const loading = triggerSearch ? loadingSearch : loadingAllUsers;
 
