@@ -21,6 +21,8 @@ export default function Dashboard() {
 
       <Container fluid className="action-cards-container">
         {isAdmin ? (
+          ""
+        ) : (
           <InfoCard
             className="action-cards"
             text={
@@ -32,8 +34,6 @@ export default function Dashboard() {
           >
             <Balance></Balance>
           </InfoCard>
-        ) : (
-          ""
         )}
         <InfoCard
           variant="dark"
