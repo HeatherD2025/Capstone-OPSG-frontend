@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminNav from "../../navigations/AdminNav";
 import {
   Card,
@@ -23,6 +23,7 @@ export default function AdminSearch({ onSelectUser }) {
 
   const [term, setTerm] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
+  const [error, setError] = useState("");
 
   // fetch all users on inital load
   const {
@@ -31,29 +32,47 @@ export default function AdminSearch({ onSelectUser }) {
     error: allUsersError,
   } = useGetAllUsersQuery();
 
-  const {
-    data: searchedUsers,
-    isLoading: loadingSearch,
-    error: searchError,
-  } = useSearchUsersQuery(term, {
+  console.log(data);
+
+  // const {
+  //   data: searchedUsers,
+  //   isLoading: loadingSearch,
+  //   error: searchError,
+  // } = useSearchUsersQuery(term, {
+  //   skip: !triggerSearch,
+  // });
+    const searchedUsers = useSearchUsersQuery(term, {
     skip: !triggerSearch,
   });
+
+  const filteredUsers = searchedUsers.data?.results.filter((a) => 
+    a.data?.toLowerCase.includes(term),
+  ) ?? [];
+
 
   const handleSearch = () => {
     if (!term.trim()) {
       alert("Enter a search term");
       return;
-    }
+    } 
+    if (filteredUsers.length === 0) {
+    setTriggerSearch([]);
+    setError("No matching users found");
+    return;
+  }
     setTriggerSearch(true);
   };
+
+  useEffect(() => {
+    handleSearch();
+  }, [term, searchedUsers.data]);
 
   const handleShowAll = () => {
     setTerm("");
     setTriggerSearch(false);
   };
 
-  const loading = loadingAllUsers || loadingSearch;
-
+  const loading = loadingAllUsers;
   const usersToShow = triggerSearch ? searchedUsers : allUsers;
 
   return (

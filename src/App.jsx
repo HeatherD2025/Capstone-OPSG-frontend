@@ -10,7 +10,7 @@ import Registration from "./components/Registration";
 import OurServices from "./pages/OurServices";
 import ContactForm from "./pages/ContactForm";
 
-import UserDashboard from "./pages/UserDashboard";
+import UserDashboard from "./components/profileComponents/Dashboard";
 import EditProfile from "./components/profileComponents/userProfileComponents/EditProfile";
 import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
@@ -99,7 +99,7 @@ function App() {
       />
 
       {/* Visitor Routes */}
-      <Route path="/userdashboard" element={<UserDashboard />}/>
+      <Route path="/userdashboard" element={<UserDashboard />} />
       <Route path="/contactform" element={<ContactForm />} />
       <Route path="/ourservices" element={<OurServices />} />
       <Route path="/login" element={<Login />} />

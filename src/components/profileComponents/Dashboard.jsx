@@ -1,19 +1,24 @@
-import UserNav from "../components/navigations/UserNav";
-import ProfileHeader from "../components/profileComponents/ProfileHeader";
-import InfoCard from "../components/servicesCards/InfoCard";
+import UserNav from "../navigations/UserNav";
+import AdminNav from "../navigations/AdminNav";
+import ProfileHeader from "./ProfileHeader";
+import InfoCard from "../servicesCards/InfoCard";
 import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import Balance from "../components/qbComponentsAndHooks/Balance";
+import Balance from "../qbComponentsAndHooks/Balance";
 import "../styles/userElements/userDashboard.css";
 
-export default function UserDashboard() {
+export default function Dashboard() {
   const { isAdmin } = useSelector((state) => state.auth);
 
   return (
     <div className="admin-dashboard dark-theme">
       {/* <UserHeader /> */}
       <ProfileHeader />
-      <UserNav />
+      {isAdmin ? (
+        <UserNav />
+      ) : (
+        <AdminNav />
+      )}
 
       <Container fluid className="action-cards-container">
         {isAdmin ? (
