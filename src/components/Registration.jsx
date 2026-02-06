@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../features/api/authApi";
+import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setTokens } from "../slices/authSlice";
@@ -13,6 +14,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import InfoModal from "./Modal";
 import NavBar from "../components/navigations/Navbar";
+import StateDropdown from "../utils/stateDropdown";
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -111,7 +113,6 @@ export default function Registration() {
         openModal();
       }
     } catch (error) {
-
       const message =
         error?.data?.message ||
         error?.data ||
@@ -121,9 +122,8 @@ export default function Registration() {
       setResponse(message);
       openModal();
       console.error("Registration error", message);
-    }
-    finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,9 +132,7 @@ export default function Registration() {
       <div className="background">
         <div className="background-accent">
           <NavBar />
-          <div
-            className="d-flex justify-content-center vh-80 login-register-modal"
-          >
+          <div className="d-flex justify-content-center vh-80 login-register-modal">
             {show ? (
               <InfoModal
                 show={show}
@@ -146,143 +144,241 @@ export default function Registration() {
               <></>
             )}
 
-             <div className="login-register-form-container">
-                <Nav variant="tabs" defaultActiveKey="/register" className="login-register-header">
-                  <Nav.Item>
-                    <Nav.Link
-                      href="/#/login"
-                      className="login-register-tab-link"
-                    >
-                      LOGIN
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link
-                      href="/#/register"
-                      className="login-register-tab-link"
-                    >
-                      REGISTER
-                    </Nav.Link>
-                  </Nav.Item>
-                </Nav>
+            <div className="login-register-form-container">
+              <Nav
+                variant="tabs"
+                defaultActiveKey="/register"
+                className="login-register-header"
+              >
+                <Nav.Item>
+                  <Nav.Link href="/#/login" className="login-register-tab-link">
+                    LOGIN
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link
+                    href="/#/register"
+                    className="login-register-tab-link"
+                  >
+                    REGISTER
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
 
-                <Form onSubmit={submit} className="login-register-form">
-                  <Form.Group className="mb-3" controlId="form-basic-company">
+              <Form onSubmit={submit} className="login-register-form">
+                <Form.Group className="mb-3" controlId="form-basic-first-name">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    FIRST NAME
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="firstName"
+                    placeholder="  First name"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-last-name">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    LAST NAME
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="lastName"
+                    placeholder="  Last name"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-company">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    COMPANY
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="company"
+                    placeholder="  Company"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-street">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    STREET ADDRESS
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="street"
+                    placeholder="  Street address"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+
+                <Row className="bb-3">
+                  <Form.Group
+                    as={Col}
+                    className="mb-3"
+                    controlId="form-basic-city"
+                  >
                     <Form.Label
                       style={{
                         fontSize: "12px",
                         paddingLeft: "3px",
                       }}
                     >
-                      COMPANY
+                      CITY
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      name="company"
-                      placeholder="  Company"
+                      name="city"
+                      placeholder="  City"
                       onChange={update}
                       style={{
                         fontSize: "12px",
                         paddingLeft: "3px",
                       }}
                     />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="form-basic-first-name">
-                    <Form.Label
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    >
-                      FIRST NAME
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      placeholder="  First name"
-                      onChange={update}
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="form-basic-last-name">
-                    <Form.Label
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    >
-                      LAST NAME
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      placeholder="  Last name"
-                      onChange={update}
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="form-basic-email">
-                    <Form.Label
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    >
-                      E-MAIL
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      placeholder="  johndoe@email.com"
-                      onChange={update}
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="form-basic-password">
-                    <Form.Label
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                    >
-                      PASSWORD
-                    </Form.Label>
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      placeholder="  Enter password (min 8 chars, 1 capital, 1 number)"
-                      onChange={update}
-                      style={{
-                        fontSize: "12px",
-                        paddingLeft: "3px",
-                      }}
-                      isInvalid={!!passwordError}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {passwordError}
-                    </Form.Control.Feedback>
                   </Form.Group>
 
-                  <ReactiveButton
-                    rounded
-                    buttonState={loading ? "loading" : "idle"}
-                    idleText={"SUBMIT"}
-                    loadingText={"Loading"}
-                    className="submit-btn-custom"
-                    type="submit"
-                    disabled={!!passwordError || !formData.password}
-                  ></ReactiveButton>
-                </Form>
-               </div>
+                  <Container as={Col}>
+                    <StateDropdown />
+                  </Container>
+
+                  <Form.Group
+                    as={Col}
+                    className="mb-3"
+                    controlId="form-basic-zip"
+                  >
+                    <Form.Label
+                      style={{
+                        fontSize: "12px",
+                        paddingLeft: "3px",
+                      }}
+                    >
+                      ZIP
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="zip"
+                      placeholder="  Zip"
+                      onChange={update}
+                      style={{
+                        fontSize: "12px",
+                        paddingLeft: "3px",
+                      }}
+                    />
+                  </Form.Group>
+                </Row>
+
+                <Form.Group className="mb-3" controlId="form-basic-phone">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    PHONE
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    placeholder="  Phone"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-email">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    E-MAIL
+                  </Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="  johndoe@email.com"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="form-basic-password">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    PASSWORD
+                  </Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="  Enter password (min 8 chars, 1 capital, 1 number)"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                    isInvalid={!!passwordError}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {passwordError}
+                  </Form.Control.Feedback>
+                </Form.Group>
+
+                <ReactiveButton
+                  rounded
+                  buttonState={loading ? "loading" : "idle"}
+                  idleText={"SUBMIT"}
+                  loadingText={"Loading"}
+                  className="submit-btn-custom"
+                  type="submit"
+                  disabled={!!passwordError || !formData.password}
+                ></ReactiveButton>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

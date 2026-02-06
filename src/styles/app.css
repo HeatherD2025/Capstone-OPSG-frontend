@@ -220,7 +220,7 @@ body {
 }
 
 .login-register-modal {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .login-register-header {
@@ -237,6 +237,10 @@ body {
 
 .login-register-form {
   padding: 2rem;
+}
+
+#stateSelect {
+  font-size: 12px;
 }
 
 /*Profile edit*/
