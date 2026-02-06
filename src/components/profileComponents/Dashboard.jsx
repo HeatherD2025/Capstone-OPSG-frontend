@@ -2,6 +2,7 @@ import UserNav from "../navigations/UserNav";
 import AdminNav from "../navigations/AdminNav";
 import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
+import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
