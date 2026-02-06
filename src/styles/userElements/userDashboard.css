@@ -6,6 +6,12 @@
 }
 
 /* Layout */
+.action-cards-container {
+ width: 100%;
+ display: flex;
+ flex-direction: row;
+}
+
 .action-cards {
   margin-left: 15%;
   width: 100%;

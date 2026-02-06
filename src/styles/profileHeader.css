@@ -4,7 +4,6 @@
   color: white;
   flex-shrink: 1;
   padding: 1rem;
-  
 }
 
 /* Header Styles */
@@ -32,8 +31,9 @@
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
-  font-size: large;
+  font-size: 14px;
 }
+
 .welcome {
   margin-right: 2%;
 }
@@ -44,7 +44,7 @@
   background-clip: text;
   color: transparent;
   font-size: xx-large;
-  gap: 2rem;
+  width: 50%;
 }
 
 /* Card Styles */
