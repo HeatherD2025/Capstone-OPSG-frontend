@@ -7,14 +7,7 @@ import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 // import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
 
 export default function UserInvoice() {
-  // const {
-  //   data: user,
-  //   isLoading: userLoading,
-  //   error: userError,
-  // } = useGetCurrentUserQuery();
-
   const { balance } = useBalance();
-
   const { company, companyIsLoading, companyError } = useCompanyName();
 
   function getRandomInvoice(max) {
@@ -22,14 +15,6 @@ export default function UserInvoice() {
   }
   const randomInvoiceNumber = getRandomInvoice(5000);
 
-  const fieldA = balance / 2
-  // if (userLoading || companyIsLoading) {
-  //   return <p>Loading user invoice...</p>;
-  // }
-
-  // if (userError || companyError) {
-  //   return <p>Error loading user invoice. Please try again later.</p>;
-  // }
 
   return (
     <>

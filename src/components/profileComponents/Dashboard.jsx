@@ -3,7 +3,6 @@ import UserNav from "./userProfileComponents/UserNav";
 import AdminNav from "./adminProfileComponents/AdminNav";
 import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
-import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,37 +14,32 @@ export default function Dashboard() {
   const { isAdmin, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  const { data: currentUser, isLoading, isError } = useGetCurrentUserQuery();
-
-  if (isLoading) return <p>Loading dashboard...</p>;
-  if (isError) return <p>Error loading dashboard.</p>;
-
   return (
     <div className="dashboard dark-theme">
       <ProfileHeader />
-
       {isAdmin ? <AdminNav /> : <UserNav />}
 
-    <BalanceProvider id={currentUser?.id}>
       <Container fluid className="action-cards-container">
-        {!isAdmin && currentUser && (
-          <InfoCard>
-            <Balance
-              text={
-                <button
-                  rel="noopener noreferrer"
-                  style={{
-                    opacity: "0%",
-                    height: "100%",
-                    width: "100%",
-                  }}
-                  onClick={() =>
-                    navigate(`/profile/invoices/${currentUser.id}`)
-                  }
-                />
-              }
-            />
-          </InfoCard>
+        {!isAdmin && user && (
+          <BalanceProvider id={user?.id}>
+            <InfoCard>
+              <Balance
+                text={
+                  <button
+                    rel="noopener noreferrer"
+                    style={{
+                      opacity: 0,
+                      height: "100%",
+                      width: "100%",
+                    }}
+                    onClick={() =>
+                      navigate(`/profile/invoices/${user.id}`)
+                    }
+                  />
+                }
+              />
+            </InfoCard>
+          </BalanceProvider>
         )}
 
         <InfoCard
@@ -68,7 +62,6 @@ export default function Dashboard() {
           }
         />
       </Container>
-     </BalanceProvider>
     </div>
   );
 }

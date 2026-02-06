@@ -7,7 +7,8 @@ export default function BalanceCard() {
 
   // Determine display values
   let title = "Current Balance";
-  let displayText = `$${balance.toFixed(2)}`;
+  // checks for balance value, converts to currency format, --- for null/unavailable balance
+  let displayText = balance !== null ? `$${balance.toFixed(2)}`: "---";
 
 
   if (loading) displayText = "Loading...";
