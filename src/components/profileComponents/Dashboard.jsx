@@ -4,21 +4,20 @@ import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
 import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Balance from "../qbComponentsAndHooks/Balance";
 // import "../styles/userElements/userDashboard.css";
 
 export default function Dashboard() {
-  const { isAdmin } = useSelector((state) => state.auth);
+  const { isAdmin, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   return (
     <div className="admin-dashboard dark-theme">
       {/* <UserHeader /> */}
       <ProfileHeader />
-      {isAdmin ? (
-        <UserNav />
-      ) : (
-        <AdminNav />
-      )}
+
+      {isAdmin ? <AdminNav /> : <UserNav />}
 
       <Container fluid className="action-cards-container">
         {isAdmin ? (
@@ -27,9 +26,7 @@ export default function Dashboard() {
             text={
               <Button
                 rel="noopener noreferrer"
-                onClick={() => {
-                  href = `/profile/invoices/${user.id}`;
-                }}
+                onClick={() => navigate(`/profile/invoices/${user.id}`)}
               ></Button>
             }
           >

@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { initializeAuth } from "./slices/authSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -24,25 +22,10 @@ import AdminRoute from "../src/routes/AdminRoute";
 // const AuthContext = React.createContext({ role: 'visitor'});
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // rehydrate auth state from localStorage
-    dispatch(initializeAuth());
-  }, [dispatch]);
 
   return (
     <Routes>
       {/* Admin Routes (most specific first) */}
-      <Route
-        path="/dashboard"
-        element={
-          <AdminRoute>
-            <Dashboard />
-          </AdminRoute>
-        }
-      />
-
       <Route
         path="/admin/users/:userId"
         element={
@@ -99,7 +82,6 @@ function App() {
       />
 
       {/* Visitor Routes */}
-      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/contactform" element={<ContactForm />} />
       <Route path="/ourservices" element={<OurServices />} />
       <Route path="/login" element={<Login />} />
