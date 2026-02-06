@@ -8,7 +8,7 @@ import Registration from "./components/Registration";
 import OurServices from "./pages/OurServices";
 import ContactForm from "./pages/ContactForm";
 
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./components/profileComponents/Dashboard";
 import EditProfile from "./components/profileComponents/userProfileComponents/EditProfile";
 import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
