@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import Balance from "../components/qbComponentsAndHooks/Balance";
 import "../styles/userElements/userDashboard.css";
 
-const { isAdmin } = useSelector((state) => state.auth);
-
 export default function UserDashboard() {
+  const { isAdmin } = useSelector((state) => state.auth);
+
   return (
     <div className="admin-dashboard dark-theme">
       {/* <UserHeader /> */}
