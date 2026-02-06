@@ -44,6 +44,7 @@
   background-clip: text;
   color: transparent;
   font-size: xx-large;
+  gap: 2rem;
 }
 
 /* Card Styles */
