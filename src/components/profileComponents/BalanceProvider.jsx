@@ -14,6 +14,8 @@ export function BalanceProvider({ id, children }) {
       Number(faker.finance.amount({ min: 150, max: 5450, dec: 2 }))
     );
 
+    const finalBalance = 
+      balance !== null && balance !== undefined ? balance : fakeBalance
     const { data, isLoading, error } = useGetCustomerObjectQuery(id, {
         skip: !id,
     });
@@ -25,8 +27,6 @@ export function BalanceProvider({ id, children }) {
             setBalance(null) // fake fallback if null
         }
     }, [data]);
-
-    const finalBalance = balance !== null ? balance : fakeBalance;
 
     return (
         <BalanceContext.Provider

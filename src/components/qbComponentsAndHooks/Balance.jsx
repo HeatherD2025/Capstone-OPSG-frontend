@@ -8,7 +8,6 @@ export default function Balance({ text }) {
   // Determine display values
   let displayText = loading
   ? "Loading..."
-  : error? "Demo Balance"
   :`$${Number(balance).toFixed(2)}`;
 
   return (
