@@ -26,21 +26,23 @@ export default function Dashboard() {
         {isAdmin ? (
           ""
         ) : (
-          <Balance
-            text={
-              <button
-                rel="noopener noreferrer"
-                style={{
-                  opacity: "0%",
-                  height: "100%",
-                  width: "100%",
-                }}
-                onClick={() => navigate(`/profile/invoices/${currentUser.id}`)}
-              ></button>
-            }
-          >
-            </Balance>
-        )}
+          <InfoCard>
+            <Balance
+              text={
+                <button
+                  rel="noopener noreferrer"
+                  style={{
+                    opacity: "0%",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                  onClick={() => navigate(`/profile/invoices/${currentUser.id}`)}
+                ></button>
+              }
+            >
+              </Balance>
+            </InfoCard>
+          )}
         <InfoCard
           variant="dark"
           titleClass="text-success"
