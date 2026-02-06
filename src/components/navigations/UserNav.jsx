@@ -42,7 +42,7 @@ const UserNav = (props) => {
 
             <li className="dashboard-list-item">
               <i className="bi bi-house"></i>
-              <Link to="/user/dashboard">Dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
 
             <li className="dashboard-list-item">

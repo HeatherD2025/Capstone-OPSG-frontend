@@ -31,31 +31,31 @@ export default function NavBar() {
     }
   }
 
-  const profileNavigation = () => {
+  // const profileNavigation = () => {
     //read the hash and remove # for a clean string
-    const currentUrl = window.location.hash.replace("#", "");
+    // const currentUrl = window.location.hash.replace("#", "");
 
     // known routes to clean from url (replace() ok if unique routes)
-    const cleanedUrl = currentUrl
-      .replace("/ourservices", "")
-      .replace("/contactform", "")
-      .replace("/login", "")
-      .replace("/register", "");
+    // const cleanedUrl = currentUrl
+    //   .replace("/ourservices", "")
+    //   .replace("/contactform", "")
+    //   .replace("/login", "")
+    //   .replace("/register", "");
 
     // normalize the trailing slash
-    const baseOfUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+    // const baseOfUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
 
     // build dash based on role
-    const adminProfile = baseOfUrl + "admin/dashboard";
-    const userProfile = baseOfUrl + "user/dashboard";
+    // const adminProfile = baseOfUrl + "dashboard";
+    // const userProfile = baseOfUrl + "dashboard";
 
     // navigate without reload
-    if (!isAdmin) {
-      navigate(userProfile);
-    } else {
-      navigate(adminProfile);
-    }
-  };
+  //   if (!isAdmin) {
+  //     navigate(userProfile);
+  //   } else {
+  //     navigate(adminProfile);
+  //   }
+  // };
 
   const handleLogout = () => {
     removeToken();
@@ -108,7 +108,7 @@ export default function NavBar() {
               <ListGroup.Item
                 className="navbar-item"
                 action
-                onClick={() => profileNavigation()}
+                onClick={() => navigate("/dashboard")}
               >
                 PROFILE
               </ListGroup.Item>

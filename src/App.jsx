@@ -35,7 +35,7 @@ function App() {
     <Routes>
       {/* Admin Routes (most specific first) */}
       <Route
-        path="/admin/dashboard"
+        path="/dashboard"
         element={
           <AdminRoute>
             <Dashboard />
@@ -72,7 +72,7 @@ function App() {
 
       {/* User Protected Routes */}
       <Route
-        path="/user/dashboard"
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />

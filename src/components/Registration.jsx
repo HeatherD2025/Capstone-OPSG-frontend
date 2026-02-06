@@ -105,8 +105,7 @@ export default function Registration() {
         setAuthenticated(true);
         if (user.isAdmin) setIsAdmin(true);
 
-        if (user.isAdmin) navigate(`/admin/dashboard`);
-        else navigate(`/user/dashboard`);
+        if (user) navigate(`/dashboard`);
       } else {
         console.warn("Missing token or user data from registration response");
         setResponse("Registration succeeded but auth info missing");

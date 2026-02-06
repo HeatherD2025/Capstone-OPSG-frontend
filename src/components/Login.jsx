@@ -74,11 +74,9 @@ const Login = () => {
         // const userId = user.id || user._id;
 
         // Navigate based on role
-        if (user.isAdmin) {
-          navigate(`/admin/dashboard`);
-        } else {
-          navigate(`/user/dashboard`);
-        }
+        if (user) {
+          navigate(`/dashboard`);
+        } 
       } else {
         console.warn("Missing token or user data from login response");
         dispatch(logout()); // clear state & tokens

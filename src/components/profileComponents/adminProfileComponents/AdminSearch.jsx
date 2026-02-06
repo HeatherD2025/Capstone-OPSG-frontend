@@ -34,14 +34,11 @@ export default function AdminSearch({ onSelectUser }) {
 
   console.log(data);
 
-  // const {
-  //   data: searchedUsers,
-  //   isLoading: loadingSearch,
-  //   error: searchError,
-  // } = useSearchUsersQuery(term, {
-  //   skip: !triggerSearch,
-  // });
-    const searchedUsers = useSearchUsersQuery(term, {
+  const {
+    data: searchedUsers,
+    isLoading: loadingSearch,
+    error: searchError,
+  } = useSearchUsersQuery(term, {
     skip: !triggerSearch,
   });
 
