@@ -2,6 +2,7 @@ import UserNav from "../components/navigations/UserNav";
 import ProfileHeader from "../components/profileComponents/ProfileHeader";
 import InfoCard from "../components/servicesCards/InfoCard";
 import { Container, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import Balance from "../components/qbComponentsAndHooks/Balance";
 import "../styles/userElements/userDashboard.css";
 
