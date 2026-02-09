@@ -18,10 +18,11 @@ import {
 } from "../../../features/api/adminApi";
 import "../../../styles/app.css";
 
-export default function AdminSearch() {
+export default function AdminSearch({ setSearchResults, setIsSearching }) {
   const navigate = useNavigate();
 
   const [term, setTerm] = useState("");
+  const [error, setError] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
 
   // fetch all users on inital load
@@ -31,7 +32,6 @@ export default function AdminSearch() {
     error: allUsersError,
   } = useGetAllUsersQuery();
 
-console.log(allUsers)
 
   const {
     data: searchedUsers,
@@ -49,8 +49,33 @@ console.log(allUsers)
   const loading = triggerSearch ? loadingSearch : loadingAllUsers;
 
   const handleSearch = () => {
-    if (!term.trim()) return;
-    setTriggerSearch(true);
+    if (!term.trim()) {
+    // setTriggerSearch(true);
+    setSearchResults([]);
+    setIsSearching(false);
+    setError("");
+    return;
+    }
+
+    const searchTerm = input.toLowerCase();
+
+    const matchingUsers = 
+      searchedUsers.data?.results?.filter((a) => 
+        a.firstName?.toLowerCase().includes(searchTerm) ||
+        a.lastName?.toLowerCase().includes(searchTerm) ||
+        a.email?.toLowerCase().includes(searchTerm)
+      )
+
+      if (matchingUsers.length === 0) {
+        setSearchResults([]);
+        setIsSearching(true);
+        setError("No matching users found");
+        return;
+      }
+
+      setError("");
+      setSearchResults(matchingUsers);
+      setIsSearching(true)
   };
 
   const handleShowAll = () => {
@@ -62,7 +87,6 @@ console.log(allUsers)
     handleSearch();
     }, [term, searchedUsers]);
 
-  console.log(term, searchedUsers)
 
   return (
     <>
