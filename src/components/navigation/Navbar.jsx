@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getToken, removeToken } from "../../utils/tokenService";
 import { jwtDecode } from "jwt-decode";
@@ -31,31 +31,40 @@ export default function NavBar() {
     }
   }
 
-  // const profileNavigation = () => {
-    //read the hash and remove # for a clean string
-    // const currentUrl = window.location.hash.replace("#", "");
+ const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    // known routes to clean from url (replace() ok if unique routes)
-    // const cleanedUrl = currentUrl
-    //   .replace("/ourservices", "")
-    //   .replace("/contactform", "")
-    //   .replace("/login", "")
-    //   .replace("/register", "");
+  useEffect(() => {
+    // strip hash symbol from location to match id
+    const id = location.hash.replace("#", "");
+    const el = document.getElementById(id);
 
-    // normalize the trailing slash
-    // const baseOfUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+    // scroll logic
+    if (id && el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      scrollToTop();
+    }
 
-    // build dash based on role
-    // const adminProfile = baseOfUrl + "dashboard";
-    // const userProfile = baseOfUrl + "dashboard";
+    // clean url
+    const currentUrl = window.location.pathname; // the current path
+    const cleanedUrl = currentUrl
+      .replace("/", "")
+      .replace("/ourservices", "")
+      .replace("/contactform", "")
+      .replace("/login", "")
+      .replace("/register", "");
 
-    // navigate without reload
-  //   if (!isAdmin) {
-  //     navigate(userProfile);
-  //   } else {
-  //     navigate(adminProfile);
-  //   }
-  // };
+    // normalize trailing slash
+    const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+
+    // update url without relooading the page only if url is different
+    if (window.location.href !== baseUrl)
+      window.history.replaceState(null, "", baseUrl);
+  }, [location]); //re-run this on navigation change
 
   const handleLogout = () => {
     removeToken();
