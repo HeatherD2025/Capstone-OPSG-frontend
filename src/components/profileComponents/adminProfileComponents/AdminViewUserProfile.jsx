@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
 import { Button } from "bootstrap";
 import { Col, Row, Form, Spinner } from "react-bootstrap";

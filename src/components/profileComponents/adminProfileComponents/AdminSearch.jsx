@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AdminNav from "./AdminNav";
 import {
   Card,
@@ -57,6 +57,10 @@ console.log(allUsers)
     setTerm("");
     setTriggerSearch(false);
   };
+
+  useEffect(() => {
+    handleSearch();
+    }, [term, searchedUsers.data]);
 
   return (
     <>
