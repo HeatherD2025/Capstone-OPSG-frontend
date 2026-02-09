@@ -62,6 +62,8 @@ console.log(allUsers)
     handleSearch();
     }, [term, searchedUsers.data]);
 
+  console.log(term, searchedUsers.data)
+
   return (
     <>
       <Container fluid style={{ backgroundColor: "#272932" }}>
