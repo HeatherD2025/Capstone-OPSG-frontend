@@ -60,7 +60,7 @@ console.log(allUsers)
 
   useEffect(() => {
     handleSearch();
-    }, [term, searchedUsers.data]);
+    }, [term, searchedUsers]);
 
   console.log(term, searchedUsers)
 
