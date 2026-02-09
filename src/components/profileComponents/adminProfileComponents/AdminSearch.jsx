@@ -62,7 +62,7 @@ console.log(allUsers)
     handleSearch();
     }, [term, searchedUsers.data]);
 
-  console.log(term, searchedUsers.data)
+  console.log(term, searchedUsers)
 
   return (
     <>
