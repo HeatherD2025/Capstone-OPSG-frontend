@@ -34,8 +34,7 @@
 }
 
 .reactive-btn.rounded.login-register-btn-custom {
-  width: 84px;
-  font-size: 12px;
+  font-size: 14px;
   background-color: #558e89;
 }
 
@@ -79,6 +78,6 @@
   flex-direction: row;
   flex-wrap: noWrap;
   gap: clamp(1vw, 8vw, 8vw);
-  font-size: clamp(12px, 12px, 16px);
+  font-size: clamp(14px, 14px, 16px);
   margin-right: 23rem; 
 }
