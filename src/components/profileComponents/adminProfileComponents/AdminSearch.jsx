@@ -59,7 +59,7 @@ export default function AdminSearch() {
 
   useEffect(() => {
     handleSearch();
-    }, [term, searchedUsers.data]);
+    }, [term, searchedUsers]);
     
 
   return (
