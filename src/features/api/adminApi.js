@@ -2,7 +2,7 @@ import api from "./mainApi";
 
 const adminApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllUsers: build.query({
+    getUsers: build.query({
       query: () => ({
         url: `/admin/users`,
         method: "GET",
@@ -20,14 +20,14 @@ const adminApi = api.injectEndpoints({
       providesTags: ["User"],
     }),
 
-    searchUsers: build.query({
-      query: (term) => ({
-        url: `/admin/search`,
-        method: "GET",
-        params: { term },
-      }),
-      transformResponse: (response) => response.data,
-    }),
+    // searchUsers: build.query({
+    //   query: (term) => ({
+    //     url: `/admin/search`,
+    //     method: "GET",
+    //     params: { term },
+    //   }),
+    //   transformResponse: (response) => response.data,
+    // }),
 
 
     deleteUserById: build.mutation({
@@ -42,8 +42,8 @@ const adminApi = api.injectEndpoints({
 });
 
 export const {
-  useGetAllUsersQuery,
+  useGetUsersQuery,
   useGetUserByIdQuery,
-  useSearchUsersQuery,
+  // useSearchUsersQuery,
   useDeleteUserByIdMutation,
 } = adminApi;
