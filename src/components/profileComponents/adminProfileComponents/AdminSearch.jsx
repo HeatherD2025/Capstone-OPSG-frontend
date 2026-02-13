@@ -34,18 +34,18 @@ export default function AdminSearch() {
 
   const {
     data: searchedUsers,
-    isLoading: loadingSearch,
-    error: searchError,
   } = useSearchUsersQuery(term, {
     skip: !triggerSearch,
   });
 
   // decide which data to show
-  const usersToShow = triggerSearch 
-    ? searchedUsers?.data
+  const usersToShow = term 
+    ? searchedUsers
     : allUsers;
 
-  const loading = triggerSearch ? loadingSearch : loadingAllUsers;
+  const loading = triggerSearch 
+    ? loadingSearch 
+    : loadingAllUsers;
 
   const handleSearch = () => {
     if (!term.trim()) return;
@@ -55,12 +55,7 @@ export default function AdminSearch() {
   const handleShowAll = () => {
     setTerm("");
     setTriggerSearch(false);
-  };
-
-  useEffect(() => {
-    handleSearch();
-    }, [term, searchedUsers]);
-    
+  };    
 
   return (
     <>
