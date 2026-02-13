@@ -43,9 +43,7 @@ export default function AdminSearch() {
     ? searchedUsers
     : allUsers;
 
-  const loading = triggerSearch 
-    ? loadingSearch 
-    : loadingAllUsers;
+  const loading = loadingSearch || loadingAllUsers;
 
   const handleSearch = () => {
     if (!term.trim()) return;

@@ -1,55 +1,57 @@
-import { useEffect, useRef, useState, useDispatch } from "react";
+import { useEffect, useRef } from "react";
 
+const useIdleTimer = ({ timeout = 10 * 60 * 1000, onIdle }) => {
+  
+  // useRef so we store data without re-rendering
+  const idleTriggered = useRef(false)
 
-// Track activity
-// mouse
-// keyboard
-// scroll
-// focus
+    useEffect(() => {
 
-// Store last activity timestamp
-// useRef (no re-renders)
+      const updateActivity = () => {
+        // Store last activity timestamp
+        localStorage.setItem('lastActivity', Date.now());
+        idleTriggered.current = false;
+      };
+      // Track activity
+      const events = [
+        'mousedown', 
+        'mousemove', 
+        'keydown', 
+        'scroll', 
+        'touchstart'
+      ];
 
-// Idle timer checks elapsed time
-// setInterval or setTimeout
+      events.forEach(event => {
+        window.addEventListener(event, updateActivity);
+      });
 
-// compare Date.now() to last activity
-// When threshold exceeded
+      // Initialize timestamp
+      updateActivity();
 
-// mark sessionShouldEnd = true
+      const interval = setInterval(() => {
 
-// Effect reacts
-// dispatch logout
-// clear client state
-// attempt revoke API call
+        const userLastActive = Number(localStorage.getItem('lastActivity'));
+        const currentTime = Date.now();
 
-// Server handles real revocation
-// invalidate refresh token
-// reject future refresh attempts
+        if (!idleTriggered.current && currentTime - userLastActive > timeout) {
+          idleTriggered.current = true;
 
-// Hook detects condition - Think of useIdleTimer as answering one question:
-// “Should this session still exist?”
+          if (onIdle) {
+            onIdle();
+          }
+        }
 
-// It does not:
-// manage tokens directly
-// validate JWTs
-// guarantee revocation
+      }, 5000); // runs check every 5s
 
-// It does:
-// track activity
-// detect inactivity
+      // cleanup listeners
+      return () => {
+        events.forEach(event => 
+          window.removeEventListener(event, updateActivity)
+        );
+        clearInterval(interval);
+      };
 
-// trigger logout behavior
-// → Dispatch logout (client state)
-// → Fire logout / revoke API call
-// → Server invalidates refresh token
+    }, [timeout, onIdle]);
+  };
 
-export default function useIdleTimer() {
-//   const currentTokens = useRef(accessToken, refreshToken);
-  const [sessionShouldEnd, setSessionShouldEnd] = useState();
-
-  useEffect = (() => {
-    if (tokensExpired) {
-    } 
-  })
-}
+export default useIdleTimer;

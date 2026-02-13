@@ -1,4 +1,4 @@
-import CardsGrid from "../shared/CardsGrid";
+import CardsGrid from "./CardsGrid";
 import InfoCard from "./InfoCard";
 import "../../styles/ourServices.css";
 
