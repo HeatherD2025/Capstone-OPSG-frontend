@@ -40,7 +40,7 @@ export default function AdminSearch() {
   });
 
   // decide which data to show
-  const usersToShow = t 
+  const usersToShow =
     ? searchedUsers
     : allUsers;
 
