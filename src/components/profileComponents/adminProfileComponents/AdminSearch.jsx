@@ -34,13 +34,14 @@ export default function AdminSearch() {
 
   const {
     data: searchedUsers,
-    loading
+    loading,
+    error: searchError,
   } = useSearchUsersQuery(term, {
     skip: !triggerSearch,
   });
 
   // decide which data to show
-  const usersToShow =
+  const usersToShow = triggerSearch && searchedUsers
     ? searchedUsers
     : allUsers;
 
