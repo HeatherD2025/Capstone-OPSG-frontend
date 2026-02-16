@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AdminNav from "./AdminNav";
 import {
   Card,
@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
 import Footer from "../../Footer";
 import {
-  // useSearchUsersQuery,
   useGetUsersQuery,
 } from "../../../features/api/adminApi";
 import "../../../styles/app.css";
@@ -22,37 +21,17 @@ export default function AdminSearch() {
   const navigate = useNavigate();
 
   const [term, setTerm] = useState("");
-  const [triggerSearch, setTriggerSearch] = useState(false);
 
   // fetch all users on inital load
   const {
-    data: allUsers,
-    isLoading: loadingAllUsers,
-    error: allUsersError,
-  } = useGetUsersQuery();
+    data: users,
+    isLoading,
+    error,
+  } = useGetUsersQuery({ term });
 
 
-  // const {
-  //   data: searchedUsers,
-  //   loading,
-  //   error: searchError,
-  // } = useSearchUsersQuery(term, {
-  //   skip: !triggerSearch,
-  // });
-
-  // decide which data to show
-  const usersToShow = triggerSearch
-  //   ? searchedUsers
-  //   : allUsers;
-
-  const handleSearch = () => {
-    if (!term.trim()) return;
-    setTriggerSearch(true);
-  };
-
-  const handleShowAll = () => {
+  const handleClear = () => {
     setTerm("");
-    setTriggerSearch(false);
   };    
 
   return (
@@ -76,26 +55,6 @@ export default function AdminSearch() {
                 />
               </Col>
 
-              <Col xs="auto">
-                <ReactiveButton
-                  rounded
-                  buttonState={loadingAllUsers ? "loading" : "idle"}
-                  idleText={"SEARCH"}
-                  loadingText={"Loading"}
-                  variant="secondary"
-                  className="submit-btn-custom"
-                  type="button"
-                  onClick={handleSearch}
-                  style={{
-                    width: "80px",
-                    fontSize: "12px",
-                    backgroundColor: "#558e89",
-                    marginBottom: "10px",
-                  }}
-                />
-              </Col>
-
-              {triggerSearch && (
                 <Col xs="auto">
                   <ReactiveButton
                     rounded
@@ -103,7 +62,7 @@ export default function AdminSearch() {
                     variant="secondary"
                     className="submit-btn-custom"
                     type="button"
-                    onClick={handleShowAll}
+                    onClick={handleClear}
                     style={{
                       width: "140px",
                       fontSize: "12px",
@@ -111,24 +70,23 @@ export default function AdminSearch() {
                     }}
                   />
                 </Col>
-              )}
             </Row>
 
             {/* Error messages */}
-            {allUsersError && (
+            {error && (
               <Alert variant="danger">Failed to load users</Alert>
             )}
 
             {/* Users List */}
             <Row xs={1} md={2} lg={3} className="g-4">
-              {loadingAllUsers ? (
+              {isLoading ? (
                 <Spinner animation="border" role="status" />
               ) : !usersToShow || usersToShow.length === 0 ? (
                 <Col>
                   <Alert variant="info">No users found.</Alert>
                 </Col>
               ) : (
-                usersToShow.map((user) => (
+                users?.map((user) => (
                   <Col key={user.id}>
                     <Card>
                       <Card.Body>
