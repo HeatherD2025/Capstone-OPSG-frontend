@@ -41,7 +41,7 @@ export default function AdminSearch() {
   // });
 
   // decide which data to show
-  // const usersToShow = triggerSearch && searchedUsers
+  const usersToShow = triggerSearch
   //   ? searchedUsers
   //   : allUsers;
 
