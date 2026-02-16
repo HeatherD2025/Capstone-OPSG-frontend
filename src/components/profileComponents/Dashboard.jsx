@@ -1,4 +1,3 @@
-import React from "react";
 import UserNav from "./userProfileComponents/UserNav";
 import AdminNav from "./adminProfileComponents/AdminNav";
 import ProfileHeader from "./ProfileHeader";

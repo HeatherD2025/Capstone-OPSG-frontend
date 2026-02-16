@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useBalance } from "../BalanceProvider";
 
 export default function BalanceCard() {

@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, useEffect} from "react";
+import {createContext, useContext, useState, useEffect} from "react";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";

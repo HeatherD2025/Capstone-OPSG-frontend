@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import { useBalance } from "../profileComponents/BalanceProvider.jsx";
-import { useGetCustomerObjectQuery } from "../../features/api/qbApi.js";
 
 export default function Balance({ text }) {
   const { balance, loading, error } = useBalance();

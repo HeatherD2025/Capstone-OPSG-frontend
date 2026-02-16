@@ -1,6 +1,5 @@
 import { Row, Col, Container } from "react-bootstrap";
 import { motion } from "motion/react";
-import React from "react";
 import NavBar from "../components/navigation/Navbar";
 import "../styles/ourServices.css";
 import Footer from "../components/Footer";
