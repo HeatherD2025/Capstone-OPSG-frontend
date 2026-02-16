@@ -94,7 +94,7 @@ export default function AdminSearch() {
                           {user.firstName} {user.lastName}
                         </Card.Title>
                         <Card.Text className="text-center">
-                          {user.company} {user.email}
+                          {user.company?.name} {user.email}
                         </Card.Text>
                       </Card.Body>
 
