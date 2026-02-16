@@ -81,7 +81,7 @@ export default function AdminSearch() {
             <Row xs={1} md={2} lg={3} className="g-4">
               {isLoading ? (
                 <Spinner animation="border" role="status" />
-              ) : !usersToShow || usersToShow.length === 0 ? (
+              ) : !users || users.length === 0 ? (
                 <Col>
                   <Alert variant="info">No users found.</Alert>
                 </Col>
