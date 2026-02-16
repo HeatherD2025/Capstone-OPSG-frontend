@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
 import Footer from "../../Footer";
 import {
-  useSearchUsersQuery,
-  useGetAllUsersQuery,
+  // useSearchUsersQuery,
+  useGetUsersQuery,
 } from "../../../features/api/adminApi";
 import "../../../styles/app.css";
 
@@ -29,21 +29,21 @@ export default function AdminSearch() {
     data: allUsers,
     isLoading: loadingAllUsers,
     error: allUsersError,
-  } = useGetAllUsersQuery();
+  } = useGetUsersQuery();
 
 
-  const {
-    data: searchedUsers,
-    loading,
-    error: searchError,
-  } = useSearchUsersQuery(term, {
-    skip: !triggerSearch,
-  });
+  // const {
+  //   data: searchedUsers,
+  //   loading,
+  //   error: searchError,
+  // } = useSearchUsersQuery(term, {
+  //   skip: !triggerSearch,
+  // });
 
   // decide which data to show
-  const usersToShow = triggerSearch && searchedUsers
-    ? searchedUsers
-    : allUsers;
+  // const usersToShow = triggerSearch && searchedUsers
+  //   ? searchedUsers
+  //   : allUsers;
 
   const handleSearch = () => {
     if (!term.trim()) return;
@@ -79,7 +79,7 @@ export default function AdminSearch() {
               <Col xs="auto">
                 <ReactiveButton
                   rounded
-                  buttonState={loading ? "loading" : "idle"}
+                  buttonState={loadingAllUsers ? "loading" : "idle"}
                   idleText={"SEARCH"}
                   loadingText={"Loading"}
                   variant="secondary"
@@ -118,11 +118,10 @@ export default function AdminSearch() {
             {allUsersError && (
               <Alert variant="danger">Failed to load users</Alert>
             )}
-            {searchError && <Alert variant="danger">Search failed</Alert>}
 
             {/* Users List */}
             <Row xs={1} md={2} lg={3} className="g-4">
-              {loading ? (
+              {loadingAllUsers ? (
                 <Spinner animation="border" role="status" />
               ) : !usersToShow || usersToShow.length === 0 ? (
                 <Col>
