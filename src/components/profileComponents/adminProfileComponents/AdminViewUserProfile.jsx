@@ -148,7 +148,6 @@ export default function AdminViewUserProfile() {
     }));
   }
 
-
   if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
 
@@ -212,7 +211,7 @@ export default function AdminViewUserProfile() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="company">
+            <Form.Group className="mb-3" controlId="companyName">
               <Form.Label>Company</Form.Label>
               <Form.Control
                 readOnly={!editMode}
@@ -223,7 +222,7 @@ export default function AdminViewUserProfile() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="company">
+            <Form.Group className="mb-3" controlId="companyStreetAddress">
               <Form.Label>Street Address</Form.Label>
               <Form.Control
                 readOnly={!editMode}
@@ -234,7 +233,7 @@ export default function AdminViewUserProfile() {
               />
             </Form.Group>
 
-             <Form.Group className="mb-3" controlId="company">
+             <Form.Group className="mb-3" controlId="companyCity">
               <Form.Label>City</Form.Label>
               <Form.Control
                 readOnly={!editMode}
@@ -245,7 +244,7 @@ export default function AdminViewUserProfile() {
               />
             </Form.Group>
 
-             <Form.Group className="mb-3" controlId="company">
+             <Form.Group className="mb-3" controlId="companyZip">
               <Form.Label>Zip</Form.Label>
               <Form.Control
                 readOnly={!editMode}
@@ -256,7 +255,7 @@ export default function AdminViewUserProfile() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="company">
+            <Form.Group className="mb-3" controlId="companyPhone">
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 readOnly={!editMode}
@@ -360,8 +359,8 @@ export default function AdminViewUserProfile() {
                   </Button>
                   <ConfirmationModal 
                     show={confModalShow}
-                    title="Confirm Deletion"
-                    message="Are you sure you want to delete this user permanently? This action cannot be undone."
+                    heading="Confirm Deletion"
+                    body="Are you sure you want to delete this user permanently? This action cannot be undone."
                     onConfirm={handleDeleteUser}
                     onCancel={() => setConfModalShow(false)}
                   />
