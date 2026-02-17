@@ -134,7 +134,7 @@ export default function EditProfile() {
 
   return (
     <>
-      <UserNav />
+    <UserNav />
       <ProfileHeader />
       <div className="dark-theme">
         <div className="d-flex">

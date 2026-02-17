@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
+import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
 import { Button } from "react-bootstrap";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
@@ -9,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
 import ProfileHeader from "../ProfileHeader";
 import AdminNav from "./AdminNav";
+import ConfirmationModal from "../../ConfirmationModal";
 
 // export default function AdminViewUserProfile({ user, onReturnToResults}) {
 export default function AdminViewUserProfile({ onReturnToResults }) {
@@ -16,11 +18,20 @@ export default function AdminViewUserProfile({ onReturnToResults }) {
   const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
+  const [deleteUser] = useDeleteUserByIdMutation();
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    company: {
+      name: "",
+      streetAddress: "",
+      phoneNumber: "",
+      city: "",
+      state: "",
+      zip: "",
+    },
   });
 
   const [modalShow, setModalShow] = useState(false);
@@ -32,6 +43,7 @@ export default function AdminViewUserProfile({ onReturnToResults }) {
   const [newPwd, setNewPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [pwdError, setPwdError] = useState("");
+  const [userDelete, setUserDelete] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -95,8 +107,20 @@ export default function AdminViewUserProfile({ onReturnToResults }) {
     });
     setEditMode(false);
     setShowPwdForm(false);
+    setUserDelete(false);
     setPwdError("");
   };
+
+  const handleDeleteUser = async (e) => {
+    try {
+       await deleteUser({userId});
+     console.log("User has been deleted")
+     setModalShow(false);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
   if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
@@ -246,6 +270,17 @@ export default function AdminViewUserProfile({ onReturnToResults }) {
                   <Button variant="primary" type="submit">
                     Save Profile
                   </Button>
+
+                  <Button variant="danger" onClick={() => setModalShow(true)}>
+                    Delete Profile
+                  </Button>
+                  <ConfirmationModal 
+                    show={modalShow}
+                    title="Confirm Deletion"
+                    message="Are you sure you want to delete this user permanently? This action cannot be undone."
+                    onConfirm={handleDeleteUser}
+                    onCancel={() => setModalShow(false)}
+                  />
                 </>
               )}
             </div>

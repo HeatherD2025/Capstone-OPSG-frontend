@@ -13,7 +13,6 @@ const adminApi = api.injectEndpoints({
       providesTags: ["User"],
     }),
 
-
     getUserById: build.query({
       query: (userId) => ({
        url: `admin/users/${userId}`,
@@ -38,6 +37,5 @@ const adminApi = api.injectEndpoints({
 export const {
   useGetUsersQuery,
   useGetUserByIdQuery,
-  // useSearchUsersQuery,
   useDeleteUserByIdMutation,
 } = adminApi;
