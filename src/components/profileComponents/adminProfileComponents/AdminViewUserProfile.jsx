@@ -13,7 +13,7 @@ import AdminNav from "./AdminNav";
 import ConfirmationModal from "../../ConfirmationModal";
 
 // export default function AdminViewUserProfile({ user, onReturnToResults}) {
-export default function AdminViewUserProfile({ onReturnToResults }) {
+export default function AdminViewUserProfile() {
   const { userId } = useParams();
   const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
   const [updateUserProfile] = useUpdateUserProfileMutation();
@@ -51,6 +51,14 @@ export default function AdminViewUserProfile({ onReturnToResults }) {
         firstName: user.firstName || "",
         lastName: user.lastName || "",
         email: user.email || "",
+        company: {
+          name: user.company?.name,
+          streetAddress: user.company?.streetAddress,
+          phoneNumber:user.company?.phoneNumber,
+          city: user.company?.city,
+          state: user.company?.state,
+          zip: user.company?.zip,
+        },
       });
     }
   }, [user]);

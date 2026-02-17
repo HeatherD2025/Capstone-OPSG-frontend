@@ -6,7 +6,7 @@
 
 import { Modal, Button } from "react-bootstrap";
 
-const ConfirmationModal = ({ show, title, message, onConfirm, onCancel }) => {
+const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
     if (!show) {
         return null;
     }
