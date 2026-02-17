@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
 import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
@@ -19,6 +19,7 @@ export default function AdminViewUserProfile() {
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [changePassword] = useChangePasswordMutation();
   const [deleteUser] = useDeleteUserByIdMutation();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -130,9 +131,16 @@ export default function AdminViewUserProfile() {
 
   const handleDeleteUser = async (e) => {
     try {
-       await deleteUser({userId});
-     console.log("User has been deleted")
-     setConfModalShow(false);
+       await deleteUser(userId).unwrap();
+      setModalHeading("Account Deleted");
+      setModalBody("This account was successfully deleted.");
+      setInfoModalShow(true);
+      setConfModalShow(false);
+
+      setTimeout(() => {
+        navigate("/admin/search");
+      }, 1500);
+      
     } catch (error) {
       console.error(error)
     }
