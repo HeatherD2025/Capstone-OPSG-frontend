@@ -207,7 +207,7 @@ export default function AdminViewUserProfile() {
               <Form.Control
                 readOnly={!editMode}
                 type="company"
-                value={formData.company?.name}
+                value={formData.company}
                 onChange={(e) =>
                   setFormData((f) => ({ ...f, company: e.target.value }))
                 }
