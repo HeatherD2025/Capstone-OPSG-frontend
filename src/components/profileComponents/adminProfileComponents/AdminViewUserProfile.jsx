@@ -34,7 +34,8 @@ export default function AdminViewUserProfile() {
     },
   });
 
-  const [modalShow, setModalShow] = useState(false);
+  const [confModalShow, setConfModalShow] = useState(false);
+  const [infoModalShow, setInfoModalShow] = useState(false);
   const [modalHeading, setModalHeading] = useState("");
   const [modalBody, setModalBody] = useState("");
   const [editMode, setEditMode] = useState(false);
@@ -52,12 +53,12 @@ export default function AdminViewUserProfile() {
         lastName: user.lastName || "",
         email: user.email || "",
         company: {
-          name: user.company?.name,
-          streetAddress: user.company?.streetAddress,
-          phoneNumber:user.company?.phoneNumber,
-          city: user.company?.city,
-          state: user.company?.state,
-          zip: user.company?.zip,
+          name: user.company?.name || "",
+          streetAddress: user.company?.streetAddress || "",
+          phoneNumber:user.company?.phoneNumber || "",
+          city: user.company?.city || "",
+          state: user.company?.state || "",
+          zip: user.company?.zip || "",
         },
       });
     }
@@ -69,7 +70,7 @@ export default function AdminViewUserProfile() {
       await updateUserProfile({ id: userId, ...formData }).unwrap();
       setModalHeading("Profile Updated");
       setModalBody("User profile was updated succesfully");
-      setModalShow(true);
+      setInfoModalShow(true);
       setEditMode(false);
     } catch (error) {
       console.error(error);
@@ -101,7 +102,7 @@ export default function AdminViewUserProfile() {
       setEditMode(false);
       setModalHeading("Password Changed");
       setModalBody("Your password was changed successfully.");
-      setModalShow(true);
+      setInfoModalShow(true);
     } catch {
       setPwdError("Password change failed");
     }
@@ -112,6 +113,14 @@ export default function AdminViewUserProfile() {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      company: {
+          name: user.company?.name,
+          streetAddress: user.company?.streetAddress,
+          phoneNumber:user.company?.phoneNumber,
+          city: user.company?.city,
+          state: user.company?.state,
+          zip: user.company?.zip,
+        },
     });
     setEditMode(false);
     setShowPwdForm(false);
@@ -123,7 +132,7 @@ export default function AdminViewUserProfile() {
     try {
        await deleteUser({userId});
      console.log("User has been deleted")
-     setModalShow(false);
+     setConfModalShow(false);
     } catch (error) {
       console.error(error)
     }
@@ -192,6 +201,20 @@ export default function AdminViewUserProfile() {
                 }
               />
             </Form.Group>
+
+            <Form.Group className="mb-3" controlId="company">
+              <Form.Label>Company</Form.Label>
+              <Form.Control
+                readOnly={!editMode}
+                type="company"
+                value={formData.company?.name}
+                onChange={(e) =>
+                  setFormData((f) => ({ ...f, company: e.target.value }))
+                }
+              />
+            </Form.Group>
+
+
             {editMode && (
               <>
                 <Row className="align-items-end mb-3">
@@ -279,15 +302,15 @@ export default function AdminViewUserProfile() {
                     Save Profile
                   </Button>
 
-                  <Button variant="danger" onClick={() => setModalShow(true)}>
+                  <Button variant="danger" onClick={() => setConfModalShow(true)}>
                     Delete Profile
                   </Button>
                   <ConfirmationModal 
-                    show={modalShow}
+                    show={confModalShow}
                     title="Confirm Deletion"
                     message="Are you sure you want to delete this user permanently? This action cannot be undone."
                     onConfirm={handleDeleteUser}
-                    onCancel={() => setModalShow(false)}
+                    onCancel={() => setConfModalShow(false)}
                   />
                 </>
               )}
@@ -297,8 +320,8 @@ export default function AdminViewUserProfile() {
       </div>
 
       <InfoModal
-        show={modalShow}
-        hide={() => setModalShow(false)}
+        show={infoModalShow}
+        hide={() => setInfoModalShow(false)}
         heading={modalHeading}
         body={modalBody}
       />
