@@ -154,6 +154,7 @@ export default function Registration() {
                     LOGIN
                   </Nav.Link>
                 </Nav.Item>
+                
                 <Nav.Item>
                   <Nav.Link
                     href="/#/register"
@@ -165,6 +166,7 @@ export default function Registration() {
               </Nav>
 
               <Form onSubmit={submit} className="login-register-form">
+                
                 <Form.Group className="mb-3" controlId="form-basic-first-name">
                   <Form.Label
                     style={{
@@ -185,6 +187,7 @@ export default function Registration() {
                     }}
                   />
                 </Form.Group>
+
                 <Form.Group className="mb-3" controlId="form-basic-last-name">
                   <Form.Label
                     style={{
@@ -205,6 +208,28 @@ export default function Registration() {
                     }}
                   />
                 </Form.Group>
+
+                <Form.Group className="mb-3" controlId="form-basic-email">
+                  <Form.Label
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    E-MAIL
+                  </Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="  johndoe@email.com"
+                    onChange={update}
+                    style={{
+                      fontSize: "12px",
+                      paddingLeft: "3px",
+                    }}
+                  />
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="form-basic-company">
                   <Form.Label
                     style={{
@@ -322,26 +347,7 @@ export default function Registration() {
                     }}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="form-basic-email">
-                  <Form.Label
-                    style={{
-                      fontSize: "12px",
-                      paddingLeft: "3px",
-                    }}
-                  >
-                    E-MAIL
-                  </Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder="  johndoe@email.com"
-                    onChange={update}
-                    style={{
-                      fontSize: "12px",
-                      paddingLeft: "3px",
-                    }}
-                  />
-                </Form.Group>
+  
                 <Form.Group className="mb-3" controlId="form-basic-password">
                   <Form.Label
                     style={{

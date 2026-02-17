@@ -138,6 +138,16 @@ export default function AdminViewUserProfile() {
     }
   }
 
+  const updateCompanyField = (field, value) => {
+    setFormData(f => ({
+      ...f,
+      company: {
+        ...f.company,
+        [field]: value
+      }
+    }));
+  }
+
 
   if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
@@ -194,7 +204,7 @@ export default function AdminViewUserProfile() {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 readOnly={!editMode}
-                type="email"
+                type="text"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData((f) => ({ ...f, email: e.target.value }))
@@ -206,11 +216,54 @@ export default function AdminViewUserProfile() {
               <Form.Label>Company</Form.Label>
               <Form.Control
                 readOnly={!editMode}
-                type="company"
-                value={formData.company}
+                type="text"
+                value={formData.company?.name}
                 onChange={(e) =>
-                  setFormData((f) => ({ ...f, company: e.target.value }))
-                }
+                  updateCompanyField("name", e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="company">
+              <Form.Label>Street Address</Form.Label>
+              <Form.Control
+                readOnly={!editMode}
+                type="text"
+                value={formData.company?.streetAddress}
+                onChange={(e) =>
+                  updateCompanyField("streetAddress", e.target.value)}
+              />
+            </Form.Group>
+
+             <Form.Group className="mb-3" controlId="company">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                readOnly={!editMode}
+                type="text"
+                value={formData.company?.city}
+                onChange={(e) =>
+                  updateCompanyField("city", e.target.value)}
+              />
+            </Form.Group>
+
+             <Form.Group className="mb-3" controlId="company">
+              <Form.Label>Zip</Form.Label>
+              <Form.Control
+                readOnly={!editMode}
+                type="text"
+                value={formData.company?.zip}
+                onChange={(e) =>
+                  updateCompanyField("zip", e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="company">
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                readOnly={!editMode}
+                type="text"
+                value={formData.company?.phone}
+                onChange={(e) =>
+                  updateCompanyField("phone", e.target.value)}
               />
             </Form.Group>
 
