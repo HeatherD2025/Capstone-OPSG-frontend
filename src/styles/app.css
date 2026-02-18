@@ -239,6 +239,11 @@ body {
   margin-top: 5px;
 }
 
+.admin-edit-profile-button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .welcome-modal-wrapper {
   margin-top: 3rem;
   z-index: 100;
@@ -271,6 +276,7 @@ body {
 
 /*Profile edit*/
 .edit-profile {
+  width: 60rem;
   margin: 0 5rem 5rem 10rem;
   padding: 0 10rem 5rem 10rem;
 }

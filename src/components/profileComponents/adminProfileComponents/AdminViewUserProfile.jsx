@@ -412,7 +412,7 @@ export default function AdminViewUserProfile() {
                     )}
                   </Row>
 
-                  <div className="d-flex justify-content-end">
+                  <div className="d-flex justify-content-space-evenly admin-edit-profile-button-container">
                     <ReactiveButton
                       type="submit"
                       rounded
@@ -437,7 +437,7 @@ export default function AdminViewUserProfile() {
                       style={{
                         width: "150px",
                         fontSize: "12px",
-                        marginRight: "234px",
+                        marginRight: "18px",
                         backgroundColor: "gray",
                       }}
                     />
@@ -448,10 +448,10 @@ export default function AdminViewUserProfile() {
                         loadingText="LOADING"
                         className="me-2 btn-danger"
                         style={{
-                          width: "90px",
+                          width: "150px",
                           fontSize: "12px",
                           marginTop: "8px",
-                          backgroundColor: "gray",
+                          backgroundColor: "#b37070ff",
                         }} 
                     />
                   </div>
