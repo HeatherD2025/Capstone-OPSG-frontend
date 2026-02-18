@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../features/api/authApi";
@@ -161,7 +161,7 @@ const Login = () => {
                   <Form.Control
                     type="email"
                     name="email"
-                    placeholder="demo@demo.com"
+                    placeholder="demo@demo.com   |   adminDemo@demo.com"
                     onChange={update}
                   />
                 </Form.Group>
@@ -170,7 +170,7 @@ const Login = () => {
                   <Form.Control
                     type="password"
                     name="password"
-                    placeholder="123"
+                    placeholder="123   |    1234"
                     onChange={update}
                   />
                 </Form.Group>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 // import InfoModal from "../../src/components/Modal";
 import { Col, Container } from "react-bootstrap";
