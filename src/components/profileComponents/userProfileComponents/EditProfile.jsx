@@ -10,8 +10,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InfoModal from "../../Modal";
-// import ReactiveButton from "reactive-button";
-import { Button } from "react-bootstrap";
+import ReactiveButton from "reactive-button";
+// import { Button } from "react-bootstrap";
 import ProfileHeader from "../ProfileHeader";
 import UserNav from "./UserNav";
 
@@ -136,357 +136,357 @@ export default function EditProfile() {
   return (
     <>
       <UserNav />
-        <ProfileHeader />
-        <div className="dark-theme">
-          <div className="d-flex">
-            <div className="bg-gray rounded shadow edit-profile">
-              <div className="d-flex justify-content-between mb-4">
-                <h2 style={{ fontSize: "14px", marginTop: "7vh" }}>
-                  EDIT PROFILE
-                </h2>
-              </div>
-
-              <Form onSubmit={handleSubmit}>
-                {/* Profile block */}
-                {!showPwdForm && (
-                  <>
-                    <Row className="mb-3">
-                      <Form.Group as={Col} controlId="firstName">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          FIRST NAME
-                        </Form.Label>
-                        <Form.Control
-                          value={formData.firstName}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              firstName: e.target.value,
-                            }))
-                          }
-                        />
-                      </Form.Group>
-
-                      <Form.Group as={Col} controlId="lastName">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          LAST NAME
-                        </Form.Label>
-                        <Form.Control
-                          value={formData.lastName}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              lastName: e.target.value,
-                            }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row>
-                      <Form.Group as={Col} controlId="company">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          COMPANY
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.name}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                name: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row>
-                      <Form.Group as={Col} controlId="streetAddress">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          STREET ADDRESS
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.streetAddress}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                streetAddress: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row>
-                      <Form.Group as={Col} controlId="city">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          CITY
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.city}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                city: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-
-                      <Form.Group as={Col} controlId="state">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          STATE
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.state}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                state: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-
-                      <Form.Group as={Col} controlId="zip">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          ZIP CODE
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.zip}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                zip: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row>
-                      <Form.Group as={Col} controlId="phoneNumber">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          PHONE
-                        </Form.Label>
-
-                        <Form.Control
-                          value={formData.company.phoneNumber}
-                          onChange={(e) =>
-                            setFormData((f) => ({
-                              ...f,
-                              company: {
-                                ...f.company,
-                                phoneNumber: e.target.value,
-                              },
-                            }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row>
-                      <Form.Group className="mb-3" controlId="email">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          EMAIL
-                        </Form.Label>
-                        <Form.Control
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData((f) => ({ ...f, email: e.target.value }))
-                          }
-                        />
-                      </Form.Group>
-                    </Row>
-
-                    <Row className="align-items-end mb-3">
-                      <Col>
-                        <Form.Group controlId="password">
-                          <Form.Label
-                            style={{ fontSize: "12px", paddingLeft: "3px" }}
-                          >
-                            PASSWORD
-                          </Form.Label>
-                          <Form.Control type="password" placeholder="********" />
-                        </Form.Group>
-                      </Col>
-                      {!showPwdForm && (
-                        <Col xs="auto">
-                          <Button
-                            onClick={() => setShowPwdForm(true)}
-                            rounded
-                            idleText="CHANGE PASSWORD"
-                            loadingText="Loading"
-                            variant="secondary"
-                            className="btn-primary-soft"
-                            style={{
-                              marginRight: "5px",
-                              width: "150px",
-                              fontSize: "12px",
-                              backgroundColor: "#558e89",
-                            }}
-                          />
-                        </Col>
-                      )}
-                    </Row>
-
-                    <div className="d-flex justify-content-end">
-                      <Button
-                        type="submit"
-                        rounded
-                        idleText="SAVE CHANGES"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="btn-primary-soft"
-                        style={{
-                          marginRight: "18px",
-                          width: "150px",
-                          fontSize: "12px",
-                          backgroundColor: "#558e89",
-                        }}
-                      />
-                      <Button
-                        onClick={handleCancel}
-                        rounded
-                        idleText="CANCEL CHANGES"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="btn-primary-soft"
-                        style={{
-                          width: "150px",
-                          fontSize: "12px",
-                          marginRight: "234px",
-                          backgroundColor: "gray",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-
-                {/* Password block */}
-                {showPwdForm && (
-                  <div className="border rounded p-3 mb-3">
-                    <Form.Group className="mb-2" controlId="currentPwd">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        CURRENT PASSWORD
-                      </Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={currentPwd}
-                        onChange={(e) => setCurrentPwd(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-2" controlId="newPwd">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        NEW PASSWORD
-                      </Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={newPwd}
-                        onChange={(e) => setNewPwd(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-2" controlId="confirmPwd">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        CONFIRM NEW PASSWORD
-                      </Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={confirmPwd}
-                        onChange={(e) => setConfirmPwd(e.target.value)}
-                      />
-                    </Form.Group>
-
-                    {pwdError && <p className="text-danger small">{pwdError}</p>}
-
-                    <div className="d-flex gap-2 mt-2">
-                      <Button
-                        onClick={handlePasswordChange}
-                        rounded
-                        idleText="SAVE"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="btn-primary-soft"
-                        style={{
-                          marginRight: "5px",
-                          width: "90px",
-                          fontSize: "12px",
-                          marginTop: "8px",
-                          backgroundColor: "#558e89",
-                        }}
-                      />
-                      <Button
-                        onClick={handlePasswordCancel}
-                        rounded
-                        idleText="CANCEL"
-                        loadingText="Loading"
-                        variant="secondary"
-                        className="btn-primary-soft"
-                        style={{
-                          width: "90px",
-                          fontSize: "12px",
-                          marginTop: "8px",
-                          backgroundColor: "gray",
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
-              </Form>
+      <ProfileHeader />
+      <div className="dark-theme">
+        <div className="d-flex">
+          <div className="bg-gray rounded shadow edit-profile">
+            <div className="d-flex justify-content-between mb-4">
+              <h2 style={{ fontSize: "14px", marginTop: "7vh" }}>
+                EDIT PROFILE
+              </h2>
             </div>
-          </div>
 
-          <InfoModal
-            show={modalShow}
-            hide={() => setModalShow(false)}
-            heading={modalHeading}
-            body={modalBody}
-          />
+            <Form onSubmit={handleSubmit}>
+              {/* Profile block */}
+              {!showPwdForm && (
+                <>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} controlId="firstName">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        FIRST NAME
+                      </Form.Label>
+                      <Form.Control
+                        value={formData.firstName}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            firstName: e.target.value,
+                          }))
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="lastName">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        LAST NAME
+                      </Form.Label>
+                      <Form.Control
+                        value={formData.lastName}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            lastName: e.target.value,
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="company">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        COMPANY
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.name}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              name: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="streetAddress">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        STREET ADDRESS
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.streetAddress}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              streetAddress: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="city">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        CITY
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.city}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              city: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="state">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        STATE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.state}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              state: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="zip">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        ZIP CODE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.zip}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              zip: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group as={Col} controlId="phoneNumber">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        PHONE
+                      </Form.Label>
+
+                      <Form.Control
+                        value={formData.company.phoneNumber}
+                        onChange={(e) =>
+                          setFormData((f) => ({
+                            ...f,
+                            company: {
+                              ...f.company,
+                              phoneNumber: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row>
+                    <Form.Group className="mb-3" controlId="email">
+                      <Form.Label
+                        style={{ fontSize: "12px", paddingLeft: "3px" }}
+                      >
+                        EMAIL
+                      </Form.Label>
+                      <Form.Control
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData((f) => ({ ...f, email: e.target.value }))
+                        }
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Row className="align-items-end mb-3">
+                    <Col>
+                      <Form.Group controlId="password">
+                        <Form.Label
+                          style={{ fontSize: "12px", paddingLeft: "3px" }}
+                        >
+                          PASSWORD
+                        </Form.Label>
+                        <Form.Control type="password" placeholder="********" />
+                      </Form.Group>
+                    </Col>
+                    {!showPwdForm && (
+                      <Col xs="auto">
+                        <ReactiveButton
+                          onClick={() => setShowPwdForm(true)}
+                          rounded
+                          idleText="CHANGE PASSWORD"
+                          loadingText="Loading"
+                          variant="secondary"
+                          className="btn-primary-soft"
+                          style={{
+                            marginRight: "5px",
+                            width: "150px",
+                            fontSize: "12px",
+                            backgroundColor: "#558e89",
+                          }}
+                        />
+                      </Col>
+                    )}
+                  </Row>
+
+                  <div className="d-flex justify-content-end">
+                    <ReactiveButton
+                      type="submit"
+                      rounded
+                      idleText="SAVE CHANGES"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="btn-primary-soft"
+                      style={{
+                        marginRight: "18px",
+                        width: "150px",
+                        fontSize: "12px",
+                        backgroundColor: "#558e89",
+                      }}
+                    />
+                    <ReactiveButton
+                      onClick={handleCancel}
+                      rounded
+                      idleText="CANCEL CHANGES"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="btn-primary-soft"
+                      style={{
+                        width: "150px",
+                        fontSize: "12px",
+                        marginRight: "234px",
+                        backgroundColor: "gray",
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* Password block */}
+              {showPwdForm && (
+                <div className="border rounded p-3 mb-3">
+                  <Form.Group className="mb-2" controlId="currentPwd">
+                    <Form.Label
+                      style={{ fontSize: "12px", paddingLeft: "3px" }}
+                    >
+                      CURRENT PASSWORD
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={currentPwd}
+                      onChange={(e) => setCurrentPwd(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-2" controlId="newPwd">
+                    <Form.Label
+                      style={{ fontSize: "12px", paddingLeft: "3px" }}
+                    >
+                      NEW PASSWORD
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={newPwd}
+                      onChange={(e) => setNewPwd(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-2" controlId="confirmPwd">
+                    <Form.Label
+                      style={{ fontSize: "12px", paddingLeft: "3px" }}
+                    >
+                      CONFIRM NEW PASSWORD
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={confirmPwd}
+                      onChange={(e) => setConfirmPwd(e.target.value)}
+                    />
+                  </Form.Group>
+
+                  {pwdError && <p className="text-danger small">{pwdError}</p>}
+
+                  <div className="d-flex gap-2 mt-2">
+                    <ReactiveButton
+                      onClick={handlePasswordChange}
+                      rounded
+                      idleText="SAVE"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="btn-primary-soft"
+                      style={{
+                        marginRight: "5px",
+                        width: "90px",
+                        fontSize: "12px",
+                        marginTop: "8px",
+                        backgroundColor: "#558e89",
+                      }}
+                    />
+                    <ReactiveButton
+                      onClick={handlePasswordCancel}
+                      rounded
+                      idleText="CANCEL"
+                      loadingText="Loading"
+                      variant="secondary"
+                      className="btn-primary-soft"
+                      style={{
+                        width: "90px",
+                        fontSize: "12px",
+                        marginTop: "8px",
+                        backgroundColor: "gray",
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+            </Form>
+          </div>
         </div>
+
+        <InfoModal
+          show={modalShow}
+          hide={() => setModalShow(false)}
+          heading={modalHeading}
+          body={modalBody}
+        />
+      </div>
     </>
   );
 }
