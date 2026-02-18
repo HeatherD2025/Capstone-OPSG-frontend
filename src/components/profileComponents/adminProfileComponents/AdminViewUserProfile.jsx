@@ -452,7 +452,7 @@ export default function AdminViewUserProfile() {
                           width: "150px",
                           fontSize: "12px",
                           marginTop: "5.5px",
-                          marginLeft: "153px",
+                          marginLeft: "135px",
                           backgroundColor: "#b37070ff",
                         }} 
                     />
@@ -460,12 +460,13 @@ export default function AdminViewUserProfile() {
                 </>
               )}
 
-            <InfoModal
-              show={infoModalShow}
-              hide={() => setInfoModalShow(false)}
-              heading={modalHeading}
-              body={modalBody}
-            />
+                <ConfirmationModal 
+                  show={confModalShow}
+                  heading="Confirm Deletion"
+                  body="Are you sure you want to delete this user permanently? This action cannot be undone."
+                  onConfirm={handleDeleteUser}
+                  onCancel={() => setConfModalShow(false)}
+                />
 
               {/* Password block */}
               {showPwdForm && (
@@ -539,17 +540,17 @@ export default function AdminViewUserProfile() {
                         backgroundColor: "gray",
                       }}
                     />
-                    <ConfirmationModal 
-                        show={confModalShow}
-                        heading="Confirm Deletion"
-                        body="Are you sure you want to delete this user permanently? This action cannot be undone."
-                        onConfirm={handleDeleteUser}
-                        onCancel={() => setConfModalShow(false)}
-                    />
                   </div>
                 </div>
               )}
             </Form>
+
+            <InfoModal
+              show={infoModalShow}
+              hide={() => setInfoModalShow(false)}
+              heading={modalHeading}
+              body={modalBody}
+            />
           </div>
         </div>
       </div>
