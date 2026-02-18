@@ -4,7 +4,7 @@ import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
 import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-import { ReactiveButton } from "reactive-button";
+import ReactiveButton from "reactive-button";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
@@ -382,7 +382,7 @@ export default function AdminViewUserProfile() {
                     onClick={() => setConfModalShow(true)}>
                     Delete Profile
                   </ReactiveButton >
-                  
+
                   <ConfirmationModal 
                     show={confModalShow}
                     heading="Confirm Deletion"
