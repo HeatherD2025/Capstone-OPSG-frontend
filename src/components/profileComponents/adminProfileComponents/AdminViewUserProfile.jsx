@@ -4,7 +4,7 @@ import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
 import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-import ReactiveButton from "reactive-button";
+import Button from "reactive-button";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
@@ -162,248 +162,245 @@ export default function AdminViewUserProfile() {
 
   return (
     <>
-      <AdminNav />
-      <ProfileHeader />
-      <div
-        style={{ paddingTop: "60px" }}
-        className="d-flex justify-content-center align-items-center"
-      >
+      <div className="dashboard dark-theme">
+        <AdminNav />
+        <ProfileHeader />
         <div
-          className="bg-white rounded shadow p-4"
-          style={{ width: "100%", maxWidth: "600px" }}
+          style={{ paddingTop: "60px" }}
+          className="d-flex justify-content-center align-items-center"
         >
-          <div className="d-flex justify-content-between align-items-center mb-4">
-            <h2>{editMode ? "Edit Profile" : "Profile"}</h2>
-            {!editMode && (
-              <ReactiveButton
-                rounded
-                variant="btn-primary-soft"
-                onClick={() => setEditMode(true)}
-              >
-                Edit Profile
-              </ReactiveButton>
-            )}
-          </div>
-
-          <Form onSubmit={handleSubmit}>
-            <Row className="mb-3">
-              <Form.Group as={Col} controlId="firstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  value={formData.firstName}
-                  onChange={(e) =>
-                    setFormData((f) => ({ ...f, firstName: e.target.value }))
-                  }
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  value={formData.lastName}
-                  onChange={(e) =>
-                    setFormData((f) => ({ ...f, lastName: e.target.value }))
-                  }
-                />
-              </Form.Group>
-            </Row>
-
-            <Form.Group className="mb-3" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData((f) => ({ ...f, email: e.target.value }))
-                }
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="companyName">
-              <Form.Label>Company</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.company?.name}
-                onChange={(e) =>
-                  updateCompanyField("name", e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="companyStreetAddress">
-              <Form.Label>Street Address</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.company?.streetAddress}
-                onChange={(e) =>
-                  updateCompanyField("streetAddress", e.target.value)}
-              />
-            </Form.Group>
-
-             <Form.Group className="mb-3" controlId="companyCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.company?.city}
-                onChange={(e) =>
-                  updateCompanyField("city", e.target.value)}
-              />
-            </Form.Group>
-
-             <Form.Group className="mb-3" controlId="companyZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.company?.zip}
-                onChange={(e) =>
-                  updateCompanyField("zip", e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="companyPhone">
-              <Form.Label>Phone</Form.Label>
-              <Form.Control
-                readOnly={!editMode}
-                type="text"
-                value={formData.company?.phone}
-                onChange={(e) =>
-                  updateCompanyField("phone", e.target.value)}
-              />
-            </Form.Group>
-
-
-            {editMode && (
-              <>
-                <Row className="align-items-end mb-3">
-                  <Form.Group as={Col} controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="********"
-                      readOnly
-                    />
-                  </Form.Group>
-                  {!showPwdForm && (
-                    <Col xs="auto">
-                      <ReactiveButton
-                        round
-                        variant="btn-primary-soft"
-                        onClick={() => setShowPwdForm(true)}
-                      >
-                        Change Password
-                      </ReactiveButton>
-                    </Col>
-                  )}
-                </Row>
-
-                {showPwdForm && (
-                  <div className="border rounded p-3 mb-3">
-                    <Form.Group className="mb-2" controlId="currentPwd">
-                      <Form.Label>Current Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={currentPwd}
-                        onChange={(e) => setCurrentPwd(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-2" controlId="newPwd">
-                      <Form.Label>New Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={newPwd}
-                        onChange={(e) => setNewPwd(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-2" controlId="confirmPwd">
-                      <Form.Label>Confirm New Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={confirmPwd}
-                        onChange={(e) => setConfirmPwd(e.target.value)}
-                      />
-                    </Form.Group>
-
-                    {pwdError && (
-                      <p className="text-danger small">{pwdError}</p>
-                    )}
-
-                    <div className="d-flex gap-2 mt-2 ">
-                      <ReactiveButton 
-                        rounded
-                        buttonState={isLoading ? "loading" : "idle"}
-                        idleText={"SAVE PASSWORD"}
-                        loadingText={"LOADING"}
-                        className="btn-primary-soft" 
-                        onClick={handlePasswordChange}
-                      >
-                      </ReactiveButton>
-                      <ReactiveButton
-                        rounded
-                        variant="outline-secondary"
-                        className="btn-primary-soft" 
-                        onClick={() => {
-                          setShowPwdForm(false);
-                          setPwdError("");
-                        }}
-                      >
-                        CANCEL
-                      </ReactiveButton>
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
-            <div className="d-flex justify-content-end">
-              {editMode && (
-                <>
-                  <ReactiveButton 
-                    round
-                    variant="outline-primary" 
-                    type="submit"
-                    className="me-2 btn-primary-soft"
-                  >
-                    Save Profile
-                  </ReactiveButton >
-
-                  <ReactiveButton 
-                    round
-                    variant="outline-secondary"
-                    onClick={handleCancel}
-                    className="me-2 btn-primary-soft"
-                  >
-                    Cancel
-                  </ReactiveButton >
-
-                  <ReactiveButton  
-                    className="me-2 btn-danger" 
-                    onClick={() => setConfModalShow(true)}>
-                    Delete Profile
-                  </ReactiveButton >
-                  <ConfirmationModal 
-                    show={confModalShow}
-                    heading="Confirm Deletion"
-                    body="Are you sure you want to delete this user permanently? This action cannot be undone."
-                    onConfirm={handleDeleteUser}
-                    onCancel={() => setConfModalShow(false)}
-                  />
-                </>
+          <div
+            className="bg-white rounded shadow p-4"
+            style={{ width: "100%", maxWidth: "600px" }}
+          >
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2>{editMode ? "Edit Profile" : "Profile"}</h2>
+              {!editMode && (
+                <Button
+                  variant="btn-primary-soft"
+                  onClick={() => setEditMode(true)}
+                >
+                  EDIT PROFILE
+                </Button>
               )}
             </div>
-          </Form>
-        </div>
-      </div>
 
-      <InfoModal
-        show={infoModalShow}
-        hide={() => setInfoModalShow(false)}
-        heading={modalHeading}
-        body={modalBody}
-      />
+            <Form onSubmit={handleSubmit}>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="firstName">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    readOnly={!editMode}
+                    value={formData.firstName}
+                    onChange={(e) =>
+                      setFormData((f) => ({ ...f, firstName: e.target.value }))
+                    }
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="lastName">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    readOnly={!editMode}
+                    value={formData.lastName}
+                    onChange={(e) =>
+                      setFormData((f) => ({ ...f, lastName: e.target.value }))
+                    }
+                  />
+                </Form.Group>
+              </Row>
+
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData((f) => ({ ...f, email: e.target.value }))
+                  }
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="companyName">
+                <Form.Label>Company</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.company?.name}
+                  onChange={(e) =>
+                    updateCompanyField("name", e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="companyStreetAddress">
+                <Form.Label>Street Address</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.company?.streetAddress}
+                  onChange={(e) =>
+                    updateCompanyField("streetAddress", e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="companyCity">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.company?.city}
+                  onChange={(e) =>
+                    updateCompanyField("city", e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="companyZip">
+                <Form.Label>Zip</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.company?.zip}
+                  onChange={(e) =>
+                    updateCompanyField("zip", e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="companyPhone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  readOnly={!editMode}
+                  type="text"
+                  value={formData.company?.phone}
+                  onChange={(e) =>
+                    updateCompanyField("phone", e.target.value)}
+                />
+              </Form.Group>
+
+
+              {editMode && (
+                <>
+                  <Row className="align-items-end mb-3">
+                    <Form.Group as={Col} controlId="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        placeholder="********"
+                        readOnly
+                      />
+                    </Form.Group>
+                    {!showPwdForm && (
+                      <Col xs="auto">
+                        <ReactiveButton
+                          round
+                          variant="btn-primary-soft"
+                          onClick={() => setShowPwdForm(true)}
+                        >
+                          Change Password
+                        </ReactiveButton>
+                      </Col>
+                    )}
+                  </Row>
+
+                  {showPwdForm && (
+                    <div className="border rounded p-3 mb-3">
+                      <Form.Group className="mb-2" controlId="currentPwd">
+                        <Form.Label>Current Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          value={currentPwd}
+                          onChange={(e) => setCurrentPwd(e.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-2" controlId="newPwd">
+                        <Form.Label>New Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          value={newPwd}
+                          onChange={(e) => setNewPwd(e.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-2" controlId="confirmPwd">
+                        <Form.Label>Confirm New Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          value={confirmPwd}
+                          onChange={(e) => setConfirmPwd(e.target.value)}
+                        />
+                      </Form.Group>
+
+                      {pwdError && (
+                        <p className="text-danger small">{pwdError}</p>
+                      )}
+
+                      <div className="d-flex gap-2 mt-2 ">
+                        <Button 
+                          buttonState={isLoading ? "loading" : "idle"}
+                          idleText={"SAVE PASSWORD"}
+                          loadingText={"LOADING"}
+                          className="btn-primary-soft" 
+                          onClick={handlePasswordChange}
+                        >
+                        </Button>
+                        <Button
+                          variant="outline-secondary"
+                          className="btn-primary-soft" 
+                          onClick={() => {
+                            setShowPwdForm(false);
+                            setPwdError("");
+                          }}
+                        >
+                          CANCEL
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+              <div className="d-flex justify-content-end">
+                {editMode && (
+                  <>
+                    <Button 
+                      variant="outline-primary" 
+                      type="submit"
+                      className="me-2 btn-primary-soft"
+                    >
+                      SAVE
+                    </Button >
+
+                    <Button 
+                      variant="outline-secondary"
+                      onClick={handleCancel}
+                      className="me-2 btn-primary-soft"
+                    >
+                      CANCEL
+                    </Button >
+
+                    <Button  
+                      className="me-2 btn-danger" 
+                      onClick={() => setConfModalShow(true)}>
+                      DELETE PROFILE
+                    </Button >
+                    <ConfirmationModal 
+                      show={confModalShow}
+                      heading="Confirm Deletion"
+                      body="Are you sure you want to delete this user permanently? This action cannot be undone."
+                      onConfirm={handleDeleteUser}
+                      onCancel={() => setConfModalShow(false)}
+                    />
+                  </>
+                )}
+              </div>
+            </Form>
+          </div>
+        </div>
+
+        <InfoModal
+          show={infoModalShow}
+          hide={() => setInfoModalShow(false)}
+          heading={modalHeading}
+          body={modalBody}
+        />
+      </div>
     </>
   );
 }
