@@ -4,7 +4,7 @@ import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
 import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-import { Button } from "react-bootstrap";
+import ReactiveButton from "reactive-button";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
