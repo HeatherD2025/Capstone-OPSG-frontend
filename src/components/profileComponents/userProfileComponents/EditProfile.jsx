@@ -349,7 +349,7 @@ export default function EditProfile() {
                     </Col>
                     {!showPwdForm && (
                       <Col xs="auto">
-                        <ReactiveButton
+                        <Button
                           onClick={() => setShowPwdForm(true)}
                           rounded
                           idleText="CHANGE PASSWORD"
@@ -368,7 +368,7 @@ export default function EditProfile() {
                   </Row>
 
                   <div className="d-flex justify-content-end">
-                    <ReactiveButton
+                    <Button
                       type="submit"
                       rounded
                       idleText="SAVE CHANGES"
@@ -382,7 +382,7 @@ export default function EditProfile() {
                         backgroundColor: "#558e89",
                       }}
                     />
-                    <ReactiveButton
+                    <Button
                       onClick={handleCancel}
                       rounded
                       idleText="CANCEL CHANGES"
@@ -443,7 +443,7 @@ export default function EditProfile() {
                   {pwdError && <p className="text-danger small">{pwdError}</p>}
 
                   <div className="d-flex gap-2 mt-2">
-                    <ReactiveButton
+                    <Button
                       onClick={handlePasswordChange}
                       rounded
                       idleText="SAVE"
@@ -458,7 +458,7 @@ export default function EditProfile() {
                         backgroundColor: "#558e89",
                       }}
                     />
-                    <ReactiveButton
+                    <Button
                       onClick={handlePasswordCancel}
                       rounded
                       idleText="CANCEL"

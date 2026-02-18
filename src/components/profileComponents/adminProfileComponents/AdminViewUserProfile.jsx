@@ -292,7 +292,7 @@ export default function AdminViewUserProfile() {
                     <Col xs="auto">
                       <ReactiveButton
                         round
-                        className="btn-primary-soft"
+                        variant="btn-primary-soft"
                         onClick={() => setShowPwdForm(true)}
                       >
                         Change Password
@@ -344,6 +344,7 @@ export default function AdminViewUserProfile() {
                       </ReactiveButton>
                       <ReactiveButton
                         rounded
+                        variant="outline-secondary"
                         className="btn-primary-soft" 
                         onClick={() => {
                           setShowPwdForm(false);
@@ -362,6 +363,7 @@ export default function AdminViewUserProfile() {
                 <>
                   <ReactiveButton 
                     round
+                    variant="outline-primary" 
                     type="submit"
                     className="me-2 btn-primary-soft"
                   >
@@ -370,6 +372,7 @@ export default function AdminViewUserProfile() {
 
                   <ReactiveButton 
                     round
+                    variant="outline-secondary"
                     onClick={handleCancel}
                     className="me-2 btn-primary-soft"
                   >
@@ -377,12 +380,10 @@ export default function AdminViewUserProfile() {
                   </ReactiveButton >
 
                   <ReactiveButton  
-                    round
                     className="me-2 btn-danger" 
                     onClick={() => setConfModalShow(true)}>
                     Delete Profile
                   </ReactiveButton >
-
                   <ConfirmationModal 
                     show={confModalShow}
                     heading="Confirm Deletion"
