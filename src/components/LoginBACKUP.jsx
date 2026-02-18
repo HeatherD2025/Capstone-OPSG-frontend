@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../features/api/authApi";
 import NavBar from "./navigation/Navbar";
 import "../styles/app.css";
-import ReactiveButton from "reactive-button";
+import ReactiveButton from "react-bootstrap/Button";
 
 import InfoModal from "./Modal";
 import Footer from "./Footer";

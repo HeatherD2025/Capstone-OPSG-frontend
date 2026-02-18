@@ -1,4 +1,4 @@
-import ReactiveButton from "react-bootstrap/Button";
+import ReactiveButton from "reactive-button";
 import Modal from "react-bootstrap/Modal";
 
 export default function InfoModal({ show, hide, heading, body, body2 }) {

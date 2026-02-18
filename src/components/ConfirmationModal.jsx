@@ -1,4 +1,5 @@
-import { Modal, ReactiveButton } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import ReactiveButton from "reactive-button";
 
 const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
 
