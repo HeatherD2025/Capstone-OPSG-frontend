@@ -13,6 +13,37 @@ const UserNav = (props) => {
   // const [isDropdownActive, setDropdownActive] = useState("false");
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
 
+useEffect(() => {
+    // strip hash symbol from location to match id
+    const id = location.hash.replace("#", "");
+    const el = document.getElementById(id);
+
+    // scroll logic
+    if (id && el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      scrollToTop();
+    }
+
+    // clean url
+    const currentUrl = window.location.pathname; // the current path
+    const cleanedUrl = currentUrl
+      .replace("/dashboard", "")
+      .replace("/profile/invoices", "")
+      .replace("/user/me", "")
+      .replace("/user/me/updateUserProfile", "");
+
+    // normalize trailing slash
+    const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+
+    // update url without relooading the page only if url is different
+    if (window.location.href !== baseUrl)
+      window.history.replaceState(null, "", baseUrl);
+  }, [location]); //re-run this on navigation change
+
+
   if (isLoading) return <p>Loading user data...</p>;
   if (isError) return <p>Error loading user data</p>;
   if (!user) return <p>No user found</p>;

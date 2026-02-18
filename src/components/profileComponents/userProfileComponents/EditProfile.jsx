@@ -133,8 +133,8 @@ export default function EditProfile() {
 
   return (
     <>
-      {/* <UserNav />
-      <ProfileHeader /> */}
+      <UserNav />
+      <ProfileHeader />
       <div className="dark-theme">
         <div className="d-flex">
           <div className="bg-gray rounded shadow edit-profile">

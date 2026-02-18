@@ -21,8 +21,8 @@ export default function UserInvoice() {
   return (
     <>
       <div className="dashboard dark-theme">
-        {/* <ProfileHeader />
-        <UserNav /> */}
+        <ProfileHeader />
+        <UserNav />
 
         <div className="invoice-container">
           <div className="row">
