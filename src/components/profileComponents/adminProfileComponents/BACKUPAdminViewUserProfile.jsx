@@ -404,3 +404,37 @@ export default function AdminViewUserProfile() {
     </>
   );
 }
+
+
+
+
+
+
+                      <ReactiveButton
+                        onClick={() => setConfModalShow(true)}  
+                        rounded
+                        idleText="DELETE PROFILE"
+                        loadingText="LOADING"
+                        className="me-2 btn-danger"
+                        style={{
+                          width: "90px",
+                          fontSize: "12px",
+                          marginTop: "8px",
+                          backgroundColor: "gray",
+                        }} 
+                      />
+                      <ConfirmationModal 
+                        show={confModalShow}
+                        heading="Confirm Deletion"
+                        body="Are you sure you want to delete this user permanently? This action cannot be undone."
+                        onConfirm={handleDeleteUser}
+                        onCancel={() => setConfModalShow(false)}
+                      />
+
+
+
+                                <InfoModal
+                                  show={infoModalShow}
+                                  hide={() => setInfoModalShow(false)}
+                                  heading={modalHeading}
+                                  bod
