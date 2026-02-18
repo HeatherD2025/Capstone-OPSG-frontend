@@ -446,11 +446,13 @@ export default function AdminViewUserProfile() {
                         rounded
                         idleText="DELETE PROFILE"
                         loadingText="LOADING"
-                        className="me-2 btn-danger"
+                        variant="secondary"
+                        className="btn-primary-soft"
                         style={{
                           width: "150px",
                           fontSize: "12px",
-                          marginTop: "8px",
+                          marginTop: "5.5px",
+                          marginLeft: "153px",
                           backgroundColor: "#b37070ff",
                         }} 
                     />
