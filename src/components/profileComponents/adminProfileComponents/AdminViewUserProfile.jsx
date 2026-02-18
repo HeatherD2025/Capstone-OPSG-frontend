@@ -161,6 +161,18 @@ export default function AdminViewUserProfile() {
     }));
   }
 
+    const handlePasswordCancel = () => {
+    setFormData({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      company: user.company,
+      email: user.email,
+    });
+    setEditMode(true);
+    setShowPwdForm(false);
+    setPwdError("");
+  };
+
   if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
 
@@ -429,9 +441,29 @@ export default function AdminViewUserProfile() {
                         backgroundColor: "gray",
                       }}
                     />
+                    <ReactiveButton
+                        onClick={() => setConfModalShow(true)}  
+                        rounded
+                        idleText="DELETE PROFILE"
+                        loadingText="LOADING"
+                        className="me-2 btn-danger"
+                        style={{
+                          width: "90px",
+                          fontSize: "12px",
+                          marginTop: "8px",
+                          backgroundColor: "gray",
+                        }} 
+                    />
                   </div>
                 </>
               )}
+
+            <InfoModal
+              show={infoModalShow}
+              hide={() => setInfoModalShow(false)}
+              heading={modalHeading}
+              body={modalBody}
+            />
 
               {/* Password block */}
               {showPwdForm && (
@@ -479,7 +511,7 @@ export default function AdminViewUserProfile() {
                     <ReactiveButton
                       onClick={handlePasswordChange}
                       rounded
-                      idleText="SAVE"
+                      idleText="SAVE NEW PASSWORD"
                       loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
@@ -505,19 +537,6 @@ export default function AdminViewUserProfile() {
                         backgroundColor: "gray",
                       }}
                     />
-                    <ReactiveButton
-                        onClick={() => setConfModalShow(true)}  
-                        rounded
-                        idleText="DELETE PROFILE"
-                        loadingText="LOADING"
-                        className="me-2 btn-danger"
-                        style={{
-                          width: "90px",
-                          fontSize: "12px",
-                          marginTop: "8px",
-                          backgroundColor: "gray",
-                        }} 
-                    />
                     <ConfirmationModal 
                         show={confModalShow}
                         heading="Confirm Deletion"
@@ -531,13 +550,6 @@ export default function AdminViewUserProfile() {
             </Form>
           </div>
         </div>
-
-        <InfoModal
-          show={infoModalShow}
-          hide={() => setInfoModalShow(false)}
-          heading={modalHeading}
-          body={modalBody}
-        />
       </div>
     </>
   );
