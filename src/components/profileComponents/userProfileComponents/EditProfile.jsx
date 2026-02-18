@@ -6,9 +6,7 @@ import {
   useChangePasswordMutation,
 } from "../../../features/api/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import { Col, Row, Form, Spinner } from "react-bootstrap";
 import InfoModal from "../../Modal";
 import ReactiveButton from "reactive-button";
 // import { Button } from "react-bootstrap";
@@ -130,13 +128,13 @@ export default function EditProfile() {
     setPwdError("");
   };
 
-  if (isLoading) return <p>Loading user data...</p>;
+  if (isLoading) return <Spinner animation="border" role="status" />;
   if (error) return <p>Error loading user. Please try again later.</p>;
 
   return (
     <>
-      <UserNav />
-      <ProfileHeader />
+      {/* <UserNav />
+      <ProfileHeader /> */}
       <div className="dark-theme">
         <div className="d-flex">
           <div className="bg-gray rounded shadow edit-profile">
