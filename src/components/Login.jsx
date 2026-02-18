@@ -177,7 +177,7 @@ const Login = () => {
                   <Form.Control
                     type="password"
                     name="password"
-                    placeholder="123   |    1234"
+                    placeholder="123   |   1234"
                     onChange={update}
                   />
                 </Form.Group>

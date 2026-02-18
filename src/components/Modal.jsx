@@ -5,8 +5,10 @@ export default function InfoModal({ show, hide, heading, body, body2 }) {
   return (
     <>
       <Modal show={show} onHide={hide}>
-        <Modal.Header closeButton>{heading}
-          <Modal.Title>{heading}</Modal.Title>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h3>{heading}</h3>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <p>{body}</p>
