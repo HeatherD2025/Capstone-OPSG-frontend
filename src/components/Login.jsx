@@ -27,21 +27,25 @@ const Login = () => {
   const [welcomeModalShow, setWelcomeModalShow] = useState(false);
   const [welcomeModalHeading, setWelcomeModalHeading] = useState("");
   const [welcomeModalBody, setWelcomeModalBody] = useState("");
+  const [welcomeModalBody2, setWelcomeModalBody2] = useState("");
   const SESSION_STORAGE_KEY = "isModalShownOnce";
 
   // verify if welcome modal has been shown in current session
-    useEffect(() => {
-      const hasBeenShown = sessionStorage.getItem(SESSION_STORAGE_KEY);
-  
-      if (!hasBeenShown) {
-        setWelcomeModalHeading("Welcome to the OnPoint Solutions Group demo app! Explore as a user or admin:");
-        setWelcomeModalBody(
-          "As a user - email: 'demo@demo.com' password: '123'    As an admin - email: 'adminDemo@demo.com' password: '1234'",
-        );
-        setWelcomeModalShow(true);
-        sessionStorage.setItem(SESSION_STORAGE_KEY, "true");
-      }
-    }, []);
+  useEffect(() => {
+    const hasBeenShown = sessionStorage.getItem(SESSION_STORAGE_KEY);
+
+    if (!hasBeenShown) {
+      setWelcomeModalHeading(
+        "Welcome to the OPSG demo app! Explore as user or admin:",
+      );
+      setWelcomeModalBody("User - email: 'demo@demo.com' password: '123'");
+      setWelcomeModalBody2(
+        "Admin - email: 'adminDemo@demo.com' password: '1234'",
+      );
+      setWelcomeModalShow(true);
+      sessionStorage.setItem(SESSION_STORAGE_KEY, "true");
+    }
+  }, []);
 
   // Login/Register Modal logic
   const [response, setResponse] = useState();
@@ -116,13 +120,16 @@ const Login = () => {
         <div className="background-accent">
           <NavBar />
 
-          {/* Welcome Modal */}
+          <div className="mb-3 welcome-modal-wrapper">
+            {/* Welcome Modal */}
             <InfoModal
-            show={welcomeModalShow}
-            hide={() => setWelcomeModalShow(false)}
-            heading={welcomeModalHeading}
-            body={welcomeModalBody}
-          />
+              show={welcomeModalShow}
+              hide={() => setWelcomeModalShow(false)}
+              heading={welcomeModalHeading}
+              body={welcomeModalBody}
+              body2={welcomeModalBody2}
+            />
+          </div>
 
           <div className="d-flex justify-content-center vh-80 login-register-modal">
             {show && (
