@@ -13,7 +13,11 @@ const UserNav = (props) => {
   // const [isDropdownActive, setDropdownActive] = useState("false");
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
 
-useEffect(() => {
+ const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+ useEffect(() => {
     // strip hash symbol from location to match id
     const id = location.hash.replace("#", "");
     const el = document.getElementById(id);
