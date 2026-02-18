@@ -135,7 +135,6 @@ export default function EditProfile() {
 
   return (
     <>
-     <div className="dashboard dark-theme">
       <UserNav />
         <ProfileHeader />
         <div className="dark-theme">
@@ -488,7 +487,6 @@ export default function EditProfile() {
             body={modalBody}
           />
         </div>
-      </div>
     </>
   );
 }

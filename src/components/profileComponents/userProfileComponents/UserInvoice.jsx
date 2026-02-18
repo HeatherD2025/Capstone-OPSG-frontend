@@ -20,7 +20,7 @@ export default function UserInvoice() {
 
   return (
     <>
-      <div className="dark-theme">
+      <div className="dashboard dark-theme">
         <ProfileHeader />
         <UserNav />
 
