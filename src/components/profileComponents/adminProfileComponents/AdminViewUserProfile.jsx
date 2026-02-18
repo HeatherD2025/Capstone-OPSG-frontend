@@ -358,11 +358,15 @@ export default function AdminViewUserProfile() {
                     Cancel
                   </Button>
 
-                  <Button variant="primary" type="submit">
+                  <Button 
+                    variant="outline-primary" 
+                    type="submit"
+                    className="me-2"
+                  >
                     Save Profile
                   </Button>
 
-                  <Button variant="danger" onClick={() => setConfModalShow(true)}>
+                  <Button variant="outline-danger" className="me-2" onClick={() => setConfModalShow(true)}>
                     Delete Profile
                   </Button>
                   <ConfirmationModal 
