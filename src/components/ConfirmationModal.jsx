@@ -1,4 +1,4 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, ReactiveButton } from "react-bootstrap";
 
 const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
 
@@ -9,12 +9,17 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer className="modal-actions">
-          <Button variant="outline-secondary" onClick={onCancel}>
+          <ReactiveButton 
+            rounded
+            className="btn-primary-soft"
+            onClick={onCancel}>
             Cancel
-          </Button>
-          <Button variant="outline-danger" onClick={onConfirm}>
+          </ReactiveButton>
+          <ReactiveButton
+            rounded 
+            variant="btn-danger" onClick={onConfirm}>
             Confirm
-          </Button>
+          </ReactiveButton>
         </Modal.Footer>
       </Modal>
     )

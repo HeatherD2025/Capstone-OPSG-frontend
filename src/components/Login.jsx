@@ -186,7 +186,7 @@ const Login = () => {
                   rounded
                   buttonState={rtqLoading ? "loading" : "idle"}
                   idleText={"SUBMIT"}
-                  loadingText={"Loading"}
+                  loadingText={"LOADING"}
                   variant="secondary"
                   className="submit-btn-custom"
                   type="submit"

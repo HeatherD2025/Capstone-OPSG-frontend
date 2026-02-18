@@ -4,13 +4,14 @@ import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
 import { useChangePasswordMutation } from "../../../features/api/userApi";
 import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
 import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-import { Button } from "react-bootstrap";
+import { ReactiveButton } from "reactive-button";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../../Modal";
 import ProfileHeader from "../ProfileHeader";
 import AdminNav from "./AdminNav";
 import ConfirmationModal from "../../ConfirmationModal";
+import "../../../styles/app.css"
 
 // export default function AdminViewUserProfile({ user, onReturnToResults}) {
 export default function AdminViewUserProfile() {
@@ -174,12 +175,13 @@ export default function AdminViewUserProfile() {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2>{editMode ? "Edit Profile" : "Profile"}</h2>
             {!editMode && (
-              <Button
-                variant="outline-primary"
+              <ReactiveButton
+                rounded
+                variant="btn-primary-soft"
                 onClick={() => setEditMode(true)}
               >
                 Edit Profile
-              </Button>
+              </ReactiveButton>
             )}
           </div>
 
@@ -288,12 +290,13 @@ export default function AdminViewUserProfile() {
                   </Form.Group>
                   {!showPwdForm && (
                     <Col xs="auto">
-                      <Button
-                        variant="outline-secondary"
+                      <ReactiveButton
+                        round
+                        className="btn-primary-soft"
                         onClick={() => setShowPwdForm(true)}
                       >
                         Change Password
-                      </Button>
+                      </ReactiveButton>
                     </Col>
                   )}
                 </Row>
@@ -329,19 +332,26 @@ export default function AdminViewUserProfile() {
                       <p className="text-danger small">{pwdError}</p>
                     )}
 
-                    <div className="d-flex gap-2 mt-2">
-                      <Button variant="success" onClick={handlePasswordChange}>
-                        Save Password
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
+                    <div className="d-flex gap-2 mt-2 ">
+                      <ReactiveButton 
+                        rounded
+                        buttonState={isLoading ? "loading" : "idle"}
+                        idleText={"SAVE PASSWORD"}
+                        loadingText={"LOADING"}
+                        className="btn-primary-soft" 
+                        onClick={handlePasswordChange}
+                      >
+                      </ReactiveButton>
+                      <ReactiveButton
+                        rounded
+                        className="btn-primary-soft" 
                         onClick={() => {
                           setShowPwdForm(false);
                           setPwdError("");
                         }}
                       >
-                        Cancel
-                      </Button>
+                        CANCEL
+                      </ReactiveButton>
                     </div>
                   </div>
                 )}
@@ -350,25 +360,29 @@ export default function AdminViewUserProfile() {
             <div className="d-flex justify-content-end">
               {editMode && (
                 <>
-                  <Button 
-                    variant="outline-primary" 
+                  <ReactiveButton 
+                    round
                     type="submit"
-                    className="me-2"
+                    className="me-2 btn-primary-soft"
                   >
                     Save Profile
-                  </Button>
+                  </ReactiveButton >
 
-                  <Button
-                    variant="outline-secondary"
+                  <ReactiveButton 
+                    round
                     onClick={handleCancel}
-                    className="me-2"
+                    className="me-2 btn-primary-soft"
                   >
                     Cancel
-                  </Button>
+                  </ReactiveButton >
 
-                  <Button variant="outline-danger" className="me-2" onClick={() => setConfModalShow(true)}>
+                  <ReactiveButton  
+                    round
+                    className="me-2 btn-danger" 
+                    onClick={() => setConfModalShow(true)}>
                     Delete Profile
-                  </Button>
+                  </ReactiveButton >
+                  
                   <ConfirmationModal 
                     show={confModalShow}
                     heading="Confirm Deletion"

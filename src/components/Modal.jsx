@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import ReactiveButton from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 export default function InfoModal({ show, hide, heading, body, body2 }) {
@@ -15,9 +15,12 @@ export default function InfoModal({ show, hide, heading, body, body2 }) {
             <p>{body2}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-secondary" onClick={hide}>
+          <ReactiveButton 
+            round
+            className="btn-primary-soft" 
+            onClick={hide}>
             Close
-          </Button>
+          </ReactiveButton>
         </Modal.Footer>
       </Modal>
     </>
