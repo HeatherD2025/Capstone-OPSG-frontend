@@ -334,7 +334,7 @@ export default function AdminViewUserProfile() {
                         Save Password
                       </Button>
                       <Button
-                        variant="secondary"
+                        variant="outline-secondary"
                         onClick={() => {
                           setShowPwdForm(false);
                           setPwdError("");
@@ -350,20 +350,20 @@ export default function AdminViewUserProfile() {
             <div className="d-flex justify-content-end">
               {editMode && (
                 <>
-                  <Button
-                    variant="secondary"
-                    onClick={handleCancel}
-                    className="me-2"
-                  >
-                    Cancel
-                  </Button>
-
                   <Button 
                     variant="outline-primary" 
                     type="submit"
                     className="me-2"
                   >
                     Save Profile
+                  </Button>
+
+                  <Button
+                    variant="outline-secondary"
+                    onClick={handleCancel}
+                    className="me-2"
+                  >
+                    Cancel
                   </Button>
 
                   <Button variant="outline-danger" className="me-2" onClick={() => setConfModalShow(true)}>

@@ -9,10 +9,10 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer className="modal-actions">
-          <Button variant="primary" onClick={onCancel}>
+          <Button variant="outline-secondary" onClick={onCancel}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={onConfirm}>
+          <Button variant="outline-danger" onClick={onConfirm}>
             Confirm
           </Button>
         </Modal.Footer>
