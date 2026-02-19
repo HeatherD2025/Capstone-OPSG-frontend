@@ -443,6 +443,7 @@ export default function AdminViewUserProfile() {
                     />
                     <ReactiveButton
                         type="button"
+                        buttonState="idle"
                         onClick={() => setConfModalShow(true)}  
                         rounded
                         idleText="DELETE PROFILE"
@@ -514,6 +515,7 @@ export default function AdminViewUserProfile() {
                   <div className="d-flex gap-2 mt-2">
                     <ReactiveButton
                       type="button"
+                      buttonState="idle"
                       onClick={handlePasswordChange}
                       rounded
                       idleText="SAVE"
@@ -530,6 +532,7 @@ export default function AdminViewUserProfile() {
                     />
                     <ReactiveButton
                       type="button"
+                      buttonState="idle"
                       onClick={handlePasswordCancel}
                       rounded
                       idleText="CANCEL"
