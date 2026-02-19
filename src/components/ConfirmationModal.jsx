@@ -19,7 +19,20 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
           </Button>
           <Button
             round 
-            variant="btn-danger" onClick={onConfirm}>
+            variant="btn-danger" 
+            onClick={onConfirm}
+            style={{
+              border: "none",
+              width: "80px",
+              backgroundColor: "#b37070ff",
+              color:"white",
+              fontSize: "12px",
+              padding: "8px",
+              borderRadius: "2em",
+              fontWeight: "200",
+              marginTop: "5px",
+            }}
+          >
             CONFIRM
           </Button>
         </Modal.Footer>

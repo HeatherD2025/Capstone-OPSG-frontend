@@ -1,13 +1,25 @@
 /* Buttons */
 .btn-primary-soft {
-  /* border: none;
+  border: none;
   width: 80px;
   background-color: #558e89;
   color: white;
   font-size: 12px;
   padding: 8px;
   border-radius: 2em;
-  font-weight: 200; */
+  font-weight: 200;
+  margin-top: 5px;
+}
+
+.btn-danger {
+  border: none;
+  width: 80px;
+  background-color: #b37070ff;
+  color: white;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 2em;
+  font-weight: 200;
   margin-top: 5px;
 }
 
