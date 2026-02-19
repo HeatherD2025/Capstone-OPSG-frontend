@@ -450,7 +450,7 @@ export default function AdminViewUserProfile() {
                       className="btn-primary-soft"
                       onClick={() => setConfModalShow(true)}
                       style={{
-                        marginLeft: "149px",
+                        marginLeft: "130px",
                         width: "150px",
                         fontSize: "12px",
                         backgroundColor: "#b37070ff",
