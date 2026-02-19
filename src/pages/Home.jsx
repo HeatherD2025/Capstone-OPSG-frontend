@@ -1,6 +1,4 @@
-// import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-// import InfoModal from "../../src/components/Modal";
 import { Col, Container } from "react-bootstrap";
 import opsgLogo from "../assets/images/opsg-logo.webp";
 import nurseSmiling from "../assets/images/nurseSmiling.webp";
@@ -15,13 +13,9 @@ import "../styles/ourServices.css";
 import usaMap from "../assets/images/usaMap.webp";
 import Footer from "../components/Footer";
 
-const Home = () => {
-  // set initial modal state to closed
-  // const [modalShow, setModalShow] = useState(false);
-  // const [modalHeading, setModalHeading] = useState("");
-  // const [modalBody, setModalBody] = useState("");
-  // const SESSION_STORAGE_KEY = "isModalShownOnce";
+import ReactiveButton from "reactive-button";
 
+const Home = () => {
   const homeCardData = [
     {
       image: {
@@ -48,20 +42,6 @@ const Home = () => {
       text: "Work one-on-one with our team of healthcare IT specialists.",
     },
   ];
-
-  // useEffect(() => {
-    // check if modal has been shows yet in current session
-  //   const hasBeenShown = sessionStorage.getItem(SESSION_STORAGE_KEY);
-
-  //   if (!hasBeenShown) {
-  //     setModalHeading("Welcome to the OnPoint Solutions Group demo app!");
-  //     setModalBody(
-  //       "Explore user dashboard using the following login credentials: \n\nEmail: 'demo@demo.com'\nPassword: '123'",
-  //     );
-  //     setModalShow(true);
-  //     sessionStorage.setItem(SESSION_STORAGE_KEY, "true");
-  //   }
-  // }, []);
 
   // animate fading in
   const fadeInAnimationVariants = {
@@ -97,12 +77,6 @@ const Home = () => {
   return (
     <div className="background">
       <NavBar />
-      {/* <InfoModal
-        show={modalShow}
-        hide={() => setModalShow(false)}
-        heading={modalHeading}
-        body={modalBody}
-      /> */}
 
       <div className="intro-container">
         <div className="logo-header-container">

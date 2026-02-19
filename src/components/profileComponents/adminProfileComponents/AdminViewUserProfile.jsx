@@ -442,21 +442,19 @@ export default function AdminViewUserProfile() {
                       }}
                     />
                     <ReactiveButton
-                        type="button"
-                        buttonState="idle"
-                        onClick={() => setConfModalShow(true)}  
-                        rounded
-                        idleText="DELETE PROFILE"
-                        loadingText="LOADING"
-                        variant="secondary"
-                        className="btn-primary-soft"
-                        style={{
-                          width: "150px",
-                          fontSize: "12px",
-                          marginTop: "5.5px",
-                          marginLeft: "135px",
-                          backgroundColor: "#b37070ff",
-                        }} 
+                      type="button"
+                      rounded
+                      idleText="DELETE PROFILE"
+                      loadingText="LOADING"
+                      variant="secondary"
+                      className="btn-primary-soft"
+                      onClick={() => setConfModalShow(true)}
+                      style={{
+                        marginRight: "18px",
+                        width: "150px",
+                        fontSize: "12px",
+                        backgroundColor: "#b37070ff",
+                      }}
                     />
                   </div>
                 </>
