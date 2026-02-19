@@ -1,5 +1,4 @@
-// import ReactiveButton from "reactive-button";
-import { Button } from "react-bootstrap";
+import ReactiveButton from "reactive-button";
 import Modal from "react-bootstrap/Modal";
 
 export default function InfoModal({ show, hide, heading, body, body2 }) {
@@ -16,12 +15,21 @@ export default function InfoModal({ show, hide, heading, body, body2 }) {
             <p>{body2}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button 
-            round
-            className="btn-primary-soft" 
-            onClick={hide}>
-            CLOSE
-          </Button>
+          <ReactiveButton 
+            onClick={hide}
+            type="button"
+            rounded
+            idleText="CLOSE"
+            loadingText="LOADING"
+            variant="secondary"
+            className="btn-primary-soft"
+            style={{
+              marginRight: "18px",
+              width: "150px",
+              fontSize: "12px",
+              backgroundColor: "#558e89",
+            }}
+          />
         </Modal.Footer>
       </Modal>
     </>

@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import ReactiveButton from "reactive-button";
 import "../styles/app.css";
 
 const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
@@ -11,19 +11,36 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer className="modal-actions">
-          <Button 
-            round
+          <ReactiveButton 
+            onClick={onCancel}
+            type="button"
+            rounded
+            idleText="CANCEL"
+            loadingText="LOADING"
+            variant="secondary"
             className="btn-primary-soft"
-            onClick={onCancel}>
-            CANCEL
-          </Button>
-          <Button
-            round 
-            variant="btn-danger-soft" 
+            style={{
+              marginRight: "18px",
+              width: "150px",
+              fontSize: "12px",
+              backgroundColor: "#558e89",
+            }}
+          />
+          <ReactiveButton
             onClick={onConfirm}
-          >
-            CONFIRM
-          </Button>
+            type="button"
+            rounded 
+            idleText="CONFIRM"
+            loadingText="LOADING"
+            variant="secondary"
+            className="btn-primary-soft"
+            style={{
+              marginLeft: "149px",
+              width: "150px",
+              fontSize: "12px",
+              backgroundColor: "#b37070ff",
+            }}
+          />
         </Modal.Footer>
       </Modal>
     )

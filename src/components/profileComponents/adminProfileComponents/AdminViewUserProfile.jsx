@@ -412,7 +412,7 @@ export default function AdminViewUserProfile() {
                     )}
                   </Row>
 
-                  <div className="d-flex justify-content-space-evenly admin-edit-profile-button-container">
+                  <div className="d-flex admin-edit-profile-button-container">
                     <ReactiveButton
                       type="submit"
                       rounded
@@ -450,7 +450,7 @@ export default function AdminViewUserProfile() {
                       className="btn-primary-soft"
                       onClick={() => setConfModalShow(true)}
                       style={{
-                        marginRight: "18px",
+                        marginLeft: "149px",
                         width: "150px",
                         fontSize: "12px",
                         backgroundColor: "#b37070ff",

@@ -1,440 +1,440 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
-import { useChangePasswordMutation } from "../../../features/api/userApi";
-import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
-import { useGetUserByIdQuery } from "../../../features/api/adminApi";
-import { Button } from "react-bootstrap";
-import { Col, Row, Form, Spinner } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import InfoModal from "../../Modal";
-import ProfileHeader from "../ProfileHeader";
-import AdminNav from "./AdminNav";
-import ConfirmationModal from "../../ConfirmationModal";
-import "../../../styles/app.css"
+// import { useState, useEffect } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+// import { useUpdateUserProfileMutation } from "../../../features/api/userApi";
+// import { useChangePasswordMutation } from "../../../features/api/userApi";
+// import { useDeleteUserByIdMutation } from "../../../features/api/adminApi";
+// import { useGetUserByIdQuery } from "../../../features/api/adminApi";
+// import { Button } from "react-bootstrap";
+// import { Col, Row, Form, Spinner } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import InfoModal from "../../Modal";
+// import ProfileHeader from "../ProfileHeader";
+// import AdminNav from "./AdminNav";
+// import ConfirmationModal from "../../ConfirmationModal";
+// import "../../../styles/app.css"
 
-// export default function AdminViewUserProfile({ user, onReturnToResults}) {
-export default function AdminViewUserProfile() {
-  const { userId } = useParams();
-  const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
-  const [updateUserProfile] = useUpdateUserProfileMutation();
-  const [changePassword] = useChangePasswordMutation();
-  const [deleteUser] = useDeleteUserByIdMutation();
-  const navigate = useNavigate();
+// // export default function AdminViewUserProfile({ user, onReturnToResults}) {
+// export default function AdminViewUserProfile() {
+//   const { userId } = useParams();
+//   const { data: user, error, isLoading } = useGetUserByIdQuery(userId);
+//   const [updateUserProfile] = useUpdateUserProfileMutation();
+//   const [changePassword] = useChangePasswordMutation();
+//   const [deleteUser] = useDeleteUserByIdMutation();
+//   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    company: {
-      name: "",
-      streetAddress: "",
-      phoneNumber: "",
-      city: "",
-      state: "",
-      zip: "",
-    },
-  });
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     company: {
+//       name: "",
+//       streetAddress: "",
+//       phoneNumber: "",
+//       city: "",
+//       state: "",
+//       zip: "",
+//     },
+//   });
 
-  const [confModalShow, setConfModalShow] = useState(false);
-  const [infoModalShow, setInfoModalShow] = useState(false);
-  const [modalHeading, setModalHeading] = useState("");
-  const [modalBody, setModalBody] = useState("");
-  const [editMode, setEditMode] = useState(false);
-  const [showPwdForm, setShowPwdForm] = useState(false);
-  const [currentPwd, setCurrentPwd] = useState("");
-  const [newPwd, setNewPwd] = useState("");
-  const [confirmPwd, setConfirmPwd] = useState("");
-  const [pwdError, setPwdError] = useState("");
-  const [userDelete, setUserDelete] = useState(false);
+//   const [confModalShow, setConfModalShow] = useState(false);
+//   const [infoModalShow, setInfoModalShow] = useState(false);
+//   const [modalHeading, setModalHeading] = useState("");
+//   const [modalBody, setModalBody] = useState("");
+//   const [editMode, setEditMode] = useState(false);
+//   const [showPwdForm, setShowPwdForm] = useState(false);
+//   const [currentPwd, setCurrentPwd] = useState("");
+//   const [newPwd, setNewPwd] = useState("");
+//   const [confirmPwd, setConfirmPwd] = useState("");
+//   const [pwdError, setPwdError] = useState("");
+//   const [userDelete, setUserDelete] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      setFormData({
-        firstName: user.firstName || "",
-        lastName: user.lastName || "",
-        email: user.email || "",
-        company: {
-          name: user.company?.name || "",
-          streetAddress: user.company?.streetAddress || "",
-          phoneNumber:user.company?.phoneNumber || "",
-          city: user.company?.city || "",
-          state: user.company?.state || "",
-          zip: user.company?.zip || "",
-        },
-      });
-    }
-  }, [user]);
+//   useEffect(() => {
+//     if (user) {
+//       setFormData({
+//         firstName: user.firstName || "",
+//         lastName: user.lastName || "",
+//         email: user.email || "",
+//         company: {
+//           name: user.company?.name || "",
+//           streetAddress: user.company?.streetAddress || "",
+//           phoneNumber:user.company?.phoneNumber || "",
+//           city: user.company?.city || "",
+//           state: user.company?.state || "",
+//           zip: user.company?.zip || "",
+//         },
+//       });
+//     }
+//   }, [user]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await updateUserProfile({ id: userId, ...formData }).unwrap();
-      setModalHeading("Profile Updated");
-      setModalBody("User profile was updated succesfully");
-      setInfoModalShow(true);
-      setEditMode(false);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       await updateUserProfile({ id: userId, ...formData }).unwrap();
+//       setModalHeading("Profile Updated");
+//       setModalBody("User profile was updated succesfully");
+//       setInfoModalShow(true);
+//       setEditMode(false);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  const handlePasswordChange = async () => {
-    if (!currentPwd || !newPwd || newPwd !== confirmPwd) {
-      setPwdError(
-        !currentPwd
-          ? "Enter your current password"
-          : newPwd !== confirmPwd
-            ? "New passwords must match"
-            : "Enter a new password",
-      );
-      return;
-    }
-    try {
-      await changePassword({
-        currentPassword: currentPwd,
-        newPassword: newPwd,
-        confirmPassword: confirmPwd,
-      }).unwrap();
-      setShowPwdForm(false);
-      setCurrentPwd("");
-      setNewPwd("");
-      setConfirmPwd("");
-      setPwdError("");
-      setEditMode(false);
-      setModalHeading("Password Changed");
-      setModalBody("Your password was changed successfully.");
-      setInfoModalShow(true);
-    } catch {
-      setPwdError("Password change failed");
-    }
-  };
+//   const handlePasswordChange = async () => {
+//     if (!currentPwd || !newPwd || newPwd !== confirmPwd) {
+//       setPwdError(
+//         !currentPwd
+//           ? "Enter your current password"
+//           : newPwd !== confirmPwd
+//             ? "New passwords must match"
+//             : "Enter a new password",
+//       );
+//       return;
+//     }
+//     try {
+//       await changePassword({
+//         currentPassword: currentPwd,
+//         newPassword: newPwd,
+//         confirmPassword: confirmPwd,
+//       }).unwrap();
+//       setShowPwdForm(false);
+//       setCurrentPwd("");
+//       setNewPwd("");
+//       setConfirmPwd("");
+//       setPwdError("");
+//       setEditMode(false);
+//       setModalHeading("Password Changed");
+//       setModalBody("Your password was changed successfully.");
+//       setInfoModalShow(true);
+//     } catch {
+//       setPwdError("Password change failed");
+//     }
+//   };
 
-  const handleCancel = () => {
-    setFormData({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      company: {
-          name: user.company?.name,
-          streetAddress: user.company?.streetAddress,
-          phoneNumber:user.company?.phoneNumber,
-          city: user.company?.city,
-          state: user.company?.state,
-          zip: user.company?.zip,
-        },
-    });
-    setEditMode(false);
-    setShowPwdForm(false);
-    setUserDelete(false);
-    setPwdError("");
-  };
+//   const handleCancel = () => {
+//     setFormData({
+//       firstName: user.firstName,
+//       lastName: user.lastName,
+//       email: user.email,
+//       company: {
+//           name: user.company?.name,
+//           streetAddress: user.company?.streetAddress,
+//           phoneNumber:user.company?.phoneNumber,
+//           city: user.company?.city,
+//           state: user.company?.state,
+//           zip: user.company?.zip,
+//         },
+//     });
+//     setEditMode(false);
+//     setShowPwdForm(false);
+//     setUserDelete(false);
+//     setPwdError("");
+//   };
 
-  const handleDeleteUser = async (e) => {
-    try {
-       await deleteUser(userId).unwrap();
-      setModalHeading("Account Deleted");
-      setModalBody("This account was successfully deleted.");
-      setInfoModalShow(true);
-      setConfModalShow(false);
+//   const handleDeleteUser = async (e) => {
+//     try {
+//        await deleteUser(userId).unwrap();
+//       setModalHeading("Account Deleted");
+//       setModalBody("This account was successfully deleted.");
+//       setInfoModalShow(true);
+//       setConfModalShow(false);
 
-      setTimeout(() => {
-        navigate("/admin/search");
-      }, 1500);
+//       setTimeout(() => {
+//         navigate("/admin/search");
+//       }, 1500);
       
-    } catch (error) {
-      console.error(error)
-    }
-  }
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
 
-  const updateCompanyField = (field, value) => {
-    setFormData(f => ({
-      ...f,
-      company: {
-        ...f.company,
-        [field]: value
-      }
-    }));
-  }
+//   const updateCompanyField = (field, value) => {
+//     setFormData(f => ({
+//       ...f,
+//       company: {
+//         ...f.company,
+//         [field]: value
+//       }
+//     }));
+//   }
 
-  if (isLoading) return <Spinner animation="border" role="status" />;
-  if (error) return <p>Error loading user. Please try again later.</p>;
+//   if (isLoading) return <Spinner animation="border" role="status" />;
+//   if (error) return <p>Error loading user. Please try again later.</p>;
 
-  return (
-    <>
-      <div className="dashboard dark-theme">
-        <AdminNav />
-        <ProfileHeader />
-        <div
-          style={{ paddingTop: "60px" }}
-          className="d-flex justify-content-center align-items-center"
-        >
-          <div
-            className="bg-white rounded shadow p-4"
-            style={{ width: "100%", maxWidth: "600px" }}
-          >
-            <div className="d-flex justify-content-between align-items-center mb-4">
-              <h2>{editMode ? "Edit Profile" : "Profile"}</h2>
-              {!editMode && (
-                <Button
-                  variant="btn-primary-soft"
-                  onClick={() => setEditMode(true)}
-                >
-                  EDIT PROFILE
-                </Button>
-              )}
-            </div>
+//   return (
+//     <>
+//       <div className="dashboard dark-theme">
+//         <AdminNav />
+//         <ProfileHeader />
+//         <div
+//           style={{ paddingTop: "60px" }}
+//           className="d-flex justify-content-center align-items-center"
+//         >
+//           <div
+//             className="bg-white rounded shadow p-4"
+//             style={{ width: "100%", maxWidth: "600px" }}
+//           >
+//             <div className="d-flex justify-content-between align-items-center mb-4">
+//               <h2>{editMode ? "Edit Profile" : "Profile"}</h2>
+//               {!editMode && (
+//                 <Button
+//                   variant="btn-primary-soft"
+//                   onClick={() => setEditMode(true)}
+//                 >
+//                   EDIT PROFILE
+//                 </Button>
+//               )}
+//             </div>
 
-            <Form onSubmit={handleSubmit}>
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="firstName">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    readOnly={!editMode}
-                    value={formData.firstName}
-                    onChange={(e) =>
-                      setFormData((f) => ({ ...f, firstName: e.target.value }))
-                    }
-                  />
-                </Form.Group>
-                <Form.Group as={Col} controlId="lastName">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    readOnly={!editMode}
-                    value={formData.lastName}
-                    onChange={(e) =>
-                      setFormData((f) => ({ ...f, lastName: e.target.value }))
-                    }
-                  />
-                </Form.Group>
-              </Row>
+//             <Form onSubmit={handleSubmit}>
+//               <Row className="mb-3">
+//                 <Form.Group as={Col} controlId="firstName">
+//                   <Form.Label>First Name</Form.Label>
+//                   <Form.Control
+//                     readOnly={!editMode}
+//                     value={formData.firstName}
+//                     onChange={(e) =>
+//                       setFormData((f) => ({ ...f, firstName: e.target.value }))
+//                     }
+//                   />
+//                 </Form.Group>
+//                 <Form.Group as={Col} controlId="lastName">
+//                   <Form.Label>Last Name</Form.Label>
+//                   <Form.Control
+//                     readOnly={!editMode}
+//                     value={formData.lastName}
+//                     onChange={(e) =>
+//                       setFormData((f) => ({ ...f, lastName: e.target.value }))
+//                     }
+//                   />
+//                 </Form.Group>
+//               </Row>
 
-              <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData((f) => ({ ...f, email: e.target.value }))
-                  }
-                />
-              </Form.Group>
+//               <Form.Group className="mb-3" controlId="email">
+//                 <Form.Label>Email</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.email}
+//                   onChange={(e) =>
+//                     setFormData((f) => ({ ...f, email: e.target.value }))
+//                   }
+//                 />
+//               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="companyName">
-                <Form.Label>Company</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.company?.name}
-                  onChange={(e) =>
-                    updateCompanyField("name", e.target.value)}
-                />
-              </Form.Group>
+//               <Form.Group className="mb-3" controlId="companyName">
+//                 <Form.Label>Company</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.company?.name}
+//                   onChange={(e) =>
+//                     updateCompanyField("name", e.target.value)}
+//                 />
+//               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="companyStreetAddress">
-                <Form.Label>Street Address</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.company?.streetAddress}
-                  onChange={(e) =>
-                    updateCompanyField("streetAddress", e.target.value)}
-                />
-              </Form.Group>
+//               <Form.Group className="mb-3" controlId="companyStreetAddress">
+//                 <Form.Label>Street Address</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.company?.streetAddress}
+//                   onChange={(e) =>
+//                     updateCompanyField("streetAddress", e.target.value)}
+//                 />
+//               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="companyCity">
-                <Form.Label>City</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.company?.city}
-                  onChange={(e) =>
-                    updateCompanyField("city", e.target.value)}
-                />
-              </Form.Group>
+//               <Form.Group className="mb-3" controlId="companyCity">
+//                 <Form.Label>City</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.company?.city}
+//                   onChange={(e) =>
+//                     updateCompanyField("city", e.target.value)}
+//                 />
+//               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="companyZip">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.company?.zip}
-                  onChange={(e) =>
-                    updateCompanyField("zip", e.target.value)}
-                />
-              </Form.Group>
+//               <Form.Group className="mb-3" controlId="companyZip">
+//                 <Form.Label>Zip</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.company?.zip}
+//                   onChange={(e) =>
+//                     updateCompanyField("zip", e.target.value)}
+//                 />
+//               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="companyPhone">
-                <Form.Label>Phone</Form.Label>
-                <Form.Control
-                  readOnly={!editMode}
-                  type="text"
-                  value={formData.company?.phone}
-                  onChange={(e) =>
-                    updateCompanyField("phone", e.target.value)}
-                />
-              </Form.Group>
-
-
-              {editMode && (
-                <>
-                  <Row className="align-items-end mb-3">
-                    <Form.Group as={Col} controlId="password">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="********"
-                        readOnly
-                      />
-                    </Form.Group>
-                    {!showPwdForm && (
-                      <Col xs="auto">
-                        <ReactiveButton
-                          round
-                          variant="btn-primary-soft"
-                          onClick={() => setShowPwdForm(true)}
-                        >
-                          Change Password
-                        </ReactiveButton>
-                      </Col>
-                    )}
-                  </Row>
-
-                  {showPwdForm && (
-                    <div className="border rounded p-3 mb-3">
-                      <Form.Group className="mb-2" controlId="currentPwd">
-                        <Form.Label>Current Password</Form.Label>
-                        <Form.Control
-                          type="password"
-                          value={currentPwd}
-                          onChange={(e) => setCurrentPwd(e.target.value)}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-2" controlId="newPwd">
-                        <Form.Label>New Password</Form.Label>
-                        <Form.Control
-                          type="password"
-                          value={newPwd}
-                          onChange={(e) => setNewPwd(e.target.value)}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-2" controlId="confirmPwd">
-                        <Form.Label>Confirm New Password</Form.Label>
-                        <Form.Control
-                          type="password"
-                          value={confirmPwd}
-                          onChange={(e) => setConfirmPwd(e.target.value)}
-                        />
-                      </Form.Group>
-
-                      {pwdError && (
-                        <p className="text-danger small">{pwdError}</p>
-                      )}
-
-                      <div className="d-flex gap-2 mt-2 ">
-                        <Button 
-                          buttonState={isLoading ? "loading" : "idle"}
-                          idleText={"SAVE PASSWORD"}
-                          loadingText={"LOADING"}
-                          className="btn-primary-soft" 
-                          onClick={handlePasswordChange}
-                        >
-                        </Button>
-                        <Button
-                          variant="outline-secondary"
-                          className="btn-primary-soft" 
-                          onClick={() => {
-                            setShowPwdForm(false);
-                            setPwdError("");
-                          }}
-                        >
-                          CANCEL
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-              <div className="d-flex justify-content-end">
-                {editMode && (
-                  <>
-                    <Button 
-                      variant="outline-primary" 
-                      type="submit"
-                      className="me-2 btn-primary-soft"
-                    >
-                      SAVE
-                    </Button >
-
-                    <Button 
-                      variant="outline-secondary"
-                      onClick={handleCancel}
-                      className="me-2 btn-primary-soft"
-                    >
-                      CANCEL
-                    </Button >
-
-                    <Button  
-                      className="me-2 btn-danger" 
-                      onClick={() => setConfModalShow(true)}>
-                      DELETE PROFILE
-                    </Button >
-                    <ConfirmationModal 
-                      show={confModalShow}
-                      heading="Confirm Deletion"
-                      body="Are you sure you want to delete this user permanently? This action cannot be undone."
-                      onConfirm={handleDeleteUser}
-                      onCancel={() => setConfModalShow(false)}
-                    />
-                  </>
-                )}
-              </div>
-            </Form>
-          </div>
-        </div>
-
-        <InfoModal
-          show={infoModalShow}
-          hide={() => setInfoModalShow(false)}
-          heading={modalHeading}
-          body={modalBody}
-        />
-      </div>
-    </>
-  );
-}
+//               <Form.Group className="mb-3" controlId="companyPhone">
+//                 <Form.Label>Phone</Form.Label>
+//                 <Form.Control
+//                   readOnly={!editMode}
+//                   type="text"
+//                   value={formData.company?.phone}
+//                   onChange={(e) =>
+//                     updateCompanyField("phone", e.target.value)}
+//                 />
+//               </Form.Group>
 
 
+//               {editMode && (
+//                 <>
+//                   <Row className="align-items-end mb-3">
+//                     <Form.Group as={Col} controlId="password">
+//                       <Form.Label>Password</Form.Label>
+//                       <Form.Control
+//                         type="password"
+//                         placeholder="********"
+//                         readOnly
+//                       />
+//                     </Form.Group>
+//                     {!showPwdForm && (
+//                       <Col xs="auto">
+//                         <ReactiveButton
+//                           round
+//                           variant="btn-primary-soft"
+//                           onClick={() => setShowPwdForm(true)}
+//                         >
+//                           Change Password
+//                         </ReactiveButton>
+//                       </Col>
+//                     )}
+//                   </Row>
+
+//                   {showPwdForm && (
+//                     <div className="border rounded p-3 mb-3">
+//                       <Form.Group className="mb-2" controlId="currentPwd">
+//                         <Form.Label>Current Password</Form.Label>
+//                         <Form.Control
+//                           type="password"
+//                           value={currentPwd}
+//                           onChange={(e) => setCurrentPwd(e.target.value)}
+//                         />
+//                       </Form.Group>
+//                       <Form.Group className="mb-2" controlId="newPwd">
+//                         <Form.Label>New Password</Form.Label>
+//                         <Form.Control
+//                           type="password"
+//                           value={newPwd}
+//                           onChange={(e) => setNewPwd(e.target.value)}
+//                         />
+//                       </Form.Group>
+//                       <Form.Group className="mb-2" controlId="confirmPwd">
+//                         <Form.Label>Confirm New Password</Form.Label>
+//                         <Form.Control
+//                           type="password"
+//                           value={confirmPwd}
+//                           onChange={(e) => setConfirmPwd(e.target.value)}
+//                         />
+//                       </Form.Group>
+
+//                       {pwdError && (
+//                         <p className="text-danger small">{pwdError}</p>
+//                       )}
+
+//                       <div className="d-flex gap-2 mt-2 ">
+//                         <Button 
+//                           buttonState={isLoading ? "loading" : "idle"}
+//                           idleText={"SAVE PASSWORD"}
+//                           loadingText={"LOADING"}
+//                           className="btn-primary-soft" 
+//                           onClick={handlePasswordChange}
+//                         >
+//                         </Button>
+//                         <Button
+//                           variant="outline-secondary"
+//                           className="btn-primary-soft" 
+//                           onClick={() => {
+//                             setShowPwdForm(false);
+//                             setPwdError("");
+//                           }}
+//                         >
+//                           CANCEL
+//                         </Button>
+//                       </div>
+//                     </div>
+//                   )}
+//                 </>
+//               )}
+//               <div className="d-flex justify-content-end">
+//                 {editMode && (
+//                   <>
+//                     <Button 
+//                       variant="outline-primary" 
+//                       type="submit"
+//                       className="me-2 btn-primary-soft"
+//                     >
+//                       SAVE
+//                     </Button >
+
+//                     <Button 
+//                       variant="outline-secondary"
+//                       onClick={handleCancel}
+//                       className="me-2 btn-primary-soft"
+//                     >
+//                       CANCEL
+//                     </Button >
+
+//                     <Button  
+//                       className="me-2 btn-danger" 
+//                       onClick={() => setConfModalShow(true)}>
+//                       DELETE PROFILE
+//                     </Button >
+//                     <ConfirmationModal 
+//                       show={confModalShow}
+//                       heading="Confirm Deletion"
+//                       body="Are you sure you want to delete this user permanently? This action cannot be undone."
+//                       onConfirm={handleDeleteUser}
+//                       onCancel={() => setConfModalShow(false)}
+//                     />
+//                   </>
+//                 )}
+//               </div>
+//             </Form>
+//           </div>
+//         </div>
+
+//         <InfoModal
+//           show={infoModalShow}
+//           hide={() => setInfoModalShow(false)}
+//           heading={modalHeading}
+//           body={modalBody}
+//         />
+//       </div>
+//     </>
+//   );
+// }
 
 
 
 
-                      <ReactiveButton
-                        onClick={() => setConfModalShow(true)}  
-                        rounded
-                        idleText="DELETE PROFILE"
-                        loadingText="LOADING"
-                        className="me-2 btn-danger"
-                        style={{
-                          width: "90px",
-                          fontSize: "12px",
-                          marginTop: "8px",
-                          backgroundColor: "gray",
-                        }} 
-                      />
-                      <ConfirmationModal 
-                        show={confModalShow}
-                        heading="Confirm Deletion"
-                        body="Are you sure you want to delete this user permanently? This action cannot be undone."
-                        onConfirm={handleDeleteUser}
-                        onCancel={() => setConfModalShow(false)}
-                      />
+
+
+//                       <ReactiveButton
+//                         onClick={() => setConfModalShow(true)}  
+//                         rounded
+//                         idleText="DELETE PROFILE"
+//                         loadingText="LOADING"
+//                         className="me-2 btn-danger"
+//                         style={{
+//                           width: "90px",
+//                           fontSize: "12px",
+//                           marginTop: "8px",
+//                           backgroundColor: "gray",
+//                         }} 
+//                       />
+//                       <ConfirmationModal 
+//                         show={confModalShow}
+//                         heading="Confirm Deletion"
+//                         body="Are you sure you want to delete this user permanently? This action cannot be undone."
+//                         onConfirm={handleDeleteUser}
+//                         onCancel={() => setConfModalShow(false)}
+//                       />
 
 
 
-                                <InfoModal
-                                  show={infoModalShow}
-                                  hide={() => setInfoModalShow(false)}
-                                  heading={modalHeading}
-                                  bod
+//                                 <InfoModal
+//                                   show={infoModalShow}
+//                                   hide={() => setInfoModalShow(false)}
+//                                   heading={modalHeading}
+//                                   bod

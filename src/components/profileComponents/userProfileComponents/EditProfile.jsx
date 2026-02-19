@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Row, Form, Spinner } from "react-bootstrap";
 import InfoModal from "../../Modal";
 import ReactiveButton from "reactive-button";
-// import { Button } from "react-bootstrap";
 import ProfileHeader from "../ProfileHeader";
 import UserNav from "./UserNav";
 
