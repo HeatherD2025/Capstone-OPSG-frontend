@@ -22,6 +22,15 @@
   font-weight: 200;
   margin-top: 5px;
 }
+.btn-danger:not(.no-animation):hover:not(:disabled):not(.disabled) {
+  opacity: 0.85;
+  box-shadow: inset 0 -4 0 rgba(0, 0, 0, 0.2);
+  margin-top: -1px;
+  padding: 6px 14px 8px;
+}
+.btn-danger:hover:not(:disabled):not(.disabled) {
+  opacity: 0.85;
+}
 
 .welcome-modal-wrapper {
   width: 20px !important;

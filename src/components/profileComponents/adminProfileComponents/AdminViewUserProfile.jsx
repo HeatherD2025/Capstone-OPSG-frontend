@@ -514,7 +514,7 @@ export default function AdminViewUserProfile() {
                     <ReactiveButton
                       onClick={handlePasswordChange}
                       rounded
-                      idleText="SAVE NEW PASSWORD"
+                      idleText="SAVE"
                       loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
