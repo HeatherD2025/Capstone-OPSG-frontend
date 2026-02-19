@@ -352,7 +352,7 @@ export default function EditProfile() {
                           onClick={() => setShowPwdForm(true)}
                           rounded
                           idleText="CHANGE PASSWORD"
-                          loadingText="Loading"
+                          loadingText="LOADING"
                           variant="secondary"
                           className="btn-primary-soft"
                           style={{
@@ -371,7 +371,7 @@ export default function EditProfile() {
                       type="submit"
                       rounded
                       idleText="SAVE CHANGES"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -385,7 +385,7 @@ export default function EditProfile() {
                       onClick={handleCancel}
                       rounded
                       idleText="CANCEL CHANGES"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -445,7 +445,7 @@ export default function EditProfile() {
                     <ReactiveButton
                       onClick={handlePasswordChange}
                       rounded
-                      idleText="SAVE"
+                      idleText="SAVE CHANGES"
                       loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
@@ -460,7 +460,7 @@ export default function EditProfile() {
                     <ReactiveButton
                       onClick={handlePasswordCancel}
                       rounded
-                      idleText="CANCEL"
+                      idleText="CANCEL CHANGES"
                       loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"

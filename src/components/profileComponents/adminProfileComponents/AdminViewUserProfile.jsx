@@ -398,7 +398,7 @@ export default function AdminViewUserProfile() {
                           onClick={() => setShowPwdForm(true)}
                           rounded
                           idleText="CHANGE PASSWORD"
-                          loadingText="Loading"
+                          loadingText="LOADING"
                           variant="secondary"
                           className="btn-primary-soft"
                           style={{
@@ -417,7 +417,7 @@ export default function AdminViewUserProfile() {
                       type="submit"
                       rounded
                       idleText="SAVE CHANGES"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -431,7 +431,7 @@ export default function AdminViewUserProfile() {
                       onClick={handleCancel}
                       rounded
                       idleText="CANCEL CHANGES"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -453,7 +453,6 @@ export default function AdminViewUserProfile() {
                           fontSize: "12px",
                           marginTop: "5.5px",
                           marginLeft: "135px",
-                          backgroundColor: "#b37070ff",
                         }} 
                     />
                   </div>
@@ -515,7 +514,7 @@ export default function AdminViewUserProfile() {
                       onClick={handlePasswordChange}
                       rounded
                       idleText="SAVE"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -530,7 +529,7 @@ export default function AdminViewUserProfile() {
                       onClick={handlePasswordCancel}
                       rounded
                       idleText="CANCEL"
-                      loadingText="Loading"
+                      loadingText="LOADING"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
