@@ -35,7 +35,6 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
             variant="secondary"
             className="btn-primary-soft"
             style={{
-              marginLeft: "149px",
               width: "150px",
               fontSize: "12px",
               backgroundColor: "#b37070ff",
