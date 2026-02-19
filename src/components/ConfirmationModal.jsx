@@ -19,7 +19,7 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
           </Button>
           <Button
             round 
-            variant="btn-danger" 
+            variant="btn-danger-soft" 
             onClick={onConfirm}
           >
             CONFIRM
