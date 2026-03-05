@@ -124,7 +124,7 @@ const Home = () => {
             </motion.div>
           </div>
         </div>
-        <div className="main-image-container">
+        {/* <div className="main-image-container"> */}
           <img
             className="main-image"
             src={nurseSmiling}
@@ -133,7 +133,7 @@ const Home = () => {
             alt="nurse smiling"
             loading="lazy"
           />
-        </div>
+        {/* </div> */}
       </div>
 
       <div className="counter-section-wrapper">

@@ -93,7 +93,7 @@ export default function NavBar() {
               action
               onClick={() => navigate("/")}
             >
-              ABOUT
+              About
             </ListGroup.Item>
 
             <ListGroup.Item
@@ -101,7 +101,7 @@ export default function NavBar() {
               action
               onClick={() => navigate("/ourservices")}
             >
-              SERVICES
+              Services
             </ListGroup.Item>
 
             <ListGroup.Item
@@ -109,7 +109,7 @@ export default function NavBar() {
               action
               onClick={() => navigate("/contactform")}
             >
-              CONTACT
+              Contact
             </ListGroup.Item>
 
             {token ? (
@@ -118,7 +118,7 @@ export default function NavBar() {
                 action
                 onClick={() => navigate("/dashboard")}
               >
-                PROFILE
+                Profile
               </ListGroup.Item>
             ) : (
               <></>
@@ -143,7 +143,7 @@ export default function NavBar() {
                     <ReactiveButton
                       onClick={handleLogout}
                       rounded
-                      idleText={"LOGOUT"}
+                      idleText={"Logout"}
                       type="button"
                       variant="secondary"
                       navigate="/"
@@ -154,7 +154,7 @@ export default function NavBar() {
                   ) : (
                     <ReactiveButton
                       rounded
-                      idleText={"LOGIN"}
+                      idleText={"Login"}
                       type="button"
                       className="login-register-btn-custom"
                       onClick={() => navigate("/login")}
@@ -180,7 +180,7 @@ export default function NavBar() {
                   ) : (
                     <ReactiveButton
                       rounded
-                      idleText={"REGISTER"}
+                      idleText={"Register"}
                       type="button"
                       className="login-register-btn-custom"
                       onClick={() => navigate("/register")}

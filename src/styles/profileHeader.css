@@ -2,7 +2,6 @@
 .profile-header {
   background-color: rgb(48, 48, 48);
   color: white;
-  flex-shrink: 1;
   padding: 1rem;
 }
 
@@ -10,7 +9,7 @@
 .header-container {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 80%;
   align-items: center;
 }
 
@@ -23,6 +22,7 @@
 .welcome-header {
   color: white;
   width: 50%;
+  font-size: medium;
 }
 
 .welcome-header-container {

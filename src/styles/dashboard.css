@@ -24,10 +24,12 @@
 
 /* Cards */
 .action-cards-container {
- width: 50%;
- display: flex;
+ width: 40%;
+ min-width: 30%;
+ display: inline-flex;
  flex-direction: row;
- margin-left: 10rem;
+ margin-left: 12%;
+ gap: 1em;
 }
 
 .bg-dark {

@@ -2,7 +2,7 @@ import UserNav from "./userProfileComponents/UserNav";
 import AdminNav from "./adminProfileComponents/AdminNav";
 import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Balance from "../qbComponentsAndHooks/Balance";
@@ -30,6 +30,7 @@ export default function Dashboard() {
                       opacity: 0,
                       height: "100%",
                       width: "100%",
+                      zIndex: "100"
                     }}
                     onClick={() => navigate(`/profile/invoices/${user.id}`)}
                   />
@@ -43,19 +44,29 @@ export default function Dashboard() {
           variant="dark"
           titleClass="text-success"
           bodyClass="bg-dark"
+          style={{
+                alignItems: "center",
+                textAlign: "center",
+                height: "90px"
+              }}
           text={
-            <Button
-              variant="success"
+            <button
               className="w-100"
               target="_blank"
               rel="noopener noreferrer"
+              style={{
+                color: "black",
+                backgroundColor: "transparent",
+                height: "100%",
+                zIndex: "100",
+              }}
               onClick={() => {
                 window.location.href =
                   "https://opsg-backend.onrender.com/qbauth/connect";
               }}
             >
               Connect to Quickbooks
-            </Button>
+            </button>
           }
         />
       </Container>
