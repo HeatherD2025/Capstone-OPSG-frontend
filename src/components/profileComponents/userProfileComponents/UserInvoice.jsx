@@ -5,6 +5,7 @@ import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
+import Dashboard from "../Dashboard.jsx";
 // import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
 
 export default function UserInvoice() {
@@ -12,17 +13,28 @@ export default function UserInvoice() {
   const { company, companyIsLoading, companyError } = useCompanyName();
   const { user } = useSelector((state) => state.auth);
 
-  function getRandomInvoice(max) {
+  // generate random invoice number
+  function getRandomInvoiceNum(max) {
     return Math.floor(Math.random() * max);
   }
-  const randomInvoiceNumber = getRandomInvoice(5000);
+  const randomInvoiceNumber = getRandomInvoiceNum(5000);
 
+  // generate random invoice date
+  // I can generate random numbers for day and month
+  function randomDate() {{
+    return Date.now() - Math.floor(Math.random() * 10000000000);
+  }}
+
+  const randomAmount1 = Math.floor(Math.random() * balance);
+  const randomAmount2 = Math.floor(Math.random() * (balance - randomAmount1));
+  const randomAmount3 = balance - randomAmount1 - randomAmount2;  
 
   return (
     <>
       <div className="dashboard dark-theme">
         <ProfileHeader />
-        <UserNav />
+         <UserNav />
+          <Dashboard />
 
         <div className="invoice-container">
           <div className="row">
@@ -71,19 +83,19 @@ export default function UserInvoice() {
                 <tr>
                   <td>ASC certification</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i> 850.00
+                    <i className="fas fa-dollar-sign"></i>{randomAmount1}
                   </td>
                 </tr>
                 <tr>
                   <td>SAM renewal</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i> 300.00
+                    <i className="fas fa-dollar-sign"></i>{randomAmount2}
                   </td>
                 </tr>
                 <tr>
                   <td>Q3 sanitation check</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i> 500.00
+                    <i className="fas fa-dollar-sign"></i>{randomAmount3}
                   </td>
                 </tr>
               </tbody>
@@ -120,7 +132,7 @@ export default function UserInvoice() {
 
           <div className="row mt-2 mb-5">
             <p className="fw-bold">
-              Date: <span className="text-muted">November 23rd, 2025</span>
+              Date: <span className="text-muted">{randomDate}</span>
             </p>
           </div>
         </div>

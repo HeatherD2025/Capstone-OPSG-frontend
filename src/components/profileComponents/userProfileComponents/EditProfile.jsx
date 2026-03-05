@@ -11,6 +11,7 @@ import InfoModal from "../../Modal";
 import ReactiveButton from "reactive-button";
 import ProfileHeader from "../ProfileHeader";
 import UserNav from "./UserNav";
+import Dashboard from "../Dashboard";
 
 export default function EditProfile() {
   const { userId } = useParams();
@@ -132,8 +133,10 @@ export default function EditProfile() {
 
   return (
     <>
+    <ProfileHeader />
       <UserNav />
-      <ProfileHeader />
+        <Dashboard />
+      
       <div className="dark-theme">
         <div className="d-flex">
           <div className="bg-gray rounded shadow edit-profile">
