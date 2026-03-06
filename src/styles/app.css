@@ -29,6 +29,9 @@
 }
 
 /*Footer*/
+.opsg-logo {
+  width: 5vw
+}
 .footer {
   background-color: #558e89 !important;
   color: black;
@@ -94,7 +97,7 @@ body {
 .secondary-header-box {
   display: flex;
   gap: 1rem;
-  font-size: 1vw;
+  font-size: clamp(1rem, 1vw, 1rem);
 }
 
 .secondary-header-box > * {
@@ -117,7 +120,7 @@ body {
 .intro-text-first-line,
 .intro-text-second-line {
   font-weight: 200;
-  font-size: 3vw;
+  font-size: clamp(1rem, 3vw, 3rem);
 }
 
 .intro-text-first-line {
@@ -142,7 +145,7 @@ body {
   margin-bottom: 5rem;
   display: grid;
   justify-content: center;
-  font-size: 3vw;
+  font-size: clamp(1rem, 3vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;

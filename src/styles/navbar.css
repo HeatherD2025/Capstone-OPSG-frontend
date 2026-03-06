@@ -1,3 +1,7 @@
+.navbar {
+  filter: drop-shadow(5px 3px 5px rgb(218, 217, 217));
+}
+
 .usr-image2 {
   border: 2px solid white;
 }
@@ -9,17 +13,16 @@
 
 .nav-logo-wrapper {
   display: flex;
-  margin-left: 3rem ;
+  margin-left: 3rem;
   flex-direction: column;
   align-items: center;
   font-weight: 200;
-  font-size: clamp(12px, 20px, 20px);
+  font-size: clamp(0.85rem, 0.5vw, 8rem);
 }
 
 .navbar-item {
   gap: 1rem;
   border: none;
-  height: 35px;
 }
 .list-group-item-action {
   width: auto;
@@ -36,7 +39,7 @@
 }
 
 .reactive-btn.rounded.login-register-btn-custom {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.5vw, 8rem);
   background-color: #558e89;
 }
 
@@ -54,7 +57,7 @@
 }
 
 @media (min-width: 768px) {
-    .bg-light2 {
+  .bg-light2 {
     --bs-bg-opacity: 1;
     background-color: #ffffff;
     max-height: 90px;
@@ -75,10 +78,12 @@
   display: block;
 }
 
+.main-links-wrapper {
+  width: 60%;
+}
 .main-links {
   display: flex;
   flex-direction: row;
-  flex-wrap: noWrap;
-  gap: clamp(1vw, 8vw, 8vw);
-  font-size: clamp(14px, 14px, 16px);
+  font-size: clamp(0.75rem, 0.5vw, 8rem);
+  gap: 4vw;
 }

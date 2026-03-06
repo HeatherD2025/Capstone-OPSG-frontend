@@ -84,7 +84,7 @@ export default function NavBar() {
               <div>OnPoint</div>
             </div>
           </div>
-
+        <div className="main-links-wrapper">
           <ListGroup
             className="nav navbar-nav main-links"
           >
@@ -124,7 +124,7 @@ export default function NavBar() {
               <></>
             )}
           </ListGroup>
-
+        </div>
 
             <ListGroup
               className="nav login-register-buttons"
