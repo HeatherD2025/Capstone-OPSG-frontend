@@ -16,7 +16,7 @@ export default function UserInvoice() {
   function getRandomInvoiceNum(max) {
     return Math.floor(Math.random() * max);
   }
-  const randomInvoiceNumber = getRandomInvoiceNum(5000);
+  const randomInvoiceNumber = getRandomInvoiceNum(10000);
 
   // generate random invoice date
   // I can generate random numbers for day and month
@@ -27,13 +27,18 @@ export default function UserInvoice() {
   }
   const randomDate = new Date(getRandomDate()).toLocaleDateString();
 
-  const safeBalance = balance || 500;
+  const safeBalance = balance || 1000;
 
-  const randomAmount1 = Math.floor(Math.random() * safeBalance).toFixed(2);
+  const randomAmount1 = Math.floor(Math.random() * safeBalance);
   const randomAmount2 = Math.floor(
     Math.random() * (safeBalance - randomAmount1),
-  ).toFixed(2);
-  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2.toFixed(2);
+  );
+  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2;
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   return (
     <>
@@ -89,21 +94,21 @@ export default function UserInvoice() {
                   <td>ASC certification</td>
                   <td>
                     <i className="fas fa-dollar-sign"></i>
-                    {randomAmount1}
+                    {formatter.format(randomAmount1)}
                   </td>
                 </tr>
                 <tr>
                   <td>SAM renewal</td>
                   <td>
                     <i className="fas fa-dollar-sign"></i>
-                    {randomAmount2}
+                    {formatter.format(randomAmount2)}
                   </td>
                 </tr>
                 <tr>
                   <td>Q3 sanitation check</td>
                   <td>
                     <i className="fas fa-dollar-sign"></i>
-                    {randomAmount3}
+                    {formatter.format(randomAmount3)}
                   </td>
                 </tr>
               </tbody>
@@ -132,8 +137,8 @@ export default function UserInvoice() {
               >
                 Balance Due:
                 <span>
-                  <i className="fas fa-dollar-sign"></i>$
-                  {Number(safeBalance).toFixed(2)}
+                  <i className="fas fa-dollar-sign"></i>
+                  {formatter.format(safeBalance)}
                 </span>
               </p>
             </div>
