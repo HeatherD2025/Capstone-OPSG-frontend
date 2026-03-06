@@ -15,8 +15,8 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
             onClick={onCancel}
             type="button"
             rounded
-            idleText="CANCEL"
-            loadingText="LOADING"
+            idleText="Cancel"
+            loadingText="Loading"
             variant="secondary"
             className="btn-primary-soft"
             style={{
@@ -30,8 +30,8 @@ const ConfirmationModal = ({ show, heading, body, onConfirm, onCancel }) => {
             onClick={onConfirm}
             type="button"
             rounded 
-            idleText="CONFIRM"
-            loadingText="LOADING"
+            idleText="Confirm"
+            loadingText="Loading"
             variant="secondary"
             className="btn-primary-soft"
             style={{

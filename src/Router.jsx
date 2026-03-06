@@ -27,14 +27,3 @@ const router = createBrowserRouter([
 
 export default router;
 
-// element: <ProtectedRoutes isLoggedIn="true" />,
-// children: [
-//   {
-//     path: "/user/:userid",
-//     element: <Profile />,
-//   },
-//paths to other protected routes
-// {
-//     path: "/profile",
-//     element: <Profile />
-// }

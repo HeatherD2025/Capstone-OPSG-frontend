@@ -397,8 +397,8 @@ export default function AdminViewUserProfile() {
                         <ReactiveButton
                           onClick={() => setShowPwdForm(true)}
                           rounded
-                          idleText="CHANGE PASSWORD"
-                          loadingText="LOADING"
+                          idleText="Change Password"
+                          loadingText="Loading"
                           variant="secondary"
                           className="btn-primary-soft"
                           style={{
@@ -416,8 +416,8 @@ export default function AdminViewUserProfile() {
                     <ReactiveButton
                       type="submit"
                       rounded
-                      idleText="SAVE CHANGES"
-                      loadingText="LOADING"
+                      idleText="Save Changes"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -430,8 +430,8 @@ export default function AdminViewUserProfile() {
                     <ReactiveButton
                       onClick={handleCancel}
                       rounded
-                      idleText="CANCEL CHANGES"
-                      loadingText="LOADING"
+                      idleText="Cancel Changes"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -444,8 +444,8 @@ export default function AdminViewUserProfile() {
                     <ReactiveButton
                       type="button"
                       rounded
-                      idleText="DELETE PROFILE"
-                      loadingText="LOADING"
+                      idleText="Delete Profile"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       onClick={() => setConfModalShow(true)}
@@ -516,8 +516,8 @@ export default function AdminViewUserProfile() {
                       buttonState="idle"
                       onClick={handlePasswordChange}
                       rounded
-                      idleText="SAVE"
-                      loadingText="LOADING"
+                      idleText="Save"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -533,8 +533,8 @@ export default function AdminViewUserProfile() {
                       buttonState="idle"
                       onClick={handlePasswordCancel}
                       rounded
-                      idleText="CANCEL"
-                      loadingText="LOADING"
+                      idleText="Cancel"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{

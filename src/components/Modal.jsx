@@ -19,8 +19,8 @@ export default function InfoModal({ show, hide, heading, body, body2 }) {
             onClick={hide}
             type="button"
             rounded
-            idleText="CLOSE"
-            loadingText="LOADING"
+            idleText="Close"
+            loadingText="Loading"
             variant="secondary"
             className="btn-primary-soft"
             style={{

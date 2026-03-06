@@ -185,8 +185,8 @@ const Login = () => {
                 <ReactiveButton
                   rounded
                   buttonState={rtqLoading ? "loading" : "idle"}
-                  idleText={"SUBMIT"}
-                  loadingText={"LOADING"}
+                  idleText={"Submit"}
+                  loadingText={"Loading"}
                   variant="secondary"
                   className="submit-btn-custom"
                   type="submit"

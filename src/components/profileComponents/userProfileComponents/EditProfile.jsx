@@ -133,10 +133,10 @@ export default function EditProfile() {
 
   return (
     <>
-    <ProfileHeader />
+      <ProfileHeader />
       <UserNav />
-        <Dashboard />
-      
+      <Dashboard />
+
       <div className="dark-theme">
         <div className="d-flex">
           <div className="bg-gray rounded shadow edit-profile">
@@ -353,8 +353,8 @@ export default function EditProfile() {
                         <ReactiveButton
                           onClick={() => setShowPwdForm(true)}
                           rounded
-                          idleText="CHANGE PASSWORD"
-                          loadingText="LOADING"
+                          idleText="Change Password"
+                          loadingText="Loading"
                           variant="secondary"
                           className="btn-primary-soft"
                           style={{
@@ -372,8 +372,8 @@ export default function EditProfile() {
                     <ReactiveButton
                       type="submit"
                       rounded
-                      idleText="SAVE CHANGES"
-                      loadingText="LOADING"
+                      idleText="Save Changes"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
@@ -386,8 +386,8 @@ export default function EditProfile() {
                     <ReactiveButton
                       onClick={handleCancel}
                       rounded
-                      idleText="CANCEL CHANGES"
-                      loadingText="LOADING"
+                      idleText="Cancel Changes"
+                      loadingText="Loading"
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{

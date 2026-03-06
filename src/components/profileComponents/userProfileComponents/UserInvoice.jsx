@@ -5,7 +5,6 @@ import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
-import Dashboard from "../Dashboard.jsx";
 // import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
 
 export default function UserInvoice() {
@@ -25,16 +24,17 @@ export default function UserInvoice() {
     return Date.now() - Math.floor(Math.random() * 10000000000);
   }}
 
-  const randomAmount1 = Math.floor(Math.random() * balance);
-  const randomAmount2 = Math.floor(Math.random() * (balance - randomAmount1));
-  const randomAmount3 = balance - randomAmount1 - randomAmount2;  
+  const safeBalance = balance || 500;
+
+  const randomAmount1 = Math.floor(Math.random() * safeBalance);
+  const randomAmount2 = Math.floor(Math.random() * (safeBalance - randomAmount1));
+  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2;  
 
   return (
     <>
       <div className="dashboard dark-theme">
         <ProfileHeader />
          <UserNav />
-          <Dashboard />
 
         <div className="invoice-container">
           <div className="row">
