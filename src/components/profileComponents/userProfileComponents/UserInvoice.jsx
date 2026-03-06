@@ -20,21 +20,26 @@ export default function UserInvoice() {
 
   // generate random invoice date
   // I can generate random numbers for day and month
-  function randomDate() {{
-    return Date.now() - Math.floor(Math.random() * 10000000000);
-  }}
+  function getRandomDate() {
+    {
+      return Date.now() - Math.floor(Math.random() * 10000000000);
+    }
+  }
+  const randomDate = new Date(getRandomDate()).toLocaleDateString();
 
   const safeBalance = balance || 500;
 
-  const randomAmount1 = Math.floor(Math.random() * safeBalance);
-  const randomAmount2 = Math.floor(Math.random() * (safeBalance - randomAmount1));
-  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2;  
+  const randomAmount1 = Math.floor(Math.random() * safeBalance).toFixed(2);
+  const randomAmount2 = Math.floor(
+    Math.random() * (safeBalance - randomAmount1),
+  ).toFixed(2);
+  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2.toFixed(2);
 
   return (
     <>
       <div className="dashboard dark-theme">
         <ProfileHeader />
-         <UserNav />
+        <UserNav />
 
         <div className="invoice-container">
           <div className="row">
@@ -83,19 +88,22 @@ export default function UserInvoice() {
                 <tr>
                   <td>ASC certification</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i>{randomAmount1}
+                    <i className="fas fa-dollar-sign"></i>
+                    {randomAmount1}
                   </td>
                 </tr>
                 <tr>
                   <td>SAM renewal</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i>{randomAmount2}
+                    <i className="fas fa-dollar-sign"></i>
+                    {randomAmount2}
                   </td>
                 </tr>
                 <tr>
                   <td>Q3 sanitation check</td>
                   <td>
-                    <i className="fas fa-dollar-sign"></i>{randomAmount3}
+                    <i className="fas fa-dollar-sign"></i>
+                    {randomAmount3}
                   </td>
                 </tr>
               </tbody>
@@ -124,7 +132,8 @@ export default function UserInvoice() {
               >
                 Balance Due:
                 <span>
-                  <i className="fas fa-dollar-sign"></i>${Number(balance).toFixed(2)}
+                  <i className="fas fa-dollar-sign"></i>$
+                  {Number(safeBalance).toFixed(2)}
                 </span>
               </p>
             </div>
