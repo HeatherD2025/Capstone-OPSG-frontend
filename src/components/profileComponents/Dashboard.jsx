@@ -18,10 +18,7 @@ export default function Dashboard() {
     <div className="dashboard dark-theme">
       <ProfileHeader />
       {isAdmin ? <AdminNav /> : <UserNav />}
-
-      <Container fluid className="action-cards-container">
         <DashTabs />
-      </Container>
     </div>
   );
 }

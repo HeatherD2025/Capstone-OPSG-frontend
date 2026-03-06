@@ -85,7 +85,7 @@
   .dashboard-sidebar {
     margin: 1rem;
   }
-  .dashboard-collapse {
+  #dashboard-collapse {
     right: 0.5rem;
   }
   #sidebar.active .sidebar-header h3 {
