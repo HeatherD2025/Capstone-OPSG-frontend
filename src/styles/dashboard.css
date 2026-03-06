@@ -1,14 +1,18 @@
- /* Dark Theme Base */
+/* Dark Theme Base */
 .dark-theme {
-  background-color: #393939;
+  background-color: rgb(66, 66, 66);
   color: #e0e0e0;
   min-height: 100vh;
 }
 
 /* Layout */
 .nav-column {
-  background-color: #2a2a2a;
+  background-color: #252527;
   min-height: 100vh;
+}
+.nav-link {
+  color: white;
+  font-size: medium;
 }
 
 .content-column {
@@ -22,18 +26,36 @@
   margin-bottom: 0;
 }
 
+.dashboard-tabs {
+  background-color: #525252;
+  color: white;
+  border: none;
+  width: 25%;
+  margin-left: 14vw;
+}
+.tab-nav-item {
+  font-size: medium;
+}
+.dashboard-header {
+  background-color: #525252;
+  color: white;
+  border: none;
+  width: 25%;
+}
+
+
 /* Cards */
 .action-cards-container {
- width: 40%;
- min-width: 30%;
- display: inline-flex;
- flex-direction: row;
- margin-left: 14vw;
- gap: 1em;
+  width: 40%;
+  min-width: 30%;
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 14vw;
+  gap: 1em;
 }
 
 .bg-dark {
-  background-color: #4c4c4c !important;
+  background-color: #252527 !important;
   border: 1px solid #333;
 }
 
@@ -68,4 +90,3 @@
     width: 100%;
   }
 }
-
