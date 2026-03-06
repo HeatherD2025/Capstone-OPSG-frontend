@@ -13,11 +13,11 @@ const UserNav = (props) => {
   // const [isDropdownActive, setDropdownActive] = useState("false");
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
 
- const scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
- useEffect(() => {
+  useEffect(() => {
     // strip hash symbol from location to match id
     const id = location.hash.replace("#", "");
     const el = document.getElementById(id);
@@ -46,7 +46,6 @@ const UserNav = (props) => {
     if (window.location.href !== baseUrl)
       window.history.replaceState(null, "", baseUrl);
   }, [location]); //re-run this on navigation change
-
 
   if (isLoading) return <p>Loading user data...</p>;
   if (isError) return <p>Error loading user data</p>;
@@ -86,7 +85,7 @@ const UserNav = (props) => {
 
             <li className="dashboard-list-item">
               <i className="bi bi-gear"></i>
-              <Link to={`/user/me/updateUserProfile`}>Edit Profile</Link>
+              <Link to="/user/me/updateUserProfile">Edit Profile</Link>
             </li>
 
             <li className="dashboard-list-item">
