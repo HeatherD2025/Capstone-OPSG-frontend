@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-
 import "../../../styles/dashboardNav.css";
 import { removeToken } from "../../../utils/tokenService";
 
@@ -17,9 +16,8 @@ const AdminNav = (props) => {
         <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <Button
             type="button"
-            id="sidebar-collapse"
             onClick={() => setNotActive(!isNotActive)}
-            className="btn btn-custom"
+            className="btn btn-custom collapse-button"
           >
             <span className={isNotActive ? "" : "hidden"}>{arrowRight}</span>
             <span className={isNotActive ? "hidden" : ""}>{crossIcon}</span>

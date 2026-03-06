@@ -61,7 +61,6 @@ const UserNav = (props) => {
         <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <Button
             type="button"
-            id="dashboard-collapse"
             onClick={() => setNotActive(!isNotActive)}
             className="btn btn-custom collapse-button"
           >
