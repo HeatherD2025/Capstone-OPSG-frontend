@@ -8,10 +8,9 @@ import OurServices from "./pages/OurServices";
 import ContactForm from "./pages/ContactForm";
 
 import Dashboard from "./components/profileComponents/Dashboard";
-import EditProfile from "./components/profileComponents/userProfileComponents/EditProfile";
+import EditProfile from "./components/profileComponents/EditProfile";
 import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
-import AdminViewUserProfile from "./components/profileComponents/adminProfileComponents/AdminViewUserProfile";
 import AdminSearch from "./components/profileComponents/adminProfileComponents/AdminSearch";
 // import { AuthProvider } from "./Features/Navigations/AuthContext";
 
@@ -27,7 +26,7 @@ function App() {
         path="/admin/users/:userId"
         element={
           <AdminRoute>
-            <AdminViewUserProfile />
+            <EditProfile />
           </AdminRoute>
         }
       />

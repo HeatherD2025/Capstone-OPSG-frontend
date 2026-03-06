@@ -5,7 +5,6 @@ import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
-// import { useGetCurrentUserQuery } from "../../../features/api/userApi.js";
 
 export default function UserInvoice() {
   const { balance } = useBalance();
@@ -19,7 +18,6 @@ export default function UserInvoice() {
   const randomInvoiceNumber = getRandomInvoiceNum(10000);
 
   // generate random invoice date
-  // I can generate random numbers for day and month
   function getRandomDate() {
     {
       return Date.now() - Math.floor(Math.random() * 10000000000);

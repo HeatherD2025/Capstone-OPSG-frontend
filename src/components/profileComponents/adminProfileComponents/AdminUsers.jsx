@@ -1,20 +1,20 @@
 import { useState } from "react";
-import AdminEditUserProfile from "./AdminViewUserProfile";
+import EditProfile from "../EditProfile";
 import AdminSearch from "./AdminSearch";
 
 export default function AdminUsers() {
-    const [selectedUser, setSelectedUser] = useState(null)
+  const [selectedUser, setSelectedUser] = useState(null);
 
-    return (
-        <>
-         {!selectedUser ? (
-            <AdminSearch onSelectUser={setSelectedUser}/>
-          ) : (
-            <AdminEditUserProfile 
-              onSelectUser={setSelectedUser}
-              onReturnToResults={() => setSelectedUser(null)}  
-            />
-            )}
-        </>
-    );
+  return (
+    <>
+      {!selectedUser ? (
+        <AdminSearch onSelectUser={setSelectedUser} />
+      ) : (
+        <EditProfile
+          onSelectUser={setSelectedUser}
+          onReturnToResults={() => setSelectedUser(null)}
+        />
+      )}
+    </>
+  );
 }
