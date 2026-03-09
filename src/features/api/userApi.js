@@ -15,7 +15,7 @@ const userApi = api.injectEndpoints({
       query: ({id, ...userData}) => ({
         // if Id is passed, its an admin edit - if not, self edit
         url: id ? `admin/users/${id}` : "/users/me",
-        method: "PUT",
+        method: "PATCH",
         data: userData,
       }),
     }),
