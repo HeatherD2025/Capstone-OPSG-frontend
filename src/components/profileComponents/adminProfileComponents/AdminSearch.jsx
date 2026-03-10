@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
-import Footer from "../../Footer";
 import {
   useGetUsersQuery,
 } from "../../../features/api/adminApi";
@@ -122,7 +121,6 @@ export default function AdminSearch() {
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 }

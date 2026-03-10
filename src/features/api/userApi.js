@@ -12,12 +12,13 @@ const userApi = api.injectEndpoints({
     }),
 
     updateUserProfile: build.mutation({
-      query: ({id, ...userData}) => ({
+      query: ({ id, ...userData }) => ({
         // if Id is passed, its an admin edit - if not, self edit
         url: id ? `admin/users/${id}` : "/users/me",
         method: "PATCH",
         data: userData,
       }),
+      invalidatesTags: ["User"],
     }),
 
     changePassword: build.mutation({
