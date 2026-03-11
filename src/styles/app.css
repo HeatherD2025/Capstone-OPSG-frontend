@@ -4,11 +4,14 @@
   width: 80px;
   background-color: #558e89;
   color: white;
-  font-size: 12px;
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   padding: 8px;
   border-radius: 2em;
   font-weight: 200;
   margin-top: 5px;
+}
+.reactive-btn {
+  font-size: clamp(0.85rem, 0.75vw, 8rem) !important;
 }
 
 .btn-danger-soft {
@@ -16,7 +19,7 @@
   width: 80px;
   background-color: #b37070ff;
   color: white;
-  font-size: 12px;
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   padding: 8px;
   border-radius: 2em;
   font-weight: 200;
@@ -27,11 +30,13 @@
   width: 20vw !important;
   margin-top: 6vw !important;
 }
+
 .modal-content {
   border-radius: 10px;
   height: 21vw;
   margin-top: 12.5vw !important;
   filter: drop-shadow(8px 8px 10px gray);
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
 }
 .modal-body {
   margin-top: 1vw;
@@ -39,7 +44,7 @@
 
 /*Footer*/
 .opsg-logo {
-  width: 5vw
+  width: 5vw;
 }
 .footer {
   background-color: #558e89 !important;
@@ -101,7 +106,7 @@ body {
 .opsg-name {
   font-size: 2vw;
   font-weight: 200;
-  margin-top: .5vw;
+  margin-top: 0.5vw;
 }
 
 .secondary-header-box {
@@ -250,7 +255,7 @@ body {
 
 .reactive-btn.rounded.submit-btn-custom {
   width: 80px;
-  font-size: 12px;
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   background-color: #558e89;
   margin-top: 5px;
 }
@@ -277,7 +282,7 @@ body {
 }
 
 .login-register-tab-link {
-  font-size: 12px;
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   padding-bottom: 10px;
   margin-top: 0.3rem;
 }

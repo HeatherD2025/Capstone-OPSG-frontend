@@ -128,7 +128,7 @@ const Login = () => {
               heading={welcomeModalHeading}
               body={welcomeModalBody}
               body2={welcomeModalBody2}
-              className="welcome-modal"
+              className="btn-primary-soft"
             />
           </div>
 
@@ -165,7 +165,7 @@ const Login = () => {
 
               <Form onSubmit={submit} className="login-register-form">
                 <Form.Group className="mb-3" controlId="form-basic-email">
-                  <Form.Label className="form-label">EMAIL</Form.Label>
+                  <Form.Label className="form-label">Email</Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -174,7 +174,7 @@ const Login = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="form-basic-password">
-                  <Form.Label className="form-label">PASSWORD</Form.Label>
+                  <Form.Label className="form-label">Password</Form.Label>
                   <Form.Control
                     type="password"
                     name="password"
