@@ -92,7 +92,7 @@ const Home = () => {
 
             <Col className="text-muted">
               <div className="secondary-header-box">
-                <div>Credentials </div>
+                <div>Credentials</div>
                 <div>Enrollments</div>
                 <div>Consulting</div>
               </div>

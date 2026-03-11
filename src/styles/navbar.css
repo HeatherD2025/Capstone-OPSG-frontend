@@ -39,7 +39,7 @@
 }
 
 .reactive-btn.rounded.login-register-btn-custom {
-  font-size: clamp(0.75rem, 0.5vw, 8rem);
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   background-color: #558e89;
 }
 
@@ -84,6 +84,6 @@
 .main-links {
   display: flex;
   flex-direction: row;
-  font-size: clamp(0.75rem, 0.5vw, 8rem);
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
   gap: 4vw;
 }

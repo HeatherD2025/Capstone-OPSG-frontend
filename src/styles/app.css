@@ -81,7 +81,7 @@ body {
 
 .homepage-opsg-logo {
   width: 5vw;
-  height: auto;
+  height: 4vw;
   padding-right: 1vw;
 }
 
@@ -101,11 +101,13 @@ body {
 .opsg-name {
   font-size: 2vw;
   font-weight: 200;
+  margin-top: .5vw;
 }
 
 .secondary-header-box {
   display: flex;
-  gap: 1rem;
+  gap: 1.4vw;
+  margin: 0vw 0vw 0vw 5vw;
   font-size: clamp(1rem, 1vw, 1rem);
 }
 
@@ -116,7 +118,7 @@ body {
 .intro-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rvw;
   margin-top: 3.25vw;
 }
 
