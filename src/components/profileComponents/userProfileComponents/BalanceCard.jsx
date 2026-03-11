@@ -17,7 +17,7 @@ export default function BalanceCard() {
 
   return (
     <>
-      <h4>{title}</h4>
+      <h3>{title}</h3>
       <p>{displayText}</p>
     </>
   );

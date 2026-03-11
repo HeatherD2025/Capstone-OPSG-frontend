@@ -21,16 +21,17 @@ export default function Dashboard() {
       <Container fluid className="action-cards-container">
         {!isAdmin && user && (
           <BalanceProvider id={user?.id}>
-            <InfoCard>
+            <InfoCard style={{height: "10vw !important"}}>
               <Balance
                 text={
                   <button
                     rel="noopener noreferrer"
                     style={{
                       opacity: 0,
-                      height: "100%",
+                      height: "10vw",
                       width: "100%",
-                      zIndex: "100"
+                      zIndex: "100",
+                      marginTop: "-8.5vw",
                     }}
                     onClick={() => navigate(`/profile/invoices/${user.id}`)}
                   />
@@ -47,7 +48,7 @@ export default function Dashboard() {
           style={{
                 alignItems: "center",
                 textAlign: "center",
-                height: "90px"
+                height: "10vw !important",
               }}
           text={
             <button
@@ -58,7 +59,8 @@ export default function Dashboard() {
                 color: "black",
                 backgroundColor: "transparent",
                 height: "100%",
-                zIndex: "100",
+                border: "none",
+                fontSize: "1.25vw",
               }}
               onClick={() => {
                 window.location.href =
