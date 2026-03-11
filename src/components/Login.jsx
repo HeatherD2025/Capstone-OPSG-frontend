@@ -128,6 +128,7 @@ const Login = () => {
               heading={welcomeModalHeading}
               body={welcomeModalBody}
               body2={welcomeModalBody2}
+              className="welcome-modal"
             />
           </div>
 
@@ -149,7 +150,7 @@ const Login = () => {
               >
                 <Nav.Item>
                   <Nav.Link href="/#/login" className="login-register-tab-link">
-                    LOGIN
+                    Login
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -157,7 +158,7 @@ const Login = () => {
                     href="/#/register"
                     className="login-register-tab-link"
                   >
-                    REGISTER
+                    Register
                   </Nav.Link>
                 </Nav.Item>
               </Nav>

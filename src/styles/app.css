@@ -24,8 +24,17 @@
 }
 
 .welcome-modal-wrapper {
-  width: 20px !important;
-  margin-top: 10px;
+  width: 20vw !important;
+  margin-top: 6vw !important;
+}
+.modal-content {
+  border-radius: 10px;
+  height: 21vw;
+  margin-top: 12.5vw !important;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+.modal-body {
+  margin-top: 1vw;
 }
 
 /*Footer*/
@@ -108,7 +117,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 6rem;
+  margin-top: 3.25vw;
 }
 
 .intro-text-container {
@@ -250,7 +259,7 @@ body {
 }
 
 .welcome-modal-wrapper {
-  margin-top: 3rem;
+  margin-top: 3vw;
   z-index: 100;
 }
 
@@ -289,6 +298,6 @@ body {
 /* contact page */
 .contact-page-header {
   text-align: center;
-  padding: 5rem 0rem 2rem 0rem;
+  padding: 3vw 0vw 2vw 0vw;
   font-weight: 100;
 }

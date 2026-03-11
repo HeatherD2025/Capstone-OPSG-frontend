@@ -69,7 +69,7 @@ const Home = () => {
       y: 0,
       transition: {
         duration: 1,
-        delay: 1.5,
+        delay: 1.25,
       },
     },
   };

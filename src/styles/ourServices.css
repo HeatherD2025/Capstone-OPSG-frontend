@@ -2,7 +2,7 @@
   margin: auto;
   font-size: 40px;
   font-weight: 100;
-  padding-bottom: 4rem;
+  padding-bottom: 2vw;
   color: #558e89;
 }
 
@@ -37,29 +37,23 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem;
-  height: 220px;
-}
-
-.info-card-image-wrapper {
-  height: 120px;
-  width: 100%;
-  margin-top: 1rem;
+  padding: 3vw;
+  height: 15vw;
 }
 
 .info-card-image {
-  height: 50%;
-  width: 30%;
+  height: auto;
+  width: 5vw;
   object-fit: cover;
 }
 
 .card-header {
   display: flex;
   justify-content: center;
-  padding-bottom: 2rem;
-  padding-top: 5rem;
+  padding-bottom: 1vw;
+  padding-top: 4vw;
   font-weight: 100;
-  font-size: 40px;
+  font-size: clamp(1.25vw, 2.25rem, 3.25rem);
   max-width: 60%;
   margin: auto;
 }
@@ -67,17 +61,17 @@
 .card-description {
   display: flex;
   justify-content: center;
-  font-size: 18px;
+  font-size: clamp(1.25vw, 1.5rem, 1.25rem);
   font-weight: 200;
-  padding-bottom: 2rem;
+  padding-bottom: 2vw;
 }
 
 .card-title {
-  margin-top: 1rem;
+  margin-top: 1vw;
 }
 
 .card-subtitle {
-  margin-top: 2rem;
+  margin-top: 2.2vw;
 }
 
 /* Why choose OPSG section */
@@ -86,11 +80,12 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
+  margin-bottom: 2vw;
 }
 
 .why-paras-wrapper {
   width: 38rem;
-  margin-right: 5rem;
+  margin-right: 2vw;
   max-width: 50%;
   font-weight: 200;
   font-size: 18px;
@@ -101,7 +96,7 @@
 }
 
 .services-main-image {
-  width: 50%;
+  width: 45vw;
   border-radius: 2%;
   filter: drop-shadow(8px 8px 10px gray);
 }
