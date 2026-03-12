@@ -37,10 +37,6 @@ export default function useCompanyName() {
       return null;
     }
 
-    if (!user.company) {
-      console.log("Normalizer: User found, but no company object attached", user);
-        return null;
-    }
     return {
       name: user.company.name,
       streetAddress: user.company.streetAddress,
