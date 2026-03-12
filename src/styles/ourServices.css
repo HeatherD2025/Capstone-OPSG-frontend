@@ -21,8 +21,6 @@
   transition:
   transform 0.25s ease-in-out,
   box-shadow 0.25s ease-in-out;
-  max-width: 300px;
-  min-width: 250px;
   width: 100%;
   margin: 0 auto;
 }
@@ -38,7 +36,7 @@
   align-items: center;
   text-align: center;
   padding: 3vw;
-  height: 15vw;
+  height: 10vw;
 }
 
 .info-card-image {
