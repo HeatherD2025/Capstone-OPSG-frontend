@@ -23,6 +23,7 @@ export default function ProfileHeader() {
 
   const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
   const companyNameCalled = isAdmin? " " : `${company.name}`;
+  const displayName = user?.isAdmin ? "Demo Admin" : `${user?.firstName} ${user?.lastName}`;
 
   if (userLoading) return <p>Loading user data</p>;
   if (userError) return <p>Failed to load user data</p>;
@@ -55,13 +56,9 @@ export default function ProfileHeader() {
 
               <div className="welcome-header-container">
                 <span className="welcome-header">
-                  { isAdmin ? (
-                      <p>Welcome Demo Admin!</p>
-                    ) : (
-                    <p>
-                      Welcome {user.firstName} {user.lastName}!
-                    </p>
-                    )}
+                  <p>
+                    Welcome, {displayName}!
+                  </p>
                   {company ? (
                     <p>{companyNameCalled}</p> 
                   ) : (
