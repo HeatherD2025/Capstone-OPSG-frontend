@@ -34,10 +34,10 @@ export default function UserInvoice() {
   );
 
   const companyName = company?.name || "Your Company";
-  const companyAddress = company
-    ? `${company.streetAddress || "123 Main St"}, ${company.city || "Anytown"}, ${company.state || "ST"} ${company.zipCode || "12345"}`
-    : "123 Main St, Anytown, ST 12345";
-
+  const companyStreetAddress = company?.streetAddress || "123 Main St";
+  const companyCity = company?.city || "Anytown";
+  const companyState = company?.state || "CA";
+  const companyZip = company?.zip || "12345";
   // stabilize the Balance
   const safeBalance = balance || 1000;
 
@@ -71,8 +71,10 @@ export default function UserInvoice() {
         <div className="invoice-container">
           {/* ... Brand Header ... */}
           <div className="text-top-left">
-            {companyName}
-            {companyAddress}
+            <p>{companyName}</p>
+            <p>{companyStreetAddress}</p>
+            <p>{companyCity}, {companyState}</p>
+            <p>{companyZip}</p>
           </div>
           <div className="row text-center">
             <h3 className="text-uppercase mt-3" style={{ fontSize: "40px", color: "black" }}>
@@ -107,7 +109,7 @@ export default function UserInvoice() {
           </div>
 
           <div className="row">
-            <div className="col-xl-8" style={{ marginLeft: "40px" }}>
+            <div className="col-xl-8" style={{ marginLeft: "14.5vw", marginTop: "3vw" }}>
               <p className="float-end" style={{ fontSize: "20px", color: "red", fontWeight: "400" }}>
                 Balance Due: <span>{formatter.format(safeBalance)}</span>
               </p>
@@ -116,7 +118,7 @@ export default function UserInvoice() {
 
           <div className="row mt-2 mb-5">
             <p className="fw-bold">
-              Date: <span className="text-muted">{invoiceData.date}</span>
+              Date: <span className="text-muted" style={{marginLeft: "2vw"}}>{invoiceData.date}</span>
             </p>
           </div>
         </div>
