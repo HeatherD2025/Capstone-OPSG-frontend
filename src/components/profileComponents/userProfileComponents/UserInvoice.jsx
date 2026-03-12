@@ -33,11 +33,11 @@ export default function UserInvoice() {
       </div>
   );
 
-  const companyName = company?.name || "Your Company";
-  const companyStreetAddress = company?.streetAddress || "123 Main St";
-  const companyCity = company?.city || "Anytown";
-  const companyState = company?.state || "CA";
-  const companyZip = company?.zip || "12345";
+  const companyName = `${company?.name}` || "Your Company";
+  const companyStreetAddress = `${company?.streetAddress}` || "123 Main St";
+  const companyCity = `${company?.city}` || "Anytown";
+  const companyState = `${company?.state}` || "CA";
+  const companyZip = `${company?.zip}` || "12345";
   // stabilize the Balance
   const safeBalance = balance || 1000;
 
@@ -117,8 +117,8 @@ export default function UserInvoice() {
           </div>
 
           <div className="row mt-2 mb-5">
-            <p className="fw-bold">
-              Date: <span className="text-muted" style={{marginLeft: "2vw"}}>{invoiceData.date}</span>
+            <p className="fw-bold" style={{marginLeft: "2vw"}}>
+              Date: <span className="text-muted">{invoiceData.date}</span>
             </p>
           </div>
         </div>
