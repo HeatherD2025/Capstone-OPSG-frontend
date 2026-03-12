@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useMemo } from "react"; // Add this for stable math
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "./UserNav.jsx";
 import "../../../styles/dashboard.css";
@@ -7,36 +8,32 @@ import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 
 export default function UserInvoice() {
-  const { balance } = useBalance();
-  const { company, companyIsLoading, companyError } = useCompanyName();
+  const { balance, loading } = useBalance();
   const { user } = useSelector((state) => state.auth);
 
-  // generate random invoice number
-  function getRandomInvoiceNum(max) {
-    return Math.floor(Math.random() * max);
-  }
-  const randomInvoiceNumber = getRandomInvoiceNum(10000);
-
-  // generate random invoice date
-  function getRandomDate() {
-    {
-      return Date.now() - Math.floor(Math.random() * 10000000000);
-    }
-  }
-  const randomDate = new Date(getRandomDate()).toLocaleDateString();
-
+  // stabilize the Balance
   const safeBalance = balance || 1000;
 
-  const randomAmount1 = Math.floor(Math.random() * safeBalance);
-  const randomAmount2 = Math.floor(
-    Math.random() * (safeBalance - randomAmount1),
-  );
-  const randomAmount3 = safeBalance - randomAmount1 - randomAmount2;
+  // useMemo so the math only happens when the balance actually changes
+  const amounts = useMemo(() => {
+    const r1 = Math.floor(Math.random() * (safeBalance * 0.6));
+    const r2 = Math.floor(Math.random() * (safeBalance - r1) * 0.5);
+    const r3 = safeBalance - r1 - r2;
+    return { r1, r2, r3 };
+  }, [safeBalance]); 
+
+  // stabilize Invoice Details
+  const invoiceData = useMemo(() => ({
+    num: Math.floor(Math.random() * 10000),
+    date: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toLocaleDateString()
+  }), []); // Empty dependency means this stays same until page refresh
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
+
+  if (loading) return <div>Loading Invoice...</div>;
 
   return (
     <>
@@ -45,38 +42,12 @@ export default function UserInvoice() {
         <UserNav />
 
         <div className="invoice-container">
-          <div className="row">
-            <div className="col-xl-12">
-              <i className="far fa-building fa-6x float-start"></i>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-12">
-              <ul className="list-unstyled float-end">
-                <li
-                  style={{
-                    fontSize: "30px",
-                    color: "black",
-                  }}
-                >
-                  {user.company?.name || "Demo Company"}
-                </li>
-                <li>{user.company?.streetAddress}</li>
-                <li>{user.company?.phoneNumber}</li>
-                <li>{user.company?.email}</li>
-              </ul>
-            </div>
-          </div>
-
+          {/* ... Brand Header ... */}
           <div className="row text-center">
-            <h3
-              className="text-uppercase text-center mt-3"
-              style={{ fontSize: "40px", color: "black" }}
-            >
+            <h3 className="text-uppercase mt-3" style={{ fontSize: "40px", color: "black" }}>
               Invoice
             </h3>
-            <p>{randomInvoiceNumber}</p>
+            <p>#{invoiceData.num}</p>
           </div>
 
           <div className="row mx-3">
@@ -90,61 +61,31 @@ export default function UserInvoice() {
               <tbody>
                 <tr>
                   <td>ASC certification</td>
-                  <td>
-                    <i className="fas fa-dollar-sign"></i>
-                    {formatter.format(randomAmount1)}
-                  </td>
+                  <td>{formatter.format(amounts.r1)}</td>
                 </tr>
                 <tr>
                   <td>SAM renewal</td>
-                  <td>
-                    <i className="fas fa-dollar-sign"></i>
-                    {formatter.format(randomAmount2)}
-                  </td>
+                  <td>{formatter.format(amounts.r2)}</td>
                 </tr>
                 <tr>
                   <td>Q3 sanitation check</td>
-                  <td>
-                    <i className="fas fa-dollar-sign"></i>
-                    {formatter.format(randomAmount3)}
-                  </td>
+                  <td>{formatter.format(amounts.r3)}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div className="row">
-            <div className="col-xl-8">
-              <ul className="list-unstyled float-end me-0">
-                <li>
-                  <i className="fas fa-dollar-sign"></i>
-                </li>
-              </ul>
-            </div>
-          </div>
 
           <div className="row">
             <div className="col-xl-8" style={{ marginLeft: "40px" }}>
-              <p
-                className="float-end"
-                style={{
-                  fontSize: "20px",
-                  color: "red",
-                  fontWeight: "400",
-                  fontFamily: "Arial, Helvetica, sans-serif",
-                }}
-              >
-                Balance Due:
-                <span>
-                  <i className="fas fa-dollar-sign"></i>
-                  {formatter.format(safeBalance)}
-                </span>
+              <p className="float-end" style={{ fontSize: "20px", color: "red", fontWeight: "400" }}>
+                Balance Due: <span>{formatter.format(safeBalance)}</span>
               </p>
             </div>
           </div>
 
           <div className="row mt-2 mb-5">
             <p className="fw-bold">
-              Date: <span className="text-muted">{randomDate}</span>
+              Date: <span className="text-muted">{invoiceData.date}</span>
             </p>
           </div>
         </div>
