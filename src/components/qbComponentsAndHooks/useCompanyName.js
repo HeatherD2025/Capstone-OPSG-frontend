@@ -1,13 +1,11 @@
 import { useMemo } from "react";
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi";
 import { useSelector } from "react-redux";
+import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import { faker } from "@faker-js/faker";
 
 export default function useCompanyName() {
-  const user = useSelector((state) => state.auth.user);
-
-  console.log("HOOK DATA CHECK - User Object:", user);
-  console.log("HOOK DATA CHECK - Company Object:", user?.company);
+  const { data: user, isLoading: userLoading } = useGetCurrentUserQuery();
 
   const qbId = user?.qbId;
 
@@ -53,47 +51,59 @@ export default function useCompanyName() {
     };
   };
 
-  // stable faker fallback if no qb or db data
-  // const fakeCompany = useMemo(() => {
-  //   const rawName = faker.company.name();
-  //   return {
-  //     name: rawName
-  //       .split(" ")
-  //       .map(
-  //         (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-  //       )
-  //       .join(" "),
-  //     email: faker.internet.email(undefined, undefined, "example.com"),
-  //     source: "faker-demo",
-  //   };
-  // }, []);
-
-
-
-    const fakeCompany = useMemo(() => {
-      return {
-        name: "DEBUGGING_IS_ACTIVE", // Change this temporarily
-        source: "faker-demo",
-      };
-    }, []);
+  stable faker fallback if no qb or db data
+  const fakeCompany = useMemo(() => {
+    const rawName = faker.company.name();
+    return {
+      name: rawName
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" "),
+      email: faker.internet.email(undefined, undefined, "example.com"),
+      source: "faker-demo",
+    };
+  }, []);
 
 
   // choose final company source
+  // const company = useMemo(() => {
+  //   const qb = normalizeQB(qbData);
+  //   if (qb) return qb;
+
+  //   const db = normalizeUserCompany(user);
+  //   if (db) return db;
+
+  //   if (!user) return null;
+
+  //   return fakeCompany;
+  // }, [qbData, user, fakeCompany]);
+
+  // return {
+  //   company,
+  //   isLoading: qbLoading,
+  //   error: qbError,
+  // };
+
+
   const company = useMemo(() => {
-    const qb = normalizeQB(qbData);
-    if (qb) return qb;
+      // Priority: QB -> API User -> Faker
+      const qb = normalizeQB(qbData);
+      if (qb) return qb;
 
-    const db = normalizeUserCompany(user);
-    if (db) return db;
+      const db = normalizeUserCompany(user);
+      if (db) return db;
 
-    if (!user) return null;
+      // If still loading the user, don't show Faker yet
+      if (userLoading) return null;
 
-    return fakeCompany;
-  }, [qbData, user, fakeCompany]);
+      return fakeCompany;
+    }, [qbData, user, userLoading, fakeCompany]);
 
-  return {
-    company,
-    isLoading: qbLoading,
-    error: qbError,
-  };
+    return {
+      company,
+      isLoading: qbLoading || userLoading,
+      error: qbError,
+    };
 }
