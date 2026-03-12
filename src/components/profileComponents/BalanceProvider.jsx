@@ -22,7 +22,7 @@ export function BalanceProvider({ id, children }) {
         }
 
       const generated = Number(faker.finance.amount({ min: 150, max: 5450, dec: 2 }));
-        localStorage.setItem(cacheKey.generated.toString());
+        localStorage.setItem(cacheKey, generated.toString());
         return generated;
     });
 
