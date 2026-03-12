@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./components/Login";
@@ -17,6 +18,9 @@ import AdminRoute from "../src/routes/AdminRoute";
 import { BalanceProvider } from "./components/profileComponents/BalanceProvider";
 
 const BalanceWrapper = ({ children }) => {
+  // 'extract' user id from url
+  const { userId } = useParams();
+
   return (
     <BalanceProvider id={userId}>
       {children}
