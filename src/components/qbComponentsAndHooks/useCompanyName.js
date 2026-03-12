@@ -3,7 +3,7 @@ import { useGetCustomerObjectQuery } from "../../features/api/qbApi";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
 
-export default function useCompanyName(userResponse) {
+export default function useCompanyName() {
   const user = useSelector((state) => state.auth.user);
   const qbId = user?.qbId;
 
@@ -29,12 +29,15 @@ export default function useCompanyName(userResponse) {
   }
 
   const normalizeUserCompany = (user) => {
-    const comp = user?.company;
-    if (!comp) return null;
+    // If the user hasn't loaded into Redux yet, return null
+    if (!user || !user.company) return null;
 
     return {
-      name: comp?.name || null,
-      email: comp?.email || null,
+      name: user.company.name,
+      streetAddress: user.company.streetAddress,
+      city: user.company.city,
+      state: user.company.state,
+      zip: user.company.zip,
       source: "seeded db",
     };
   };

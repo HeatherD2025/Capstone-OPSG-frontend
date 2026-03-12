@@ -30,11 +30,11 @@ export default function UserInvoice() {
       </div>
   );
 
-  const companyName = `${company?.name}` || "Your Company";
-  const companyStreetAddress = `${company?.streetAddress}` || "123 Main St";
-  const companyCity = `${company?.city}` || "Anytown";
-  const companyState = `${company?.state}` || "CA";
-  const companyZip = `${company?.zip}` || "12345";
+  const companyName = company?.name || "Your Company";
+  const companyStreetAddress = company?.streetAddress || "123 Main St";
+  const companyCity = company?.city || "Anytown";
+  const companyState = company?.state || "CA";
+  const companyZip = company?.zip || "12345";
   // stabilize the Balance
   const safeBalance = balance || 1000;
 
