@@ -9,3 +9,10 @@
   padding: 2rem;
   margin-left: 10rem;
 }
+.text-top-left {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.5rem;
+  font-weight: 200;
+}

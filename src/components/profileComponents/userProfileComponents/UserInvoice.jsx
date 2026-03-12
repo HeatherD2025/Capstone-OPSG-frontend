@@ -11,6 +11,33 @@ export default function UserInvoice() {
   const { balance, loading } = useBalance();
   const { user } = useSelector((state) => state.auth);
 
+  const {
+    company,
+    isLoading: companyLoading,
+    error: companyError,
+  } = useCompanyName(user);
+
+    if (companyLoading) return (
+      <div className="profile-header">
+        <Container className="header-container text-center">
+          <p>Loading company info...</p>
+        </Container>
+      </div>
+  );
+
+  if (companyError) return(
+    <div className="profile-header">
+        <Container className="header-container text-center">
+          <p>Failed to load company info</p>
+        </Container>
+      </div>
+  );
+
+  const companyName = company?.name || "Your Company";
+  const companyAddress = company
+    ? `${company.streetAddress || "123 Main St"}, ${company.city || "Anytown"}, ${company.state || "ST"} ${company.zipCode || "12345"}`
+    : "123 Main St, Anytown, ST 12345";
+
   // stabilize the Balance
   const safeBalance = balance || 1000;
 
@@ -43,6 +70,10 @@ export default function UserInvoice() {
 
         <div className="invoice-container">
           {/* ... Brand Header ... */}
+          <div className="text-top-left">
+            {companyName}
+            {companyAddress}
+          </div>
           <div className="row text-center">
             <h3 className="text-uppercase mt-3" style={{ fontSize: "40px", color: "black" }}>
               Invoice
