@@ -5,7 +5,7 @@ import InfoCard from "../servicesCards/InfoCard";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Balance from "../qbComponentsAndHooks/Balance";
+import BalanceCard from "../profileComponents/userProfileComponents/BalanceCard";
 import { BalanceProvider } from "./BalanceProvider";
 import "../../styles/dashboard.css";
 
@@ -22,7 +22,7 @@ export default function Dashboard() {
         {!isAdmin && user && (
           <BalanceProvider id={user?.id}>
             <InfoCard style={{height: "10vw !important"}}>
-              <Balance
+              <BalanceCard
                 text={
                   <button
                     rel="noopener noreferrer"
