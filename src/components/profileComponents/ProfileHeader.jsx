@@ -23,6 +23,7 @@ export default function ProfileHeader() {
 
   const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
   const companyNameCalled = isAdmin? " " : `${company.name}`;
+  const displayName = user?.isAdmin ? "Demo Admin" : `${user?.firstName} ${user?.lastName}`;
 
   if (userLoading) return <p>Loading user data</p>;
   if (userError) return <p>Failed to load user data</p>;
@@ -51,12 +52,11 @@ export default function ProfileHeader() {
               <span className="opsg-header-text-container">
                 <p className="opsg-header-text">OnPoint {headerText}</p>
               </span>
-              {/* <p className="welcome-header">{headerText}</p> */}
 
               <div className="welcome-header-container">
                 <span className="welcome-header">
                   <p>
-                    Welcome {user.firstName} {user.lastName}!
+                    Welcome, {displayName}!
                   </p>
                   {company ? (
                     <p>{companyNameCalled}</p> 
