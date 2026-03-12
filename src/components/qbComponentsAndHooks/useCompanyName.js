@@ -51,7 +51,6 @@ export default function useCompanyName() {
     };
   };
 
-  stable faker fallback if no qb or db data
   const fakeCompany = useMemo(() => {
     const rawName = faker.company.name();
     return {
