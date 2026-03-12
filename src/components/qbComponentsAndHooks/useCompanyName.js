@@ -8,7 +8,7 @@ export default function useCompanyName() {
 
   console.log("HOOK DATA CHECK - User Object:", user);
   console.log("HOOK DATA CHECK - Company Object:", user?.company);
-  
+
   const qbId = user?.qbId;
 
   const {
@@ -34,8 +34,15 @@ export default function useCompanyName() {
 
   const normalizeUserCompany = (user) => {
     // If the user hasn't loaded into Redux yet, return null
-    if (!user || !user.company) return null;
+    if (!user || !user.company)  {
+      console.log("Normalizer: No user found");
+      return null;
+    }
 
+    if (!user.company) {
+      console.log("Normalizer: User found, but no company object attached", user);
+        return null;
+    }
     return {
       name: user.company.name,
       streetAddress: user.company.streetAddress,
