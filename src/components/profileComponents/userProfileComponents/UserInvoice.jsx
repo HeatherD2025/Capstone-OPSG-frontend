@@ -123,11 +123,11 @@ export default function UserInvoice() {
           </div>
 
           <div className="row">
-            <div className="col-xl-8" style={{ marginLeft: "60px" }}>
+            <div className="col-xl-8" style={{ marginLeft: "40px" }}>
               <p
                 className="float-end"
                 style={{
-                  fontSize: "30px",
+                  fontSize: "20px",
                   color: "red",
                   fontWeight: "400",
                   fontFamily: "Arial, Helvetica, sans-serif",
