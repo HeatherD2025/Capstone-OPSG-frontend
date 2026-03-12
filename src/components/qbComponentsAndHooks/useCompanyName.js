@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi";
+import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
 
 export default function useCompanyName(userResponse) {
-  const user = userResponse?.data || userResponse;
+  const user = useSelector((state) => state.auth.user);
   const qbId = user?.qbId;
 
   const {

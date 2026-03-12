@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useMemo } from "react"; // Add this for stable math
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "./UserNav.jsx";
@@ -9,13 +8,11 @@ import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 
 export default function UserInvoice() {
   const { balance, loading } = useBalance();
-  const { user } = useSelector((state) => state.auth);
-
-  const {
-    company,
-    isLoading: companyLoading,
-    error: companyError,
-  } = useCompanyName(user);
+  const { 
+    company, 
+    isLoading: companyLoading, 
+    error: companyError 
+  } = useCompanyName();
 
     if (companyLoading) return (
       <div className="profile-header">
