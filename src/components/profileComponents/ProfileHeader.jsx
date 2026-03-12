@@ -55,9 +55,13 @@ export default function ProfileHeader() {
 
               <div className="welcome-header-container">
                 <span className="welcome-header">
-                  <p>
-                    Welcome {user.firstName} {user.lastName}!
-                  </p>
+                  { isAdmin ? (
+                      <p>Welcome Demo Admin!</p>
+                    ) : (
+                    <p>
+                      Welcome {user.firstName} {user.lastName}!
+                    </p>
+                    )}
                   {company ? (
                     <p>{companyNameCalled}</p> 
                   ) : (
