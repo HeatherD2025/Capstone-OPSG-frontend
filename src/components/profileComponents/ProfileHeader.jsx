@@ -52,7 +52,6 @@ export default function ProfileHeader() {
               <span className="opsg-header-text-container">
                 <p className="opsg-header-text">OnPoint {headerText}</p>
               </span>
-              {/* <p className="welcome-header">{headerText}</p> */}
 
               <div className="welcome-header-container">
                 <span className="welcome-header">
