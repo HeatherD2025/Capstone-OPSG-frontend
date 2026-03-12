@@ -5,6 +5,10 @@ import { faker } from "@faker-js/faker";
 
 export default function useCompanyName() {
   const user = useSelector((state) => state.auth.user);
+
+  console.log("HOOK DATA CHECK - User Object:", user);
+  console.log("HOOK DATA CHECK - Company Object:", user?.company);
+  
   const qbId = user?.qbId;
 
   const {
