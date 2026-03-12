@@ -58,7 +58,8 @@ export default function UserInvoice() {
     currency: "USD",
   });
 
-  if (loading) return <div>Loading Invoice...</div>;
+  // if (loading) return <div>Loading Invoice...</div>;
+  console.log("Invoice Render - Company Object:", company)
 
   return (
     <>
