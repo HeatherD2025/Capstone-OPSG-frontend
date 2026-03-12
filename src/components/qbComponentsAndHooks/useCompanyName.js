@@ -54,19 +54,29 @@ export default function useCompanyName() {
   };
 
   // stable faker fallback if no qb or db data
-  const fakeCompany = useMemo(() => {
-    const rawName = faker.company.name();
-    return {
-      name: rawName
-        .split(" ")
-        .map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        )
-        .join(" "),
-      email: faker.internet.email(undefined, undefined, "example.com"),
-      source: "faker-demo",
-    };
-  }, []);
+  // const fakeCompany = useMemo(() => {
+  //   const rawName = faker.company.name();
+  //   return {
+  //     name: rawName
+  //       .split(" ")
+  //       .map(
+  //         (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  //       )
+  //       .join(" "),
+  //     email: faker.internet.email(undefined, undefined, "example.com"),
+  //     source: "faker-demo",
+  //   };
+  // }, []);
+
+
+
+    const fakeCompany = useMemo(() => {
+      return {
+        name: "DEBUGGING_IS_ACTIVE", // Change this temporarily
+        source: "faker-demo",
+      };
+    }, []);
+
 
   // choose final company source
   const company = useMemo(() => {
