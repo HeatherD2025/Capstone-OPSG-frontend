@@ -40,7 +40,7 @@ export function BalanceProvider({ id, children }) {
 
     return (
         <BalanceContext.Provider
-          value={{ balance: finalBalance, loading: isLoading, error }}
+          value={{ balance: balance, loading: isLoading, error }}
         >
             {children}
         </BalanceContext.Provider>
