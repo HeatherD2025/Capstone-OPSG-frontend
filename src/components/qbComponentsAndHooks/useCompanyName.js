@@ -59,7 +59,15 @@ export default function useCompanyName() {
 
   // choose final company source
   const company = useMemo(() => {
-    return normalizeQB(qbData) || normalizeUserCompany(user) || fakeCompany;
+    const qb = normalizeQB(qbData);
+    if (qb) return qb;
+
+    const db = normalizeUserCompany(user);
+    if (db) return db;
+
+    if (!user) return null;
+
+    return fakeCompany;
   }, [qbData, user, fakeCompany]);
 
   return {

@@ -5,6 +5,7 @@ import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
+import Container from "react-bootstrap/Container.jsx";
 
 export default function UserInvoice() {
   const { balance, loading } = useBalance();
