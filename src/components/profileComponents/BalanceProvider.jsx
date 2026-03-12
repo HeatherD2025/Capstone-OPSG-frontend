@@ -10,13 +10,23 @@ export function BalanceProvider({ id, children }) {
     const userId = id || authUser?.id; // fallback to Redux user ID
 
     const [balance, setBalance] = useState(null)
-    const [fakeBalance] = useState(() => 
-      Number(faker.finance.amount({ min: 150, max: 5450, dec: 2 }))
-    );
 
-    const finalBalance = 
-      balance !== null && balance !== undefined ? balance : fakeBalance
-    const { data, isLoading, error } = useGetCustomerObjectQuery(id, {
+    const [fakeBalance] = useState(() => {
+      if (!userId) return 0;
+
+        const cacheKey = `opsgs_fake_balance_${userId}`;
+        const savedBalance = localStorage.getItem(cacheKey);
+
+        if (savedBalance) {
+            return Number(savedBalance)
+        }
+
+      const generated = Number(faker.finance.amount({ min: 150, max: 5450, dec: 2 }));
+        localStorage.setItem(cacheKey.generated.toString());
+        return generated;
+    });
+
+      const { data, isLoading, error } = useGetCustomerObjectQuery(id, {
         skip: !id,
     });
 
