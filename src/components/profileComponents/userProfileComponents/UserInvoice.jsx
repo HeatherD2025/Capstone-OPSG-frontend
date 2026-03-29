@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useMemo } from "react"; // Add this for stable math
 import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "./UserNav.jsx";
@@ -6,11 +5,37 @@ import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
+import { Container } from "react-bootstrap";
 
 export default function UserInvoice() {
   const { balance, loading } = useBalance();
-  const { user } = useSelector((state) => state.auth);
+  const { 
+    company, 
+    isLoading: companyLoading, 
+    error: companyError 
+  } = useCompanyName();
 
+    if (companyLoading) return (
+      <div className="profile-header">
+        <Container className="header-container text-center">
+          <p>Loading company info...</p>
+        </Container>
+      </div>
+  );
+
+  if (companyError) return(
+    <div className="profile-header">
+        <Container className="header-container text-center">
+          <p>Failed to load company info</p>
+        </Container>
+      </div>
+  );
+
+  const companyName = company?.name || "Your Company";
+  const companyStreetAddress = company?.streetAddress || "123 Main St";
+  const companyCity = company?.city || "Anytown";
+  const companyState = company?.state || "CA";
+  const companyZip = company?.zip || "12345";
   // stabilize the Balance
   const safeBalance = balance || 1000;
 
@@ -42,7 +67,8 @@ export default function UserInvoice() {
     currency: "USD",
   });
 
-  if (loading) return <div>Loading Invoice...</div>;
+  // if (loading) return <div>Loading Invoice...</div>;
+  console.log("Invoice Render - Company Object:", company)
 
   return (
     <>
@@ -52,6 +78,12 @@ export default function UserInvoice() {
 
         <div className="invoice-container">
           {/* ... Brand Header ... */}
+          <div className="text-top-left">
+            <p>{companyName}</p>
+            <p>{companyStreetAddress}</p>
+            <p>{companyCity}, {companyState}</p>
+            <p>{companyZip}</p>
+          </div>
           <div className="row text-center">
             <h3
               className="text-uppercase mt-3"
@@ -89,17 +121,14 @@ export default function UserInvoice() {
 
           <div className="row">
             <div className="col-xl-8" style={{ marginLeft: "40px" }}>
-              <p
-                className="float-end"
-                style={{ fontSize: "20px", color: "red", fontWeight: "400" }}
-              >
+              <p className="float-end" style={{ fontSize: "20px", color: "red", fontWeight: "400" }}>
                 Balance Due: <span>{formatter.format(safeBalance)}</span>
               </p>
             </div>
           </div>
 
           <div className="row mt-2 mb-5">
-            <p className="fw-bold">
+            <p className="fw-bold" style={{marginLeft: "2vw"}}>
               Date: <span className="text-muted">{invoiceData.date}</span>
             </p>
           </div>

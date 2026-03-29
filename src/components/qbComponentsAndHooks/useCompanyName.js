@@ -1,9 +1,12 @@
 import { useMemo } from "react";
 import { useGetCustomerObjectQuery } from "../../features/api/qbApi";
+import { useSelector } from "react-redux";
+import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import { faker } from "@faker-js/faker";
 
-export default function useCompanyName(userResponse) {
-  const user = userResponse?.data || userResponse;
+export default function useCompanyName() {
+  const { data: user, isLoading: userLoading } = useGetCurrentUserQuery();
+
   const qbId = user?.qbId;
 
   const {
@@ -28,17 +31,22 @@ export default function useCompanyName(userResponse) {
   }
 
   const normalizeUserCompany = (user) => {
-    const comp = user?.company;
-    if (!comp) return null;
+    // If the user hasn't loaded into Redux yet, return null
+    if (!user || !user.company)  {
+      console.log("Normalizer: No user found");
+      return null;
+    }
 
     return {
-      name: comp?.name || null,
-      email: comp?.email || null,
+      name: user.company.name,
+      streetAddress: user.company.streetAddress,
+      city: user.company.city,
+      state: user.company.state,
+      zip: user.company.zip,
       source: "seeded db",
     };
   };
 
-  // stable faker fallback if no qb or db data
   const fakeCompany = useMemo(() => {
     const rawName = faker.company.name();
     return {
@@ -53,14 +61,44 @@ export default function useCompanyName(userResponse) {
     };
   }, []);
 
-  // choose final company source
-  const company = useMemo(() => {
-    return normalizeQB(qbData) || normalizeUserCompany(user) || fakeCompany;
-  }, [qbData, user, fakeCompany]);
 
-  return {
-    company,
-    isLoading: qbLoading,
-    error: qbError,
-  };
+  // choose final company source
+  // const company = useMemo(() => {
+  //   const qb = normalizeQB(qbData);
+  //   if (qb) return qb;
+
+  //   const db = normalizeUserCompany(user);
+  //   if (db) return db;
+
+  //   if (!user) return null;
+
+  //   return fakeCompany;
+  // }, [qbData, user, fakeCompany]);
+
+  // return {
+  //   company,
+  //   isLoading: qbLoading,
+  //   error: qbError,
+  // };
+
+
+  const company = useMemo(() => {
+      // Priority: QB -> API User -> Faker
+      const qb = normalizeQB(qbData);
+      if (qb) return qb;
+
+      const db = normalizeUserCompany(user);
+      if (db) return db;
+
+      // If still loading the user, don't show Faker yet
+      if (userLoading) return null;
+
+      return fakeCompany;
+    }, [qbData, user, userLoading, fakeCompany]);
+
+    return {
+      company,
+      isLoading: qbLoading || userLoading,
+      error: qbError,
+    };
 }

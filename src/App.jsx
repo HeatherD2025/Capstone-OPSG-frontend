@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./components/Login";
@@ -12,11 +13,20 @@ import EditProfile from "./components/profileComponents/EditProfile";
 import UserInvoice from "./components/profileComponents/userProfileComponents/UserInvoice";
 
 import AdminSearch from "./components/profileComponents/adminProfileComponents/AdminSearch";
-// import { AuthProvider } from "./Features/Navigations/AuthContext";
-
 import ProtectedRoute from "../src/routes/ProtectedRoute";
 import AdminRoute from "../src/routes/AdminRoute";
-// const AuthContext = React.createContext({ role: 'visitor'});
+import { BalanceProvider } from "./components/profileComponents/BalanceProvider";
+
+const BalanceWrapper = ({ children }) => {
+  // 'extract' user id from url
+  const { userId } = useParams();
+
+  return (
+    <BalanceProvider id={userId}>
+      {children}
+    </BalanceProvider>
+  );
+};
 
 function App() {
   return (
@@ -26,19 +36,12 @@ function App() {
         path="/admin/users/:userId"
         element={
           <AdminRoute>
-            <EditProfile />
+            <BalanceWrapper>
+              <EditProfile />
+            </BalanceWrapper>
           </AdminRoute>
         }
       />
-
-      {/* <Route
-        path="/admin/users"
-        element={
-          <AdminRoute>
-            <AdminUser />
-          </AdminRoute>
-        }
-      /> */}
 
       <Route
         path="/admin/search"
@@ -54,7 +57,9 @@ function App() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <BalanceProvider>
+              <Dashboard />
+            </BalanceProvider>
           </ProtectedRoute>
         }
       />
@@ -63,7 +68,9 @@ function App() {
         path="/user/me/updateUserProfile"
         element={
           <ProtectedRoute>
-            <EditProfile />
+            <BalanceProvider>
+              <EditProfile />
+            </BalanceProvider>
           </ProtectedRoute>
         }
       />
@@ -72,7 +79,9 @@ function App() {
         path="/profile/invoices/:userId"
         element={
           <ProtectedRoute>
-            <UserInvoice />
+            <BalanceWrapper>
+              <UserInvoice />
+            </BalanceWrapper>
           </ProtectedRoute>
         }
       />

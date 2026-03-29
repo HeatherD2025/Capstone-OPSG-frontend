@@ -4,8 +4,19 @@
 }
 .invoice-container {
   background: white;
-  max-width: 60rem;
-  margin: 2rem 5rem 0rem 14rem;
+  max-width: 60vw;
+  margin: 0vw 0vw 0vw 25vw;
   padding: 2rem;
   margin-left: 10rem;
+}
+.text-top-left {
+  position: absolute;
+  color: black;
+  width: 10vw;
+  font-size: 1vw;
+  font-weight: 200;
+  margin-left: 2vw;
+}
+.table {
+  margin-top: 5vw;
 }

@@ -19,10 +19,10 @@ export default function ProfileHeader() {
     company,
     isLoading: companyLoading,
     error: companyError,
-  } = useCompanyName(user);
+  } = useCompanyName();
 
   const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
-  const companyNameCalled = isAdmin? " " : `${company.name}`;
+  const companyNameCalled = isAdmin? " " : (company?.name || "");
   const displayName = user?.isAdmin ? "Demo Admin" : `${user?.firstName} ${user?.lastName}`;
 
   if (userLoading) return <p>Loading user data</p>;
