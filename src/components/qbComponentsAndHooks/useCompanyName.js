@@ -45,7 +45,7 @@ export default function useCompanyName(userResponse) {
       name: rawName
         .split(" ")
         .map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
         )
         .join(" "),
       email: faker.internet.email(undefined, undefined, "example.com"),

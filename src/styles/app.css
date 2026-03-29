@@ -1,4 +1,15 @@
 /* Buttons */
+body {
+  font-size: 14px;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e5fffd;
+}
+
 .btn-primary-soft {
   border: none;
   width: 80px;
@@ -8,10 +19,9 @@
   padding: 8px;
   border-radius: 2em;
   font-weight: 200;
-  margin-top: 5px;
 }
 .reactive-btn {
-  font-size: clamp(0.85rem, 0.75vw, 8rem) !important;
+  font-size: clamp(0.85rem, 0.75vw, 8rem);
 }
 
 .btn-danger-soft {
@@ -26,285 +36,257 @@
   margin-top: 5px;
 }
 
-.welcome-modal-wrapper {
-  width: 20vw !important;
-  margin-top: 6vw !important;
-}
-
-.modal-content {
-  border-radius: 10px;
-  height: 21vw;
-  margin-top: 12.5vw !important;
-  filter: drop-shadow(8px 8px 10px gray);
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-}
-.modal-body {
-  margin-top: 1vw;
-}
-
-/*Footer*/
-.opsg-logo {
-  width: 5vw;
-}
-.footer {
-  background-color: #558e89 !important;
-  color: black;
-  padding: 5rem 0rem 5rem 0rem;
-  width: 100%;
-  margin-top: 10rem;
-}
-
-.footer-email-link {
-  color: black;
-  text-decoration: none;
-}
-
-.footer-contact-icons {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 8px;
-}
-
-/*Background layout and helpers*/
-body {
-  font-size: 14px;
-}
-
-.background {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #e5fffd;
-}
-
-/*Header and intro section*/
-.logo-container {
-  display: flex;
-  align-items: center;
-  font-weight: 200;
-}
-
-.homepage-opsg-logo {
-  width: 5vw;
-  height: 4vw;
-  padding-right: 1vw;
-}
-
-.logo-and-subtext-container {
-  justify-items: center;
-}
-
-.logo-header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  margin-top: 10rem;
-  width: 44vw;
-}
-
-.opsg-name {
-  font-size: 2vw;
-  font-weight: 200;
-  margin-top: 0.5vw;
-}
-
-.secondary-header-box {
-  display: flex;
-  gap: 1.4vw;
-  margin: 0vw 0vw 0vw 5vw;
-  font-size: clamp(1rem, 1vw, 1rem);
-}
-
-.secondary-header-box > * {
-  border-radius: 1vw;
-}
-
-.intro-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rvw;
-  margin-top: 3.25vw;
-}
-
-.intro-text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.intro-text-first-line,
-.intro-text-second-line {
-  font-weight: 200;
-  font-size: clamp(1rem, 3vw, 3rem);
-}
-
-.intro-text-first-line {
-  color: #558e89;
-}
-
-/*Main image*/
-/* .main-image-container {
-  max-width: 50rem;
-} */
-
-.main-image {
-  width: 50vw;
-  height: auto;
-  border-radius: 2%;
-  filter: drop-shadow(8px 8px 10px gray);
-}
-
-/*Counter section*/
-.counter-section-wrapper {
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-  display: grid;
-  justify-content: center;
-  font-size: clamp(1rem, 3vw, 3rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #558e89;
-  font-weight: 200;
-}
-
-.centered-counter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 115%;
-  left: 40%;
-}
-
-.centered-counter-text {
-  position: absolute;
-  top: 134%;
-  left: 33%;
-  width: 50%;
-}
-
-.us-map {
-  width: 60rem;
-  height: auto;
-  opacity: 0.08;
-}
-
-@media (max-width: 600px) {
-  .us-map {
-    transform: translate(14%, 0%);
+@media (min-width: 1024px) {
+  .welcome-modal-wrapper {
+    width: 20vw;
+    margin-top: 6vw;
   }
-}
-
-/* Home Cards styling */
-.home-page-cards {
-  background-color: #79cbbb;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.25s ease-in-out,
-    box-shadow 0.25s ease-in-out;
-  max-width: 20rem;
-}
-
-.home-page-cards:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
-
-.home-page-cards .card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-.home-page-card-image {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-}
-
-/*Forms*/
-.login-register-form-container,
-.form-card {
-  background-color: #fff;
-  border-radius: 2%;
-  filter: drop-shadow(8px 8px 10px gray);
-  max-width: 30rem;
-  width: 100%;
-  margin: auto;
-}
-
-.contact-form-container {
-  background-color: #fff;
-  border-radius: 2%;
-  filter: drop-shadow(8px 8px 10px gray);
-  max-width: 40rem;
-  width: 100%;
-  margin: auto;
-}
-
-.form-label,
-.form-control {
-  font-size: 12px;
-}
-
-.reactive-btn.rounded.submit-btn-custom {
-  width: 80px;
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-  background-color: #558e89;
-  margin-top: 5px;
-}
-
-.admin-edit-profile-button-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.welcome-modal-wrapper {
+  /* .welcome-modal-wrapper {
   margin-top: 3vw;
   z-index: 100;
-}
+} */
+  .modal-content {
+    border-radius: 10px;
+    height: 20rem;
+    margin-top: 12.5vw;
+    filter: drop-shadow(8px 8px 10px gray);
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+  }
+  .modal-body {
+    margin-top: 1vw;
+  }
 
-.login-register-modal {
-  margin-top: 3rem;
-  z-index: 20;
-}
+  /*Header and intro section*/
+  .logo-container {
+    display: flex;
+    align-items: center;
+    font-weight: 200;
+  }
+  .homepage-opsg-logo {
+    width: 5vw;
+    height: 4vw;
+    padding-right: 1vw;
+  }
+  .logo-and-subtext-container {
+    justify-items: center;
+  }
+  .logo-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 10rem;
+    width: 44vw;
+  }
+  .opsg-name {
+    font-size: 2vw;
+    font-weight: 200;
+    margin-top: 0.5vw;
+  }
 
-.login-register-header {
-  background-color: #eaeaea;
-  display: flex;
-  align-content: center;
-}
+  .secondary-header-box {
+    display: flex;
+    gap: 1.4vw;
+    margin: 0vw 0vw 0vw 5vw;
+    font-size: clamp(1rem, 1vw, 1rem);
+  }
+  .secondary-header-box > * {
+    border-radius: 1vw;
+  }
+  .intro-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rvw;
+    margin-top: 3.25vw;
+  }
+  .intro-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro-text-first-line,
+  .intro-text-second-line {
+    font-weight: 200;
+    font-size: clamp(1rem, 3vw, 3rem);
+  }
+  .intro-text-first-line {
+    color: #558e89;
+  }
 
-.login-register-tab-link {
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-  padding-bottom: 10px;
-  margin-top: 0.3rem;
-}
+  /*Main image*/
+  .main-image {
+    width: 50vw;
+    height: auto;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+  }
 
-.login-register-form {
-  padding: 2rem;
-}
+  /*Counter section*/
+  .counter-section-wrapper {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    display: grid;
+    justify-content: center;
+    font-size: clamp(1rem, 3vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #558e89;
+    font-weight: 200;
+  }
+  .centered-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 115%;
+    left: 40%;
+  }
+  .centered-counter-text {
+    position: absolute;
+    top: 134%;
+    left: 33%;
+    width: 50%;
+  }
+  .us-map {
+    width: 60rem;
+    height: auto;
+    opacity: 0.08;
+    transform: translate(14%, 0%);
+  }
 
-#stateSelect {
-  font-size: 12px;
-}
+  /* Home Cards styling */
+  .home-page-cards {
+    background-color: #79cbbb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease-in-out,
+      box-shadow 0.25s ease-in-out;
+    max-width: 20rem;
+  }
 
-/*Profile edit*/
-.edit-profile {
-  width: 60rem;
-  margin: 0 5rem 5rem 10rem;
-  padding: 0 10rem 5rem 10rem;
-}
+  .home-page-cards:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
 
-/* contact page */
-.contact-page-header {
-  text-align: center;
-  padding: 3vw 0vw 2vw 0vw;
-  font-weight: 100;
+  .home-page-cards .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .home-page-card-image {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  /* Admin search card body */
+  .search-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+    height: 8rem;
+  }
+
+  /*Forms*/
+  .login-register-form-container,
+  .form-card {
+    background-color: #fff;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+    max-width: 30rem;
+    width: 100%;
+    margin: auto;
+  }
+
+  .contact-form-container {
+    background-color: #fff;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+    max-width: 40rem;
+    width: 100%;
+    margin: auto;
+  }
+
+  .form-label,
+  .form-control {
+    font-size: 12px;
+  }
+
+  .reactive-btn.rounded.submit-btn-custom {
+    width: 80px;
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+    background-color: #558e89;
+    margin-top: 5px;
+  }
+
+  .admin-edit-profile-button-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  /* Login and Register */
+  .login-register-modal {
+    margin-top: 3rem;
+    z-index: 20;
+  }
+  .login-register-header {
+    background-color: #eaeaea;
+    display: flex;
+    align-content: center;
+  }
+  .login-register-tab-link {
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+    padding-bottom: 10px;
+    margin-top: 0.3rem;
+  }
+  .login-register-form {
+    padding: 2rem;
+  }
+  #stateSelect {
+    font-size: 12px;
+  }
+
+  /*Profile edit*/
+  .edit-profile {
+    width: 60rem;
+    margin: 0 5rem 5rem 10rem;
+    padding: 0 10rem 5rem 10rem;
+  }
+
+  /* contact page */
+  .contact-page-header {
+    text-align: center;
+    padding: 3vw 0vw 2vw 0vw;
+    font-weight: 100;
+  }
+
+  /*Footer*/
+  .opsg-logo {
+    width: 5vw;
+  }
+  .footer {
+    background-color: #558e89;
+    color: black;
+    padding: 5rem 0rem 5rem 0rem;
+    width: 100%;
+    margin-top: 10rem;
+  }
+
+  .footer-email-link {
+    color: black;
+    text-decoration: none;
+  }
+
+  .footer-contact-icons {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 8px;
+  }
 }

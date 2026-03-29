@@ -16,17 +16,26 @@ export default function UserInvoice() {
 
   // useMemo so the math only happens when the balance actually changes
   const amounts = useMemo(() => {
-    const r1 = Math.floor(Math.random() * (safeBalance * 0.6));
-    const r2 = Math.floor(Math.random() * (safeBalance - r1) * 0.5);
-    const r3 = safeBalance - r1 - r2;
+    const r1 = Math.floor(
+      Math.random() * (balance ? balance : safeBalance) * 0.6,
+    );
+    const r2 = Math.floor(
+      Math.random() * (balance ? balance : safeBalance - r1) * 0.5,
+    );
+    const r3 = (balance ? balance : safeBalance) - r1 - r2;
     return { r1, r2, r3 };
-  }, [safeBalance]); 
+  }, [balance, safeBalance]);
 
   // stabilize Invoice Details
-  const invoiceData = useMemo(() => ({
-    num: Math.floor(Math.random() * 10000),
-    date: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toLocaleDateString()
-  }), []); // Empty dependency means this stays same until page refresh
+  const invoiceData = useMemo(
+    () => ({
+      num: Math.floor(Math.random() * 10000),
+      date: new Date(
+        Date.now() - Math.floor(Math.random() * 10000000000),
+      ).toLocaleDateString(),
+    }),
+    [],
+  ); // Empty dependency means this stays same until page refresh
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -44,7 +53,10 @@ export default function UserInvoice() {
         <div className="invoice-container">
           {/* ... Brand Header ... */}
           <div className="row text-center">
-            <h3 className="text-uppercase mt-3" style={{ fontSize: "40px", color: "black" }}>
+            <h3
+              className="text-uppercase mt-3"
+              style={{ fontSize: "40px", color: "black" }}
+            >
               Invoice
             </h3>
             <p>#{invoiceData.num}</p>
@@ -77,7 +89,10 @@ export default function UserInvoice() {
 
           <div className="row">
             <div className="col-xl-8" style={{ marginLeft: "40px" }}>
-              <p className="float-end" style={{ fontSize: "20px", color: "red", fontWeight: "400" }}>
+              <p
+                className="float-end"
+                style={{ fontSize: "20px", color: "red", fontWeight: "400" }}
+              >
                 Balance Due: <span>{formatter.format(safeBalance)}</span>
               </p>
             </div>

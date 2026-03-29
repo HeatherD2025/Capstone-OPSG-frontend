@@ -58,7 +58,7 @@ export default function Dashboard() {
               style={{
                 color: "black",
                 backgroundColor: "transparent",
-                height: "100%",
+                height: "auto",
                 border: "none",
                 fontSize: "1.25vw",
               }}

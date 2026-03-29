@@ -41,7 +41,7 @@ export default function AdminSearch() {
             <AdminNav />
           </Col>
 
-          <Col style={{ backgroundColor: "#272932", minHeight: "100vh" }}>
+          <Col>
             {/* Search bar and buttons */}
             <Row className="mt-3 mb-4">
               <Col>
@@ -50,7 +50,7 @@ export default function AdminSearch() {
                   placeholder="Search by name or email"
                   value={term}
                   onChange={(e) => setTerm(e.target.value)}
-                  className="mb-3"
+                  className="mb-3 search-input-bar"
                 />
               </Col>
 
@@ -88,12 +88,13 @@ export default function AdminSearch() {
                 users?.map((user) => (
                   <Col key={user.id}>
                     <Card>
-                      <Card.Body>
+                      <Card.Body className="search-card-body">
                         <Card.Title className="text-center">
                           {user.firstName} {user.lastName}
                         </Card.Title>
                         <Card.Text className="text-center">
-                          {user.company?.name} {user.email}
+                          <div>{user.company?.name}</div>
+                          <div>{user.email}</div>
                         </Card.Text>
                       </Card.Body>
 
