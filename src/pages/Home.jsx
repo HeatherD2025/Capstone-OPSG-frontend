@@ -1,16 +1,16 @@
 import { motion } from "motion/react";
 import { Col, Container } from "react-bootstrap";
-import opsgLogo from "../../public/images/opsg-logo.webp";
-import nurseSmiling from "../../public/images/nurse-smiling.webp";
+import opsgLogo from "../assets/images/opsg-logo.webp";
+import nurseSmiling from "../assets/images/nurseSmiling.webp";
 import NavBar from "../components/navigation/Navbar";
 import AnimationCountUp from "../components/AnimationCountUp";
-import stethoscope from "../../public/images/stethoscope.webp";
-import certificate from "../../public/images/certificate.webp";
-import medicalBag from "../../public/images/medicalBag.webp";
+import stethoscope from "../assets/images/stethoscope.webp";
+import certificate from "../assets/images/certificate.webp";
+import medicalBag from "../assets/images/medicalBag.webp";
 import ServiceSection from "../components/servicesCards/ServiceSection";
 import "../styles/app.css";
 import "../styles/ourServices.css";
-import usaMap from "../../public/images/usaMap.webp";
+import usaMap from "../assets/images/usaMap.webp";
 import Footer from "../components/Footer";
 
 import ReactiveButton from "reactive-button";

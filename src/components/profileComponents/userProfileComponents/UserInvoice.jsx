@@ -3,7 +3,7 @@ import ProfileHeader from "../ProfileHeader.jsx";
 import DashboardNav from "../DashboardNav.jsx";
 import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
-import opsgLogo from "../../../../public/images/opsg-logo.webp";
+import opsgLogo from "../../../assets/images/opsg-logo.webp";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 import { Container } from "react-bootstrap";

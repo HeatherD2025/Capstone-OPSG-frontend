@@ -1,13 +1,14 @@
 import { Row, Col, Container } from "react-bootstrap";
 import { motion } from "motion/react";
 import NavBar from "../components/navigation/Navbar";
+import ServiceSection from "../components/servicesCards/ServiceSection";
 import "../styles/ourServices.css";
 import Footer from "../components/Footer";
-import medicalDocument from "../../public/images/medicalDocument.webp";
-import ServiceSection from "../components/servicesCards/ServiceSection";
-import pen from "../../public/images/pen.webp";
-import flipChart from "../../public/images/flipChart.webp";
-import certificate from "../../public/images/certificate.webp";
+
+import medicalDocument from "../assets/images/medicalDocument.webp";
+import pen from "../assets/images/pen.webp";
+import flipChart from "../assets/images/flipChart.webp";
+import certificate from "../assets/images/certificate.webp";
 
 const ourServices = () => {
   const fadeInAnimationVariants = {
