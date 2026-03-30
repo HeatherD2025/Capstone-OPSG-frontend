@@ -1,7 +1,7 @@
-import opsgLogo from "../assets/images/opsg-logo.webp";
+import opsgLogo from "../../public/images/opsg-logo.webp";
 import { Row, Col, Container } from "react-bootstrap";
-import phone from "../assets/images/phone.webp";
-import fax from "../assets/images/fax.webp";
+import phone from "../../public/images/phone.webp";
+import fax from "../../public/images/fax.webp";
 import "../styles/app.css";
 
 const Footer = () => {

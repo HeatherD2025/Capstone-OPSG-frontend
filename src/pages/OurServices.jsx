@@ -3,11 +3,11 @@ import { motion } from "motion/react";
 import NavBar from "../components/navigation/Navbar";
 import "../styles/ourServices.css";
 import Footer from "../components/Footer";
-import medicalDocument from "../assets/images/medical-document.webp";
+import medicalDocument from "../../public/images/medicalDocument.webp";
 import ServiceSection from "../components/servicesCards/ServiceSection";
-import pen from "../assets/images/pen.webp";
-import flipChart from "../assets/images/flipChart.webp";
-import certificate from "../assets/images/certificate.webp";
+import pen from "../../public/images/pen.webp";
+import flipChart from "../../public/images/flipChart.webp";
+import certificate from "../../public/images/certificate.webp";
 
 const ourServices = () => {
   const fadeInAnimationVariants = {

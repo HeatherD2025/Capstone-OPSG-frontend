@@ -1,5 +1,5 @@
 import "../../styles/profileHeader.css";
-import opsgLogo from "../../assets/images/opsg-logo.webp";
+import opsgLogo from "../../../public/images/opsg-logo.webp";
 import { Image, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
