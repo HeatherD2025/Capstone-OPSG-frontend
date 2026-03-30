@@ -28,6 +28,7 @@ export default function AdminSearch() {
 
   return (
     <>
+    <div className="user-search-container">
       <Container fluid style={{ backgroundColor: "#272932" }}>
         <Row className="g-0">
           <Col xs="auto" style={{ width: "10rem", marginLeft: "2rem" }}>
@@ -113,6 +114,7 @@ export default function AdminSearch() {
           </Col>
         </Row>
       </Container>
+      </div>
     </>
   );
 }

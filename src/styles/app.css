@@ -193,7 +193,10 @@ body {
     padding-bottom: 2rem;
     height: 8rem;
   }
-
+  .user-search-container {
+    padding: 3rem 5rem 3rem 0rem ;
+    background-color: #272932;
+  }
   /*Forms*/
   .login-register-form-container,
   .form-card {

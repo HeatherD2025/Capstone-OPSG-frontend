@@ -17,6 +17,7 @@ import ProtectedRoute from "../src/routes/ProtectedRoute";
 import AdminRoute from "../src/routes/AdminRoute";
 import { BalanceProvider } from "./components/profileComponents/BalanceProvider";
 
+
 const BalanceWrapper = ({ children }) => {
   // 'extract' user id from url
   const { userId } = useParams();

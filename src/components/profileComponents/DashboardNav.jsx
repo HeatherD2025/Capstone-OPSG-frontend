@@ -1,63 +1,39 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useLocation } from "react-router-dom"; // Added useLocation
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import "../../../styles/dashboardNav.css";
+import "../../styles/dashboardNav.css";
 import { logout } from "../../slices/authSlice";
 import { removeToken } from "../../utils/tokenService";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
 
-const DashboardNav = (props) => {
+const DashboardNav = () => {
   const [isNotActive, setNotActive] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation(); // Hook for location tracking
 
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
   const { isAdmin } = useSelector((state) => state.auth);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   useEffect(() => {
-    // strip hash symbol from location to match id
     const id = location.hash.replace("#", "");
     const el = document.getElementById(id);
 
-    // scroll logic
     if (id && el) {
       setTimeout(() => {
         el.scrollIntoView({ behavior: "smooth" });
       }, 100);
     } else {
-      scrollToTop();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
-    // clean url
-    const currentUrl = window.location.pathname; // the current path
-    const cleanedUrl = currentUrl
-      .replace("/dashboard", "")
-      .replace("/profile/invoices", "")
-      .replace("/user/me", "")
-      .replace("/user/me/updateUserProfile", "")
-      .replace("/", "")
-      .replace("/dashboard", "")
-      .replace("/admin", "");
-
-    // normalize trailing slash
-    const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
-
-    // update url without relooading the page only if url is different
-    if (window.location.href !== baseUrl)
-      window.history.replaceState(null, "", baseUrl);
-  }, [location]); //re-run this on navigation change
+  }, [location.pathname, location.hash]);
 
   if (isLoading) return <p>Loading user data...</p>;
   if (isError) return <p>Error loading user data</p>;
   if (!user) return <p>No user found</p>;
 
-  var arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
-  var crossIcon = <i className="bi bi-x-circle"></i>;
+  const arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
+  const crossIcon = <i className="bi bi-x-circle"></i>;
 
   return (
     <div>
@@ -79,7 +55,8 @@ const DashboardNav = (props) => {
             </li>
 
             <li className="dashboard-list-item">
-              <i className="bi bi-house"></i>
+              <i className="bi bi-speedometer2"></i>{" "}
+              {/* Suggestion: Different icon for clarity */}
               <Link to="/dashboard">Dashboard</Link>
             </li>
 
@@ -91,12 +68,13 @@ const DashboardNav = (props) => {
             ) : (
               <>
                 <li className="dashboard-list-item">
-                  <i className="bi bi-people"></i>
+                  <i className="bi bi-receipt"></i>{" "}
+                  {/* Suggestion: Invoice icon */}
                   <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
                 </li>
 
                 <li className="dashboard-list-item">
-                  <i className="bi bi-gear"></i>
+                  <i className="bi bi-person-gear"></i>
                   <Link to="/user/me/updateUserProfile">Edit Profile</Link>
                 </li>
               </>
@@ -120,4 +98,5 @@ const DashboardNav = (props) => {
     </div>
   );
 };
+
 export default DashboardNav;
