@@ -1,5 +1,4 @@
-import UserNav from "./userProfileComponents/UserNav";
-import AdminNav from "./adminProfileComponents/AdminNav";
+import DashboardNav from "./DashboardNav";
 import ProfileHeader from "./ProfileHeader";
 import DashboardCard from "../servicesCards/DashboardCard";
 import { useSelector } from "react-redux";
@@ -13,45 +12,41 @@ export default function Dashboard() {
   return (
     <div className="dashboard dark-theme">
       <ProfileHeader />
-      {isAdmin ? <AdminNav /> : <UserNav />}
+      <DashboardNav />
 
       <div className="dashboard-cards-container">
+        <DashboardCard
+          variant="dark"
+          titleClass="text-success"
+          bodyClass="bg-dark"
+          text={
+            <button
+              className="w-100"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "black",
+                backgroundColor: "transparent",
+                height: "5.5rem",
+                border: "none",
+                fontSize: "12px",
+              }}
+              onClick={() => {
+                window.location.href =
+                  "https://opsg-backend.onrender.com/qbauth/connect";
+              }}
+            >
+              Connect to Quickbooks
+            </button>
+          }
+        />
 
-   
-          <DashboardCard
-            variant="dark"
-            titleClass="text-success"
-            bodyClass="bg-dark"
-            text={
-              <button
-                className="w-100"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "black",
-                  backgroundColor: "transparent",
-                  height: "5.5rem",
-                  border: "none",
-                  fontSize: "12px",
-                }}
-                onClick={() => {
-                  window.location.href =
-                    "https://opsg-backend.onrender.com/qbauth/connect";
-                }}
-              >
-                Connect to Quickbooks
-              </button>
-            }
-          />
- 
         {!isAdmin && user && (
-  
-            <BalanceProvider id={user?.id}>
-              <DashboardCard>
-                <BalanceCard />
-              </DashboardCard>
-            </BalanceProvider>
-
+          <BalanceProvider id={user?.id}>
+            <DashboardCard>
+              <BalanceCard />
+            </DashboardCard>
+          </BalanceProvider>
         )}
       </div>
     </div>

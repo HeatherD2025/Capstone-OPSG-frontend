@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import "../../../styles/dashboardNav.css";
-import { logout } from "../../../slices/authSlice";
-import { removeToken } from "../../../utils/tokenService";
-import { useGetCurrentUserQuery } from "../../../features/api/userApi";
+import { logout } from "../../slices/authSlice";
+import { removeToken } from "../../utils/tokenService";
+import { useGetCurrentUserQuery } from "../../features/api/userApi";
 
-const UserNav = (props) => {
+const DashboardNav = (props) => {
   const [isNotActive, setNotActive] = useState(false);
   const dispatch = useDispatch();
-  // const [isDropdownActive, setDropdownActive] = useState("false");
+
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
+  const { isAdmin } = useSelector((state) => state.auth);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -37,7 +39,10 @@ const UserNav = (props) => {
       .replace("/dashboard", "")
       .replace("/profile/invoices", "")
       .replace("/user/me", "")
-      .replace("/user/me/updateUserProfile", "");
+      .replace("/user/me/updateUserProfile", "")
+      .replace("/", "")
+      .replace("/dashboard", "")
+      .replace("/admin", "");
 
     // normalize trailing slash
     const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
@@ -78,15 +83,24 @@ const UserNav = (props) => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
 
-            <li className="dashboard-list-item">
-              <i className="bi bi-people"></i>
-              <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
-            </li>
+            {isAdmin ? (
+              <li className="dashboard-list-item">
+                <i className="bi bi-people-fill"></i>
+                <Link to="/admin/search">All Users</Link>
+              </li>
+            ) : (
+              <>
+                <li className="dashboard-list-item">
+                  <i className="bi bi-people"></i>
+                  <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
+                </li>
 
-            <li className="dashboard-list-item">
-              <i className="bi bi-gear"></i>
-              <Link to="/user/me/updateUserProfile">Edit Profile</Link>
-            </li>
+                <li className="dashboard-list-item">
+                  <i className="bi bi-gear"></i>
+                  <Link to="/user/me/updateUserProfile">Edit Profile</Link>
+                </li>
+              </>
+            )}
 
             <li className="dashboard-list-item">
               <i className="bi bi-box-arrow-left"></i>
@@ -106,4 +120,4 @@ const UserNav = (props) => {
     </div>
   );
 };
-export default UserNav;
+export default DashboardNav;

@@ -1,6 +1,6 @@
 import { useMemo } from "react"; // Add this for stable math
 import ProfileHeader from "../ProfileHeader.jsx";
-import UserNav from "./UserNav.jsx";
+import DashboardNav from "../DashboardNav.jsx";
 import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
 import opsgLogo from "../../../assets/images/opsg-logo.webp";
@@ -77,7 +77,7 @@ export default function UserInvoice() {
     <>
       <div className="dashboard dark-theme">
         <ProfileHeader />
-        <UserNav />
+        <DashboardNav />
 
         <div className="invoice-container">
           {/* ... Brand Header ... */}

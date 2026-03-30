@@ -10,8 +10,7 @@ import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InfoModal from "../Modal";
 import ProfileHeader from "./ProfileHeader";
-import AdminNav from "./adminProfileComponents/AdminNav";
-import UserNav from "./userProfileComponents/UserNav";
+import DashboardNav from "./DashboardNav";
 import ConfirmationModal from "../ConfirmationModal";
 import "../../styles/app.css";
 import ProfileFormFields from "./ProfileFormFields";
@@ -135,7 +134,7 @@ export default function EditProfile() {
 
   return (
     <>
-      {isAdmin ? <AdminNav /> : <UserNav />}
+     <DashboardNav /> 
       <ProfileHeader />
 
       <div className="dark-theme">

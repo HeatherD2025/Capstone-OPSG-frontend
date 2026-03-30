@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AdminNav from "./AdminNav";
+import DashboardNav from "../DashboardNav";
 import {
   Card,
   Row,
@@ -11,9 +11,7 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ReactiveButton from "reactive-button";
-import {
-  useGetUsersQuery,
-} from "../../../features/api/adminApi";
+import { useGetUsersQuery } from "../../../features/api/adminApi";
 import "../../../styles/app.css";
 
 export default function AdminSearch() {
@@ -22,23 +20,18 @@ export default function AdminSearch() {
   const [term, setTerm] = useState("");
 
   // fetch all users on inital load
-  const {
-    data: users,
-    isLoading,
-    error,
-  } = useGetUsersQuery({ term });
-
+  const { data: users, isLoading, error } = useGetUsersQuery({ term });
 
   const handleClear = () => {
     setTerm("");
-  };    
+  };
 
   return (
     <>
       <Container fluid style={{ backgroundColor: "#272932" }}>
         <Row className="g-0">
           <Col xs="auto" style={{ width: "10rem", marginLeft: "2rem" }}>
-            <AdminNav />
+            <DashboardNav />
           </Col>
 
           <Col>
@@ -54,27 +47,25 @@ export default function AdminSearch() {
                 />
               </Col>
 
-                <Col xs="auto">
-                  <ReactiveButton
-                    rounded
-                    idleText="SHOW ALL USERS"
-                    variant="secondary"
-                    className="submit-btn-custom"
-                    type="button"
-                    onClick={handleClear}
-                    style={{
-                      width: "140px",
-                      fontSize: "12px",
-                      backgroundColor: "#558e89",
-                    }}
-                  />
-                </Col>
+              <Col xs="auto">
+                <ReactiveButton
+                  rounded
+                  idleText="SHOW ALL USERS"
+                  variant="secondary"
+                  className="submit-btn-custom"
+                  type="button"
+                  onClick={handleClear}
+                  style={{
+                    width: "140px",
+                    fontSize: "12px",
+                    backgroundColor: "#558e89",
+                  }}
+                />
+              </Col>
             </Row>
 
             {/* Error messages */}
-            {error && (
-              <Alert variant="danger">Failed to load users</Alert>
-            )}
+            {error && <Alert variant="danger">Failed to load users</Alert>}
 
             {/* Users List */}
             <Row xs={1} md={2} lg={3} className="g-4">
