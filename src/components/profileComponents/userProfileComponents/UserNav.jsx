@@ -12,7 +12,6 @@ const UserNav = (props) => {
   const dispatch = useDispatch();
   // const [isDropdownActive, setDropdownActive] = useState("false");
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
-  console.log("UserNav user data:", user);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

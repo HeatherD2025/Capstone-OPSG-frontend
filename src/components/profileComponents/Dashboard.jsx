@@ -4,14 +4,12 @@ import ProfileHeader from "./ProfileHeader";
 import InfoCard from "../servicesCards/InfoCard";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import BalanceCard from "../profileComponents/userProfileComponents/BalanceCard";
 import { BalanceProvider } from "./BalanceProvider";
 import "../../styles/dashboard.css";
 
 export default function Dashboard() {
   const { isAdmin, user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   return (
     <div className="dashboard dark-theme">
@@ -21,22 +19,8 @@ export default function Dashboard() {
       <Container fluid className="action-cards-container">
         {!isAdmin && user && (
           <BalanceProvider id={user?.id}>
-            <InfoCard style={{height: "10vw !important"}}>
-              <BalanceCard
-                text={
-                  <button
-                    rel="noopener noreferrer"
-                    style={{
-                      opacity: 0,
-                      height: "10vw",
-                      width: "100%",
-                      zIndex: "100",
-                      marginTop: "-8.5vw",
-                    }}
-                    onClick={() => navigate(`/profile/invoices/${user.id}`)}
-                  />
-                }
-              />
+            <InfoCard style={{ height: "10vw !important" }}>
+              <BalanceCard />
             </InfoCard>
           </BalanceProvider>
         )}
@@ -45,11 +29,6 @@ export default function Dashboard() {
           variant="dark"
           titleClass="text-success"
           bodyClass="bg-dark"
-          style={{
-                alignItems: "center",
-                textAlign: "center",
-                height: "10vw !important",
-              }}
           text={
             <button
               className="w-100"
@@ -58,7 +37,7 @@ export default function Dashboard() {
               style={{
                 color: "black",
                 backgroundColor: "transparent",
-                height: "auto",
+                height: "6rem",
                 border: "none",
                 fontSize: "1.25vw",
               }}

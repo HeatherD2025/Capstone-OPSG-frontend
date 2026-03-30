@@ -4,19 +4,41 @@
 }
 .invoice-container {
   background: white;
-  max-width: 60vw;
-  margin: 0vw 0vw 0vw 25vw;
+  max-width: 40rem;
+  height: 39rem;
+  margin: 1rem 0rem 5rem 13rem;
   padding: 2rem;
-  margin-left: 10rem;
+  color: rgb(155, 155, 155);
+  filter: drop-shadow(8px 8px 10px rgb(23, 23, 23));
 }
-.text-top-left {
-  position: absolute;
+.invoice-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5rem;
   color: black;
-  width: 10vw;
-  font-size: 1vw;
-  font-weight: 200;
-  margin-left: 2vw;
+}
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: -0.75rem 0rem 2rem 0rem;
+}
+.user-company-info-container {
+  color: black;
+  font-size: 12px;
+  margin: -6.5rem 0rem 0rem 27rem;
+}
+.invoice-address {
+  line-height: 0.5rem;
+  line-height: .25rem;
+}
+.balance-due {
+  font-size: 18px; 
+  color: red;
+  font-weight: 400; 
+  margin-left: 16.85rem;
 }
 .table {
-  margin-top: 5vw;
+  margin-top: 5rem;
 }

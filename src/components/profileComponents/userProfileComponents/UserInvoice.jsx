@@ -3,33 +3,36 @@ import ProfileHeader from "../ProfileHeader.jsx";
 import UserNav from "./UserNav.jsx";
 import "../../../styles/dashboard.css";
 import "../../../styles/invoices.css";
+import opsgLogo from "../../../assets/images/opsg-logo.webp";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 import { Container } from "react-bootstrap";
 
 export default function UserInvoice() {
   const { balance, loading } = useBalance();
-  const { 
-    company, 
-    isLoading: companyLoading, 
-    error: companyError 
+  const {
+    company,
+    isLoading: companyLoading,
+    error: companyError,
   } = useCompanyName();
 
-    if (companyLoading) return (
+  if (companyLoading)
+    return (
       <div className="profile-header">
         <Container className="header-container text-center">
           <p>Loading company info...</p>
         </Container>
       </div>
-  );
+    );
 
-  if (companyError) return(
-    <div className="profile-header">
+  if (companyError)
+    return (
+      <div className="profile-header">
         <Container className="header-container text-center">
           <p>Failed to load company info</p>
         </Container>
       </div>
-  );
+    );
 
   const companyName = company?.name || "Your Company";
   const companyStreetAddress = company?.streetAddress || "123 Main St";
@@ -68,7 +71,7 @@ export default function UserInvoice() {
   });
 
   // if (loading) return <div>Loading Invoice...</div>;
-  console.log("Invoice Render - Company Object:", company)
+  console.log("Invoice Render - Company Object:", company);
 
   return (
     <>
@@ -78,23 +81,33 @@ export default function UserInvoice() {
 
         <div className="invoice-container">
           {/* ... Brand Header ... */}
-          <div className="text-top-left">
-            <p>{companyName}</p>
-            <p>{companyStreetAddress}</p>
-            <p>{companyCity}, {companyState}</p>
-            <p>{companyZip}</p>
+          <div className="logo-wrapper">
+            <img
+              src={opsgLogo}
+              alt="OPSG logo"
+              className="opsg-navbar-logo"
+            ></img>
+            <div>OnPoint</div>
           </div>
-          <div className="row text-center">
-            <h3
-              className="text-uppercase mt-3"
-              style={{ fontSize: "40px", color: "black" }}
-            >
-              Invoice
-            </h3>
+
+          <div className="invoice-header-container">
+            <h4 className="text-uppercase mt-3">Invoice</h4>
             <p>#{invoiceData.num}</p>
           </div>
 
-          <div className="row mx-3">
+          <div className="user-company-info-container">
+            <p>{companyName}</p>
+            <p className="invoice-address">{companyStreetAddress}</p>
+            <p className="invoice-address">
+              {companyCity}, {companyState}
+            </p>
+            <p className="invoice-address">{companyZip}</p>
+            <p className="fw-bold">
+              Date: <span>{invoiceData.date}</span>
+            </p>
+          </div>
+
+          <div className="row">
             <table className="table">
               <thead>
                 <tr>
@@ -118,20 +131,9 @@ export default function UserInvoice() {
               </tbody>
             </table>
           </div>
-
-          <div className="row">
-            <div className="col-xl-8" style={{ marginLeft: "40px" }}>
-              <p className="float-end" style={{ fontSize: "20px", color: "red", fontWeight: "400" }}>
-                Balance Due: <span>{formatter.format(safeBalance)}</span>
-              </p>
-            </div>
-          </div>
-
-          <div className="row mt-2 mb-5">
-            <p className="fw-bold" style={{marginLeft: "2vw"}}>
-              Date: <span className="text-muted">{invoiceData.date}</span>
-            </p>
-          </div>
+          <p className="balance-due">
+            Balance Due: <span>{formatter.format(safeBalance)}</span>
+          </p>
         </div>
       </div>
     </>
