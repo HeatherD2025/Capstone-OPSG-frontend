@@ -32,7 +32,7 @@ export default function Dashboard() {
                   backgroundColor: "transparent",
                   height: "5.5rem",
                   border: "none",
-                  fontSize: "1.25vw",
+                  fontSize: "12px",
                 }}
                 onClick={() => {
                   window.location.href =
@@ -44,16 +44,13 @@ export default function Dashboard() {
             }
           />
  
-
         {!isAdmin && user && (
-
   
             <BalanceProvider id={user?.id}>
               <DashboardCard>
                 <BalanceCard />
               </DashboardCard>
             </BalanceProvider>
-
 
         )}
       </div>

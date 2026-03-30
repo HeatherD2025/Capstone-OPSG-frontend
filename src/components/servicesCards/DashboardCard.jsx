@@ -3,10 +3,7 @@ import "../../styles/dashboard.css"
 
 /**
  * @param {string} bg - bootstrap color variable
- * @param {string} title - card title
- * @param {string} subtitle - optional subtitle
  * @param {string} text - body text
- * @param {string} image - imgage for card
  */
 
 function DashboardCard({
@@ -15,7 +12,7 @@ function DashboardCard({
 }) {
   return (
     <Card className="dashboard-card">
-      <Card.Body className="d-flex flex-column">
+      <Card.Body>
         { text && <Card.Text>{text}</Card.Text>}
         {children}
       </Card.Body>

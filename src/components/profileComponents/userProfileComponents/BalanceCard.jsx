@@ -27,7 +27,7 @@ export default function BalanceCard() {
           width: "100%",
           zIndex: "100",
           marginTop: "-1rem",
-          marginBottom: "-6rem",
+          marginBottom: "-6rem"
         }}
         onClick={() => navigate(`/profile/invoices/${user.id}`)}
       />
