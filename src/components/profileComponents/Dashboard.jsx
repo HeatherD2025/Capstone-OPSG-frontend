@@ -1,8 +1,7 @@
 import UserNav from "./userProfileComponents/UserNav";
 import AdminNav from "./adminProfileComponents/AdminNav";
 import ProfileHeader from "./ProfileHeader";
-import InfoCard from "../servicesCards/InfoCard";
-import { Container } from "react-bootstrap";
+import DashboardCard from "../servicesCards/DashboardCard";
 import { useSelector } from "react-redux";
 import BalanceCard from "../profileComponents/userProfileComponents/BalanceCard";
 import { BalanceProvider } from "./BalanceProvider";
@@ -16,41 +15,48 @@ export default function Dashboard() {
       <ProfileHeader />
       {isAdmin ? <AdminNav /> : <UserNav />}
 
-      <Container fluid className="action-cards-container">
-        {!isAdmin && user && (
-          <BalanceProvider id={user?.id}>
-            <InfoCard style={{ height: "10vw !important" }}>
-              <BalanceCard />
-            </InfoCard>
-          </BalanceProvider>
-        )}
+      <div className="dashboard-cards-container">
 
-        <InfoCard
-          variant="dark"
-          titleClass="text-success"
-          bodyClass="bg-dark"
-          text={
-            <button
-              className="w-100"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "black",
-                backgroundColor: "transparent",
-                height: "6rem",
-                border: "none",
-                fontSize: "1.25vw",
-              }}
-              onClick={() => {
-                window.location.href =
-                  "https://opsg-backend.onrender.com/qbauth/connect";
-              }}
-            >
-              Connect to Quickbooks
-            </button>
-          }
-        />
-      </Container>
+   
+          <DashboardCard
+            variant="dark"
+            titleClass="text-success"
+            bodyClass="bg-dark"
+            text={
+              <button
+                className="w-100"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "black",
+                  backgroundColor: "transparent",
+                  height: "5.5rem",
+                  border: "none",
+                  fontSize: "1.25vw",
+                }}
+                onClick={() => {
+                  window.location.href =
+                    "https://opsg-backend.onrender.com/qbauth/connect";
+                }}
+              >
+                Connect to Quickbooks
+              </button>
+            }
+          />
+ 
+
+        {!isAdmin && user && (
+
+  
+            <BalanceProvider id={user?.id}>
+              <DashboardCard>
+                <BalanceCard />
+              </DashboardCard>
+            </BalanceProvider>
+
+
+        )}
+      </div>
     </div>
   );
 }
