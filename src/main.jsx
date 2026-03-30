@@ -1,13 +1,15 @@
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { HashRouter as Router } from "react-router-dom";
+// import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider, useDispatch } from "react-redux";
 import store from "./store/store.js";
 import ContextProvider from "./components/navigation/ContextProvider.jsx";
 import { initializeAuth } from "./slices/authSlice.js";
 import ScrollToTop from "../src/components/ScrollToTop.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "./styles/app.css";
 import { BalanceProvider } from "./components/profileComponents/BalanceProvider.jsx";
 
 function Root() {
@@ -32,5 +34,5 @@ createRoot(document.getElementById("root")).render(
         </BalanceProvider>
       </ContextProvider>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

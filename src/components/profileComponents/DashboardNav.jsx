@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom"; // Added useLocation
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "../../styles/dashboardNav.css";
 import { logout } from "../../slices/authSlice";
@@ -10,7 +10,7 @@ import { useGetCurrentUserQuery } from "../../features/api/userApi";
 const DashboardNav = () => {
   const [isNotActive, setNotActive] = useState(false);
   const dispatch = useDispatch();
-  const location = useLocation(); // Hook for location tracking
+  const location = useLocation();
 
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
   const { isAdmin } = useSelector((state) => state.auth);
