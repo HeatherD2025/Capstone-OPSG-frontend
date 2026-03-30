@@ -33,11 +33,23 @@
   line-height: 0.5rem;
   line-height: .25rem;
 }
+th.amount-column {
+  margin-left: 50rem;
+}
 .balance-due {
   font-size: 18px; 
   color: red;
   font-weight: 400; 
   margin-left: 16.85rem;
+}
+.payment-button {
+  color: black;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 2em;
+  font-weight: 200;
+  position: absolute;
+  margin: 5rem 0rem 0rem 12.5rem;
 }
 .table {
   margin-top: 5rem;

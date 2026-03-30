@@ -112,7 +112,9 @@ export default function UserInvoice() {
               <thead>
                 <tr>
                   <th scope="col">Description</th>
-                  <th scope="col">Amount</th>
+                  <th className="amount-column">
+                    Amount
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -134,6 +136,17 @@ export default function UserInvoice() {
           <p className="balance-due">
             Balance Due: <span>{formatter.format(safeBalance)}</span>
           </p>
+          <button
+            className="payment-button"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              window.location.href =
+                "https://opsg-backend.onrender.com/qbauth/connect";
+            }}
+          >
+            Pay with Quickbooks
+          </button>
         </div>
       </div>
     </>
