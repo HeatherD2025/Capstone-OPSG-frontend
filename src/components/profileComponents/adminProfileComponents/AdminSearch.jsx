@@ -7,7 +7,6 @@ import {
   Col,
   Alert,
   Spinner,
-  Container,
   Form,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +37,7 @@ export default function AdminSearch() {
             <Row className="g-0">
               <Col>
                 {/* Search bar and buttons */}
-                <Row className="mt-3 mb-4">
+                <Row className="mt-2 mb-2">
                   <Col>
                     <Form.Control
                       type="text"

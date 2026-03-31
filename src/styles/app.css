@@ -93,7 +93,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 1rvw;
-    margin-top: 3.25vw;
+    margin-top: 5rem;
   }
   .intro-text-container {
     display: flex;

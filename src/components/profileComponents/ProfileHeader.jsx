@@ -22,8 +22,8 @@ export default function ProfileHeader() {
   } = useCompanyName();
 
   const headerText = isAdmin ? "Admin Dashboard" : "User Dashboard";
-  const companyNameCalled = isAdmin ? " " : company?.name || "";
-  const displayName = user?.isAdmin
+  const companyNameCalled = isAdmin ? " " : company?.name || " ";
+  const displayName = isAdmin
     ? "Demo Admin"
     : `${user?.firstName} ${user?.lastName}`;
 
