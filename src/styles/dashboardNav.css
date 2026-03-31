@@ -5,7 +5,7 @@
   left: 0;
   top: 0;
   height: 100vh;
-  background-color: #272932;
+  background-color: #272d32;
   border-radius: 5px;
   z-index: 9999;
 }
@@ -21,34 +21,36 @@
 }
 #sidebar ul li a {
   margin-left: 0.5rem;
-  color: #e9e9ea;
+  color: #ffff;
 }
 #sidebar .dashboard-list-item {
   margin: 2rem 0;
   padding: .5rem 0rem .5rem 0rem;
   font-size: 15px;
   font-weight: 200;
+    color:#ffff;
 }
 #sidebar li a {
   text-decoration: none;
   padding-left: 0.5rem;
 }
 .icon-color {
-  color: #8ac6d0;
+  color: #ffff;
 }
 .btn-custom {
-  background-color: #8ac6d0;
+  background-color: #79cbbb;
   border-radius: 50%;
+  border: none;
   color: black;
   font-weight: 600;
 }
 .sidebar-header {
   margin-top: 4rem;
   text-align: center;
-  color: #e9e9ea;
+  color: #ffff;
 }
 .usr-image {
-  border: 2px solid white;
+  border: 2px solid #ffff;
 }
 .collapse {
   display: none;
@@ -98,7 +100,7 @@
     transform: translateX(50%);
   }
   .dashboard-list-item {
-    color: white;
+    color: #ffff;
   }
   .dashboard-content {
     margin-left: 0;

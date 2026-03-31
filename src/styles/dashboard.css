@@ -1,13 +1,13 @@
  /* Dark Theme Base */
 .dark-theme {
-  background-color: #393939;
-  color: #e0e0e0;
+  background-color: #374249;
+  color: #ffff;
   min-height: 100vh;
 }
 
 /* Layout */
 .nav-column {
-  background-color: #2a2a2a;
+  background-color: #272d32;
   min-height: 100vh;
 }
 
@@ -17,7 +17,7 @@
 
 /* Typography */
 .user-title {
-  color: #ffffff;
+  color: #ffff;
   letter-spacing: -0.5px;
   margin-bottom: 0;
 }
@@ -55,7 +55,7 @@
 }
 
 .bg-dark {
-  background-color: #4c4c4c !important;
+  background-color: #272d32 !important;
   border: 1px solid #333;
 }
 
@@ -72,7 +72,7 @@
 
 .btn-outline-danger:hover {
   background-color: #dc3545;
-  color: white;
+  color: #ffff;
 }
 
 /* Responsive */

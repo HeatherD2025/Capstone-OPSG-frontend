@@ -3,7 +3,7 @@
 }
 
 .usr-image2 {
-  border: 2px solid white;
+  border: 2px solid #ffff;
 }
 
 .opsg-navbar-logo {
@@ -50,7 +50,7 @@
 
   .bg-light2 {
     --bs-bg-opacity: 1;
-    background-color: #ffffff;
+    background-color: #ffff;
     padding-bottom: 3em;
     width: 100%;
   }
@@ -59,7 +59,7 @@
 @media (min-width: 768px) {
   .bg-light2 {
     --bs-bg-opacity: 1;
-    background-color: #ffffff;
+    background-color: #ffff;
     max-height: 90px;
     width: 100%;
   }
