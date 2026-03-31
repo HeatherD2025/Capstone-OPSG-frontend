@@ -190,8 +190,8 @@ body {
     height: 8rem;
   }
   .user-search-container {
-    padding: 3rem 5rem 3rem 0rem ;
-    background-color: #272932;
+    max-width: 65rem;
+    margin: 1rem 0rem 0rem 13rem;
   }
   /*Forms*/
   .login-register-form-container,
