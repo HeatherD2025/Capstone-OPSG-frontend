@@ -9,7 +9,6 @@ import ContextProvider from "./components/navigation/ContextProvider.jsx";
 import { initializeAuth } from "./slices/authSlice.js";
 import ScrollToTop from "../src/components/ScrollToTop.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles/app.css";
 import { BalanceProvider } from "./components/profileComponents/BalanceProvider.jsx";
 
