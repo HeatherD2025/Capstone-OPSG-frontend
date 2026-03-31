@@ -191,32 +191,31 @@ const ourServices = () => {
       </div>
 
       {/* Credentials Section */}
-      <Container>
+
         <ServiceSection
           title="Credentials"
           description="Recredentialing, Applications and License Renewals"
           cards={credentialsData}
         />
-      </Container>
+
 
       {/* Enrollment Section */}
-      <Container>
+
         <ServiceSection
           title="Enrollment"
           description="Medicare Opt-Out, Group Providers and Individual Providers Serving
           Commercial and Government Payers"
           cards={enrollmentData}
         />
-      </Container>
+
 
       {/* Consulting Section */}
-      <Container>
+
         <ServiceSection
           title="Consulting"
           description="Development Planning Assessing Compliance, Risk, and Opportunities"
           cards={consultingData}
         />
-      </Container>
       <Footer />
     </div>
   );

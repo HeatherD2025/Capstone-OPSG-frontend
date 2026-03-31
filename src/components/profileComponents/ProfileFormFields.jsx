@@ -15,21 +15,17 @@
 
   return (
     <>
-      <div className="bg-gray rounded shadow edit-profile">
-            <div className="d-flex justify-content-between mb-4">
-              <h2 style={{ fontSize: "14px", marginTop: "7vh" }}>
-                EDIT PROFILE
-              </h2>
-            </div>
+      <div className="rounded shadow edit-profile">
+         
+              <h6 className="edit-profile-header">Edit Profile</h6>
 
             <Form onSubmit={onSubmit}>
               {/* Profile block */}
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="firstName">
                       <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
                       >
-                        FIRST NAME
+                        First Name
                       </Form.Label>
                       <Form.Control
                         value={formData.firstName}
@@ -44,9 +40,8 @@
 
                     <Form.Group as={Col} controlId="lastName">
                       <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
                       >
-                        LAST NAME
+                        Last Name
                       </Form.Label>
                       <Form.Control
                         value={formData.lastName}
@@ -63,9 +58,8 @@
                   <Row>
                     <Form.Group as={Col} controlId="company">
                       <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
                       >
-                        COMPANY
+                        Company
                       </Form.Label>
                       <Form.Control
                         value={formData.company.name}
@@ -84,10 +78,8 @@
 
                   <Row>
                     <Form.Group as={Col} controlId="streetAddress">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        STREET ADDRESS
+                      <Form.Label>
+                        Street Address
                       </Form.Label>
                       <Form.Control
                         value={formData.company.streetAddress}
@@ -106,10 +98,8 @@
 
                   <Row>
                     <Form.Group as={Col} controlId="city">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        CITY
+                      <Form.Label>
+                        City
                       </Form.Label>
                       <Form.Control
                         value={formData.company.city}
@@ -126,10 +116,8 @@
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="state">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        STATE
+                      <Form.Label>
+                        State
                       </Form.Label>
                       <Form.Control
                         value={formData.company.state}
@@ -146,10 +134,8 @@
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="zip">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        ZIP CODE
+                      <Form.Label>
+                        Zip Code
                       </Form.Label>
                       <Form.Control
                         value={formData.company.zip}
@@ -168,10 +154,8 @@
 
                   <Row>
                     <Form.Group as={Col} controlId="phoneNumber">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        PHONE
+                      <Form.Label>
+                        Phone
                       </Form.Label>
                       <Form.Control
                         value={formData.company.phoneNumber}
@@ -190,10 +174,8 @@
 
                   <Row>
                     <Form.Group className="mb-3" controlId="email">
-                      <Form.Label
-                        style={{ fontSize: "12px", paddingLeft: "3px" }}
-                      >
-                        EMAIL
+                      <Form.Label>
+                        Email
                       </Form.Label>
                       <Form.Control
                         type="email"
@@ -208,10 +190,8 @@
                   <Row className="align-items-end mb-3">
                     <Col>
                       <Form.Group controlId="password">
-                        <Form.Label
-                          style={{ fontSize: "12px", paddingLeft: "3px" }}
-                        >
-                          PASSWORD
+                        <Form.Label>
+                          Password
                         </Form.Label>
                         <Form.Control type="password" placeholder="********" readOnly/>
                       </Form.Group>

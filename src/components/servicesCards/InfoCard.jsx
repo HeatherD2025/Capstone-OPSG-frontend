@@ -17,7 +17,7 @@ function InfoCard({
   children,
 }) {
   return (
-    <Card className="info-card h-100">
+    <Card className="info-card">
       <Card.Body className="d-flex flex-column">
 
       {/* <div className="info-card-image-wrapper"> */}

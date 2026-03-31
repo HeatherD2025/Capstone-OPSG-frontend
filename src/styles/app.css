@@ -118,37 +118,22 @@ body {
   }
 
   /*Counter section*/
-  .counter-section-wrapper {
-    margin-top: 10rem;
-    margin-bottom: 5rem;
-    display: grid;
-    justify-content: center;
-    font-size: clamp(1rem, 3vw, 3rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #558e89;
-    font-weight: 200;
-  }
   .centered-counter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 115%;
-    left: 40%;
-  }
-  .centered-counter-text {
-    position: absolute;
-    top: 134%;
-    left: 33%;
-    width: 50%;
+    font-size: clamp(18px, 3vw, 3rem);
+    font-weight: 200;
+    width: 100%;
+    margin-top: 18rem;
+    z-index: 9999;
   }
   .us-map {
     width: 60rem;
     height: auto;
     opacity: 0.08;
-    transform: translate(14%, 0%);
+    z-index: 0;
+    margin: -20rem 5rem 10rem 7rem;
   }
 
   /* Home Cards styling */
@@ -193,6 +178,12 @@ body {
     max-width: 65rem;
     margin: 1rem 0rem 0rem 13rem;
   }
+  .edit-profile-container {
+    max-width: 65rem;
+    margin: 1rem 0rem 0rem 13rem;
+    color: gray !important;
+  }
+
   /*Forms*/
   .login-register-form-container,
   .form-card {
@@ -224,7 +215,6 @@ body {
     background-color: #558e89;
     margin-top: 5px;
   }
-
   .admin-edit-profile-button-container {
     display: flex;
     justify-content: space-evenly;
@@ -254,9 +244,17 @@ body {
 
   /*Profile edit*/
   .edit-profile {
-    width: 60rem;
-    margin: 0 5rem 5rem 10rem;
-    padding: 0 10rem 5rem 10rem;
+    background-color: #484848;
+    color: #ffff;
+    font-weight: 200;
+    width: 55rem;
+    margin: 2rem 5rem 5rem 15rem;
+    padding: 3rem 3rem 3rem 3rem;
+  }
+  .edit-profile-header {
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 2rem;
   }
 
   /* contact page */

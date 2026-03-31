@@ -59,12 +59,12 @@ export default function PasswordChangeForm({
 
   return (
     <>
-      <div className="border rounded p-3 mb-3">
+      <div className="rounded shadow edit-profile p-3 mb-3">
         <Form onSubmit={handlePasswordChange}>
           {!userId && (
             <Form.Group className="mb-2" controlId="currentPwd">
               <Form.Label style={{ fontSize: "12px", paddingLeft: "3px" }}>
-                CURRENT PASSWORD
+                Current Password
               </Form.Label>
               <Form.Control
                 type="password"
@@ -76,7 +76,7 @@ export default function PasswordChangeForm({
 
           <Form.Group className="mb-2" controlId="newPwd">
             <Form.Label style={{ fontSize: "12px", paddingLeft: "3px" }}>
-              NEW PASSWORD
+              New Password
             </Form.Label>
             <Form.Control
               type="password"
@@ -87,7 +87,7 @@ export default function PasswordChangeForm({
 
           <Form.Group className="mb-2" controlId="confirmPwd">
             <Form.Label style={{ fontSize: "12px", paddingLeft: "3px" }}>
-              CONFIRM NEW PASSWORD
+              Confirm New Password
             </Form.Label>
             <Form.Control
               type="password"

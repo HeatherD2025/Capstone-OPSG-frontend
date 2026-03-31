@@ -136,21 +136,16 @@ const Home = () => {
         {/* </div> */}
       </div>
 
-      <div className="counter-section-wrapper">
         <p className="centered-counter">
           Trusted by over <AnimationCountUp loading="lazy" from={0} to={50} />
-        </p>
-        <p className="centered-counter-text">
           Hospitals, providers, and practicioners nationwide
         </p>
 
         <img className="us-map" src={usaMap} alt="United States map"></img>
-      </div>
 
-      <Container>
-        <ServiceSection cards={homeCardData} />
-      </Container>
-
+        <div className="services-section">
+          <ServiceSection cards={homeCardData} />
+        </div>
       <Footer />
     </div>
   );
