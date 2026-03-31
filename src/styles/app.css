@@ -152,18 +152,25 @@ body {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   }
 
-  .home-page-cards .card-body {
+  /* .home-page-cards .card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 2rem;
+  } */
+    .info-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 10vw;
   }
-  .home-page-card-image {
+  .home-info-card-image {
     width: 72px;
     height: 72px;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin: 1rem 0rem;
   }
   /* Admin search card body */
   .search-card-body {
@@ -177,11 +184,6 @@ body {
   .user-search-container {
     max-width: 65rem;
     margin: 1rem 0rem 0rem 13rem;
-  }
-  .edit-profile-container {
-    max-width: 65rem;
-    margin: 1rem 0rem 0rem 13rem;
-    color: gray !important;
   }
 
   /*Forms*/
@@ -215,10 +217,7 @@ body {
     background-color: #558e89;
     margin-top: 5px;
   }
-  .admin-edit-profile-button-container {
-    display: flex;
-    justify-content: space-evenly;
-  }
+
 
   /* Login and Register */
   .login-register-modal {
@@ -244,17 +243,22 @@ body {
 
   /*Profile edit*/
   .edit-profile {
-    background-color: #484848;
+    background-color: #686868;
     color: #ffff;
     font-weight: 200;
     width: 55rem;
-    margin: 2rem 5rem 5rem 15rem;
-    padding: 3rem 3rem 3rem 3rem;
+    margin: .5rem 3rem 5rem 11.75rem;
+    padding: 2rem 2rem 3rem 2rem;
   }
   .edit-profile-header {
     font-size: 18px;
     font-weight: 200;
     margin-bottom: 2rem;
+  }
+    .admin-edit-profile-button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
   }
 
   /* contact page */

@@ -9,8 +9,8 @@ import "../../styles/ourServices.css"
  * @param {string} image - imgage for card
  */
 
-function InfoCard({
-
+function HomeInfoCard({
+  title,
   subtitle,
   text,
   image,
@@ -18,18 +18,19 @@ function InfoCard({
 }) {
   return (
     <Card className="info-card">
-      <Card.Body className="d-flex flex-column info-card-body">
+      <Card.Body className="d-flex flex-column">
 
       {/* <div className="info-card-image-wrapper"> */}
         { image && (
           <Card.Img 
-            className="info-card-image" 
+            className="home-info-card-image" 
             src={image.src}
             alt={image.alt} 
           /> 
         )}
       {/* </div> */}
 
+        { title && <Card.Title >{title}</Card.Title>}
 
         { subtitle && (
           <Card.Subtitle className="mb-2 text-muted">
@@ -46,4 +47,4 @@ function InfoCard({
   );
 }
 
-export default InfoCard;
+export default HomeInfoCard;

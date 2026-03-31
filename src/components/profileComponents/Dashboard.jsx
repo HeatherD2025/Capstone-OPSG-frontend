@@ -21,16 +21,9 @@ export default function Dashboard() {
           bodyClass="bg-dark"
           text={
             <button
-              className="w-100"
+              className="qb-connect-button"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                color: "black",
-                backgroundColor: "transparent",
-                height: "5.5rem",
-                border: "none",
-                fontSize: "12px",
-              }}
               onClick={() => {
                 window.location.href =
                   "https://opsg-backend.onrender.com/qbauth/connect";

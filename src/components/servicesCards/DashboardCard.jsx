@@ -12,7 +12,7 @@ function DashboardCard({
 }) {
   return (
     <Card className="dashboard-card">
-      <Card.Body>
+      <Card.Body className="dashboard-card-body">
         { text && <Card.Text>{text}</Card.Text>}
         {children}
       </Card.Body>

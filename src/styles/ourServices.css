@@ -15,25 +15,24 @@
   font-weight: 200;
 }
 
-
 .info-card {
   background-color: #79cbbb;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition:
-  transform 0.25s ease-in-out,
-  box-shadow 0.25s ease-in-out;
+    transform 0.25s ease-in-out,
+    box-shadow 0.25s ease-in-out;
   width: 20rem;
   height: 18rem;
   margin: 0rem 1rem 4rem 1rem;
 }
 .services-info-card {
-background-color: #bc724d;
+  background-color: #bc724d;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition:
-  transform 0.25s ease-in-out,
-  box-shadow 0.25s ease-in-out;
+    transform 0.25s ease-in-out,
+    box-shadow 0.25s ease-in-out;
   width: 20rem;
   height: 18rem;
   margin: 0rem 1rem 4rem 1rem;
@@ -43,17 +42,18 @@ background-color: #bc724d;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-.info-card .card-body {
+/* .info-card .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   height: 10vw;
-}
-.card-body {
+} */
+.info-card-body {
   margin-top: 1.25rem;
 }
 .info-card-image {
+  margin-top: 2rem;
   height: auto;
   width: 5vw;
   object-fit: cover;
@@ -70,19 +70,27 @@ background-color: #bc724d;
   margin: auto;
 } */
 
-/* .card-description {
+.card-description {
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
   font-size: clamp(1.25vw, 1.5rem, 1.25rem);
   font-weight: 200;
-} */
+}
 
-/* .card-title {
+.services-section-title {
   margin-top: 1vw;
-} */
+  font-weight: 200;
+}
 
 .card-subtitle {
   margin-top: 2.2vw;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 200;
+}
+.card-text {
+  margin-top: 1rem;
+  font-size: clamp(16px, 2vw, 18px);
 }
 
 /* Why choose OPSG section */

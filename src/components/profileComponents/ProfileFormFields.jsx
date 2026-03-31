@@ -21,7 +21,7 @@
 
             <Form onSubmit={onSubmit}>
               {/* Profile block */}
-                  <Row className="mb-3">
+                  <Row className="mb-2">
                     <Form.Group as={Col} controlId="firstName">
                       <Form.Label
                       >
@@ -55,7 +55,7 @@
                     </Form.Group>
                   </Row>
 
-                  <Row>
+                  <Row className="mb-2">
                     <Form.Group as={Col} controlId="company">
                       <Form.Label
                       >
@@ -76,7 +76,7 @@
                     </Form.Group>
                   </Row>
 
-                  <Row>
+                  <Row className="mb-2">
                     <Form.Group as={Col} controlId="streetAddress">
                       <Form.Label>
                         Street Address
@@ -96,7 +96,7 @@
                     </Form.Group>
                   </Row>
 
-                  <Row>
+                  <Row className="mb-2">
                     <Form.Group as={Col} controlId="city">
                       <Form.Label>
                         City
@@ -152,7 +152,7 @@
                     </Form.Group>
                   </Row>
 
-                  <Row>
+                  <Row className="mb-2">
                     <Form.Group as={Col} controlId="phoneNumber">
                       <Form.Label>
                         Phone
@@ -172,8 +172,8 @@
                     </Form.Group>
                   </Row>
 
-                  <Row>
-                    <Form.Group className="mb-3" controlId="email">
+                  <Row className="mb-2">
+                    <Form.Group controlId="email">
                       <Form.Label>
                         Email
                       </Form.Label>
@@ -187,7 +187,7 @@
                     </Form.Group>
                   </Row>
 
-                  <Row className="align-items-end mb-3">
+                  <Row className="align-items-end mb-2">
                     <Col>
                       <Form.Group controlId="password">
                         <Form.Label>

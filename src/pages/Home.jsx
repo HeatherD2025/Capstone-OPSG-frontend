@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Col, Container } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import opsgLogo from "../assets/images/opsg-logo.webp";
 import nurseSmiling from "../assets/images/nurseSmiling.webp";
 import NavBar from "../components/navigation/Navbar";
@@ -12,8 +12,6 @@ import "../styles/app.css";
 import "../styles/ourServices.css";
 import usaMap from "../assets/images/usaMap.webp";
 import Footer from "../components/Footer";
-
-import ReactiveButton from "reactive-button";
 
 const Home = () => {
   const homeCardData = [
