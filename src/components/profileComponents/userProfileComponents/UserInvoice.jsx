@@ -9,7 +9,7 @@ import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
 import { Container } from "react-bootstrap";
 
 export default function UserInvoice() {
-  const { balance, loading } = useBalance();
+  const { balance, loading, error } = useBalance();
   const {
     company,
     isLoading: companyLoading,
@@ -41,6 +41,10 @@ export default function UserInvoice() {
   const companyZip = company?.zip || "12345";
   // stabilize the Balance
   const safeBalance = balance || 1000;
+  let displayText = balance !== null ? `$${balance.toFixed(2)}` : "---";
+
+  if (loading) displayText = "Loading...";
+  if (error) displayText = "Error loading invoice balance";
 
   // useMemo so the math only happens when the balance actually changes
   const amounts = useMemo(() => {
@@ -112,9 +116,7 @@ export default function UserInvoice() {
               <thead>
                 <tr>
                   <th scope="col">Description</th>
-                  <th className="amount-column">
-                    Amount
-                  </th>
+                  <th className="amount-column">Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -134,7 +136,7 @@ export default function UserInvoice() {
             </table>
           </div>
           <p className="balance-due">
-            Balance Due: <span>{formatter.format(safeBalance)}</span>
+            Balance Due: <span>{displayText}</span>
           </p>
           <button
             className="payment-button"

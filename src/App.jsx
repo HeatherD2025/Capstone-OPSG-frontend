@@ -80,9 +80,9 @@ function App() {
         path="/profile/invoices/:userId"
         element={
           <ProtectedRoute>
-            <BalanceWrapper>
+            <BalanceProvider>
               <UserInvoice />
-            </BalanceWrapper>
+            </BalanceProvider>
           </ProtectedRoute>
         }
       />
