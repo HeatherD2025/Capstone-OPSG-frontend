@@ -8,7 +8,7 @@ import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import "../../styles/dashboardNav.css";
 
 const DashboardNav = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(() => window.innerWidth >= 1024);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +27,19 @@ const DashboardNav = () => {
     }
   }, [location.pathname, location.hash]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsExpanded(true);
+      } else {
+        setIsExpanded(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (isLoading || isError || !user) return null;
 
   const menuItems = [
@@ -35,11 +48,23 @@ const DashboardNav = () => {
   ];
 
   if (isAdmin) {
-    menuItems.push({ label: "All Users", href: "/admin/search", icon: "bi-people-fill" });
+    menuItems.push({
+      label: "All Users",
+      href: "/admin/search",
+      icon: "bi-people-fill",
+    });
   } else {
     menuItems.push(
-      { label: "View Invoices", href: `/profile/invoices/${user.id}`, icon: "bi-receipt" },
-      { label: "Edit Profile", href: "/user/me/updateUserProfile", icon: "bi-person-gear" }
+      {
+        label: "View Invoices",
+        href: `/profile/invoices/${user.id}`,
+        icon: "bi-receipt",
+      },
+      {
+        label: "Edit Profile",
+        href: "/user/me/updateUserProfile",
+        icon: "bi-person-gear",
+      },
     );
   }
 
@@ -50,41 +75,52 @@ const DashboardNav = () => {
   };
 
   return (
-    <div className={`dash-nav-container ${isExpanded ? "expanded" : "collapsed"}`}>
-      <nav className="dash-sidebar">
-        {/* Toggle Button */}
-        <Button
-          type="button"
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="dash-nav-toggle"
+    <>
+        <div
+          className={`dash-nav-container ${isExpanded ? "expanded" : "collapsed"}`}
         >
-          <i className={`bi ${isExpanded ? "bi-x-circle" : "bi-arrow-right-circle-fill"}`}></i>
-        </Button>
-
-        {/* Mapped Nav Items */}
-        <div className="dash-nav-items">
-          {menuItems.map((item) => (
-            <button
-              key={item.label}
-              className="dash-nav-link"
-              onClick={() => {
-                navigate(item.href);
-                setIsExpanded(false); // Auto-close on mobile selection
-              }}
+          <nav className="dash-sidebar">
+            {/* Toggle Button */}
+            <Button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="dash-nav-toggle"
             >
-              <i className={`bi ${item.icon}`}></i>
-              <span className="dash-link-text">{item.label}</span>
-            </button>
-          ))}
+              <i
+                className={`bi ${isExpanded ? "bi-x-circle" : "bi-arrow-right-circle-fill"}`}
+              ></i>
+            </Button>
 
-          {/* Logout Button */}
-          <button className="dash-nav-link logout-btn" onClick={handleLogout}>
-            <i className="bi bi-box-arrow-left"></i>
-            <span className="dash-link-text">Log Out</span>
-          </button>
+            {/* Mapped Nav Items */}
+            <div className="dash-nav-items">
+              {menuItems.map((item) => (
+                <button
+                  key={item.label}
+                  className="dash-nav-link"
+                  onClick={() => {
+                    navigate(item.href);
+                    if (window.innerWidth < 1024) {
+                      setIsExpanded(false);
+                    }
+                  }}
+                >
+                  <i className={`bi ${item.icon}`}></i>
+                  <span className="dash-link-text">{item.label}</span>
+                </button>
+              ))}
+
+              {/* Logout Button */}
+              <button
+                className="dash-nav-link logout-btn"
+                onClick={handleLogout}
+              >
+                <i className="bi bi-box-arrow-left"></i>
+                <span className="dash-link-text">Log Out</span>
+              </button>
+            </div>
+          </nav>
         </div>
-      </nav>
-    </div>
+    </>
   );
 };
 

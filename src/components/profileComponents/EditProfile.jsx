@@ -134,45 +134,50 @@ export default function EditProfile() {
 
   return (
     <>
-      <ProfileHeader />
+     <div classname="dashboard-dark-theme">
         <DashboardNav /> 
 
-      <div className="dark-theme">
-        <div className="d-flex">
-          {showPwdForm ? (
-            <PasswordChangeForm
-              userId={userId}
-              setShowPwdForm={setShowPwdForm}
-              handleOnSuccess={handleOnSuccess}
+        <div className="dashboard-content-area">
+          <ProfileHeader />
+
+            <div className="dark-theme">
+              <div className="d-flex">
+                {showPwdForm ? (
+                  <PasswordChangeForm
+                    userId={userId}
+                    setShowPwdForm={setShowPwdForm}
+                    handleOnSuccess={handleOnSuccess}
+                  />
+                ) : (
+                  <ProfileFormFields
+                    formData={formData}
+                    setFormData={setFormData}
+                    isAdmin={isAdmin && !!userId}
+                    onSubmit={handleSubmit}
+                    onCancel={handleCancel}
+                    onDelete={() => setConfModalShow(true)}
+                    setShowPwdForm={() => setShowPwdForm(true)}
+                  />
+                )}
+              </div>
+            </div>
+
+            <ConfirmationModal
+              show={confModalShow}
+              heading="Confirm Deletion"
+              body="Are you sure you want to delete this user permanently? This action cannot be undone."
+              onConfirm={handleDeleteUser}
+              onCancel={() => setConfModalShow(false)}
             />
-          ) : (
-            <ProfileFormFields
-              formData={formData}
-              setFormData={setFormData}
-              isAdmin={isAdmin && !!userId}
-              onSubmit={handleSubmit}
-              onCancel={handleCancel}
-              onDelete={() => setConfModalShow(true)}
-              setShowPwdForm={() => setShowPwdForm(true)}
+
+            <InfoModal
+              show={infoModalShow}
+              hide={() => setInfoModalShow(false)}
+              heading={modalHeading}
+              body={modalBody}
             />
-          )}
         </div>
       </div>
-
-      <ConfirmationModal
-        show={confModalShow}
-        heading="Confirm Deletion"
-        body="Are you sure you want to delete this user permanently? This action cannot be undone."
-        onConfirm={handleDeleteUser}
-        onCancel={() => setConfModalShow(false)}
-      />
-
-      <InfoModal
-        show={infoModalShow}
-        hide={() => setInfoModalShow(false)}
-        heading={modalHeading}
-        body={modalBody}
-      />
     </>
   );
 }

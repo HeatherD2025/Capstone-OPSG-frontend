@@ -1,6 +1,25 @@
+/* Base style for the content area */
+.dashboard-content {
+  transition:
+    margin-left 0.3s ease,
+    width 0.3s ease;
+  padding: 2rem;
+  margin-left: 60px;
+  width: calc(100% - 60px);
+}
+.dashboard-content-area {
+  transition:
+    margin-left 0.3s ease,
+    width 0.3s ease;
+  padding: 2rem;
+  margin-left: 60px;
+  width: calc(100% - 60px);
+}
+
 .dash-nav-container {
   position: fixed;
   left: 0;
+  top: 0;
   height: 100vh;
   background-color: #272d32;
   transition: width 0.3s ease;
@@ -9,15 +28,13 @@
   flex-direction: column;
 }
 
-/* Width control */
+/* Sidebar Widths */
 .dash-nav-container.collapsed {
   width: 60px;
 }
-
 .dash-nav-container.expanded {
-  width: 180px; 
+  width: 180px;
 }
-
 .dash-sidebar {
   padding: 1rem 0;
   display: flex;
@@ -37,8 +54,8 @@
   justify-content: center;
   margin: 0 auto 2rem auto;
   font-size: 1.2rem;
+  cursor: pointer;
 }
-
 .dash-nav-items {
   display: flex;
   flex-direction: column;
@@ -55,20 +72,17 @@
   width: 100%;
   text-align: left;
   transition: background 0.2s;
-  overflow: hidden; 
+  overflow: hidden;
   white-space: nowrap;
+  cursor: pointer;
 }
-
 .dash-nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .dash-nav-link i {
   font-size: 1.4rem;
   min-width: 30px;
 }
-
-
 .dash-link-text {
   margin-left: 1rem;
   font-weight: 200;
@@ -83,12 +97,54 @@
 }
 
 .logout-btn {
-  margin-top: auto; 
+  margin-top: auto;
   color: #ffb3b3;
 }
 
-@media (max-width: 768px) {
-.dash-nav-container.expanded {
-  box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+@media (max-width: 767px) {
+  .dashboard-content-area {
+    margin-left: 0.75rem;
+    margin-top: -1rem;
+    width: calc(100% + 16px);
+    padding: 1rem;
+  }
+  .dash-nav-container.expanded {
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+  }
 }
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .dash-nav-container.collapsed + .dashboard-content-area {
+    margin-left: 25px;
+    margin-top: -0.9rem;
+    width: calc(100% + 10px);
+    transition:
+      margin-left 0.3s ease,
+      width 0.3s ease;
+  }
+
+  .dash-nav-container.expanded + .dashboard-content-area {
+    margin-left: 145px;
+    margin-top: -1rem;
+    width: calc(100% - 180px);
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .dash-nav-container.collapsed + .dashboard-content-area {
+    margin-left: 25px;
+    margin-top: -1rem;
+    width: calc(100% - 60px);
+    transition:
+      margin-left 0.3s ease,
+      width 0.3s ease;
+  }
+
+  .dash-nav-container.expanded + .dashboard-content-area {
+    margin-left: 145px;
+    margin-top: -1rem;
+    width: calc(100% - 80px);
+  }
 }

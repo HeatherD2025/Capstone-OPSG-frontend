@@ -9,21 +9,14 @@
     color: #558e89;
   }
 
-
   /* Why choose OPSG section */
   .why-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: 35.5rem; */
-  }
-  /* .why-paras-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
 
-  } */
+  }
   .why-para-section1, 
   .why-para-section2,
   .why-para-section3,
@@ -116,6 +109,223 @@
     width: auto;
     margin: 2rem;
     font-size:  clamp(20px, 3vw, 24px);
+    font-weight: 200;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .services-header {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 100;
+    width: 28rem;
+    margin: auto;
+    padding: 2rem 0rem;
+    color: #558e89;
+  }
+
+  /* Why choose OPSG section */
+  .why-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 28rem;
+  }
+  .why-para-section1, 
+  .why-para-section2,
+  .why-para-section3,
+  .why-para-section4 {
+    margin: 1rem 2rem;
+    font-weight: 200;
+    font-size: clamp(16px, 2vw, 20px);
+  }
+  .services-main-image {
+    width: auto;
+    margin-right: 2rem;
+    height: 18rem;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+  }
+
+    /*Service cards*/
+  .services-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 200;
+  }
+  .services-section-title {
+    font-weight: 200;
+    margin-top: 3rem;
+  }
+  .info-card {
+    background-color: #79cbbb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease-in-out,
+      box-shadow 0.25s ease-in-out;
+    width: 16rem;
+    height: 16rem;
+    margin: 0rem 1rem 1rem 1rem;
+  }
+  /* .services-info-card {
+    background-color: #bc724d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease-in-out,
+      box-shadow 0.25s ease-in-out;
+  } */
+  .info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+  .info-card,
+  .card-body {
+    align-items: center;
+    text-align: center;
+    height: 15.5rem;
+  }
+  .info-card-body {
+    margin-top: 1rem;
+  }
+  .info-card-image {
+    margin: .5rem 0rem 2rem 0rem;
+    height: auto;
+    width: 4rem;
+    object-fit: cover;
+  }
+
+  .card-subtitle {
+    margin-top: 2.2vw;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 200;
+  }
+  .card-text {
+    margin-top: 1rem;
+    font-size: clamp(16px, 2vw, 18px);
+  }
+  .card-description {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: auto;
+    margin-bottom: 2rem;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 200;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-header {
+    font-size: clamp(26px, 5vw, 34px);
+    font-weight: 100;
+    width: 30rem;
+    margin: auto;
+    padding-top: 3rem;
+    color: #558e89;
+  }
+
+  /* Why choose OPSG section */
+  .why-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 35rem;
+  }
+  .why-para-section1, 
+  .why-para-section2,
+  .why-para-section3,
+  .why-para-section4 {
+    margin: 1rem 2rem;
+    font-weight: 200;
+    font-size: clamp(16px, 2vw, 20px);
+  }
+  .services-main-image {
+    width: auto;
+    margin-right: 2rem;
+    height: 28rem;
+    border-radius: 2%;
+    filter: drop-shadow(8px 8px 10px gray);
+  }
+
+    /*Service cards*/
+  .services-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 200;
+  }
+  .services-section-title {
+    font-weight: 200;
+    margin: 3rem 0rem 1rem 0rem;
+  }
+  .info-card {
+    background-color: #79cbbb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease-in-out,
+      box-shadow 0.25s ease-in-out;
+    width: 16rem;
+    height: 16rem;
+    margin: 0rem 1rem 1rem 1rem;
+  }
+  /* .services-info-card {
+    background-color: #bc724d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease-in-out,
+      box-shadow 0.25s ease-in-out;
+  } */
+  .info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+  .info-card,
+  .card-body {
+    align-items: center;
+    text-align: center;
+    height: 15.5rem;
+  }
+  .info-card-body {
+    margin-top: 1rem;
+  }
+  .info-card-image {
+    margin: .5rem 0rem 2rem 0rem;
+    height: auto;
+    width: 4rem;
+    object-fit: cover;
+  }
+
+  .card-subtitle {
+    margin-top: 2.2vw;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 200;
+  }
+  .card-text {
+    margin-top: 1rem;
+    font-size: clamp(16px, 2vw, 18px);
+  }
+  .card-description {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: auto;
+    margin-bottom: 2rem;
+    font-size: clamp(18px, 2.5vw, 22px);
     font-weight: 200;
   }
 }
