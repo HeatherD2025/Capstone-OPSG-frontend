@@ -24,11 +24,16 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+.dark-theme {
+  width: auto;
+  background-color: #374249;
+}
 .profile-header {
   height: 6rem;
   background-color: #272d32;
   color: #ffff;
   padding: 1rem;
+  width: auto;
 }
 .header-container {
   height: 6rem;
@@ -44,8 +49,8 @@
   height: 3rem;
 }
 .opsg-header-text {
-  font-size: 16px;
-   background:#79cbbb;
+  font-size: 14px;
+  background:#79cbbb;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -53,7 +58,7 @@
 .welcome-header-container p {
   width: 10rem;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 200;
   height: 1rem;
 }
@@ -110,23 +115,21 @@
 }
 
 /* Buttons */
-.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
-}
+ .btn-success {
+   background-color: #28a745;
+   border-color: #28a745;
+ }
 
-.btn-outline-danger {
-  color: #dc3545;
-  border-color: #dc3545;
-}
+ .btn-outline-danger {
+   color: #dc3545;
+   border-color: #dc3545;
+ }
 
-.btn-outline-danger:hover {
-  background-color: #dc3545;
-  color: #ffff;
-}
-
-
-  .nav-column {
+ .btn-outline-danger:hover {
+   background-color: #dc3545;
+   color: #ffff;
+ }
+ .nav-column {
     min-height: 0;
     width: 100%;
     position: fixed;
