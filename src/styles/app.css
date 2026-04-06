@@ -22,9 +22,29 @@ body,
   .btn-primary-soft {
     border: none;
     width: 80px;
-    background-color: #558e89;
+    background-color: #558e89 !important;
     color: #ffff;
-    font-size: clamp(0.85rem, 0.75vw, 8rem);
+    margin-top: .25rem;
+    padding: 8px;
+    border-radius: 2em;
+    font-weight: 200;
+  }
+  .btn-primary-cancel {
+    border: none;
+    width: 80px;
+    background-color: gray!important;
+    color: #ffff;
+    margin-top: .25rem;
+    padding: 8px;
+    border-radius: 2em;
+    font-weight: 200;
+  }
+    .btn-primary-danger {
+    border: none;
+    width: 80px;
+    background-color: #b37070ff !important;
+    color: #ffff;
+    margin-top: .25rem;
     padding: 8px;
     border-radius: 2em;
     font-weight: 200;
@@ -196,8 +216,8 @@ body,
     height: 8rem;
   }
   .user-search-container {
-    max-width: 65rem;
-    margin: 1rem 0rem 0rem 13rem;
+    max-width: 19rem;
+    margin: 1rem 0rem 0rem 4.5rem;
   }
 
   /*Forms*/
@@ -230,7 +250,7 @@ body,
     width: 80px;
     font-size: clamp(0.85rem, 0.75vw, 8rem);
     background-color: #558e89;
-    margin-top: 5px;
+    /* margin-top: 5px; */
   }
 
   /* Login and Register */
@@ -260,9 +280,9 @@ body,
     background-color: #686868;
     color: #ffff;
     font-weight: 200;
-    width: 55rem;
-    margin: 0.5rem 3rem 5rem 11.75rem;
-    padding: 2rem 2rem 3rem 2rem;
+    width: 20rem;
+    margin: 0rem 0rem 5rem 4rem;
+    padding: 1rem 1rem 4rem 1rem;
   }
   .edit-profile-header {
     font-size: 18px;
@@ -271,8 +291,11 @@ body,
   }
   .admin-edit-profile-button-container {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    align-items: flex-end;
     margin-top: 2rem;
+    gap: 1rem;
   }
 
   /* contact page */

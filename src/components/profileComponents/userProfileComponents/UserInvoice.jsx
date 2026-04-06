@@ -95,7 +95,7 @@ export default function UserInvoice() {
           </div>
 
           <div className="invoice-header-container">
-            <h4 className="text-uppercase mt-3">Invoice</h4>
+            <p className="text-uppercase mt-3">Invoice</p>
             <p>#{invoiceData.num}</p>
           </div>
 

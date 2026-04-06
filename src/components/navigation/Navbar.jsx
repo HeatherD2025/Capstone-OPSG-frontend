@@ -14,7 +14,6 @@ export default function NavBar() {
   const token = getToken();
 
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
-
   const { isAdmin } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
 
@@ -105,7 +104,7 @@ export default function NavBar() {
               <div>OnPoint</div>
             </div>
 
-            {/* right side - hamburger and nav items */}
+            {/* left side - hamburger and nav items */}
             <div
               className="hamburger"
               onClick={() => setIsOpen(!isOpen)}

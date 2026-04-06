@@ -20,19 +20,21 @@ export default function BalanceCard() {
   return (
     <>
       <button
+        className="balance-button"
         rel="noopener noreferrer"
-        style={{
-          opacity: 0,
-          height: "10vw",
-          width: "100%",
-          zIndex: "100",
-          marginTop: "-1rem",
-          marginBottom: "-6rem"
-        }}
+        // style={{
+        //   opacity: 0,
+        //   height: "10vw",
+        //   width: "100%",
+        //   zIndex: "100",
+        //   marginTop: "-1rem",
+        //   marginBottom: "-6rem"
+        // }}
         onClick={() => navigate(`/profile/invoices/${user.id}`)}
-      />
-      <h3>{title}</h3>
-      <p>{displayText}</p>
+      >
+        <h3>{title}</h3>
+        <p>{displayText}</p>
+      </button>
     </>
   );
 }

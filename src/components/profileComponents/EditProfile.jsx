@@ -134,8 +134,8 @@ export default function EditProfile() {
 
   return (
     <>
-     <DashboardNav /> 
       <ProfileHeader />
+        <DashboardNav /> 
 
       <div className="dark-theme">
         <div className="d-flex">

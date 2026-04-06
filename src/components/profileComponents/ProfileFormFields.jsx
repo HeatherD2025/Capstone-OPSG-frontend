@@ -12,6 +12,7 @@
     isAdmin,
     userId
   }) {
+    console.log(userId)
 
   return (
     <>
@@ -207,10 +208,8 @@
                           variant="secondary"
                           className="btn-primary-soft"
                           style={{
-                            marginRight: "5px",
                             width: "150px",
                             fontSize: "12px",
-                            backgroundColor: "#558e89",
                           }}
                         />
                       </Col>
@@ -225,10 +224,8 @@
                       variant="secondary"
                       className="btn-primary-soft"
                       style={{
-                        marginRight: "18px",
                         width: "150px",
                         fontSize: "12px",
-                        backgroundColor: "#558e89",
                       }}
                     />
                     <ReactiveButton
@@ -238,28 +235,24 @@
                       idleText="Cancel Changes"
                       loadingText="Loading"
                       variant="secondary"
-                      className="btn-primary-soft"
+                      className="btn-primary-cancel"
                       style={{
                         width: "150px",
                         fontSize: "12px",
-                        marginRight: "18px",
-                        backgroundColor: "gray",
                       }}
                     />
-                    {isAdmin && !!userId && (
+                    {isAdmin && (
                       <ReactiveButton
                         type="button"
                         rounded
                         idleText="Delete Profile"
                         loadingText="Loading"
                         variant="secondary"
-                        className="btn-primary-soft"
+                        className="btn-primary-danger"
                         onClick={onDelete}
                         style={{
-                          marginLeft: "130px",
                           width: "150px",
                           fontSize: "12px",
-                          backgroundColor: "#b37070ff",
                         }}
                       />
                     )}

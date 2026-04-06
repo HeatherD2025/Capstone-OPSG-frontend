@@ -1,20 +1,9 @@
-/*  Mobile (≤767px) */
-.navbar-item {
-  border: none;
-}
 .bg-light2 {
   --bs-bg-opacity: 1;
   background-color: #ffff;
   padding-bottom: 1rem;
   width: 100%;
 }
-.list-group-item-action {
-  width: auto;
-}
-.navbar-item:hover {
-  border-radius: 20% / 60%;
-}
-
 .login-register-buttons {
   display: flex;
   flex-direction: row;
@@ -38,6 +27,7 @@
   display: block;
 }
 
+/*  Mobile (≤767px) */
 @media (max-width: 767px) {
   .navbar {
     position: sticky;
@@ -87,8 +77,8 @@
     align-items: center;
     margin-left: 0.4rem;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
@@ -111,7 +101,7 @@
   }
 }
 /* Tablet (≤768px) */
-@media (min-width: 768px) and (max-width: 1023px) { 
+@media (min-width: 768px) and (max-width: 1023px) {
   .navbar {
     position: sticky;
     z-index: 1050;
@@ -160,8 +150,8 @@
     align-items: center;
     margin-left: 0.4rem;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);

@@ -389,18 +389,10 @@ export default function Registration() {
                   className="submit-btn-custom"
                   type="submit"
                   disabled={!!passwordError || !formData.password}
+                  style={{ marginTop: ".5rem" }}
                 />
                 
               </div>
-                {/* <ReactiveButton
-                  rounded
-                  buttonState={loading ? "loading" : "idle"}
-                  idleText={"SUBMIT"}
-                  loadingText={"Loading"}
-                  className="submit-btn-custom"
-                  type="submit"
-                  disabled={!!passwordError || !formData.password}
-                ></ReactiveButton> */}
               </Form>
             </div>
           </div>

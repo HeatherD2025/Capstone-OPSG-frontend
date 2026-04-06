@@ -29,8 +29,8 @@ export default function AdminSearch() {
   return (
     <>
     <div className="dashboard dark-theme">
-        <DashboardNav />
-          <ProfileHeader />
+        <ProfileHeader />
+         <DashboardNav />
 
         <div className="user-search-container">
      

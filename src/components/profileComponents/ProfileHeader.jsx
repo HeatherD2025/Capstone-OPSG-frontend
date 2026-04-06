@@ -1,4 +1,4 @@
-import "../../styles/profileHeader.css";
+import "../../styles/dashboard.css";
 import opsgLogo from "../../assets/images/opsg-logo.webp";
 import { Image, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";

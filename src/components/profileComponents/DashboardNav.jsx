@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import "../../styles/dashboardNav.css";
 import { logout } from "../../slices/authSlice";
 import { removeToken } from "../../utils/tokenService";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
+import "../../styles/dashboardNav.css";
 
 const DashboardNav = () => {
-  const [isNotActive, setNotActive] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const { data: user, isLoading, isError } = useGetCurrentUserQuery();
@@ -20,81 +21,69 @@ const DashboardNav = () => {
     const el = document.getElementById(id);
 
     if (id && el) {
-      setTimeout(() => {
-        el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location.pathname, location.hash]);
 
-  if (isLoading) return <p>Loading user data...</p>;
-  if (isError) return <p>Error loading user data</p>;
-  if (!user) return <p>No user found</p>;
+  if (isLoading || isError || !user) return null;
 
-  const arrowRight = <i className="bi bi-arrow-right-circle-fill"></i>;
-  const crossIcon = <i className="bi bi-x-circle"></i>;
+  const menuItems = [
+    { label: "OPSG Home", href: "/", icon: "bi-house" },
+    { label: "Dashboard", href: "/dashboard", icon: "bi-speedometer2" },
+  ];
+
+  if (isAdmin) {
+    menuItems.push({ label: "All Users", href: "/admin/search", icon: "bi-people-fill" });
+  } else {
+    menuItems.push(
+      { label: "View Invoices", href: `/profile/invoices/${user.id}`, icon: "bi-receipt" },
+      { label: "Edit Profile", href: "/user/me/updateUserProfile", icon: "bi-person-gear" }
+    );
+  }
+
+  const handleLogout = () => {
+    removeToken();
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
-    <div>
-      <div className="nav-wrapper">
-        <nav id="sidebar" className={isNotActive ? "active" : ""}>
-          <Button
-            type="button"
-            onClick={() => setNotActive(!isNotActive)}
-            className="btn btn-custom collapse-button"
-          >
-            <span className={isNotActive ? "" : "hidden"}>{arrowRight}</span>
-            <span className={isNotActive ? "hidden" : ""}>{crossIcon}</span>
-          </Button>
+    <div className={`dash-nav-container ${isExpanded ? "expanded" : "collapsed"}`}>
+      <nav className="dash-sidebar">
+        {/* Toggle Button */}
+        <Button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="dash-nav-toggle"
+        >
+          <i className={`bi ${isExpanded ? "bi-x-circle" : "bi-arrow-right-circle-fill"}`}></i>
+        </Button>
 
-          <ul className="list-unstyled components">
-            <li className="dashboard-list-item">
-              <i className="bi bi-house"></i>
-              <Link to="/">OPSG Home</Link>
-            </li>
+        {/* Mapped Nav Items */}
+        <div className="dash-nav-items">
+          {menuItems.map((item) => (
+            <button
+              key={item.label}
+              className="dash-nav-link"
+              onClick={() => {
+                navigate(item.href);
+                setIsExpanded(false); // Auto-close on mobile selection
+              }}
+            >
+              <i className={`bi ${item.icon}`}></i>
+              <span className="dash-link-text">{item.label}</span>
+            </button>
+          ))}
 
-            <li className="dashboard-list-item">
-              <i className="bi bi-speedometer2"></i>{" "}
-              {/* Suggestion: Different icon for clarity */}
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-
-            {isAdmin ? (
-              <li className="dashboard-list-item">
-                <i className="bi bi-people-fill"></i>
-                <Link to="/admin/search">All Users</Link>
-              </li>
-            ) : (
-              <>
-                <li className="dashboard-list-item">
-                  <i className="bi bi-receipt"></i>{" "}
-                  {/* Suggestion: Invoice icon */}
-                  <Link to={`/profile/invoices/${user.id}`}>View Invoices</Link>
-                </li>
-
-                <li className="dashboard-list-item">
-                  <i className="bi bi-person-gear"></i>
-                  <Link to="/user/me/updateUserProfile">Edit Profile</Link>
-                </li>
-              </>
-            )}
-
-            <li className="dashboard-list-item">
-              <i className="bi bi-box-arrow-left"></i>
-              <Link
-                to="/"
-                onClick={() => {
-                  removeToken();
-                  dispatch(logout());
-                }}
-              >
-                Log Out
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          {/* Logout Button */}
+          <button className="dash-nav-link logout-btn" onClick={handleLogout}>
+            <i className="bi bi-box-arrow-left"></i>
+            <span className="dash-link-text">Log Out</span>
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };
