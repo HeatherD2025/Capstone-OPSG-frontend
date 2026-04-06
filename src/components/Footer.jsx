@@ -12,7 +12,7 @@ const Footer = () => {
           <Col
             xs={12}
             md={5}
-            className="text-center text-md-start mb-3 mb-md-0"
+            className="text-center text-md-start mb-md-0"
           >
             <p>
               M. Michelle Zachary, CPCS, CPMSM

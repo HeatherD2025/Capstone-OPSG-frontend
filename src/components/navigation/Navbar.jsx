@@ -10,6 +10,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   const token = getToken();
 
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
@@ -30,11 +31,22 @@ export default function NavBar() {
     }
   }
 
- const scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navItems = [
+    { label: "About", href: "/" },
+    { label: "Services", href: "/ourservices" },
+    { label: "Contact", href: "/contactform" },
+  ];
+
   useEffect(() => {
+    // get current path
+    const currentPath = window.location.pathame;
+
+    if (!currentPath) return;
+    
     // strip hash symbol from location to match id
     const id = location.hash.replace("#", "");
     const el = document.getElementById(id);
@@ -48,22 +60,31 @@ export default function NavBar() {
       scrollToTop();
     }
 
+    // make sure it starts or ends with /
+    let normalizedPath = currentPath.startsWith("/")
+      ? currentPath
+      : `/${currentPath}`;
+    if (!normalizedPath.endsWith("/")) {
+      normalizedPath += "/";
+    }
+
     // clean url
-    const currentUrl = window.location.pathname; // the current path
-    const cleanedUrl = currentUrl
-      .replace("/", "")
-      .replace("/ourservices", "")
-      .replace("/contactform", "")
-      .replace("/login", "")
-      .replace("/register", "");
+    // const currentUrl = window.location.pathname; // the current path
+    // const cleanedUrl = currentUrl
+    //   .replace("/", "")
+    //   .replace("/ourservices", "")
+    //   .replace("/contactform", "")
+    //   .replace("/login", "")
+    //   .replace("/register", "");
 
     // normalize trailing slash
-    const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
+    // const baseUrl = cleanedUrl.endsWith("/") ? cleanedUrl : cleanedUrl + "/";
 
-    // update url without relooading the page only if url is different
-    if (window.location.href !== baseUrl)
-      window.history.replaceState(null, "", baseUrl);
-  }, [location]); //re-run this on navigation change
+    // update url only if different
+    if (window.location.href !== normalizedPath) {
+      window.history.replaceState(null, "", normalizedPath);
+    }
+  }, [location]);
 
   const handleLogout = () => {
     removeToken();
@@ -83,112 +104,164 @@ export default function NavBar() {
               ></img>
               <div>OnPoint</div>
             </div>
+
+            {/* right side - hamburger and nav items */}
+            <div
+              className="hamburger"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation menu"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") setIsOpen(!isOpen);
+              }}
+            >
+              ☰
+            </div>
           </div>
-        <div className="main-links-wrapper">
-          <ListGroup
-            className="nav navbar-nav main-links"
-          >
-            <ListGroup.Item
-              className="navbar-item"
-              action
-              onClick={() => navigate("/")}
-            >
-              About
-            </ListGroup.Item>
 
-            <ListGroup.Item
-              className="navbar-item"
-              action
-              onClick={() => navigate("/ourservices")}
-            >
-              Services
-            </ListGroup.Item>
-
-            <ListGroup.Item
-              className="navbar-item"
-              action
-              onClick={() => navigate("/contactform")}
-            >
-              Contact
-            </ListGroup.Item>
-
+          <div className={`nav-items ${isOpen ? "open" : ""}`}>
+            {navItems.map((item) => (
+              <button
+                className="nav-item"
+                key={item.id}
+                onClick={() => {
+                  navigate(item.href);
+                  setIsOpen(false);
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
             {token ? (
-              <ListGroup.Item
-                className="navbar-item"
-                action
-                onClick={() => navigate("/dashboard")}
+              <button
+                className="nav-item"
+                onClick={() => {
+                  navigate("/dashboard");
+                  setIsOpen(false);
+                }}
               >
                 Profile
-              </ListGroup.Item>
+              </button>
             ) : (
               <></>
             )}
-          </ListGroup>
-        </div>
 
-            <ListGroup
-              className="nav login-register-buttons"
-            >
-              <ListGroup.Item
-                style={{
-                  border: "solid var(--bs-body-bg)",
-                }}
+            {/* <ListGroup
+                className="nav navbar-nav main-links" 
               >
-                <span
-                  style={{
-                    border: "solid var(--bs-body-bg)",
+                <ListGroup.Item
+                  className="navbar-item"
+                  action 
+                  onClick={() => {
+                    navigate("/")
+                    setIsOpen(false);
+                  }}
+                  
+                >
+                  About
+                </ListGroup.Item>
+
+                <ListGroup.Item
+                  className="navbar-item"
+                  action
+                  onClick={() => {
+                    navigate("/ourservices")
+                    setIsOpen(false);
                   }}
                 >
-                  {token ? (
-                    <ReactiveButton
-                      onClick={handleLogout}
-                      rounded
-                      idleText={"Logout"}
-                      type="button"
-                      variant="secondary"
-                      navigate="/"
-                      className="login-register-btn-custom"
-                    >
-                      {isLoggedIn}
-                    </ReactiveButton>
-                  ) : (
-                    <ReactiveButton
-                      rounded
-                      idleText={"Login"}
-                      type="button"
-                      className="login-register-btn-custom"
-                      onClick={() => navigate("/login")}
-                    >
-                      {isLoggedIn}
-                    </ReactiveButton>
-                  )}
-                </span>
-              </ListGroup.Item>
+                  Services
+                </ListGroup.Item>
 
-              <ListGroup.Item
+                <ListGroup.Item
+                  className="navbar-item"
+                  action
+                  onClick={() => {
+                    navigate("/contactform")
+                    setIsOpen(false);
+                  }}
+                >
+                  Contact
+                </ListGroup.Item>
+
+                {token ? (
+                  <ListGroup.Item
+                    className="navbar-item"
+                    action
+                    onClick={() => {
+                      navigate("/dashboard")
+                      setIsOpen(false);
+                    }}
+                  >
+                    Profile
+                  </ListGroup.Item>
+                ) : (
+                  <></>
+                )}
+              </ListGroup>  */}
+          </div>
+
+          <ListGroup className="nav login-register-buttons">
+            <ListGroup.Item
+              style={{
+                border: "solid var(--bs-body-bg)",
+              }}
+            >
+              <span
                 style={{
                   border: "solid var(--bs-body-bg)",
                 }}
               >
-                <span>
-                  {token ? (
-                    <button
-                      className="nav-link"
-                      href="/"
-                      variant="secondary"
-                    ></button>
-                  ) : (
-                    <ReactiveButton
-                      rounded
-                      idleText={"Register"}
-                      type="button"
-                      className="login-register-btn-custom"
-                      onClick={() => navigate("/register")}
-                    ></ReactiveButton>
-                  )}
-                </span>
-              </ListGroup.Item>
-            </ListGroup>
+                {token ? (
+                  <ReactiveButton
+                    onClick={handleLogout}
+                    rounded
+                    idleText={"Logout"}
+                    type="button"
+                    variant="secondary"
+                    navigate="/"
+                    className="login-register-btn-custom"
+                  >
+                    {isLoggedIn}
+                  </ReactiveButton>
+                ) : (
+                  <ReactiveButton
+                    rounded
+                    idleText={"Login"}
+                    type="button"
+                    className="login-register-btn-custom"
+                    onClick={() => navigate("/login")}
+                  >
+                    {isLoggedIn}
+                  </ReactiveButton>
+                )}
+              </span>
+            </ListGroup.Item>
+
+            <ListGroup.Item
+              style={{
+                border: "solid var(--bs-body-bg)",
+              }}
+            >
+              <span>
+                {token ? (
+                  <button
+                    className="nav-link"
+                    href="/"
+                    variant="secondary"
+                  ></button>
+                ) : (
+                  <ReactiveButton
+                    rounded
+                    idleText={"Register"}
+                    type="button"
+                    className="login-register-btn-custom"
+                    onClick={() => navigate("/register")}
+                  ></ReactiveButton>
+                )}
+              </span>
+            </ListGroup.Item>
+          </ListGroup>
         </div>
       </nav>
     </header>

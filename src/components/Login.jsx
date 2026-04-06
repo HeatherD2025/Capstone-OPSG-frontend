@@ -120,7 +120,7 @@ const Login = () => {
         <div className="background-accent">
           <NavBar />
 
-          <div className="mb-3 welcome-modal-wrapper">
+          <div className="mb-2 welcome-modal-wrapper">
             {/* Welcome Modal */}
             <InfoModal
               show={welcomeModalShow}
@@ -132,7 +132,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="d-flex justify-content-center vh-80 login-register-modal">
+          <div className="d-flex login-register-modal">
             {show && (
               <InfoModal
                 show={show}
@@ -149,13 +149,13 @@ const Login = () => {
                 className="login-register-header"
               >
                 <Nav.Item>
-                  <Nav.Link href="/#/login" className="login-register-tab-link">
+                  <Nav.Link href="/login" className="login-register-tab-link">
                     Login
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link
-                    href="/#/register"
+                    href="/register"
                     className="login-register-tab-link"
                   >
                     Register
@@ -183,16 +183,19 @@ const Login = () => {
                   />
                 </Form.Group>
 
+              <div className="mb-3 text-center">
                 <ReactiveButton
                   rounded
                   buttonState={rtqLoading ? "loading" : "idle"}
                   idleText={"Submit"}
                   loadingText={"Loading"}
-                  variant="secondary"
                   className="submit-btn-custom"
                   type="submit"
                   disabled={rtqLoading || loading}
                 />
+                
+              </div>
+
               </Form>
             </div>
           </div>

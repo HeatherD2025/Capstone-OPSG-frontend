@@ -1,42 +1,50 @@
-/* Buttons */
-body {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  background-color: #e5fffd; /* Prevents white flash on scroll */
+}
+
+body,
+#root,
+.background {
   font-size: 14px;
 }
-
 .background {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh; /* The mobile fix */
   background-color: #e5fffd;
+  margin: 0; /* Changed from auto to 0 to prevent shifting */
+  padding: 0;
+  overflow-x: hidden;
 }
 
-.btn-primary-soft {
-  border: none;
-  width: 80px;
-  background-color: #558e89;
-  color: #ffff;
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-  padding: 8px;
-  border-radius: 2em;
-  font-weight: 200;
-}
-.reactive-btn {
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-}
+/*  Mobile (≤767px) */
+@media (max-width: 767px) {
+  .btn-primary-soft {
+    border: none;
+    width: 80px;
+    background-color: #558e89;
+    color: #ffff;
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+    padding: 8px;
+    border-radius: 2em;
+    font-weight: 200;
+  }
+  .reactive-btn {
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+  }
 
-.btn-danger-soft {
-  border: none;
-  width: 80px;
-  background-color: #b37070ff;
-  color: #ffff;
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-  padding: 8px;
-  border-radius: 2em;
-  font-weight: 200;
-  margin-top: 5px;
-}
+  .btn-danger-soft {
+    border: none;
+    width: 80px;
+    background-color: #b37070ff;
+    color: #ffff;
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+    padding: 8px;
+    border-radius: 2em;
+    font-weight: 200;
+    margin-top: 5px;
+  }
 
-@media (min-width: 1024px) {
   .welcome-modal-wrapper {
     width: 20vw;
     margin-top: 6vw;
@@ -53,52 +61,53 @@ body {
   }
 
   /*Header and intro section*/
+  .intro-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   .logo-container {
     display: flex;
     align-items: center;
     font-weight: 200;
+    margin: 1rem;
   }
   .homepage-opsg-logo {
-    width: 5vw;
-    height: 4vw;
+    width: 4.5rem;
+    height: 4rem;
     padding-right: 1vw;
   }
   .logo-and-subtext-container {
-    justify-items: center;
-  }
-  .logo-header-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    margin-top: 10rem;
-    width: 44vw;
+    order: 1;
+    width: 100%;
   }
+
   .opsg-name {
-    font-size: 2vw;
+    font-size: clamp(14px, 2vw, 24px);
     font-weight: 200;
-    margin-top: 0.5vw;
+    margin-top: 0.75rem;
   }
 
   .secondary-header-box {
     display: flex;
     gap: 1.4vw;
-    margin: 0vw 0vw 0vw 5vw;
+    margin-left: 1rem;
     font-size: clamp(1rem, 1vw, 1rem);
   }
   .secondary-header-box > * {
     border-radius: 1vw;
   }
-  .intro-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rvw;
-    margin-top: 5rem;
-  }
+
   .intro-text-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    order: 2;
+    padding: 2rem;
   }
   .intro-text-first-line,
   .intro-text-second-line {
@@ -111,10 +120,11 @@ body {
 
   /*Main image*/
   .main-image {
-    width: 50vw;
+    width: 18rem;
     height: auto;
     border-radius: 2%;
     filter: drop-shadow(8px 8px 10px gray);
+    order: 3;
   }
 
   /*Counter section*/
@@ -122,22 +132,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: clamp(18px, 3vw, 3rem);
+    font-size: clamp(14px, 2vw, 24px);
     font-weight: 200;
     width: 100%;
-    margin-top: 18rem;
+    margin-top: 6rem;
     z-index: 9999;
   }
   .us-map {
-    width: 60rem;
+    width: 20rem;
     height: auto;
     opacity: 0.08;
     z-index: 0;
-    margin: -20rem 5rem 10rem 7rem;
+    margin: -8.5rem 5rem 5rem 1rem;
   }
 
   /* Home Cards styling */
-  .home-page-cards {
+  .home-info-card,
+  .home-info-card-body {
     background-color: #79cbbb;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -145,9 +156,12 @@ body {
       transform 0.25s ease-in-out,
       box-shadow 0.25s ease-in-out;
     max-width: 20rem;
+    align-items: center;
+    text-align: center;
+    height: 15rem;
   }
 
-  .home-page-cards:hover {
+  .home-info-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   }
@@ -159,12 +173,11 @@ body {
     text-align: center;
     padding: 2rem;
   } */
-    .info-card .card-body {
-    display: flex;
-    flex-direction: column;
+  .info-card,
+  .card-body {
     align-items: center;
     text-align: center;
-    height: 10vw;
+    height: 13.5rem;
   }
   .home-info-card-image {
     width: 72px;
@@ -172,6 +185,7 @@ body {
     object-fit: contain;
     margin: 1rem 0rem;
   }
+
   /* Admin search card body */
   .search-card-body {
     display: flex;
@@ -195,13 +209,14 @@ body {
     max-width: 30rem;
     width: 100%;
     margin: auto;
+    z-index: 0;
   }
 
   .contact-form-container {
     background-color: #fff;
     border-radius: 2%;
     filter: drop-shadow(8px 8px 10px gray);
-    max-width: 40rem;
+    max-width: 20rem;
     width: 100%;
     margin: auto;
   }
@@ -218,10 +233,9 @@ body {
     margin-top: 5px;
   }
 
-
   /* Login and Register */
   .login-register-modal {
-    margin-top: 3rem;
+    margin: 3rem 2rem;
     z-index: 20;
   }
   .login-register-header {
@@ -235,7 +249,7 @@ body {
     margin-top: 0.3rem;
   }
   .login-register-form {
-    padding: 2rem;
+    padding: 1rem;
   }
   #stateSelect {
     font-size: 12px;
@@ -247,7 +261,7 @@ body {
     color: #ffff;
     font-weight: 200;
     width: 55rem;
-    margin: .5rem 3rem 5rem 11.75rem;
+    margin: 0.5rem 3rem 5rem 11.75rem;
     padding: 2rem 2rem 3rem 2rem;
   }
   .edit-profile-header {
@@ -255,7 +269,7 @@ body {
     font-weight: 200;
     margin-bottom: 2rem;
   }
-    .admin-edit-profile-button-container {
+  .admin-edit-profile-button-container {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
@@ -264,10 +278,9 @@ body {
   /* contact page */
   .contact-page-header {
     text-align: center;
-    padding: 3vw 0vw 2vw 0vw;
+    padding: 2rem 0rem 2rem 0rem;
     font-weight: 100;
   }
-
   /*Footer*/
   .opsg-logo {
     width: 5vw;
@@ -275,9 +288,9 @@ body {
   .footer {
     background-color: #558e89;
     color: black;
-    padding: 5rem 0rem 5rem 0rem;
+    padding: 2rem 0rem;
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
 
   .footer-email-link {
@@ -290,4 +303,6 @@ body {
     height: 2rem;
     margin-right: 8px;
   }
+}
+@media (min-width: 1024px) {
 }

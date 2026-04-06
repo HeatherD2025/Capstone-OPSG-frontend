@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "../features/api/authApi";
 import { Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useContext } from "react";
+import { useDispatch, useSelector  } from "react-redux";
+
+import { useRegisterMutation } from "../features/api/authApi";
 import { setTokens } from "../slices/authSlice";
 import { setAuthHeader } from "../utils/tokenService";
-import { useContext } from "react";
 import { userContext } from "./navigation/ContextProvider";
 import ReactiveButton from "reactive-button";
+
 import "../styles/app.css";
 import Footer from "../components/Footer";
 import Form from "react-bootstrap/Form";
@@ -32,6 +33,8 @@ export default function Registration() {
   const closeModal = () => setShow(false);
 
   const [loading, setLoading] = useState(false);
+  const { user, isInitialLoading } = useSelector((state) => state.auth);
+
 
   // stores data from register form
   const [formData, setFormData] = useState({
@@ -126,6 +129,10 @@ export default function Registration() {
     }
   };
 
+   if (isInitialLoading) {
+   return <div className="loading-spinner"></div>; // Or a skeleton screen
+  }
+
   return (
     <>
       <div className="background">
@@ -150,17 +157,17 @@ export default function Registration() {
                 className="login-register-header"
               >
                 <Nav.Item>
-                  <Nav.Link href="/#/login" className="login-register-tab-link">
-                    LOGIN
+                  <Nav.Link href="/login" className="login-register-tab-link">
+                    Login
                   </Nav.Link>
                 </Nav.Item>
                 
                 <Nav.Item>
                   <Nav.Link
-                    href="/#/register"
+                    href="/register"
                     className="login-register-tab-link"
                   >
-                    REGISTER
+                    Register
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
@@ -373,7 +380,19 @@ export default function Registration() {
                   </Form.Control.Feedback>
                 </Form.Group>
 
+             <div className="mb-3 text-center">
                 <ReactiveButton
+                  rounded
+                  buttonState={loading ? "loading" : "idle"}
+                  idleText={"Submit"}
+                  loadingText={"Loading"}
+                  className="submit-btn-custom"
+                  type="submit"
+                  disabled={!!passwordError || !formData.password}
+                />
+                
+              </div>
+                {/* <ReactiveButton
                   rounded
                   buttonState={loading ? "loading" : "idle"}
                   idleText={"SUBMIT"}
@@ -381,7 +400,7 @@ export default function Registration() {
                   className="submit-btn-custom"
                   type="submit"
                   disabled={!!passwordError || !formData.password}
-                ></ReactiveButton>
+                ></ReactiveButton> */}
               </Form>
             </div>
           </div>

@@ -77,73 +77,72 @@ const Home = () => {
       <NavBar />
 
       <div className="intro-container">
-        <div className="logo-header-container">
-          <div className="logo-and-subtext-container">
-            <div className="logo-container">
-              <img
-                src={opsgLogo}
-                alt="OPSG logo"
-                className="homepage-opsg-logo"
-              ></img>
-              <h1 className="opsg-name">OnPoint Solutions Group</h1>
+        <div className="logo-and-subtext-container">
+          <div className="logo-container">
+            <img
+              src={opsgLogo}
+              alt="OPSG logo"
+              className="homepage-opsg-logo"
+            ></img>
+            <h1 className="opsg-name">OnPoint Solutions Group</h1>
+          </div>
+
+          <Col className="text-muted">
+            <div className="secondary-header-box">
+              <div>Credentials</div>
+              <div>Enrollments</div>
+              <div>Consulting</div>
             </div>
-
-            <Col className="text-muted">
-              <div className="secondary-header-box">
-                <div>Credentials</div>
-                <div>Enrollments</div>
-                <div>Consulting</div>
-              </div>
-            </Col>
-          </div>
-
-          <div className="intro-text-container">
-            {/* animate fade in going down */}
-            <motion.div
-              variants={fadeInAnimationVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              custom={-3} // make y negative, so fade in from top moving down
-            >
-              <h1 className="intro-text-first-line">You care for patients</h1>
-            </motion.div>
-
-            <motion.div
-              variants={fadeinAnimationDelay}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              custom={3}
-            >
-              <h1 className="intro-text-second-line">
-                We'll take care of the rest
-              </h1>
-            </motion.div>
-          </div>
+          </Col>
         </div>
+
+        <div className="intro-text-container">
+          {/* animate fade in going down */}
+          <motion.div
+            variants={fadeInAnimationVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={-2} // make y negative, so fade in from top moving down
+          >
+            <h1 className="intro-text-first-line">You care for patients</h1>
+          </motion.div>
+
+          <motion.div
+            variants={fadeinAnimationDelay}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={2}
+          >
+            <h1 className="intro-text-second-line">
+              We'll take care of the rest
+            </h1>
+          </motion.div>
+        </div>
+
         {/* <div className="main-image-container"> */}
-          <img
-            className="main-image"
-            src={nurseSmiling}
-            fluid="true"
-            thumbnail="true"
-            alt="nurse smiling"
-            loading="lazy"
-          />
+        <img
+          className="main-image"
+          src={nurseSmiling}
+          fluid="true"
+          thumbnail="true"
+          alt="nurse smiling"
+          loading="lazy"
+        />
         {/* </div> */}
       </div>
 
-        <p className="centered-counter">
-          Trusted by over <AnimationCountUp loading="lazy" from={0} to={50} />
-          Hospitals, providers, and practicioners nationwide
-        </p>
+      <p className="centered-counter">
+        Trusted by over <AnimationCountUp loading="lazy" from={0} to={50} />
+        Hospitals, providers, and practicioners nationwide
+      </p>
 
-        <img className="us-map" src={usaMap} alt="United States map"></img>
+      <img className="us-map" src={usaMap} alt="United States map"></img>
 
-        <div className="services-section">
-          <ServiceSection cards={homeCardData} />
-        </div>
+      <div className="services-section">
+        <ServiceSection cards={homeCardData} />
+      </div>
       <Footer />
     </div>
   );

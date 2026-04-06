@@ -1,28 +1,12 @@
-.navbar {
-  filter: drop-shadow(5px 3px 5px rgb(218, 217, 217));
-}
-
-.usr-image2 {
-  border: 2px solid #ffff;
-}
-
-.opsg-navbar-logo {
-  width: 3rem;
-  height: 3rem;
-}
-
-.nav-logo-wrapper {
-  display: flex;
-  margin-left: 3rem;
-  flex-direction: column;
-  align-items: center;
-  font-weight: 200;
-  font-size: clamp(0.85rem, 0.5vw, 8rem);
-}
-
+/*  Mobile (≤767px) */
 .navbar-item {
-  gap: 1rem;
   border: none;
+}
+.bg-light2 {
+  --bs-bg-opacity: 1;
+  background-color: #ffff;
+  padding-bottom: 1rem;
+  width: 100%;
 }
 .list-group-item-action {
   width: auto;
@@ -35,34 +19,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-right: 4rem;
+  margin-right: 1rem;
 }
-
 .reactive-btn.rounded.login-register-btn-custom {
   font-size: clamp(0.85rem, 0.75vw, 8rem);
   background-color: #558e89;
-}
-
-@media (max-width: 600px) {
-  .main-screen-buttons {
-    width: 2px;
-  }
-
-  .bg-light2 {
-    --bs-bg-opacity: 1;
-    background-color: #ffff;
-    padding-bottom: 3em;
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .bg-light2 {
-    --bs-bg-opacity: 1;
-    background-color: #ffff;
-    max-height: 90px;
-    width: 100%;
-  }
 }
 
 /* Bootstrap button styling override */
@@ -73,17 +34,152 @@
   color: black;
   cursor: pointer;
 }
-
 .navBar .nav-toggle.toggle-active:after {
   display: block;
 }
 
-.main-links-wrapper {
-  width: 60%;
+@media (max-width: 767px) {
+  .navbar {
+    position: sticky;
+    z-index: 1050;
+    width: auto;
+    height: 6rem;
+  }
+  .usr-image2 {
+    border: 2px solid #ffff;
+  }
+  .opsg-navbar-logo {
+    width: 2.2rem;
+    height: 2rem;
+  }
+  .nav-logo-wrapper {
+    display: flex;
+    margin-left: 2rem;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 200;
+    font-size: clamp(0.85rem, 0.5vw, 8rem);
+  }
+  .nav-items {
+    position: absolute;
+    font-size: clamp(0.85rem, 0.5vw, 8rem);
+    font-weight: 200;
+    top: 6rem;
+    left: 0.5rem;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    padding: 0.5rem 0rem;
+    border: 0.25px solid black;
+  }
+  .nav-item {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 200;
+  }
+  .nav-items.open {
+    display: flex;
+    align-items: center;
+    margin-left: 0.4rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+  .hamburger {
+    position: relative;
+    z-index: 1100;
+    left: 3.2rem;
+    top: 0rem;
+    cursor: pointer;
+    z-index: 999;
+  }
+  /* .main-links-wrapper {
+  width: 80%;
+} */
+  .main-links {
+    display: flex;
+    flex-direction: row;
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+  }
 }
-.main-links {
-  display: flex;
-  flex-direction: row;
-  font-size: clamp(0.85rem, 0.75vw, 8rem);
-  gap: 4vw;
+/* Tablet (≤768px) */
+@media (min-width: 768px) and (max-width: 1023px) { 
+  .navbar {
+    position: sticky;
+    z-index: 1050;
+    width: auto;
+    height: 2rem;
+  }
+  .usr-image2 {
+    border: 2px solid #ffff;
+  }
+  .opsg-navbar-logo {
+    width: 1rem;
+    height: 2rem;
+  }
+  .nav-logo-wrapper {
+    display: flex;
+    margin-left: 2rem;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 200;
+    font-size: clamp(0.85rem, 0.5vw, 8rem);
+  }
+  .nav-items {
+    position: absolute;
+    font-size: clamp(0.85rem, 0.5vw, 8rem);
+    font-weight: 200;
+    top: 6rem;
+    left: 0.5rem;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    padding: 0.5rem 0rem;
+    border: 0.25px solid black;
+  }
+  .nav-item {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 200;
+  }
+  .nav-items.open {
+    display: flex;
+    align-items: center;
+    margin-left: 0.4rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+  .hamburger {
+    position: relative;
+    z-index: 1100;
+    left: 3.2rem;
+    top: 0rem;
+    cursor: pointer;
+    z-index: 999;
+  }
+  /* .main-links-wrapper {
+  width: 80%;
+} */
+  .main-links {
+    display: flex;
+    flex-direction: row;
+    font-size: clamp(0.85rem, 0.75vw, 8rem);
+  }
 }
