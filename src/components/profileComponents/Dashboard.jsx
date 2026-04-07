@@ -11,36 +11,39 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard dark-theme">
-      <ProfileHeader />
       <DashboardNav />
 
-      <div className="dashboard-cards-container">
-        <DashboardCard
-          variant="dark"
-          titleClass="text-success"
-          bodyClass="bg-dark"
-          text={
-            <button
-              className="qb-connect-button"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                window.location.href =
-                  "https://opsg-backend.onrender.com/qbauth/connect";
-              }}
-            >
-              Connect to Quickbooks
-            </button>
-          }
-        />
+      <div className="dashboard-content-area">
+        <ProfileHeader />
+        
+        <div className="dashboard-cards-container">
+            <DashboardCard
+              variant="dark"
+              titleClass="text-success"
+              bodyClass="bg-dark"
+              text={
+                <button
+                  className="qb-connect-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    window.location.href =
+                      "https://opsg-backend.onrender.com/qbauth/connect";
+                  }}
+                >
+                  Connect to Quickbooks
+                </button>
+              }
+            />
 
-        {!isAdmin && user && (
-          <BalanceProvider id={user?.id}>
-            <DashboardCard>
-              <BalanceCard />
-            </DashboardCard>
-          </BalanceProvider>
-        )}
+            {!isAdmin && user && (
+              <BalanceProvider id={user?.id}>
+                <DashboardCard>
+                  <BalanceCard />
+                </DashboardCard>
+              </BalanceProvider>
+            )}
+        </div>
       </div>
     </div>
   );

@@ -96,7 +96,7 @@ export default function ContactFormPage() {
 
           <div className="contact-form-container">
             <Form onSubmit={handleSubmit} className="login-register-form">
-              <Form.Group className="mb-3" controlId="form-basic-name">
+              <Form.Group className="mb-2" controlId="form-basic-name">
                 <Form.Label>FIRST AND LAST NAME</Form.Label>
 
                 <Form.Control
@@ -106,7 +106,7 @@ export default function ContactFormPage() {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="form-basic-email">
+              <Form.Group className="mb-2" controlId="form-basic-email">
                 <Form.Label>E-MAIL</Form.Label>
 
                 <Form.Control
@@ -117,7 +117,7 @@ export default function ContactFormPage() {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="form-basic-phone">
+              <Form.Group className="mb-2" controlId="form-basic-phone">
                 <Form.Label>PHONE NUMBER</Form.Label>
 
                 <Form.Control
@@ -128,7 +128,7 @@ export default function ContactFormPage() {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-4" controlId="form-basic-message">
+              <Form.Group className="mb-2" controlId="form-basic-message">
                 <Form.Label>MESSAGE</Form.Label>
 
                 <Form.Control
@@ -143,6 +143,7 @@ export default function ContactFormPage() {
               <div className="mb-3 text-center">
                 {" "}
                 <ReCAPTCHA
+                  size="compact"
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                 />
@@ -155,7 +156,7 @@ export default function ContactFormPage() {
                 <ReactiveButton
                   rounded
                   buttonState={loading ? "loading" : "idle"}
-                  idleText={"SUBMIT"}
+                  idleText={"Submit"}
                   loadingText={"Loading"}
                   className="submit-btn-custom"
                   type="submit"

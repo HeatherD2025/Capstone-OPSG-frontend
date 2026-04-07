@@ -80,75 +80,83 @@ export default function UserInvoice() {
   return (
     <>
       <div className="dashboard dark-theme">
-        <ProfileHeader />
         <DashboardNav />
 
-        <div className="invoice-container">
-          {/* ... Brand Header ... */}
-          <div className="logo-wrapper">
-            <img
-              src={opsgLogo}
-              alt="OPSG logo"
-              className="opsg-navbar-logo"
-            ></img>
-            <div>OnPoint</div>
-          </div>
+          <div className="dashboard-content-area">
+            <ProfileHeader />
 
-          <div className="invoice-header-container">
-            <h4 className="text-uppercase mt-3">Invoice</h4>
-            <p>#{invoiceData.num}</p>
-          </div>
+            <div className="invoice-container">
+              {/* ... Brand Header ... */}
+              <div className="logo-wrapper">
+                <img
+                  src={opsgLogo}
+                  alt="OPSG logo"
+                  className="opsg-navbar-logo"
+                ></img>
+                <div>OnPoint</div>
+              </div>
 
-          <div className="user-company-info-container">
-            <p>{companyName}</p>
-            <p className="invoice-address">{companyStreetAddress}</p>
-            <p className="invoice-address">
-              {companyCity}, {companyState}
-            </p>
-            <p className="invoice-address">{companyZip}</p>
-            <p className="fw-bold">
-              Date: <span>{invoiceData.date}</span>
-            </p>
-          </div>
+              <div className="invoice-header-container">
+                <p className="text-uppercase mt-3">Invoice</p>
+                <p>#{invoiceData.num}</p>
+              </div>
 
-          <div className="row">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Description</th>
-                  <th className="amount-column">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ASC certification</td>
-                  <td>{formatter.format(amounts.r1)}</td>
-                </tr>
-                <tr>
-                  <td>SAM renewal</td>
-                  <td>{formatter.format(amounts.r2)}</td>
-                </tr>
-                <tr>
-                  <td>Q3 sanitation check</td>
-                  <td>{formatter.format(amounts.r3)}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="balance-due">
-            Balance Due: <span>{displayText}</span>
-          </p>
-          <button
-            className="payment-button"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              window.location.href =
-                "https://opsg-backend.onrender.com/qbauth/connect";
-            }}
-          >
-            Pay with Quickbooks
-          </button>
+              <div className="user-company-info-container">
+                <p>{companyName}</p>
+                <p className="invoice-address">{companyStreetAddress}</p>
+                <p className="invoice-address">
+                  {companyCity}, {companyState}
+                </p>
+                <p className="invoice-address">{companyZip}</p>
+                <p className="fw-bold">
+                  Date: <span>{invoiceData.date}</span>
+                </p>
+              </div>
+
+              <div className="row">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Description</th>
+                      <th className="amount-column">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ASC certification</td>
+                      <td>{formatter.format(amounts.r1)}</td>
+                    </tr>
+                    <tr>
+                      <td>SAM renewal</td>
+                      <td>{formatter.format(amounts.r2)}</td>
+                    </tr>
+                    <tr>
+                      <td>Q3 sanitation check</td>
+                      <td>{formatter.format(amounts.r3)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="balance-due">
+                Balance Due: <span>{displayText}</span>
+              </p>
+              <button
+                className="payment-button"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  window.location.href =
+                    "https://opsg-backend.onrender.com/qbauth/connect";
+                }}
+                style={{
+                  backgroundColor: "#558e89",
+                  color: "#fff",
+                  border: "none",
+                }}
+              >
+                Pay with Quickbooks
+              </button>
+            </div>
         </div>
       </div>
     </>

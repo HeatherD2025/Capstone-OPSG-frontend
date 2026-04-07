@@ -108,13 +108,6 @@ export default function PasswordChangeForm({
               loadingText="Loading"
               variant="secondary"
               className="btn-primary-soft"
-              style={{
-                marginRight: "5px",
-                width: "90px",
-                fontSize: "12px",
-                marginTop: "8px",
-                backgroundColor: "#558e89",
-              }}
             />
             <ReactiveButton
               type="submit"
@@ -124,13 +117,7 @@ export default function PasswordChangeForm({
               idleText="Cancel"
               loadingText="Loading"
               variant="secondary"
-              className="btn-primary-soft"
-              style={{
-                width: "90px",
-                fontSize: "12px",
-                marginTop: "8px",
-                backgroundColor: "gray",
-              }}
+              className="btn-primary-cancel"
             />
           </div>
         </Form>

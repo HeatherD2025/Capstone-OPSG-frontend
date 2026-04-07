@@ -17,8 +17,8 @@ function HomeInfoCard({
   children,
 }) {
   return (
-    <Card className="info-card">
-      <Card.Body className="d-flex flex-column">
+    <Card className="home-info-card">
+      <Card.Body className="d-flex flex-column home-info-card-body">
 
       {/* <div className="info-card-image-wrapper"> */}
         { image && (

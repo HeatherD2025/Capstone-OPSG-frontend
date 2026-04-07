@@ -143,7 +143,7 @@ const ourServices = () => {
   return (
     <div className="background">
       <NavBar />
-      <Container className="main mt-5" fluid>
+      <div fluid>
         {/* animate fade in going down */}
         <motion.div
           variants={fadeInAnimationVariants}
@@ -152,36 +152,35 @@ const ourServices = () => {
           viewport={{ once: true }}
           custom={-1} // make y negative, so fade in from top moving down
         >
-          <Row className="justify-content-md-center">
-            <Col className="services-header" md="auto">
-              Why Choose OnPoint Solutions?
-            </Col>
-          </Row>
+
+            <div className="services-header">
+              Why Choose OnPoint Solutions?</div>
+
         </motion.div>
-      </Container>
+      </div>
       <div className="why-container">
-        <div className="why-paras-wrapper">
-          <p className="why-para-section">
+
+          <p className="why-para-section1">
             <strong>Support:</strong> Every client is assigned a Certified
             Provider Credentialing Specialist (CPCS) to ensure personalized
             service and attention to detail.
           </p>
-          <p className="why-para-section">
+          <p className="why-para-section2">
             <strong>Streamlined Processes:</strong> We manage the entire
             credentialing and enrollment lifecycle, so you can focus on what
             matters most—patient care.
           </p>
-          <p className="why-para-section">
+          <p className="why-para-section3">
             <strong>Faster Revenue Cycles:</strong> Our efficient systems help
             you get credentialed quicker, increasing patient access and
             accelerating your income.
           </p>
-          <p className="why-para-section">
+          <p className="why-para-section4">
             <strong>Individualized Service:</strong> No one-size-fits-all
             solutions here. We tailor our approach to meet your unique
             operational and financial goals.
           </p>
-        </div>
+   
 
         <img
           src={medicalDocument}

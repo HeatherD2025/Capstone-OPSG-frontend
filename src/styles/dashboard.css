@@ -3,6 +3,7 @@
   background-color: #374249;
   color: #ffff;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 /* Layout */
@@ -22,12 +23,57 @@
   margin-bottom: 0;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+.dark-theme {
+  width: auto;
+  background-color: #374249;
+  min-height: 100vh;
+}
+.profile-header {
+  height: 6rem;
+  background-color: #272d32;
+  color: #ffff;
+  padding: 1rem;
+  width: auto;
+}
+.header-container {
+  height: 6rem;
+  width: 100%;
+  margin-top: -1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+.opsg-header-logo {
+  margin: 0rem .25rem .5rem .25rem;
+  width: 3rem;
+  height: 3rem;
+}
+.opsg-header-text {
+  font-size: 14px;
+  background:#79cbbb;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.welcome-header-container p {
+  width: 10rem;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 200;
+  height: 1rem;
+}
 /* Cards */
 .dashboard-cards-container {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin-left: 10.6rem;
+  align-items: center;
+  width: 75%;
+  height: 10rem;
+  margin: auto;
+  margin-top: -1rem;
 } 
 .dashboard-card {
   background-color: #79cbbb;
@@ -37,7 +83,7 @@
   transform 0.25s ease-in-out,
   box-shadow 0.25s ease-in-out;
   width: 15rem;
-  margin: 0rem 1.25rem;
+  margin: .5rem;
   height: 8rem;
   display: flex;
   flex-direction: column;
@@ -54,16 +100,138 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 4rem;
 }
-.qb-connect-button {
-  margin-top: -2.25rem;
+.qb-connect-button, .balance-button {
   border: none;
-  width: 240px;
+  width: 8rem;
   height: 130px;
   background-color: transparent;
   color: black;
 }
+.qb-connect-button {
+  margin-top: -2rem;
+}
+.bg-dark {
+  background-color: #272d32 !important;
+  border: 1px solid #333;
+}
 
+/* Buttons */
+ .btn-success {
+   background-color: #28a745;
+   border-color: #28a745;
+ }
+
+ .btn-outline-danger {
+   color: #dc3545;
+   border-color: #dc3545;
+ }
+
+ .btn-outline-danger:hover {
+   background-color: #dc3545;
+   color: #ffff;
+ }
+ .nav-column {
+    min-height: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+  }
+
+  .content-column {
+    padding-bottom: 80px;
+    width: 100%;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+.profile-header {
+  height: 6rem;
+  background-color: #272d32;
+  color: #ffff;
+  padding: 1rem;
+  width: 48rem;
+  margin-top: -1.25rem;
+}
+.header-container {
+  height: 6rem;
+  width: 100%;
+  margin-top: -1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.opsg-header-logo {
+  margin: 0rem .25rem .5rem .25rem;
+  width: 3rem;
+  height: 3rem;
+}
+.opsg-header-text {
+  font-size: 18px;
+  width: 15rem;
+  background:#79cbbb;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.welcome-header-container p {
+  width: 10rem;
+  margin-left: 1rem;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
+  height: 1rem;
+}
+/* Cards */
+.dashboard-cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 75%;
+  height: 10rem;
+  margin-top: -1rem;
+  margin-left: -.25rem;
+} 
+.dashboard-card {
+  background-color: #79cbbb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+  transform 0.25s ease-in-out,
+  box-shadow 0.25s ease-in-out;
+  width: 15rem;
+  margin: .5rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.dashboard-card-body.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 4rem;
+}
+.qb-connect-button, .balance-button {
+  border: none;
+  width: 8rem;
+  height: 130px;
+  background-color: transparent;
+  color: black;
+}
+.qb-connect-button {
+  margin-top: -2rem;
+}
 .bg-dark {
   background-color: #272d32 !important;
   border: 1px solid #333;
@@ -85,10 +253,128 @@
   color: #ffff;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+
   .nav-column {
-    min-height: auto;
+    min-height: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+  }
+
+  .content-column {
+    padding-bottom: 80px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+.profile-header {
+  width: 100%;
+  margin-left: 0 !important;
+  height: 6rem;
+  background-color: #272d32;
+  color: #ffff;
+}
+.header-container {
+  height: 6rem;
+  width: 100%;
+  margin-top: -1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.opsg-header-logo {
+  margin: 0rem .25rem .5rem 0rem;
+  width: 3rem;
+  height: 3rem;
+}
+.opsg-header-text {
+  font-size: 18px;
+  width: 15rem;
+  background:#79cbbb;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.welcome-header-container p {
+  width: 100%;
+  margin-left: 0rem;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
+  height: 1rem;
+}
+/* Cards */
+.dashboard-cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 10rem;
+  margin-top: -1rem;
+} 
+.dashboard-card {
+  background-color: #79cbbb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+  transform 0.25s ease-in-out,
+  box-shadow 0.25s ease-in-out;
+  width: 15rem;
+  margin: .5rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.dashboard-card-body.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 4rem;
+}
+.qb-connect-button, .balance-button {
+  border: none;
+  width: 8rem;
+  height: 130px;
+  background-color: transparent;
+  color: black;
+}
+.qb-connect-button {
+  margin-top: -2rem;
+}
+.bg-dark {
+  background-color: #272d32 !important;
+  border: 1px solid #333;
+}
+
+/* Buttons */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #ffff;
+}
+
+
+  .nav-column {
+    min-height: 0;
     width: 100%;
     position: fixed;
     bottom: 0;
