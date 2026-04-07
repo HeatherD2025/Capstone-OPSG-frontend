@@ -103,11 +103,12 @@ body,
     flex-direction: column;
     align-items: center;
     order: 1;
-    width: 100%;
+    width: 20rem;
+    margin: auto;
   }
 
   .opsg-name {
-    font-size: clamp(14px, 2vw, 24px);
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: 200;
     margin-top: 0.75rem;
   }
@@ -116,7 +117,8 @@ body,
     display: flex;
     gap: 1.4vw;
     margin-left: 1rem;
-    font-size: clamp(1rem, 1vw, 1rem);
+    margin-top: -1rem;
+    font-size: clamp(12px, 2.5vw, 20px);
   }
   .secondary-header-box > * {
     border-radius: 1vw;
@@ -152,9 +154,11 @@ body,
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: clamp(14px, 2vw, 24px);
+    font-size: clamp(18px, 2.5vw, 24px);
     font-weight: 200;
-    width: 100%;
+    text-align: center;
+    width: 80%;
+    margin: auto;
     margin-top: 6rem;
     z-index: 9999;
   }
@@ -163,7 +167,7 @@ body,
     height: auto;
     opacity: 0.08;
     z-index: 0;
-    margin: -8.5rem 5rem 5rem 1rem;
+    margin: -8.5rem 5rem 2rem 1rem;
   }
 
   /* Home Cards styling */

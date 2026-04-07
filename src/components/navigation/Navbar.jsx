@@ -42,7 +42,7 @@ export default function NavBar() {
 
   useEffect(() => {
     // get current path
-    const currentPath = window.location.pathame;
+    const currentPath = window.location.pathname;
 
     if (!currentPath) return;
     

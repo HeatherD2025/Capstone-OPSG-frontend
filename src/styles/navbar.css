@@ -34,7 +34,7 @@
     z-index: 1050;
     width: auto;
     height: 6rem;
-    filter: drop-shadow(5px 3px 5px rgb(218, 217, 217));
+    box-shadow: 5px 3px 5px rgb(218, 217, 217);
   }
   .usr-image2 {
     border: 2px solid #ffff;
@@ -60,9 +60,9 @@
     display: none;
     flex-direction: column;
     gap: 1rem;
-    background-color: white;
+    background-color: transparent;
     padding: 0.5rem 0rem;
-    border: 0.25px solid black;
+    border: none;
   }
   .nav-item {
     background: none;
@@ -73,13 +73,32 @@
     cursor: pointer;
     font-weight: 200;
   }
-  .nav-items.open {
+  /* .nav-items.open {
     display: flex;
     align-items: center;
     margin-left: 0.4rem;
     background: rgba(255, 255, 255, 0.15);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  } */
+  .nav-items.open {
+    display: flex;
+    align-items: center;
+    margin-left: 0.4rem;
+
+    /* Use 'background' to overwrite any 'background-color' from the base class */
+    background: rgba(255, 255, 255, 0.15) !important;
+
+    /* Performance & Rendering Fixes */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    /* Ensure it sits above other layers */
+    z-index: 100;
+
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
@@ -163,7 +182,7 @@
     position: relative;
     z-index: 1100;
     left: 3.2rem;
-    top: -.25rem;
+    top: -0.25rem;
     cursor: pointer;
     z-index: 999;
   }
@@ -208,8 +227,8 @@
     background-color: white;
     padding: 0.5rem 0rem;
     border: 0.25px solid black;
-    flex-direction: row;    
-    position: static;       
+    flex-direction: row;
+    position: static;
     width: auto;
     border: none;
     background: none;
@@ -247,5 +266,4 @@
     flex-direction: row;
     font-size: clamp(0.85rem, 0.75vw, 8rem);
   }
-
 }
