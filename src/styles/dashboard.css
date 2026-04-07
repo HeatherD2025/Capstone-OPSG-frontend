@@ -2,7 +2,8 @@
 .dark-theme {
   background-color: #374249;
   color: #ffff;
-  min-height: 120vh;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 /* Layout */
@@ -27,6 +28,7 @@
 .dark-theme {
   width: auto;
   background-color: #374249;
+  min-height: 100vh;
 }
 .profile-header {
   height: 6rem;
@@ -42,6 +44,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow: hidden;
 }
 .opsg-header-logo {
   margin: 0rem .25rem .5rem .25rem;
