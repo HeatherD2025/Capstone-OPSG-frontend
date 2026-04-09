@@ -29,6 +29,19 @@
   overflow: hidden;
   display: flex;
 }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #374249;
+}
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #374249;
+}
 
 .dashboard-content-area {
   height: 100vh;
@@ -61,12 +74,6 @@
     min-height: 100vh;
   }
   .profile-header {
-    /* height: 6rem;
-  background-color: #272d32;
-  color: #ffff;
-  padding: 1rem;
-  width: auto;
-  overflow: hidden; */
     width: 100%;
     background-color: #272d32;
     height: 6rem;
@@ -75,13 +82,6 @@
     margin: 0 1.5rem;
   }
   .header-container {
-    /* position: fixed;
-  height: 6rem;
-  width: calc(100% - 60px);
-  margin-top: 0;
-  left: 60px;
-  display: flex;
-  flex-direction: row; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -91,18 +91,12 @@
     max-width: calc(100vw - 60px);
   }
   .opsg-header-logo {
-    /* margin: 0rem .25rem .5rem .25rem;
-  width: 3rem;
-  height: 3rem;
-  flex-shrink: 0; */
     grid-column: 1;
     width: 45px;
     height: 45px;
     margin: 0;
   }
   .opsg-header-text {
-    /* flex-shrink: 1;
-  min-width: 0; */
     white-space: normal;
     font-size: 14px;
     margin: 0;
@@ -112,24 +106,14 @@
     color: transparent;
   }
   .opsg-header-text-container {
-    /* grid-column: 2;
-  text-align: left;
-  min-width: 0; */
     flex: 1;
     min-width: 0;
   }
   .welcome-header-container {
-    /* grid-column: 3;
-  text-align: right;
-  font-size: 11px;
-  line-height: 1.2; */
     flex: 0 0 auto;
     text-align: right;
   }
   .welcome-header-container p {
-    /* width: 10rem;
-  text-align: center;
-  height: 1rem; */
     font-weight: 200;
     font-size: 12px;
     width: auto;

@@ -304,7 +304,6 @@ body,
   .admin-edit-profile-button-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
     align-items: flex-end;
     margin-top: 2rem;
     gap: 1rem;

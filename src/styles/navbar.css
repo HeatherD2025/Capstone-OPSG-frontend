@@ -73,30 +73,13 @@
     cursor: pointer;
     font-weight: 200;
   }
-  /* .nav-items.open {
-    display: flex;
-    align-items: center;
-    margin-left: 0.4rem;
-    background: rgba(255, 255, 255, 0.15);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  } */
   .nav-items.open {
     display: flex;
     align-items: center;
     margin-left: 0.4rem;
-
-    /* Use 'background' to overwrite any 'background-color' from the base class */
     background: rgba(255, 255, 255, 0.15) !important;
-
-    /* Performance & Rendering Fixes */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-
-    /* Ensure it sits above other layers */
     z-index: 100;
 
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -111,15 +94,13 @@
     cursor: pointer;
     z-index: 999;
   }
-  /* .main-links-wrapper {
-  width: 80%;
-} */
   .main-links {
     display: flex;
     flex-direction: row;
     font-size: clamp(0.85rem, 0.75vw, 8rem);
   }
 }
+
 /* Tablet (≤768px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar {
@@ -186,9 +167,6 @@
     cursor: pointer;
     z-index: 999;
   }
-  /* .main-links-wrapper {
-  width: 80%;
-} */
   .main-links {
     display: flex;
     flex-direction: row;
