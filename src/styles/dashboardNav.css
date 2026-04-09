@@ -8,12 +8,10 @@
   width: calc(100% - 60px);
 }
 .dashboard-content-area {
-  transition:
-    margin-left 0.3s ease,
-    width 0.3s ease;
   padding: 2rem;
-  margin-left: 60px;
-  width: calc(100% - 60px);
+  margin-left: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dash-nav-container {

@@ -134,14 +134,14 @@ export default function EditProfile() {
 
   return (
     <>
-      <div classname="dashboard-dark-theme">
+      <div classname="dashboard dark-theme">
         <DashboardNav />
 
         <div className="dashboard-content-area">
           <ProfileHeader />
 
-          <div className="dark-theme">
-            <div className="d-flex">
+       
+            <div className="edit-profile-container">
               {showPwdForm ? (
                 <PasswordChangeForm
                   userId={userId}
@@ -160,7 +160,7 @@ export default function EditProfile() {
                 />
               )}
             </div>
-          </div>
+        </div>
 
           <ConfirmationModal
             show={confModalShow}
@@ -176,7 +176,7 @@ export default function EditProfile() {
             heading={modalHeading}
             body={modalBody}
           />
-        </div>
+       
       </div>
     </>
   );

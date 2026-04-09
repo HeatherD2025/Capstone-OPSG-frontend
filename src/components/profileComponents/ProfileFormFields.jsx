@@ -20,7 +20,7 @@
          
               <h6 className="edit-profile-header">Edit Profile</h6>
 
-            <Form onSubmit={onSubmit}>
+            <Form onSubmit={onSubmit} fluid>
               {/* Profile block */}
                   <Row className="mb-2">
                     <Form.Group as={Col} controlId="firstName">

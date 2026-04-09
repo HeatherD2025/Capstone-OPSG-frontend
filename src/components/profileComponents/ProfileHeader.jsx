@@ -1,6 +1,6 @@
 import "../../styles/dashboard.css";
 import opsgLogo from "../../assets/images/opsg-logo.webp";
-import { Image, Container } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useGetCurrentUserQuery } from "../../features/api/userApi";
 import useCompanyName from "../qbComponentsAndHooks/useCompanyName";
@@ -34,36 +34,36 @@ export default function ProfileHeader() {
   if (companyLoading)
     return (
       <div className="profile-header">
-        <Container className="header-container text-center">
+        <div className="header-container text-center">
           <p>Loading company info...</p>
-        </Container>
+        </div>
       </div>
     );
 
   if (companyError)
     return (
       <div className="profile-header">
-        <Container className="header-container text-center">
+        <div className="header-container text-center">
           <p>Failed to load company info</p>
-        </Container>
+        </div>
       </div>
     );
 
   return (
     <div className="profile-header">
-      <Container data-bs-theme="dark" className="header-container">
+      <div className="header-container">
         <Image src={opsgLogo} alt="OPSG Logo" className="opsg-header-logo" />
         <span className="opsg-header-text-container">
           <p className="opsg-header-text">OnPoint {headerText}</p>
         </span>
 
         <div className="welcome-header-container">
-          <span className="welcome-header">
+          <span className="welcome-header text-white">
             <p>Welcome, {displayName}!</p>
             {company ? <p>{companyNameCalled}</p> : <p>No company found</p>}
           </span>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
