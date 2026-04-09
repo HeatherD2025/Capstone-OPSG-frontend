@@ -189,14 +189,6 @@ body,
     transform: translateY(-10px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   }
-
-  /* .home-page-cards .card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-  } */
   .info-card,
   .card-body {
     align-items: center;
@@ -254,7 +246,6 @@ body,
     width: 80px;
     font-size: clamp(0.85rem, 0.75vw, 8rem);
     background-color: #558e89;
-    /* margin-top: 5px; */
   }
 
   /* Login and Register */
@@ -293,7 +284,6 @@ body,
     font-weight: 200;
     width: 100%;
     max-width: 100% !important;
-    margin-left: 1rem !important;
     padding: 1rem 1rem 4rem 1rem;
   }
   .edit-profile-header {

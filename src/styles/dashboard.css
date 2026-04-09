@@ -69,26 +69,29 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .dark-theme {
-    width: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #374249;
     min-height: 100vh;
   }
   .profile-header {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     background-color: #272d32;
     height: 6rem;
     display: flex;
     align-items: center;
-    margin: 0 1.5rem;
+    margin: 0 !important;
   }
   .header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    padding: 0 10px;
+    padding-top: 0.75rem;
     margin: 0;
-    max-width: calc(100vw - 60px);
+    max-width: none !important;
   }
   .opsg-header-logo {
     grid-column: 1;
@@ -112,6 +115,7 @@ body {
   .welcome-header-container {
     flex: 0 0 auto;
     text-align: right;
+    padding-right: 1rem;
   }
   .welcome-header-container p {
     font-weight: 200;
@@ -120,12 +124,11 @@ body {
     margin: 0;
   }
   .dashboard-content-area {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    max-width: 100%;
+    margin-left: 60px !important;
+    width: calc(100% - 60px) !important;
+    padding: 0 !important;
+    background-color: #374249;
     overflow-x: hidden;
-    padding: 10px;
   }
   /* Cards */
   .dashboard-cards-container {

@@ -6,7 +6,6 @@ import "../../../styles/invoices.css";
 import opsgLogo from "../../../assets/images/opsg-logo.webp";
 import { useBalance } from "../BalanceProvider.jsx";
 import useCompanyName from "../../qbComponentsAndHooks/useCompanyName.js";
-import { Container } from "react-bootstrap";
 
 export default function UserInvoice() {
   const { balance, loading, error } = useBalance();
@@ -19,18 +18,18 @@ export default function UserInvoice() {
   if (companyLoading)
     return (
       <div className="profile-header">
-        <Container className="header-container text-center">
+        <div className="header-container text-center">
           <p>Loading company info...</p>
-        </Container>
+        </div>
       </div>
     );
 
   if (companyError)
     return (
       <div className="profile-header">
-        <Container className="header-container text-center">
+        <div className="header-container text-center">
           <p>Failed to load company info</p>
-        </Container>
+        </div>
       </div>
     );
 
@@ -85,6 +84,7 @@ export default function UserInvoice() {
           <div className="dashboard-content-area">
             <ProfileHeader />
 
+          <div className="invoice-wrapper-mobile">
             <div className="invoice-container">
               {/* ... Brand Header ... */}
               <div className="logo-wrapper">
@@ -157,6 +157,7 @@ export default function UserInvoice() {
                 Pay with Quickbooks
               </button>
             </div>
+          </div>
         </div>
       </div>
     </>

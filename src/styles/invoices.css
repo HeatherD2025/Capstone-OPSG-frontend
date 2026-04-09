@@ -58,14 +58,31 @@ th.amount-column {
   margin-top: 5rem;
 }
 @media (max-width: 768px) {
+  
   .invoice-container {
     background: #ffff;
-    max-width: 35rem;
+    width: 100% !important;
+    max-width: 95vw !important;
+    margin: 1rem auto !important;
+    padding: 1rem !important;
+    overflow-x: hidden;
+    /* max-width: 35rem;
     height: 45rem;
     margin: 0rem 1rem 5rem 2rem;
-    padding: 2rem;
+    padding: 2rem; */
     color: rgb(155, 155, 155);
     filter: drop-shadow(8px 8px 10px rgb(23, 23, 23));
+  }
+  .invoice-container table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .invoice-container th, 
+  .invoice-container td {
+    font-size: 12px;
+    padding: 8px 4px;
   }
   .user-company-info-container {
     color: black;
@@ -75,6 +92,10 @@ th.amount-column {
     font-size: 10px;
     height: 0.75rem;
   }
+  .amount-column {
+    text-align: right;
+    width: 80px;
+  }
   .balance-due {
     font-size: 16px;
     color: red;
@@ -82,7 +103,7 @@ th.amount-column {
     margin-left: 12rem;
   }
   .payment-button {
-    margin-right: 2rem;
+    margin: 0;
   }
 }
 
